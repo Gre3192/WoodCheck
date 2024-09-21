@@ -1,12 +1,12 @@
 {
-  "name": "structural-engineering",
+  "name": "wood-check",
   "author": "Gregorio Di Stefano",
-  "description": "Structural Engineering",
+  "description": "WoodCheck",
   "version": "0.1.0",
   "main": "public/electron.js",
   "homepage": "./",
   "build": {
-    "appId": "com.gre3192.structural-engineering",
+    "appId": "com.gre3192.wood-check",
     "files": [
       "build/**/*",
       "public/**/*"
