@@ -1,10 +1,10 @@
-import Latex from "react-latex-next";
 import getGamma from "../Utils/getGamma";
 import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
+import Latex from "react-latex-next";
 
 
 export default function Compressione0Check(params) {
