@@ -6,6 +6,10 @@ import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
 import getKsh from "../Utils/getKsh";
+import { get_tau_tord, get_tau_d } from "../Utils/getTensioni";
+import { get_fvd } from "../Utils/getResistenze";
+import { get_TaglioTorsioneCheck } from "../Utils/getChecks";
+import StepBox from "./StepBox";
 
 export default function TaglioTorsioneCheck(params) {
 
@@ -15,56 +19,70 @@ export default function TaglioTorsioneCheck(params) {
     const Ved_z = rawVed_z > 0 ? rawVed_z : 0
     const isDisabled = Ved_y == 0 && Ved_z == 0 && Med_tor == 0 ? true : false
 
+
     const Atot = 26
     const Aeff = 1289.6
     const gm = getGamma('m0')
-
     const shape = true
-
-    const tau_d = shape ? (3 / 2) * (Math.sqrt(Ved_y ** 2 + Ved_z ** 2) / Atot) : (4 / 3) * (Math.sqrt(Ved_y ** 2 + Ved_z ** 2) / Atot)
-    const tau_tord = 561
+    const kmod = 465
     const fvk = 9
-    const fvd = 9
     const Itor = 98798
     const b = 453
-    const ksh = getKsh('circolare').value
-
-    const check = (tau_tord / (ksh * fvd)) + (tau_d / fvd) ** 2
 
 
+    const { tau_tord, tau_tord_title, tau_tord_formula, tau_tord_formulaVal, tau_tord_description } = get_tau_tord(Med_tor, b, Itor)
+    const { tau_d, tau_d_title, tau_d_formula, tau_d_formulaVal, tau_d_description } = get_tau_d(shape, Ved_y, Ved_z, Atot)
+    const { fvd, fvd_title, fvd_formula, fvd_formulaVal, fvd_description } = get_fvd(kmod, fvk, gm)
+    const { ksh, ksh_title, ksh_formula, ksh_formulaVal, ksh_description } = getKsh('circolare')
+    const { check, check_title, check_formulaVal } = get_TaglioTorsioneCheck(tau_tord, tau_d, fvd, ksh)
 
 
     const title = 'Verifica a Taglio e Torsione [NTC18 - 4.4.8.1.11]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            {
-                shape ?
-                    <div className="flex justify-between items-center">
-                        <Latex>{`$\\tau_{d} = \\dfrac{3}{2}\\cdot\\dfrac{\\sqrt{V_{Ed,y}^2+V_{Ed,z}^2}}{A_{tot}} = \\dfrac{3}{2}\\cdot\\dfrac{\\sqrt{${Ved_y}^2+${Ved_z}^2}}{${Atot}} = ${tau_d}$`}</Latex>
-                        <div>Tensione tangenziale di progetto massima per sezioni rettangolari</div>
-                    </div>
-                    :
-                    <div className="flex justify-between items-center">
-                        <Latex>{`$\\tau_{d} = \\dfrac{4}{3}\\cdot\\dfrac{\\sqrt{V_{Ed,y}^2+V_{Ed,z}^2}}{A_{tot}} = \\dfrac{4}{3}\\cdot\\dfrac{\\sqrt{${Ved_y}^2+${Ved_z}^2}}{${Atot}} = ${tau_d}$`}</Latex>
-                        <div>Tensione tangenziale di progetto massima per sezioni circolari</div>
-                    </div>
-            }
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={tau_d_title}
+                formula={tau_d_formula}
+                formulaVal={tau_d_formulaVal}
+                value={tau_d}
+                description={tau_d_description}
+            />
             <hr />
-            <div className="flex justify-between items-center">
-                <Latex>{`$\\tau_{tor,d} = \\dfrac{M_{tor,d} \\cdot b}{I_{tor}} = \\dfrac{${Med_tor} \\cdot ${b}}{${Itor}} = ${tau_tord}$`}</Latex>
-                <div>Tensione di progetto massima per torsione</div>
-            </div>
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={tau_tord_title}
+                formula={tau_tord_formula}
+                formulaVal={tau_tord_formulaVal}
+                value={tau_tord}
+                description={tau_tord_description}
+            />
             <hr />
-            <div className="flex justify-between items-center">
-                <Latex>{`$k_{sh} = ${ksh}$`}</Latex>
-                <div>{getKsh('circolare').description}</div>
-            </div>
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={fvd_title}
+                formula={fvd_formula}
+                formulaVal={fvd_formulaVal}
+                value={fvd}
+                description={fvd_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={ksh_title}
+                formula={ksh_formula}
+                formulaVal={ksh_formulaVal}
+                value={ksh}
+                description={ksh_description}
+            />
             <hr />
         </div>
 
     const finalContent
-        = <Latex>{`$\\displaystyle\\frac{\\tau_{tor,d}}{k_{sh}\\cdot f_{v,d}} + \\left( \\frac{\\tau_d}{f_{v,d}} \\right)^2 = \\frac{${tau_tord}}{${ksh}\\cdot ${fvd}} + \\left( \\frac{${tau_d}}{${fvd}} \\right)^2 = ${check}${getCheckSymbol(check)}$`}</Latex>
+        = <StepBox isFormula={true} isFormulaVal={true} isCheck={true}
+            title={check_title}
+            formula={''}
+            formulaVal={check_formulaVal}
+            value={check}
+            description={''}
+        />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
     return <CheckCard props={checkCardProps} />;

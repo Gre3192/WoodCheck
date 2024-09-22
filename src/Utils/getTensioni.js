@@ -1,3 +1,58 @@
+export function get_sig_t0d(Ned, Atot) {
+
+    return {
+        sig_t0d: Math.abs(Ned) / Atot,
+        sig_t0d_title: `\\sigma_{t,0,d} = `,
+        sig_t0d_formula: `\\dfrac{N_{Ed}}{A_{tot}} = `,
+        sig_t0d_formulaVal: `\\dfrac{${Math.abs(Ned)}}{${Atot}} = `,
+        sig_t0d_description: `Tensione di progetto a trazione parallela alla fibratura valutata sulla sezione netta`
+    }
+}
+
+export function get_sig_t90d(Med_y, Wel_y) {
+
+    return {
+        sig_t90d: ``,
+        sig_t90d_title: ``,
+        sig_t90d_formula: ``,
+        sig_t90d_formulaVal: ``,
+        sig_t90d_description: ``
+    }
+}
+
+export function get_sig_c0d(Ned, Atot) {
+
+    return {
+        sig_c0d: Math.abs(Ned) / Atot,
+        sig_c0d_title: `\\sigma_{c,0,d} = `,
+        sig_c0d_formula: `\\dfrac{N_{Ed}}{A_{tot}} = `,
+        sig_c0d_formulaVal: `\\dfrac{${Math.abs(Ned)}}{${Atot}} = `,
+        sig_c0d_description: `Tensione di progetto a compressione parallela alla fibratura`
+    }
+}
+
+export function get_sig_c90d(Med_y, Wel_y) {
+
+    return {
+        sig_c90d: ``,
+        sig_c90d_title: ``,
+        sig_c90d_formula: ``,
+        sig_c90d_formulaVal: ``,
+        sig_c90d_description: ``
+    }
+}
+
+export function get_sig_cAlphad(f_c0d, f_c90d, alpha) {
+
+    return {
+        sig_cAlphad: f_c0d / ((f_c0d / f_c90d) * Math.sin(alpha) ** 2 + Math.cos(alpha) ** 2),
+        sig_cAlphad_title: `\\sigma_{c,\\alpha,d} = `,
+        sig_cAlphad_formula: `\\frac{f_{c,0,d}}{\\frac{f_{c,0,d}}{f_{c,90,d}}\\sin^2\\alpha +\\cos^2\\alpha} = `,
+        sig_cAlphad_formulaVal: `\\frac{${f_c0d}}{\\frac{${f_c0d}}{${f_c90d}}\\sin^2${alpha} +\\cos^2${alpha}} = `,
+        sig_cAlphad_description: `Tensione di progetto a compressione inclinata di \\alpha rispetto alla fibratura`
+    }
+}
+
 export function get_sig_myd(Med_y, Wel_y) {
 
     return {

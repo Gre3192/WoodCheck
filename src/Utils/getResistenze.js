@@ -1,3 +1,47 @@
+export function get_f_c0d(kmod, fc0k, gm) {
+
+    return {
+        f_c0d: (kmod * fc0k) / gm,
+        f_c0d_title: `f_{c,0,d} = `,
+        f_c0d_formula: `k_{mod}\\cdot\\dfrac{f_{c,0,k}}{\\gamma_m} = `,
+        f_c0d_formulaVal: `${kmod}\\cdot\\dfrac{${fc0k}}{${gm}} = `,
+        f_c0d_description: `Resistenza di progetto a compressione parallela alla fibratura`
+    }
+}
+
+export function get_f_c90d(kmod, fc90k, gm) {
+
+    return {
+        f_c90d: (kmod * fc90k) / gm,
+        f_c90d_title: `f_{c,90,d} = `,
+        f_c90d_formula: `k_{mod}\\cdot\\dfrac{f_{c,90,k}}{\\gamma_m} = `,
+        f_c90d_formulaVal: `${kmod}\\cdot\\dfrac{${fc90k}}{${gm}} = `,
+        f_c90d_description: `Resistenza di progetto a compressione ortogonale alla fibratura`
+    }
+}
+
+export function get_f_t0d(kmod, ft0k, gm) {
+
+    return {
+        f_t0d: (kmod * ft0k) / gm,
+        f_t0d_title: `f_{t,0,d} = `,
+        f_t0d_formula: `k_{mod}\\cdot\\dfrac{f_{t,0,k}}{\\gamma_m} = `,
+        f_t0d_formulaVal: `${kmod}\\cdot\\dfrac{${ft0k}}{${gm}} = `,
+        f_t0d_description: `Resistenza di progetto a trazione parallela alla fibratura`
+    }
+}
+
+export function get_f_t90d(kmod, ft90k, gm) {
+
+    return {
+        f_t90d: (kmod * ft90k) / gm,
+        f_t90d_title: `f_{t,90,d} = `,
+        f_t90d_formula: `k_{mod}\\cdot\\dfrac{f_{t,90,k}}{\\gamma_m} = `,
+        f_t90d_formulaVal: `${kmod}\\cdot\\dfrac{${ft90k}}{${gm}} = `,
+        f_t90d_description: `Resistenza di progetto a trazione ortogonale alla fibratura`
+    }
+}
+
 export function get_f_myd(khy, kmod, fmk, gm) {
 
     return {

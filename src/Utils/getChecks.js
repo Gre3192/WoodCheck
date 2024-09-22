@@ -36,3 +36,14 @@ export function get_TorsioneCheck(tau_tord, fvd, ksh) {
         check_description: ``,
     }
 }
+
+export function get_TaglioTorsioneCheck(tau_tord, tau_d, fvd, ksh) {
+
+    return {
+        check: (tau_tord / (ksh * fvd)) + (tau_d / fvd) ** 2,
+        check_title: `\\frac{\\tau_{tor,d}}{k_{sh}\\cdot f_{v,d}} + \\left(\\frac{\\tau_d}{f_{v,d}}\\right)^2 = `,
+        check_formula: ``,
+        check_formulaVal: `\\frac{${tau_tord}}{${ksh}\\cdot ${fvd}} + \\left(\\frac{${tau_d}}{${fvd}} \\right)^2 = `,
+        check_description: ``,
+    }
+}
