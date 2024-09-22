@@ -1,12 +1,11 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { forcesSteelAtom } from '../Atom/forcesStateAtom'; 
+import { forcesStateAtom } from '../Atom/forcesStateAtom'; 
 import InputBox from './InputBox';
-
 
 export default function InputForces() {
 
-  const [forces, setForces] = useRecoilState(forcesSteelAtom);
+  const [forces, setForces] = useRecoilState(forcesStateAtom);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

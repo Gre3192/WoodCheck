@@ -17,18 +17,15 @@ export default function InputBox({ props }) {
     return (
         <div className='flex flex-col'>
 
-            {isLatexTitle ?
+{isLatexTitle ? (
                 <label className="block text-left text-lg mb-1">
                     <Latex>{`$${titleInputBox}$`}</Latex>
                 </label>
-                : null
-            }
-            {isTitle ?
+            ) : (
                 <label className="block text-left text-lg mb-1">
                     <p>{titleInputBox}</p>
                 </label>
-                : null
-            }
+            )}
             <input
                 type={type}
                 placeholder={placeholder}

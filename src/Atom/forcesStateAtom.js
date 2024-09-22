@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
-export const forcesSteelAtom = atom({
-  key: 'forcesSteelAtom', 
+export const forcesStateAtom = atom({
+  key: 'forcesStateAtom', 
   default: {
     Ned: null, 
     Ved_y: null,
