@@ -7,7 +7,7 @@ import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
 
 
-export default function CompressionealphaCheck(params) {
+export default function CompressioneAlphaCheck(params) {
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed > 0 ? rawNed : 0

@@ -7,7 +7,7 @@ import CheckCard from "./CheckCard";
 import Latex from "react-latex-next";
 
 
-export default function Compressione0Check(params) {
+export default function Trazione0Check(params) {
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed > 0 ? rawNed : 0
