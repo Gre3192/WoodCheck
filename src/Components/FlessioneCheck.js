@@ -5,6 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
+import getKm from "../Utils/getKm";
 
 
 export default function FlessioneCheck(params) {
@@ -12,8 +13,6 @@ export default function FlessioneCheck(params) {
     const { Med_y: rawMed_y, Med_z: rawMed_z } = useRecoilValue(forcesStateAtom)
     const Med_y = rawMed_y > 0 ? rawMed_y : 0
     const Med_z = rawMed_z > 0 ? rawMed_z : 0
-    const geometryMass = 464
-    const fyk = 453
 
     const isDisabled = Med_y == 0 && Med_z == 0 ? true : false
 
@@ -27,7 +26,7 @@ export default function FlessioneCheck(params) {
     const fmk = 1289.6
 
     const gm = getGamma('m0')
-    const km = 0.6
+    const km = getKm('rettangolare')
     const kmod = 0.7
 
     const sig_myd = Med_y / Wel_y
