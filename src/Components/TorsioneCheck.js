@@ -12,7 +12,6 @@ export default function TorsioneCheck(params) {
     const { Med_tor: rawMed_tor } = useRecoilValue(forcesStateAtom)
     const Med_tor = rawMed_tor > 0 ? rawMed_tor : 0
     const geometryMass = 464
-    const fyk = 453
 
     const isDisabled = Med_tor == 0 ? true : false
 

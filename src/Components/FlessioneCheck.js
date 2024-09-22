@@ -53,11 +53,11 @@ export default function FlessioneCheck(params) {
                 <div>Tensione di progetto massima per flessione attorno a z</div>
             </div>
             <div className="flex justify-between items-center">
-                <Latex>{`$f_{m,y,d} = k_{mod}\\cdot\\dfrac{k_{hy}\\cdot f_{m,k}}{\\gamma_m} = ${kmod}\\cdot\\dfrac{${khy}\\cdot${fmk}}{${gm}} = ${f_myd}$`}</Latex>
+                <Latex>{`$f_{m,y,d} = k_{mod}\\cdot\\dfrac{k_{h,y}\\cdot f_{m,k}}{\\gamma_m} = ${kmod}\\cdot\\dfrac{${khy}\\cdot${fmk}}{${gm}} = ${f_myd}$`}</Latex>
                 <div>Resistenza di progetto per flessione attorno a y</div>
             </div>
             <div className="flex justify-between items-center">
-                <Latex>{`$f_{m,z,d} = k_{mod}\\cdot\\dfrac{k_{hz}\\cdot f_{m,k}}{\\gamma_m} = ${kmod}\\cdot\\dfrac{${khz}\\cdot${fmk}}{${gm}} = ${f_mzd}$`}</Latex>
+                <Latex>{`$f_{m,z,d} = k_{mod}\\cdot\\dfrac{k_{h,z}\\cdot f_{m,k}}{\\gamma_m} = ${kmod}\\cdot\\dfrac{${khz}\\cdot${fmk}}{${gm}} = ${f_mzd}$`}</Latex>
                 <div>Resistenza di progetto per flessione attorno a z</div>
             </div>
         </div>
