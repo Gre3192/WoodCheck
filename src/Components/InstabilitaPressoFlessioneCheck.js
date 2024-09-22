@@ -32,7 +32,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
 
 
 
-    const title = 'Verifica a Instabilità a Presso-Flessione [CNR DT 206-R1/2018 - \u00A77.6.1.2.3]'
+    const title = 'Verifica a Instabilità a Presso-Flessione - Instabilità composta trave-colonna [CNR DT 206-R1/2018 - \u00A77.6.1.2.3]'
 
     const centralContent =
         <div className="flex flex-col gap-4">

@@ -16,7 +16,6 @@ export default function InstabilitaCompressioneCheck(params) {
     const isDisabled = Ned <= 0 ? true : false
 
 
-
     const Atot = 26
     const Aeff = 1289.6
     const kmod = 27527

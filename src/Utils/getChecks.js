@@ -138,5 +138,46 @@ export function get_TaglioTorsioneCheck(tau_tord, tau_d, fvd, ksh) {
     }
 }
 
+export function get_InstabilitaCompressioneCheck(sig_c0d, f_c0d, kcrit_c) {
+
+    return {
+        check: sig_c0d / (kcrit_c * f_c0d),
+        check_title: `\\frac{\\sigma_{c,0,d}}{k_{crit,c}\\cdot f_{c,0,d}} = `,
+        check_formula: ``,
+        check_formulaVal: `\\frac{${sig_c0d}}{${kcrit_c}\\cdot${f_c0d}} = `,
+        check_description: ``,
+    }
+}
+
+export function get_InstabilitaLateroTorsionaleCheck(sig_myd, sig_mzd, f_myd, f_mzd, km, kcrit_m_y, kcrit_m_z) {
+
+    return {
+
+        check1: (sig_myd) / (kcrit_m_y * f_myd) + km * (sig_mzd) / (f_mzd),
+        check1_title: `\\frac{\\sigma_{m,y,d}}{k_{crit,m,y}\\cdot f_{m,y,d}} + k_m\\cdot\\frac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
+        check1_formula: ``,
+        check1_formulaVal: `\\frac{${sig_myd}}{${kcrit_m_y}\\cdot ${f_myd}} + ${km}\\cdot\\frac{${sig_mzd}}{${f_mzd}} = `,
+        check1_description: ``,
+
+        check2: km * (sig_myd) / (kcrit_m_y * f_myd) + (sig_mzd) / (f_mzd),
+        check2_title: `k_m\\cdot\\frac{\\sigma_{m,y,d}}{k_{crit,m,y}\\cdot f_{m,y,d}} + \\frac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
+        check2_formula: ``,
+        check2_formulaVal: `${km}\\cdot\\frac{${sig_myd}}{${kcrit_m_y}\\cdot ${f_myd}} + \\frac{${sig_mzd}}{${f_mzd}} = `,
+        check2_description: ``,
+
+        check3: (sig_myd) / (f_myd) + km * (sig_mzd) / (kcrit_m_z * f_mzd),
+        check3_title: `\\frac{\\sigma_{m,y,d}}{f_{m,y,d}} + k_m\\cdot\\frac{\\sigma_{m,z,d}}{k_{crit,m,z}\\cdot f_{m,z,d}} = `,
+        check3_formula: ``,
+        check3_formulaVal: `\\frac{${sig_myd}}{${f_myd}} + ${km}\\cdot\\frac{${sig_mzd}}{${kcrit_m_z}\\cdot${f_mzd}} = `,
+        check3_description: ``,
+
+        check4: km * (sig_myd) / (f_myd) + (sig_mzd) / (kcrit_m_z * f_mzd),
+        check4_title: `k_m\\cdot\\frac{\\sigma_{m,y,d}}{f_{m,y,d}} + \\frac{\\sigma_{m,z,d}}{k_{crit,m,z}\\cdot f_{m,z,d}} = `,
+        check4_formula: ``,
+        check4_formulaVal: `${km}\\cdot\\frac{${sig_myd}}{${f_myd}} + \\frac{${sig_mzd}}{${kcrit_m_z}\\cdot${f_mzd}} = `,
+        check4_description: ``,
+
+    }
+}
 
 

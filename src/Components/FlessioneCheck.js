@@ -36,7 +36,7 @@ export default function FlessioneCheck(params) {
     const { check_z, check_z_title, check_z_formulaVal, check_y, check_y_title, check_y_formulaVal } = get_flessioneCheck(sig_myd, sig_mzd, f_myd, f_mzd, km)
 
     // -------------------------------------------------------------------------------
-    const title = 'Verifica a Flessione [NTC18 - 4.4.8.1.6]'
+    const title = 'Verifica a Flessione [NTC18 - \u00A74.4.8.1.6]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
