@@ -1,7 +1,5 @@
-export default function getKh(value = '') {
+export default function getKh() {
 
 
 
-
-    
 }
