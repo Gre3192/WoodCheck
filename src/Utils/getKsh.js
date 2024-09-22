@@ -1,21 +1,29 @@
-export default function getKsh(props, shape = 'circolare') {
+export default function getKsh(shape = `circolare`,h = null,b = null) {
 
-
-    if (shape.toLocaleLowerCase() === 'circolare')
+    if (shape.toLocaleLowerCase() === `circolare`)
         return {
-            value: 1.2,
-            description: 'Coefficiente di forma per sezioni circolari piene'
+            ksh: 1.2,
+            ksh_title: `k_{sh} = `,
+            ksh_formula: ``,
+            ksh_formulaVal: ``,
+            ksh_description: `Coefficiente di forma per sezioni circolari piene`
         }
-    else if (shape.toLocaleLowerCase() === 'rettangolare') {
-        const { h, b } = props
+    else if (shape.toLocaleLowerCase() === `rettangolare`) {
+
         return {
-            value: Math.min(1 + 0.15 * (Math.min(h, b)) / (Math.min(h, b)), 2),
-            description: 'Coefficiente di forma per sezioni rettangolari piene, di lati b e h, b<h'
+            ksh: Math.min(1 + 0.15 * (h / b), 2),
+            ksh_title: `k_{sh} = `,
+            ksh_formula: `\\min\\left[1+0.15\\cdot\\left(\\dfrac{h}{b}\\right), 2\\right] = `,
+            ksh_formulaVal: `\\min\\left[1+0.15\\cdot\\left(\\dfrac{${h}}{${b}}\\right); 2\\right] = `,
+            ksh_description: `Coefficiente di forma per sezioni rettangolari piene, di lati b e h con b<h`
         }
     }
     else
         return {
-            value: 1,
-            description: 'Coefficiente di forma per sezioni diverse da rettangolari e circolari'
+            ksh: 1,
+            ksh_title: `k_{sh} = `,
+            ksh_formula: ``,
+            ksh_formulaVal: ``,
+            ksh_description: `Coefficiente di forma per sezioni diverse da rettangolari e circolari`
         }
 }

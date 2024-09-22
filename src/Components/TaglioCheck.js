@@ -32,7 +32,6 @@ export default function TaglioCheck(params) {
     const { check, check_title, check_formulaVal } = get_TaglioCheck(tau_d, fvd)
 
 
-    
     const title = 'Verifica a Taglio [NTC18 - 4.4.8.1.9]'
 
     const centralContent =
