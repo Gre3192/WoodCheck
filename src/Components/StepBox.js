@@ -45,7 +45,9 @@ export default function StepBox({
                                 $`}
                             </Latex>
                             {
-                                descriptions[index] ? <div>{descriptions[index]}</div> : null
+                                descriptions[index] ?
+                                    <Latex>{`${descriptions[index]}`}</Latex>
+                                    : null
                             }
                         </React.Fragment>
                     )

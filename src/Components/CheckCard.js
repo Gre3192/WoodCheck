@@ -34,7 +34,7 @@ export default function CheckCard({ props }) {
                         </button>
                         <h2 className="text-lg font-semibold ">{title}</h2>
                     </div>
-                    <div className="flex flex-col items-center gap-3">
+                    <div className="flex flex-col gap-3">
                         {
                             !isObject(check) && !Array.isArray(check) ?
                                 <div className="flex gap-2">
@@ -43,7 +43,7 @@ export default function CheckCard({ props }) {
                                 </div> :
                                 check.map((item, index) => {
                                     return (
-                                        <div key={index} className="flex gap-2">
+                                        <div key={index} className="flex gap-2 justify-end">
                                             {`Lavoro= ${customDecimal(item, 2) * 100}\u0025`}
                                             {getCheckCircle(item)}
                                         </div>

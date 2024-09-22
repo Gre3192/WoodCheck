@@ -21,22 +21,26 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const isDisabled = Med_y == 0 && Med_z == 0 ? true : false
 
 
+    const fmk = 45646
+    const E005 = 2.6
+    const G005 = 2.6
+
     const Atot = 26
     const Aeff = 1289.6
-    const kmod = 27527
-    const khy = 27527
-    const khz = 27527
-    const km = 27527
-    const fmk = 45646
     const Wel_y = 45646
     const Wel_z = 45646
     const Ig_z = 45646
     const Ig_y = 45646
     const Ig_tor = 45646
+
+    const kmod = 0.3
+    const khy = 0.18
+    const khz = 0.16
+    const km = 0.7
+
     const gm = getGamma('m0')
     const leff = 2.6
-    const E005 = 2.6
-    const G005 = 2.6
+
 
 
     const { sig_myd, sig_myd_title, sig_myd_formula, sig_myd_formulaVal, sig_myd_description } = get_sig_myd(Med_y, Wel_y)
@@ -139,7 +143,6 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
 
 
 
-
     const title = 'Verifica Instabilità Latero-Torsionale - Instabilità di trave [NTC18 - \u00A74.4.8.2.1]'
 
     const centralContent =
@@ -150,6 +153,94 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 formulaVal={sig_myd_formulaVal}
                 value={sig_myd}
                 description={sig_myd_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={sig_mzd_title}
+                formula={sig_mzd_formula}
+                formulaVal={sig_mzd_formulaVal}
+                value={sig_mzd}
+                description={sig_mzd_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={f_myd_title}
+                formula={f_myd_formula}
+                formulaVal={f_myd_formulaVal}
+                value={f_myd}
+                description={f_myd_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={f_mzd_title}
+                formula={f_mzd_formula}
+                formulaVal={f_mzd_formulaVal}
+                value={f_mzd}
+                description={f_mzd_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={Mcrit_y_title}
+                formula={Mcrit_y_formula}
+                formulaVal={Mcrit_y_formulaVal}
+                value={Mcrit_y}
+                description={Mcrit_y_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={Mcrit_z_title}
+                formula={Mcrit_z_formula}
+                formulaVal={Mcrit_z_formulaVal}
+                value={Mcrit_z}
+                description={Mcrit_z_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={sigma_m_crit_y_title}
+                formula={sigma_m_crit_y_formula}
+                formulaVal={sigma_m_crit_y_formulaVal}
+                value={sigma_m_crit_y}
+                description={sigma_m_crit_y_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={sigma_m_crit_z_title}
+                formula={sigma_m_crit_z_formula}
+                formulaVal={sigma_m_crit_z_formulaVal}
+                value={sigma_m_crit_z}
+                description={sigma_m_crit_z_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={lambda_rel_m_y_title}
+                formula={lambda_rel_m_y_formula}
+                formulaVal={lambda_rel_m_y_formulaVal}
+                value={lambda_rel_m_y}
+                description={lambda_rel_m_y_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={lambda_rel_m_z_title}
+                formula={lambda_rel_m_z_formula}
+                formulaVal={lambda_rel_m_z_formulaVal}
+                value={lambda_rel_m_z}
+                description={lambda_rel_m_z_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={kcrit_m_y_title}
+                formula={kcrit_m_y_formula}
+                formulaVal={kcrit_m_y_formulaVal}
+                value={kcrit_m_y}
+                description={kcrit_m_y_description}
+            />
+            <hr />
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={kcrit_m_z_title}
+                formula={kcrit_m_z_formula}
+                formulaVal={kcrit_m_z_formulaVal}
+                value={kcrit_m_z}
+                description={kcrit_m_z_description}
             />
             <hr />
         </div>
