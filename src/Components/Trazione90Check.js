@@ -10,11 +10,11 @@ import CheckCard from "./CheckCard";
 export default function Trazione90Check(params) {
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
-    const Ned = rawNed > 0 ? rawNed : 0
+    const Ned = rawNed < 0 ? rawNed : 0
     const geometryMass = 464
     const fyk = 453
 
-    const isDisabled = Ned == 0 ? true : false
+    const isDisabled = Ned >= 0 ? true : false
 
 
     const Atot = 26

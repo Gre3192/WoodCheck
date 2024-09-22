@@ -13,10 +13,10 @@ import { get_f_t0d, get_f_myd, get_f_mzd } from "../Utils/getResistenze";
 export default function TensoFlessioneCheck(params) {
 
     const { Ned: rawNed, Med_y: rawMed_y, Med_z: rawMed_z } = useRecoilValue(forcesStateAtom)
-    const Ned = rawNed > 0 ? rawNed : 0
+    const Ned = rawNed < 0 ? rawNed : 0
     const Med_y = rawMed_y > 0 ? rawMed_y : 0
     const Med_z = rawMed_z > 0 ? rawMed_z : 0
-    const isDisabled = Ned == 0 || (Med_y == 0 && Med_z == 0) ? true : false
+    const isDisabled = Ned >= 0 || (Med_y == 0 && Med_z == 0) ? true : false
 
 
     const Atot = 26

@@ -1,3 +1,58 @@
+export function get_Compressione0Check(sig_c0d, f_c0d) {
+
+    return {
+        check: sig_c0d / f_c0d,
+        check_title: `\\dfrac{\\sigma_{c,0,d}}{f_{c,0,d}} = `,
+        check_formula: ``,
+        check_formulaVal: `\\dfrac{${sig_c0d}}{${f_c0d}} = `,
+        check_description: ``,
+    }
+}
+
+export function get_Compressione90Check(sig_c90d, f_c90d) {
+
+    return {
+        check: sig_c90d / f_c90d,
+        check_title: `\\dfrac{\\sigma_{c,90,d}}{f_{c,90,d}} = `,
+        check_formula: ``,
+        check_formulaVal: `\\dfrac{${sig_c90d}}{${f_c90d}} = `,
+        check_description: ``,
+    }
+}
+
+export function get_CompressioneAlphaCheck(sig_cAlphad, f_cAlphad) {
+
+    return {
+        check: sig_cAlphad / f_cAlphad,
+        check_title: `\\dfrac{\\sigma_{c,\\alpha,d}}{f_{c,\\alpha,d}} = `,
+        check_formula: ``,
+        check_formulaVal: `\\dfrac{${sig_cAlphad}}{${f_cAlphad}} = `,
+        check_description: ``,
+    }
+}
+
+export function get_Trazione0Check(sig_t0d, f_t0d) {
+
+    return {
+        check: sig_t0d / f_t0d,
+        check_title: `\\dfrac{\\sigma_{t,0,d}}{f_{t,0,d}} = `,
+        check_formula: ``,
+        check_formulaVal: `\\dfrac{${sig_t0d}}{${f_t0d}} = `,
+        check_description: ``,
+    }
+}
+
+export function get_Trazione90Check(sig_t90d, f_t90d) {
+
+    return {
+        check: sig_t90d / f_t90d,
+        check_title: `\\dfrac{\\sigma_{t,90,d}}{f_{t,90,d}} = `,
+        check_formula: ``,
+        check_formulaVal: `\\dfrac{${sig_t90d}}{${f_t90d}} = `,
+        check_description: ``,
+    }
+}
+
 export function get_flessioneCheck(sig_myd, sig_mzd, f_myd, f_mzd, km) {
 
     return {

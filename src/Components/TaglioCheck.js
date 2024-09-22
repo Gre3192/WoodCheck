@@ -55,8 +55,8 @@ export default function TaglioCheck(params) {
 
         </div>
 
-    const finalContent
-        = <StepBox isFormula={true} isFormulaVal={true} isCheck={true}
+    const finalContent =
+        <StepBox isFormula={true} isFormulaVal={true} isCheck={true}
             title={check_title}
             formula={''}
             formulaVal={check_formulaVal}

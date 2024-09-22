@@ -20,6 +20,17 @@ export function get_f_c90d(kmod, fc90k, gm) {
     }
 }
 
+export function get_f_cAlphad(f_c0d, f_c90d, alpha) {
+
+    return {
+        f_cAlphad: f_c0d / ((f_c0d / f_c90d) * Math.sin(alpha) ** 2 + Math.cos(alpha) ** 2),
+        f_cAlphad_title: `f_{c,\\alpha,d} = `,
+        f_cAlphad_formula: `\\dfrac{f_{c,0,d}}{\\dfrac{f_{c,0,d}}{f_{c,90,d}}\\cdot\\sin^2{\\alpha} + \\cos^2{\\alpha}} = `,
+        f_cAlphad_formulaVal: `\\dfrac{${f_c0d}}{\\dfrac{${f_c0d}}{${f_c90d}}\\cdot\\sin^2{${alpha}} + \\cos^2{${alpha}}} = `,
+        f_cAlphad_description: `Resistenza di progetto a compressione inclinata rispetto alla fibratura`
+    }
+}
+
 export function get_f_t0d(kmod, ft0k, gm) {
 
     return {

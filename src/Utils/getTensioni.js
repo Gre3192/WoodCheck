@@ -9,14 +9,14 @@ export function get_sig_t0d(Ned, Atot) {
     }
 }
 
-export function get_sig_t90d(Med_y, Wel_y) {
+export function get_sig_t90d(Ned, Atot) {
 
     return {
-        sig_t90d: ``,
-        sig_t90d_title: ``,
-        sig_t90d_formula: ``,
-        sig_t90d_formulaVal: ``,
-        sig_t90d_description: ``
+        sig_t90d: Math.abs(Ned) / Atot,
+        sig_t90d_title: `\\sigma_{t,90,d} = `,
+        sig_t90d_formula: `\\dfrac{N_{Ed}}{A_{tot}} = `,
+        sig_t90d_formulaVal: `\\dfrac{${Math.abs(Ned)}}{${Atot}} = `,
+        sig_t90d_description: `Tensione di progetto a trazione ortogonale alla fibratura`
     }
 }
 
@@ -31,24 +31,24 @@ export function get_sig_c0d(Ned, Atot) {
     }
 }
 
-export function get_sig_c90d(Med_y, Wel_y) {
+export function get_sig_c90d(Ned, Atot) {
 
     return {
-        sig_c90d: ``,
-        sig_c90d_title: ``,
-        sig_c90d_formula: ``,
-        sig_c90d_formulaVal: ``,
-        sig_c90d_description: ``
+        sig_c90d: Math.abs(Ned) / Atot,
+        sig_c90d_title: `\\sigma_{c,90,d} = `,
+        sig_c90d_formula: `\\dfrac{N_{Ed}}{A_{tot}} = `,
+        sig_c90d_formulaVal: `\\dfrac{${Math.abs(Ned)}}{${Atot}} = `,
+        sig_c90d_description: `Tensione di progetto a compressione ortogonale alla fibratura`
     }
 }
 
-export function get_sig_cAlphad(f_c0d, f_c90d, alpha) {
+export function get_sig_cAlphad(Ned, Atot) {
 
     return {
-        sig_cAlphad: f_c0d / ((f_c0d / f_c90d) * Math.sin(alpha) ** 2 + Math.cos(alpha) ** 2),
+        sig_cAlphad: Math.abs(Ned) / Atot,
         sig_cAlphad_title: `\\sigma_{c,\\alpha,d} = `,
-        sig_cAlphad_formula: `\\frac{f_{c,0,d}}{\\frac{f_{c,0,d}}{f_{c,90,d}}\\sin^2\\alpha +\\cos^2\\alpha} = `,
-        sig_cAlphad_formulaVal: `\\frac{${f_c0d}}{\\frac{${f_c0d}}{${f_c90d}}\\sin^2${alpha} +\\cos^2${alpha}} = `,
+        sig_cAlphad_formula: `\\dfrac{N_{Ed}}{A_{tot}} = `,
+        sig_cAlphad_formulaVal: `\\dfrac{${Math.abs(Ned)}}{${Atot}} = `,
         sig_cAlphad_description: `Tensione di progetto a compressione inclinata di \\alpha rispetto alla fibratura`
     }
 }

@@ -10,12 +10,14 @@ import Latex from "react-latex-next";
 export default function Trazione0Check(params) {
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
-    const Ned = rawNed > 0 ? rawNed : 0
+    const Ned = rawNed < 0 ? rawNed : 0
     const geometryMass = 464
     const fyk = 453
 
-    const isDisabled = Ned == 0 ? true : false
 
+    const isDisabled = Ned >= 0 ? true : false
+
+    
 
     const Atot = 26
     const Aeff = 1289.6
