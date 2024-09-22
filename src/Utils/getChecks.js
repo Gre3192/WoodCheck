@@ -15,6 +15,41 @@ export function get_flessioneCheck(sig_myd, sig_mzd, f_myd, f_mzd, km) {
     }
 }
 
+export function get_TensoflessioneCheck(sig_t0d, sig_myd, sig_mzd, f_t0d, f_myd, f_mzd, km) {
+
+    return {
+        check_z: (sig_t0d / f_t0d) + (sig_myd / f_myd) + km * (sig_mzd / f_mzd),
+        check_z_title: `\\left(\\frac{\\sigma_{t,0,d}}{f_{t,0,d}}\\right) + \\frac{\\sigma_{m,y,d}}{f_{m,y,d}} + k_m\\cdot\\frac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
+        check_z_formula: ``,
+        check_z_formulaVal: `\\left(\\frac{${sig_t0d}}{${f_t0d}}\\right) + \\frac{${sig_myd}}{${f_myd}} + ${km}\\cdot\\frac{${sig_mzd}}{${f_mzd}} = `,
+        check_z_description: ``,
+
+        check_y: (sig_t0d / f_t0d) + km * (sig_myd / f_myd) + (sig_mzd / f_mzd),
+        check_y_title: `\\left(\\frac{\\sigma_{t,0,d}}{f_{t,0,d}}\\right) + k_m\\cdot\\frac{\\sigma_{m,y,d}}{f_{m,y,d}} + \\frac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
+        check_y_formula: ``,
+        check_y_formulaVal: `\\left(\\frac{${sig_t0d}}{${f_t0d}}\\right) + ${km}\\cdot\\frac{${sig_myd}}{${f_myd}} + \\frac{${sig_mzd}}{${f_mzd}} = `,
+        check_y_description: ``
+    }
+}
+
+export function get_PressoflessioneCheck(sig_c0d, sig_myd, sig_mzd, f_c0d, f_myd, f_mzd, km) {
+
+
+    return {
+        check_z: (sig_c0d / f_c0d) ** 2 + (sig_myd / f_myd) + km * (sig_mzd / f_mzd),
+        check_z_title: `\\left(\\frac{\\sigma_{c,0,d}}{f_{c,0,d}}\\right)^2 + \\frac{\\sigma_{m,y,d}}{f_{m,y,d}} + k_m\\cdot\\frac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
+        check_z_formula: ``,
+        check_z_formulaVal: `\\left(\\frac{${sig_c0d}}{${f_c0d}}\\right)^2 + \\frac{${sig_myd}}{${f_myd}} + ${km}\\cdot\\frac{${sig_mzd}}{${f_mzd}} = `,
+        check_z_description: ``,
+
+        check_y: (sig_c0d / f_c0d) ** 2 + km * (sig_myd / f_myd) + (sig_mzd / f_mzd),
+        check_y_title: `\\left(\\frac{\\sigma_{c,0,d}}{f_{c,0,d}}\\right)^2 + k_m\\cdot\\frac{\\sigma_{m,y,d}}{f_{m,y,d}} + \\frac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
+        check_y_formula: ``,
+        check_y_formulaVal: `\\left(\\frac{${sig_c0d}}{${f_c0d}}\\right)^2 + ${km}\\cdot\\frac{${sig_myd}}{${f_myd}} + \\frac{${sig_mzd}}{${f_mzd}} = `,
+        check_y_description: ``
+    }
+}
+
 export function get_TaglioCheck(tau_d, fvd) {
 
     return {

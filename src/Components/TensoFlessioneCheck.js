@@ -5,7 +5,10 @@ import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
-
+import StepBox from "./StepBox";
+import { get_TensoflessioneCheck } from "../Utils/getChecks";
+import { get_sig_t0d, get_sig_myd, get_sig_mzd } from "../Utils/getTensioni";
+import { get_f_t0d, get_f_myd, get_f_mzd } from "../Utils/getResistenze";
 
 export default function TensoFlessioneCheck(params) {
 
@@ -13,70 +16,83 @@ export default function TensoFlessioneCheck(params) {
     const Ned = rawNed > 0 ? rawNed : 0
     const Med_y = rawMed_y > 0 ? rawMed_y : 0
     const Med_z = rawMed_z > 0 ? rawMed_z : 0
-
-    const isDisabled = Ned == 0 ? true : false
+    const isDisabled = Ned == 0 || (Med_y == 0 && Med_z == 0) ? true : false
 
 
     const Atot = 26
     const Aeff = 1289.6
     const gm = getGamma('m0')
-
     const Wel_y = 543
     const Wel_z = 543
     const km = 564
     const kmod = 564
     const fmk = 564
+    const fc0k = 564
     const khy = 564
     const khz = 564
 
-    const sig_t0d = 89
-    const sig_myd = Med_y / Wel_y
-    const sig_mzd = Med_z / Wel_z
 
+    const { sig_t0d, sig_t0d_title, sig_t0d_formula, sig_t0d_formulaVal, sig_t0d_description } = get_sig_t0d(Ned, Atot)
+    const { sig_myd, sig_myd_title, sig_myd_formula, sig_myd_formulaVal, sig_myd_description } = get_sig_myd(Med_y, Wel_y)
+    const { sig_mzd, sig_mzd_title, sig_mzd_formula, sig_mzd_formulaVal, sig_mzd_description } = get_sig_mzd(Med_z, Wel_z)
+    const { f_t0d, f_t0d_title, f_t0d_formula, f_t0d_formulaVal, f_t0d_description } = get_f_t0d(kmod, fc0k, gm)
+    const { f_myd, f_myd_title, f_myd_formula, f_myd_formulaVal, f_myd_description } = get_f_myd(khy, kmod, fmk, gm)
+    const { f_mzd, f_mzd_title, f_mzd_formula, f_mzd_formulaVal, f_mzd_description } = get_f_mzd(khz, kmod, fmk, gm)
 
-    const f_t0d = 89
-    const f_myd = khy * kmod * fmk / gm
-    const f_mzd = khz * kmod * fmk / gm
-
-
-    const check_y = (sig_t0d / f_t0d) + km * (sig_myd / f_myd) + (sig_mzd / f_mzd)
-    const check_z = (sig_t0d / f_t0d) + (sig_myd / f_myd) + km * (sig_mzd / f_mzd)
-
+    const { check_z, check_z_title, check_z_formulaVal, check_y, check_y_title, check_y_formulaVal } = get_TensoflessioneCheck(sig_t0d, sig_myd, sig_mzd, f_t0d, f_myd, f_mzd, km)
 
 
     const title = 'Verifica a Tenso-Flessione [NTC18 - 4.4.8.1.7]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            <div className="flex justify-between items-center">
-                <Latex>{`$\\sigma_{t,0,d} = \\dfrac{N_{Ed}}{A_{tot}} = \\dfrac{${Ned}}{${Atot}} = ${sig_t0d}$`}</Latex>
-                <div>Tensione di progetto massima per trazione</div>
-            </div>
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={sig_t0d_title}
+                formula={sig_t0d_formula}
+                formulaVal={sig_t0d_formulaVal}
+                value={sig_t0d}
+                description={sig_t0d_description}
+            />
             <hr />
-            <div className="flex justify-between items-center">
-                <Latex>{`$\\sigma_{m,y,d} = \\dfrac{M_{Ed,y}}{W_{el,y}} = \\dfrac{${Med_y}}{${Wel_y}} = ${sig_myd}$`}</Latex>
-                <div>Tensione di progetto massima per flessione attorno a y</div>
-            </div>
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={sig_myd_title}
+                formula={sig_myd_formula}
+                formulaVal={sig_myd_formulaVal}
+                value={sig_myd}
+                description={sig_myd_description}
+            />
             <hr />
-            <div className="flex justify-between items-center">
-                <Latex>{`$\\sigma_{m,z,d} = \\dfrac{M_{Ed,z}}{W_{el,z}} = \\dfrac{${Med_z}}{${Wel_z}} = ${sig_mzd}$`}</Latex>
-                <div>Tensione di progetto massima per flessione attorno a z</div>
-            </div>
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={sig_mzd_title}
+                formula={sig_mzd_formula}
+                formulaVal={sig_mzd_formulaVal}
+                value={sig_mzd}
+                description={sig_mzd_description}
+            />
             <hr />
-            <div className="flex justify-between items-center">
-                <Latex>{`$f_{t,0,d} = k_{mod}\\cdot\\dfrac{k_{h}\\cdot f_{t,0,k}}{\\gamma_m} = ${kmod}\\cdot\\dfrac{${khz}\\cdot${fmk}}{${gm}} = ${f_mzd}$`}</Latex>
-                <div>Resistenza di progetto per trazione</div>
-            </div>
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={f_t0d_title}
+                formula={f_t0d_formula}
+                formulaVal={f_t0d_formulaVal}
+                value={f_t0d}
+                description={f_t0d_description}
+            />
             <hr />
-            <div className="flex justify-between items-center">
-                <Latex>{`$f_{m,y,d} = k_{mod}\\cdot\\dfrac{k_{h,y}\\cdot f_{m,k}}{\\gamma_m} = ${kmod}\\cdot\\dfrac{${khy}\\cdot${fmk}}{${gm}} = ${f_myd}$`}</Latex>
-                <div>Resistenza di progetto per flessione attorno a y</div>
-            </div>
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={f_myd_title}
+                formula={f_myd_formula}
+                formulaVal={f_myd_formulaVal}
+                value={f_myd}
+                description={f_myd_description}
+            />
             <hr />
-            <div className="flex justify-between items-center">
-                <Latex>{`$f_{m,z,d} = k_{mod}\\cdot\\dfrac{k_{h,z}\\cdot f_{m,k}}{\\gamma_m} = ${kmod}\\cdot\\dfrac{${khz}\\cdot${fmk}}{${gm}} = ${f_mzd}$`}</Latex>
-                <div>Resistenza di progetto per flessione attorno a z</div>
-            </div>
+            <StepBox isFormula={true} isFormulaVal={true}
+                title={f_mzd_title}
+                formula={f_mzd_formula}
+                formulaVal={f_mzd_formulaVal}
+                value={f_mzd}
+                description={f_mzd_description}
+            />
             <hr />
             <div className="flex justify-between items-center">
                 <Latex>{`$k_m = ${km}$`}</Latex>
@@ -87,10 +103,13 @@ export default function TensoFlessioneCheck(params) {
         </div>
 
     const finalContent
-        = <div className="flex flex-col gap-5">
-            <Latex>{`$\\displaystyle\\frac{\\sigma_{t,0,d}}{f_{t,0,d}} + \\frac{\\sigma_{m,y,d}}{f_{m,y,d}} + k_m\\cdot\\frac{\\sigma_{m,z,d}}{f_{m,z,d}} = \\frac{${sig_t0d}}{${f_t0d}} + \\frac{${sig_myd}}{${f_myd}} + ${km}\\cdot\\frac{${sig_mzd}}{${f_mzd}} = ${check_z}${getCheckSymbol(check_z)}$`}</Latex>
-            <Latex>{`$\\displaystyle\\frac{\\sigma_{t,0,d}}{f_{t,0,d}} + k_m\\cdot\\frac{\\sigma_{m,y,d}}{f_{m,y,d}} + \\frac{\\sigma_{m,z,d}}{f_{m,z,d}} = \\frac{${sig_t0d}}{${f_t0d}} + ${km}\\cdot\\frac{${sig_myd}}{${f_myd}} + \\frac{${sig_mzd}}{${f_mzd}} = ${check_y}${getCheckSymbol(check_y)}$`}</Latex>
-        </div>
+        = <StepBox isFormula={true} isFormulaVal={true} isCheck={true}
+            title={[check_z_title, check_y_title]}
+            formula={[]}
+            formulaVal={[check_z_formulaVal, check_y_formulaVal]}
+            value={[check_z, check_y]}
+            description={[]}
+        />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check_z, check_y], isDisabled: isDisabled }
     return <CheckCard props={checkCardProps} />;
