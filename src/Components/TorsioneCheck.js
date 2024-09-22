@@ -9,36 +9,45 @@ import CheckCard from "./CheckCard";
 
 export default function TorsioneCheck(params) {
 
-    const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
-    const Ned = rawNed > 0 ? rawNed : 0
+    const { Med_tor: rawMed_tor } = useRecoilValue(forcesStateAtom)
+    const Med_tor = rawMed_tor > 0 ? rawMed_tor : 0
     const geometryMass = 464
     const fyk = 453
 
-    const isDisabled = Ned == 0 ? true : false
+    const isDisabled = Med_tor == 0 ? true : false
 
-
+    const kmod = 0.7
     const Atot = 26
     const Aeff = 1289.6
-    const gm0 = getGamma('m0')
+    const gm = getGamma('m0')
+    const fvk = 9
+    const Itor = 98798
+    const b = 453
+    const ksh = 453
 
-    const NcRd = 161
-    const check = Ned / NcRd
+    const fvd = kmod * fvk / gm
+    const tau_tord = 561
+    const check = tau_tord / fvd
+
 
     const title = 'Verifica a Torsione [NTC18 - 4.4.8.1.10]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
 
-           
-                <div className="flex justify-between items-center">
-                    <Latex>{`$N_{c,Rd} = \\dfrac{A_{tot}\\cdot f_{yk}}{\\gamma_{M0}} = \\dfrac{${Atot}\\cdot ${fyk}}{${gm0}} = ${NcRd}$`}</Latex>
-                    <div>Resistenza a Compressione  per sezioni in Classe 1, 2 e 3</div>
-                </div>
-        
+            <div className="flex justify-between items-center">
+                <Latex>{`$\\tau_{tor,d} = \\dfrac{M_{tor,d} \\cdot b}{I_{tor}} = \\dfrac{${Med_tor} \\cdot ${b}}{${Itor}} = ${tau_tord}$`}</Latex>
+                <div>Tensione di progetto massima per torsione</div>
+            </div>
+            <div className="flex justify-between items-center">
+                <Latex>{`$f_{v,d} = k_{mod}\\cdot\\dfrac{f_{vk}}{\\gamma_m} = ${kmod}\\cdot\\dfrac{${fvk}}{${gm}} = ${fvd}$`}</Latex>
+                <div>Resistenza di progetto a taglio</div>
+            </div>
+
         </div>
 
     const finalContent
-        = <Latex>{`$\\dfrac{N_{Ed}}{N_{c,Rd}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
+        = <Latex>{`$\\dfrac{\\tau_{tor,d}}{k_{sh}\\cdot f_{v,d}} = \\dfrac{${tau_tord}}{${ksh}\\cdot ${fvd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
     return <CheckCard props={checkCardProps} />;

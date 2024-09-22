@@ -38,7 +38,7 @@ export default function TaglioCheck(params) {
         </div>
 
     const finalContent
-        = <Latex>{`$\\dfrac{N_{Ed}}{N_{c,Rd}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
+        = <Latex>{`$\\dfrac{\\tau_{d}}{f_{v,d}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
     return <CheckCard props={checkCardProps} />;

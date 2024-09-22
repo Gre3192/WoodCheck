@@ -38,7 +38,7 @@ export default function Compressione90Check(params) {
         </div>
 
     const finalContent
-        = <Latex>{`$\\dfrac{N_{Ed}}{N_{c,Rd}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
+        = <Latex>{`$\\dfrac{\\sigma_{c,90,d}}{f_{c,90,d}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
     return <CheckCard props={checkCardProps} />;

@@ -38,7 +38,7 @@ export default function TaglioTorsioneCheck(params) {
         </div>
 
     const finalContent
-        = <Latex>{`$\\dfrac{N_{Ed}}{N_{c,Rd}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
+        = <Latex>{`$\\displaystyle\\frac{\\tau_{tor,d}}{k_{sh} f_{v,d}} + \\left( \\frac{\\tau_d}{f_{v,d}} \\right)^2 = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
     return <CheckCard props={checkCardProps} />;

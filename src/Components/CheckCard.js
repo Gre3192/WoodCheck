@@ -5,7 +5,7 @@ import getCheckCircle from "../Utils/getCheckCircle";
 
 export default function CheckCard({ props }) {
 
-    const { title = 'title', centralContent = 'centralContent', finalContent = 'finalContent', check = 0, isDisabled = false } = props 
+    const { title = 'title', centralContent = 'centralContent', finalContent = 'finalContent', check = 0, isDisabled = false } = props
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -20,19 +20,36 @@ export default function CheckCard({ props }) {
         }
     };
 
+    function isObject(data) {
+        return typeof data === 'object' && data !== null && !Array.isArray(data);
+      }
+
     return (
         <div className={`p-5 ${isDisabled ? 'text-gray-400' : null}`} ref={cardRef}>
             <div className="bg-white shadow-lg rounded-lg border border-gray-200 ">
                 <div className={`flex justify-between items-center cursor-pointer p-6 hover:bg-gray-100 transition-colors duration-300 ease-in-out ${isOpen ? 'bg-gray-100' : null}`} onClick={toggleCard}>
                     <div className="flex items-center ">
-                        <button  className="focus:outline-none mr-2">
+                        <button className="focus:outline-none mr-2">
                             <FaChevronDown className={`transform transition-transform duration-300 ${isOpen ? 'rotate-0' : '-rotate-90'}`} />
                         </button>
                         <h2 className="text-lg font-semibold ">{title}</h2>
                     </div>
-                    <div className="flex items-center gap-2">
-                        {`Lavoro= ${customDecimal(check, 2) * 100}\u0025`}
-                        {getCheckCircle(check)}
+                    <div className="flex flex-col items-center gap-3">
+                        {
+                            !isObject(check) && !Array.isArray(check) ?
+                                <div className="flex gap-2">
+                                    {`Lavoro= ${customDecimal(check, 2) * 100}\u0025`}
+                                    {getCheckCircle(check)}
+                                </div> :
+                                check.map((item, index) => {
+                                    return (
+                                        <div key={index} className="flex gap-2">
+                                            {`Lavoro= ${customDecimal(item, 2) * 100}\u0025`}
+                                            {getCheckCircle(item)}
+                                        </div>
+                                    )
+                                })
+                        }
                     </div>
                 </div>
                 <hr />
@@ -41,7 +58,7 @@ export default function CheckCard({ props }) {
                 <div className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                     {isOpen && <div>
                         <div className="p-6">
-                                {centralContent}
+                            {centralContent}
                         </div>
                     </div>}
                 </div>

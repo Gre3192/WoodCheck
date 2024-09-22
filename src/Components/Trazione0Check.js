@@ -38,7 +38,7 @@ export default function Trazione0Check(params) {
         </div>
 
     const finalContent
-        = <Latex>{`$\\dfrac{N_{Ed}}{N_{c,Rd}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
+        = <Latex>{`$\\dfrac{\\sigma_{t,0,d}}{f_{t,0,d}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
     return <CheckCard props={checkCardProps} />;
