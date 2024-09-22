@@ -1,9 +1,6 @@
-import Latex from "react-latex-next";
 import getGamma from "../Utils/getGamma";
-import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
 import getKsh from "../Utils/getKsh";
 import { get_tau_tord, get_tau_d } from "../Utils/getTensioni";
@@ -37,7 +34,7 @@ export default function TaglioTorsioneCheck(params) {
     const { check, check_title, check_formulaVal } = get_TaglioTorsioneCheck(tau_tord, tau_d, fvd, ksh)
 
 
-    const title = 'Verifica a Taglio e Torsione [NTC18 - 4.4.8.1.11]'
+    const title = 'Verifica a Taglio e Torsione [NTC18 - \u00A74.4.8.1.11]'
 
     const centralContent =
         <div className="flex flex-col gap-4">

@@ -3,7 +3,6 @@ import getGamma from "../Utils/getGamma";
 import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
 
 
@@ -24,7 +23,7 @@ export default function Trazione90Check(params) {
     const NcRd = 161
     const check = Ned / NcRd
 
-    const title = 'Verifica a Trazione perpendicolare alla fibratura [NTC18 - 4.4.8.1.2]'
+    const title = 'Verifica a Trazione perpendicolare alla fibratura [NTC18 -\u00A74.4.8.1.2]'
 
     const centralContent =
         <div className="flex flex-col gap-4">

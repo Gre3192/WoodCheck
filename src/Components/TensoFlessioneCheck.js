@@ -1,9 +1,7 @@
 import Latex from "react-latex-next";
 import getGamma from "../Utils/getGamma";
-import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
 import StepBox from "./StepBox";
 import { get_TensoflessioneCheck } from "../Utils/getChecks";
@@ -42,7 +40,7 @@ export default function TensoFlessioneCheck(params) {
     const { check_z, check_z_title, check_z_formulaVal, check_y, check_y_title, check_y_formulaVal } = get_TensoflessioneCheck(sig_t0d, sig_myd, sig_mzd, f_t0d, f_myd, f_mzd, km)
 
 
-    const title = 'Verifica a Tenso-Flessione [NTC18 - 4.4.8.1.7]'
+    const title = 'Verifica a Tenso-Flessione [NTC18 - \u00A74.4.8.1.7]'
 
     const centralContent =
         <div className="flex flex-col gap-4">

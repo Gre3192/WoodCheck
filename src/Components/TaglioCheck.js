@@ -1,6 +1,4 @@
-import Latex from "react-latex-next";
 import getGamma from "../Utils/getGamma";
-import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import { get_tau_d } from "../Utils/getTensioni"
@@ -32,7 +30,7 @@ export default function TaglioCheck(params) {
     const { check, check_title, check_formulaVal } = get_TaglioCheck(tau_d, fvd)
 
 
-    const title = 'Verifica a Taglio [NTC18 - 4.4.8.1.9]'
+    const title = 'Verifica a Taglio [NTC18 - \u00A74.4.8.1.9]'
 
     const centralContent =
         <div className="flex flex-col gap-4">

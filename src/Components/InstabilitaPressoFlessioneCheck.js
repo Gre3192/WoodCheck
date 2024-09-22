@@ -1,6 +1,9 @@
+import Latex from "react-latex-next";
 import getGamma from "../Utils/getGamma";
+import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
+import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
 import StepBox from "./StepBox";
 import { get_sig_c0d } from "../Utils/getTensioni";
@@ -8,7 +11,7 @@ import { get_f_c0d } from "../Utils/getResistenze";
 import { get_Compressione0Check } from "../Utils/getChecks";
 
 
-export default function Compressione0Check(params) {
+export default function InstabilitaPressoFlessioneCheck(params) {
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed > 0 ? rawNed : 0
@@ -29,7 +32,7 @@ export default function Compressione0Check(params) {
 
 
 
-    const title = 'Verifica a Compressione parallela alla fibratura [NTC18 - \u00A74.4.8.1.3]'
+    const title = 'Verifica a Instabilità a Presso-Flessione [CNR DT 206-R1/2018 - \u00A77.6.1.2.3]'
 
     const centralContent =
         <div className="flex flex-col gap-4">

@@ -28,7 +28,7 @@ export default function TorsioneCheck(params) {
     const { fvd, fvd_title, fvd_formula, fvd_formulaVal, fvd_description } = get_fvd(kmod, fvk, gm)
     const { check, check_title, check_formulaVal } = get_TorsioneCheck(tau_tord, fvd, ksh)
 
-    const title = 'Verifica a Torsione [NTC18 - 4.4.8.1.10]'
+    const title = 'Verifica a Torsione [NTC18 - \u00A74.4.8.1.10]'
 
     const centralContent =
         <div className="flex flex-col gap-4">

@@ -1,9 +1,6 @@
-import Latex from "react-latex-next";
 import getGamma from "../Utils/getGamma";
-import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import customDecimal from "../Utils/customDecimal";
 import CheckCard from "./CheckCard";
 import StepBox from "./StepBox";
 import { get_sig_cAlphad } from "../Utils/getTensioni";
@@ -41,7 +38,7 @@ export default function CompressioneAlphaCheck(params) {
 
 
 
-    const title = 'Verifica a Compressione inclinata rispetto alla fibratura [NTC18 - 4.4.8.1.5]'
+    const title = 'Verifica a Compressione inclinata rispetto alla fibratura [NTC18 - \u00A74.4.8.1.5]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
