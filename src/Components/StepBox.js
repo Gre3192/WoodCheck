@@ -1,6 +1,8 @@
 import Latex from "react-latex-next";
 import React from "react";
 import getCheckSymbol from "../Utils/getCheckSymbol";
+import getCheckCircle from "../Utils/getCheckCircle";
+import customDecimal from "../Utils/customDecimal";
 
 export default function StepBox({
     title = '',
@@ -26,15 +28,16 @@ export default function StepBox({
     const values = toArray(value);
     const descriptions = toArray(description);
 
+
     return (
         <>
-            <div className={`${isCheck ? 'flex flex-col gap-8' : 'flex justify-between items-center'}`}>
+            <div className={`w-full ${isCheck ? 'flex flex-col gap-8' : 'flex justify-between items-center'}`}>
                 {values.map((item, index) => {
 
                     const itemValue = typeof item === 'object' && item !== null ? item.value : item;
 
                     return (
-                        <React.Fragment key={index}>
+                        <div key={index} className={'w-full flex justify-between gap-8'}>
                             <Latex>
                                 {`$ \\displaystyle
                                     ${titles[index] ? titles[index] : 'titles = '}
@@ -49,7 +52,15 @@ export default function StepBox({
                                     <Latex>{`${descriptions[index]}`}</Latex>
                                     : null
                             }
-                        </React.Fragment>
+                            {
+                                isCheck ?
+                                    <div className="flex gap-2 items-center">
+                                        <Latex>{`${customDecimal(itemValue, 2) * 100}\u0025`}</Latex>
+                                        {getCheckCircle(itemValue)}
+                                    </div>
+                                    : null
+                            }
+                        </div>
                     )
                 })}
             </div>

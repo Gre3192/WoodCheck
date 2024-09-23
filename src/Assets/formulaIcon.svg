@@ -1,0 +1,5 @@
+<svg width="100" height="50" viewBox="0 0 50 35" xmlns="http://www.w3.org/2000/svg" class="text-color">
+  <text x="0" y="24" font-size="24" font-family="Arial">f(</text>
+  <text x="22" y="24" font-size="24" font-family="Arial" text-anchor="middle">x</text>
+  <text x="30" y="24" font-size="24" font-family="Arial">)</text>
+</svg>
