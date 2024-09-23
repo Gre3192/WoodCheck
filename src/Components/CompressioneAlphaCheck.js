@@ -6,8 +6,12 @@ import StepBox from "./StepBox";
 import { get_sig_cAlphad } from "../Utils/getTensioni";
 import { get_f_cAlphad, get_f_c0d, get_f_c90d } from "../Utils/getResistenze";
 import { get_CompressioneAlphaCheck } from "../Utils/getChecks";
+import { useState } from "react";
 
 export default function CompressioneAlphaCheck(params) {
+
+    const [isFormulaSelected, setIsFormulaSelected] = useState(false);
+    const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed > 0 ? rawNed : 0
@@ -42,7 +46,7 @@ export default function CompressioneAlphaCheck(params) {
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={sig_cAlphad_title}
                 formula={sig_cAlphad_formula}
                 formulaVal={sig_cAlphad_formulaVal}
@@ -50,7 +54,7 @@ export default function CompressioneAlphaCheck(params) {
                 description={sig_cAlphad_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={f_c0d_title}
                 formula={f_c0d_formula}
                 formulaVal={f_c0d_formulaVal}
@@ -58,7 +62,7 @@ export default function CompressioneAlphaCheck(params) {
                 description={f_c0d_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={f_c90d_title}
                 formula={f_c90d_formula}
                 formulaVal={f_c90d_formulaVal}
@@ -66,7 +70,7 @@ export default function CompressioneAlphaCheck(params) {
                 description={f_c90d_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={f_cAlphad_title}
                 formula={f_cAlphad_formula}
                 formulaVal={f_cAlphad_formulaVal}
@@ -77,7 +81,7 @@ export default function CompressioneAlphaCheck(params) {
         </div>
 
     const finalContent =
-        <StepBox isFormula={true} isFormulaVal={true} isCheck={true}
+        <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected} isCheck={true}
             title={check_title}
             formula={''}
             formulaVal={check_formulaVal}
@@ -86,7 +90,7 @@ export default function CompressioneAlphaCheck(params) {
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} />;
+    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
 
 }
 

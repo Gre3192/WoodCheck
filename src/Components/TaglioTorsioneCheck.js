@@ -7,8 +7,12 @@ import { get_tau_tord, get_tau_d } from "../Utils/getTensioni";
 import { get_fvd } from "../Utils/getResistenze";
 import { get_TaglioTorsioneCheck } from "../Utils/getChecks";
 import StepBox from "./StepBox";
+import { useState } from "react";
 
 export default function TaglioTorsioneCheck(params) {
+
+    const [isFormulaSelected, setIsFormulaSelected] = useState(false);
+    const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Med_tor: rawMed_tor, Ved_y: rawVed_y, Ved_z: rawVed_z } = useRecoilValue(forcesStateAtom)
     const Med_tor = rawMed_tor > 0 ? rawMed_tor : 0
@@ -38,7 +42,7 @@ export default function TaglioTorsioneCheck(params) {
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={tau_d_title}
                 formula={tau_d_formula}
                 formulaVal={tau_d_formulaVal}
@@ -46,7 +50,7 @@ export default function TaglioTorsioneCheck(params) {
                 description={tau_d_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={tau_tord_title}
                 formula={tau_tord_formula}
                 formulaVal={tau_tord_formulaVal}
@@ -54,7 +58,7 @@ export default function TaglioTorsioneCheck(params) {
                 description={tau_tord_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={fvd_title}
                 formula={fvd_formula}
                 formulaVal={fvd_formulaVal}
@@ -62,7 +66,7 @@ export default function TaglioTorsioneCheck(params) {
                 description={fvd_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={ksh_title}
                 formula={ksh_formula}
                 formulaVal={ksh_formulaVal}
@@ -73,7 +77,7 @@ export default function TaglioTorsioneCheck(params) {
         </div>
 
     const finalContent
-        = <StepBox isFormula={true} isFormulaVal={true} isCheck={true}
+        = <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected} isCheck={true}
             title={check_title}
             formula={''}
             formulaVal={check_formulaVal}
@@ -82,7 +86,7 @@ export default function TaglioTorsioneCheck(params) {
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} />;
+    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
 
 }
 

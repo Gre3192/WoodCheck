@@ -4,9 +4,12 @@ import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
-
+import { useState } from "react";
 
 export default function Trazione90Check(params) {
+
+    const [isFormulaSelected, setIsFormulaSelected] = useState(false);
+    const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed < 0 ? rawNed : 0
@@ -40,7 +43,7 @@ export default function Trazione90Check(params) {
         = <Latex>{`$\\dfrac{N_{Ed}}{N_{c,Rd}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} />;
+    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
 
 }
 

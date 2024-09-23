@@ -6,10 +6,13 @@ import { get_fvd } from "../Utils/getResistenze"
 import { get_TaglioCheck } from "../Utils/getChecks";
 import CheckCard from "./CheckCard";
 import StepBox from "./StepBox";
-
+import { useState } from "react";
 
 
 export default function TaglioCheck(params) {
+
+    const [isFormulaSelected, setIsFormulaSelected] = useState(false);
+    const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Ved_y: rawVed_y, Ved_z: rawVed_z } = useRecoilValue(forcesStateAtom)
     const Ved_y = rawVed_y > 0 ? rawVed_y : 0
@@ -34,7 +37,7 @@ export default function TaglioCheck(params) {
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={tau_d_title}
                 formula={tau_d_formula}
                 formulaVal={tau_d_formulaVal}
@@ -42,7 +45,7 @@ export default function TaglioCheck(params) {
                 description={tau_d_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={fvd_title}
                 formula={fvd_formula}
                 formulaVal={fvd_formulaVal}
@@ -54,7 +57,7 @@ export default function TaglioCheck(params) {
         </div>
 
     const finalContent =
-        <StepBox isFormula={true} isFormulaVal={true} isCheck={true}
+        <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected} isCheck={true}
             title={check_title}
             formula={''}
             formulaVal={check_formulaVal}
@@ -63,7 +66,7 @@ export default function TaglioCheck(params) {
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} />;
+    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
 
 }
 

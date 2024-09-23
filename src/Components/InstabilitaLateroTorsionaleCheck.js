@@ -10,9 +10,12 @@ import get_lambda_rel_m from "../Utils/get_lambda_rel_m";
 import get_sig_m_crit from "../Utils/get_sig_m_crit";
 import get_kcrit_m from "../Utils/get_kcrit_m";
 import getMcrit from "../Utils/getMcrit";
-
+import { useState } from "react";
 
 export default function InstabilitaLateroTorsionaleCheck(params) {
+
+    const [isFormulaSelected, setIsFormulaSelected] = useState(false);
+    const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Ned: rawNed, Med_y: rawMed_y, Med_z: rawMed_z } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed > 0 ? rawNed : 0
@@ -147,7 +150,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={sig_myd_title}
                 formula={sig_myd_formula}
                 formulaVal={sig_myd_formulaVal}
@@ -155,7 +158,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={sig_myd_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={sig_mzd_title}
                 formula={sig_mzd_formula}
                 formulaVal={sig_mzd_formulaVal}
@@ -163,7 +166,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={sig_mzd_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={f_myd_title}
                 formula={f_myd_formula}
                 formulaVal={f_myd_formulaVal}
@@ -171,7 +174,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={f_myd_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={f_mzd_title}
                 formula={f_mzd_formula}
                 formulaVal={f_mzd_formulaVal}
@@ -179,7 +182,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={f_mzd_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={Mcrit_y_title}
                 formula={Mcrit_y_formula}
                 formulaVal={Mcrit_y_formulaVal}
@@ -187,7 +190,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={Mcrit_y_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={Mcrit_z_title}
                 formula={Mcrit_z_formula}
                 formulaVal={Mcrit_z_formulaVal}
@@ -195,7 +198,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={Mcrit_z_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={sigma_m_crit_y_title}
                 formula={sigma_m_crit_y_formula}
                 formulaVal={sigma_m_crit_y_formulaVal}
@@ -203,7 +206,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={sigma_m_crit_y_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={sigma_m_crit_z_title}
                 formula={sigma_m_crit_z_formula}
                 formulaVal={sigma_m_crit_z_formulaVal}
@@ -211,7 +214,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={sigma_m_crit_z_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={lambda_rel_m_y_title}
                 formula={lambda_rel_m_y_formula}
                 formulaVal={lambda_rel_m_y_formulaVal}
@@ -219,7 +222,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={lambda_rel_m_y_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={lambda_rel_m_z_title}
                 formula={lambda_rel_m_z_formula}
                 formulaVal={lambda_rel_m_z_formulaVal}
@@ -227,7 +230,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={lambda_rel_m_z_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={kcrit_m_y_title}
                 formula={kcrit_m_y_formula}
                 formulaVal={kcrit_m_y_formulaVal}
@@ -235,7 +238,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 description={kcrit_m_y_description}
             />
             <hr />
-            <StepBox isFormula={true} isFormulaVal={true}
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={kcrit_m_z_title}
                 formula={kcrit_m_z_formula}
                 formulaVal={kcrit_m_z_formulaVal}
@@ -246,7 +249,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
         </div>
 
     const finalContent =
-        <StepBox isFormula={true} isFormulaVal={true} isCheck={true}
+        <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected} isCheck={true}
             title={[check1_title, check2_title, check3_title, check4_title]}
             formula={[check1_formula, check2_formula, check3_formula, check4_formula]}
             formulaVal={[check1_formulaVal, check2_formulaVal, check3_formulaVal, check4_formulaVal]}
@@ -255,7 +258,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check1, check2, check3, check4], isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} />;
+    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
 
 }
 

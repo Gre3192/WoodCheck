@@ -3,12 +3,14 @@ import { FaChevronDown } from "react-icons/fa";
 import { ReactComponent as FormulaIcon } from '../Assets/formulaIcon.svg';
 import { ReactComponent as FormulaValIcon } from '../Assets/formulaValcon.svg';
 
-export default function CheckCard({ props }) {
+export default function CheckCard({ props, isFormulaProps, isFormulaValProps}) {
   const { title = 'title', centralContent = 'centralContent', finalContent = 'finalContent', check = 0, isDisabled = false } = props;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isFormulaIconSelected, setIsFormulaIconSelected] = useState(false);
-  const [isFormulaValIconSelected, setIsFormulaValIconSelected] = useState(false);
+
+  const { isFormulaSelected , setIsFormulaSelected } = isFormulaProps;
+  const { isFormulaValSelected , setIsFormulaValSelected  } = isFormulaValProps;
+
   const cardRef = useRef(null);
 
   const toggleCard = () => {
@@ -20,24 +22,22 @@ export default function CheckCard({ props }) {
     }
   };
 
-
   const handleFormulaIconClick = (e) => {
     e.stopPropagation();
-    setIsFormulaIconSelected(!isFormulaIconSelected);
-    if (isFormulaValIconSelected) {
-      setIsFormulaValIconSelected(false);
+    setIsFormulaSelected(!isFormulaSelected);
+    if (isFormulaValSelected) {
+      setIsFormulaValSelected(false);
     }
   };
 
-
   const handleFormulaValIconClick = (e) => {
     e.stopPropagation();
-    if (isFormulaValIconSelected) {
+    if (isFormulaValSelected) {
 
-      setIsFormulaValIconSelected(false);
+      setIsFormulaValSelected(false);
     } else {
-      setIsFormulaValIconSelected(true);
-      setIsFormulaIconSelected(true);
+      setIsFormulaValSelected(true);
+      setIsFormulaSelected(true);
     }
   };
 
@@ -58,16 +58,17 @@ export default function CheckCard({ props }) {
           </div>
           <div className="flex">
             <button
-              className={`bg-white border border-gray-300 rounded-lg p-3 mx-2  transition duration-100 ${isFormulaIconSelected ? 'bg-blue-100 hover:bg-blue-200' : 'hover:bg-gray-200'}`}
+              className={`bg-white border border-gray-300 rounded-lg p-3 mx-2 transition duration-100 ${isFormulaSelected ? 'bg-blue-100 hover:bg-blue-200' : 'hover:bg-gray-200'}`}
               onClick={handleFormulaIconClick}
             >
-              <FormulaIcon width="20" height="20" className={`text-black ${isFormulaIconSelected ? 'fill-blue-700' : ''}`} />
+              <FormulaIcon width="20" height="20" className={`text-black ${isFormulaSelected ? 'fill-blue-700 ' : ''}`} />
             </button>
+            
             <button
-              className={`bg-white border border-gray-300 rounded-lg p-3 mx-2 hover:bg-gray-200 transition duration-100 ${isFormulaValIconSelected ? 'bg-blue-100 hover:bg-blue-200' : 'hover:bg-gray-200'}`}
+              className={`bg-white border border-gray-300 rounded-lg p-3 mx-2 hover:bg-gray-200 transition duration-100 ${isFormulaValSelected ? 'bg-blue-100 hover:bg-blue-200' : 'hover:bg-gray-200'}`}
               onClick={handleFormulaValIconClick}
             >
-              <FormulaValIcon width="20" height="20" className={`text-black hover:text-blue-500 ${isFormulaValIconSelected ? 'fill-blue-700' : ''}`} />
+              <FormulaValIcon width="20" height="20" className={`text-black hover:text-blue-500 ${isFormulaValSelected ? 'fill-blue-700' : ''}`} />
             </button>
           </div>
         </div>

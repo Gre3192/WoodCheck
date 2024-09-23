@@ -4,10 +4,14 @@ import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
 import Latex from "react-latex-next";
+import { useState } from "react";
 
 
 export default function Trazione0Check(params) {
 
+    const [isFormulaSelected, setIsFormulaSelected] = useState(false);
+    const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
+    
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed < 0 ? rawNed : 0
     const geometryMass = 464
@@ -42,7 +46,7 @@ export default function Trazione0Check(params) {
         = <Latex>{`$\\dfrac{\\sigma_{t,0,d}}{f_{t,0,d}} = \\dfrac{${Ned}}{${NcRd}} = ${check}${getCheckSymbol(check)}$`}</Latex>
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} />;
+    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
 
 }
 
