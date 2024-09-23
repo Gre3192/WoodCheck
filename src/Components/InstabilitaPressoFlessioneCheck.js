@@ -16,6 +16,7 @@ import get_lambda_rel_c from "../Utils/get_lambda_rel_c";
 import get_beta_c from "../Utils/get_beta_c";
 import get_k from "../Utils/get_k";
 import get_kcrit_c from "../Utils/get_kcrit_c";
+import { get_InstabilitaPressoFlessioneCheck } from "../Utils/getChecks";
 
 
 export default function InstabilitaPressoFlessioneCheck(params) {
@@ -39,8 +40,6 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const Ig_y = 45646
     const Ig_z = 45646
     const Ig_tor = 45646
-    const khy = 45646
-    const khz = 45646
     const leff = 45646
     const L = 45646
     const gm = getGamma('m0')
@@ -51,6 +50,10 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const G005 = 0.7
 
 
+
+    const khy = 45646
+    const khz = 45646
+    const km = 0.9
 
     const {
 
@@ -266,7 +269,57 @@ export default function InstabilitaPressoFlessioneCheck(params) {
 
     } = get_kcrit_c(k_y, k_z, lambda_rel_c_y, lambda_rel_c_z)
 
+    const {
 
+        check1,
+        check1_title,
+        check1_formula,
+        check1_formulaVal,
+        check1_description,
+
+        check2,
+        check2_title,
+        check2_formula,
+        check2_formulaVal,
+        check2_description,
+
+        check3,
+        check3_title,
+        check3_formula,
+        check3_formulaVal,
+        check3_description,
+
+        check4,
+        check4_title,
+        check4_formula,
+        check4_formulaVal,
+        check4_description,
+
+        check5,
+        check5_title,
+        check5_formula,
+        check5_formulaVal,
+        check5_description,
+
+        check6,
+        check6_title,
+        check6_formula,
+        check6_formulaVal,
+        check6_description,
+
+        check7,
+        check7_title,
+        check7_formula,
+        check7_formulaVal,
+        check7_description,
+
+        check8,
+        check8_title,
+        check8_formula,
+        check8_formulaVal,
+        check8_description,
+
+    } = get_InstabilitaPressoFlessioneCheck(sig_c0d, sig_myd, sig_mzd, f_c0d, f_myd, f_mzd, kcrit_c_y, kcrit_c_z, kcrit_m_y, kcrit_m_z, km)
 
 
     const title = 'Verifica a Instabilità a Presso-Flessione - Instabilità composta trave-colonna [CNR DT 206-R1/2018 - \u00A77.6.1.2.3]'
@@ -291,14 +344,14 @@ export default function InstabilitaPressoFlessioneCheck(params) {
             <hr />
         </div>
 
-    const finalContent = ''
-        // <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected} isCheck={true}
-        //     title={check_title}
-        //     formula={''}
-        //     formulaVal={check_formulaVal}
-        //     value={check}
-        //     description={''}
-        // />
+    const finalContent =
+        <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected} isCheck={true}
+            title={[check1_title, check2_title, check3_title, check4_title, check5_title, check6_title, check7_title, check8_title]}
+            formula={[check1_formula, check2_formula, check3_formula, check4_formula, check5_formula, check6_formula, check7_formula, check8_formula]}
+            formulaVal={[check1_formulaVal, check2_formulaVal, check3_formulaVal, check4_formulaVal, check5_formulaVal, check6_formulaVal, check7_formulaVal, check8_formulaVal]}
+            value={[check1, check2, check3, check4, check5, check6, check7, check8]}
+            description={[check1_description, check2_description, check3_description, check4_description, check5_description, check6_description, check7_description, check8_description]}
+        />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: 125, isDisabled: isDisabled }
     return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;

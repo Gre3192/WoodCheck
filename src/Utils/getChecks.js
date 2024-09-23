@@ -187,57 +187,56 @@ export function get_InstabilitaLateroTorsionaleCheck(sig_myd, sig_mzd, f_myd, f_
     }
 }
 
-export function get_InstabilitaPressoFlessioneCheck() {
+export function get_InstabilitaPressoFlessioneCheck(sig_c0d, sig_myd, sig_mzd, f_c0d, f_myd, f_mzd, kcrit_c_y, kcrit_c_z, kcrit_m_y, kcrit_m_z, km) {
 
     return {
 
         check1: (sig_c0d / (kcrit_c_y * f_c0d)) + (sig_myd / (kcrit_m_y * f_myd)) + km * (sig_mzd / f_mzd),
-        check1_title: ``,
+        check1_title: `\\dfrac{\\sigma_{c,0,d}}{k_{crti,c,y}\\cdot f_{c,0,d}} + \\dfrac{\\sigma_{m,y,d}}{k_{crti,m,y}\\cdot f_{m,y,d}} + k_m \\cdot\\dfrac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
         check1_formula: ``,
-        check1_formulaVal: ``,
+        check1_formulaVal: `\\dfrac{${sig_c0d}}{${kcrit_c_y}\\cdot ${f_c0d}} + \\dfrac{${sig_myd}}{${kcrit_m_y}\\cdot ${f_myd}} + ${km} \\cdot\\dfrac{${sig_mzd}}{${f_mzd}} = `,
         check1_description: ``,
 
         check2: (sig_c0d / (kcrit_c_y * f_c0d)) + km * (sig_myd / (kcrit_m_y * f_myd)) + (sig_mzd / f_mzd),
-        check2_title: ``,
+        check2_title: `\\dfrac{\\sigma_{c,0,d}}{k_{crti,c,y}\\cdot f_{c,0,d}} + k_m\\cdot \\dfrac{\\sigma_{m,y,d}}{k_{crti,m,y}\\cdot f_{m,y,d}} + \\dfrac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
         check2_formula: ``,
-        check2_formulaVal: ``,
+        check2_formulaVal: `\\dfrac{${sig_c0d}}{${kcrit_c_y}\\cdot ${f_c0d}} + ${km} \\cdot\\dfrac{${sig_myd}}{${kcrit_m_y}\\cdot ${f_myd}} + \\dfrac{${sig_mzd}}{${f_mzd}} = `,
         check2_description: ``,
 
         check3: (sig_c0d / (kcrit_c_z * f_c0d)) + (sig_myd / (kcrit_m_y * f_myd)) + km * (sig_mzd / f_mzd),
-        check3_title: ``,
+        check3_title: `\\dfrac{\\sigma_{c,0,d}}{k_{crti,c,z}\\cdot f_{c,0,d}} + \\dfrac{\\sigma_{m,y,d}}{k_{crti,m,y}\\cdot f_{m,y,d}} + k_m \\cdot\\dfrac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
         check3_formula: ``,
-        check3_formulaVal: ``,
+        check3_formulaVal: `\\dfrac{${sig_c0d}}{${kcrit_c_z}\\cdot ${f_c0d}} + \\dfrac{${sig_myd}}{${kcrit_m_y}\\cdot ${f_myd}} + ${km} \\cdot\\dfrac{${sig_mzd}}{${f_mzd}} = `,
         check3_description: ``,
 
         check4: (sig_c0d / (kcrit_c_z * f_c0d)) + km * (sig_myd / (kcrit_m_y * f_myd)) + (sig_mzd / f_mzd),
-        check4_title: ``,
+        check4_title: `\\dfrac{\\sigma_{c,0,d}}{k_{crti,c,z}\\cdot f_{c,0,d}} + k_m \\cdot\\dfrac{\\sigma_{m,y,d}}{k_{crti,m,y}\\cdot f_{m,y,d}} + \\dfrac{\\sigma_{m,z,d}}{f_{m,z,d}} = `,
         check4_formula: ``,
-        check4_formulaVal: ``,
+        check4_formulaVal: `\\dfrac{${sig_c0d}}{${kcrit_c_z}\\cdot ${f_c0d}} + ${km} \\cdot\\dfrac{${sig_myd}}{${kcrit_m_y}\\cdot ${f_myd}} + \\dfrac{${sig_mzd}}{${f_mzd}} = `,
         check4_description: ``,
 
-
         check5: (sig_c0d / (kcrit_c_y * f_c0d)) + (sig_myd / f_myd) + km * (sig_mzd / (kcrit_m_z * f_mzd)),
-        check5_title: ``,
+        check5_title: `\\dfrac{\\sigma_{c,0,d}}{k_{crti,c,y}\\cdot f_{c,0,d}} + \\dfrac{\\sigma_{m,y,d}}{f_{m,y,d}} + k_m \\cdot\\dfrac{\\sigma_{m,z,d}}{k_{crti,m,z}\\cdot f_{m,z,d}} = `,
         check5_formula: ``,
-        check5_formulaVal: ``,
+        check5_formulaVal: `\\dfrac{${sig_c0d}}{${kcrit_c_y}\\cdot ${f_c0d}} + \\dfrac{${sig_myd}}{${f_myd}} + ${km}\\cdot\\dfrac{${sig_mzd}}{${kcrit_m_z}\\cdot${f_mzd}} = `,
         check5_description: ``,
 
         check6: (sig_c0d / (kcrit_c_y * f_c0d)) + km * (sig_myd / f_myd) + (sig_mzd / (kcrit_m_z * f_mzd)),
-        check6_title: ``,
+        check6_title: `\\dfrac{\\sigma_{c,0,d}}{k_{crti,c,y}\\cdot f_{c,0,d}} + k_m \\cdot\\dfrac{\\sigma_{m,y,d}}{f_{m,y,d}} + \\dfrac{\\sigma_{m,z,d}}{k_{crti,m,z}\\cdot f_{m,z,d}} = `,
         check6_formula: ``,
-        check6_formulaVal: ``,
+        check6_formulaVal: `\\dfrac{${sig_c0d}}{${kcrit_c_y}\\cdot ${f_c0d}} + ${km}\\cdot\\dfrac{${sig_myd}}{${f_myd}} + \\dfrac{${sig_mzd}}{${kcrit_m_z}\\cdot${f_mzd}} = `,
         check6_description: ``,
 
         check7: (sig_c0d / (kcrit_c_z * f_c0d)) + (sig_myd / f_myd) + km * (sig_mzd / (kcrit_m_z * f_mzd)),
-        check7_title: ``,
+        check7_title: `\\dfrac{\\sigma_{c,0,d}}{k_{crti,c,z}\\cdot f_{c,0,d}} + \\dfrac{\\sigma_{m,y,d}}{f_{m,y,d}} + k_m \\cdot\\dfrac{\\sigma_{m,z,d}}{k_{crti,m,z}\\cdot f_{m,z,d}} = `,
         check7_formula: ``,
-        check7_formulaVal: ``,
+        check7_formulaVal: `\\dfrac{${sig_c0d}}{${kcrit_c_z}\\cdot ${f_c0d}} + \\dfrac{${sig_myd}}{${f_myd}} + ${km}\\cdot\\dfrac{${sig_mzd}}{${kcrit_m_z}\\cdot${f_mzd}} = `,
         check7_description: ``,
 
         check8: (sig_c0d / (kcrit_c_z * f_c0d)) + km * (sig_myd / f_myd) + (sig_mzd / (kcrit_m_z * f_mzd)),
-        check8_title: ``,
+        check8_title: `\\dfrac{\\sigma_{c,0,d}}{k_{crti,c,z}\\cdot f_{c,0,d}} + k_m \\cdot\\dfrac{\\sigma_{m,y,d}}{f_{m,y,d}} + \\dfrac{\\sigma_{m,z,d}}{k_{crti,m,z}\\cdot f_{m,z,d}} = `,
         check8_formula: ``,
-        check8_formulaVal: ``,
+        check8_formulaVal: `\\dfrac{${sig_c0d}}{${kcrit_c_z}\\cdot ${f_c0d}} + ${km}\\cdot\\dfrac{${sig_myd}}{${f_myd}} + \\dfrac{${sig_mzd}}{${kcrit_m_z}\\cdot${f_mzd}} = `,
         check8_description: ``,
 
     }
