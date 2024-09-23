@@ -6,7 +6,9 @@ export default function get_beta_c(woodType = 'lamellare') {
         beta_c_title: `\\beta_{c} = `,
         beta_c_formula: ``,
         beta_c_formulaVal: ``,
-        beta_c_description: ``,
-
+        beta_c_description: woodType?.toLocaleLowerCase() === 'lamellare' ?
+            `Coefficiente di imperfezione per legno lamellare`
+            : `Coefficiente di imperfezione per legno massiccio`
+            
     }
 }

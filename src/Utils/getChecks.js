@@ -138,14 +138,21 @@ export function get_TaglioTorsioneCheck(tau_tord, tau_d, fvd, ksh) {
     }
 }
 
-export function get_InstabilitaCompressioneCheck(sig_c0d, f_c0d, kcrit_c) {
+export function get_InstabilitaCompressioneCheck(sig_c0d, f_c0d, kcrit_c_y, kcrit_c_z) {
 
     return {
-        check: sig_c0d / (kcrit_c * f_c0d),
-        check_title: `\\frac{\\sigma_{c,0,d}}{k_{crit,c}\\cdot f_{c,0,d}} = `,
-        check_formula: ``,
-        check_formulaVal: `\\frac{${sig_c0d}}{${kcrit_c}\\cdot${f_c0d}} = `,
-        check_description: ``,
+
+        check_y: sig_c0d / (kcrit_c_y * f_c0d),
+        check_y_title: `\\frac{\\sigma_{c,0,d}}{k_{crit,c,y} \\cdot f_{c,0,d}} = `,
+        check_y_formula: ``,
+        check_y_formulaVal: `\\frac{${sig_c0d}}{${kcrit_c_y} \\cdot ${f_c0d}} = `,
+        check_y_description: ``,
+
+        check_z: sig_c0d / (kcrit_c_z * f_c0d),
+        check_z_title: `\\frac{\\sigma_{c,0,d}}{k_{crit,c,z} \\cdot f_{c,0,d}} = `,
+        check_z_formula: ``,
+        check_z_formulaVal: `\\frac{${sig_c0d}}{${kcrit_c_z} \\cdot ${f_c0d}} = `,
+        check_z_description: ``,
     }
 }
 
