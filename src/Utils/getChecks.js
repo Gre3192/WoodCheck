@@ -216,31 +216,29 @@ export function get_InstabilitaPressoFlessioneCheck() {
         check4_description: ``,
 
 
+        check5: (sig_c0d / (kcrit_c_y * f_c0d)) + (sig_myd / f_myd) + km * (sig_mzd / (kcrit_m_z * f_mzd)),
+        check5_title: ``,
+        check5_formula: ``,
+        check5_formulaVal: ``,
+        check5_description: ``,
 
-        check1: (sig_c0d / (kcrit_c_y * f_c0d)) + (sig_myd / f_myd) + km * (sig_mzd / (kcrit_m_z * f_mzd)),
-        check1_title: ``,
-        check1_formula: ``,
-        check1_formulaVal: ``,
-        check1_description: ``,
+        check6: (sig_c0d / (kcrit_c_y * f_c0d)) + km * (sig_myd / f_myd) + (sig_mzd / (kcrit_m_z * f_mzd)),
+        check6_title: ``,
+        check6_formula: ``,
+        check6_formulaVal: ``,
+        check6_description: ``,
 
-        check2: (sig_c0d / (kcrit_c_y * f_c0d)) + km * (sig_myd / f_myd) + (sig_mzd / (kcrit_m_z * f_mzd)),
-        check2_title: ``,
-        check2_formula: ``,
-        check2_formulaVal: ``,
-        check2_description: ``,
+        check7: (sig_c0d / (kcrit_c_z * f_c0d)) + (sig_myd / f_myd) + km * (sig_mzd / (kcrit_m_z * f_mzd)),
+        check7_title: ``,
+        check7_formula: ``,
+        check7_formulaVal: ``,
+        check7_description: ``,
 
-        check3: (sig_c0d / (kcrit_c_z * f_c0d)) + (sig_myd / f_myd) + km * (sig_mzd / (kcrit_m_z * f_mzd)),
-        check3_title: ``,
-        check3_formula: ``,
-        check3_formulaVal: ``,
-        check3_description: ``,
-
-        check4: (sig_c0d / (kcrit_c_z * f_c0d)) + km * (sig_myd / f_myd) + (sig_mzd / (kcrit_m_z * f_mzd)),
-        check4_title: ``,
-        check4_formula: ``,
-        check4_formulaVal: ``,
-        check4_description: ``,
-
+        check8: (sig_c0d / (kcrit_c_z * f_c0d)) + km * (sig_myd / f_myd) + (sig_mzd / (kcrit_m_z * f_mzd)),
+        check8_title: ``,
+        check8_formula: ``,
+        check8_formulaVal: ``,
+        check8_description: ``,
 
     }
 }
