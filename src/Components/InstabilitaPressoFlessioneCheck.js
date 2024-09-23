@@ -268,7 +268,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
 
 
 
-    
+
     const title = 'Verifica a Instabilità a Presso-Flessione - Instabilità composta trave-colonna [CNR DT 206-R1/2018 - \u00A77.6.1.2.3]'
 
     const centralContent =
@@ -291,16 +291,16 @@ export default function InstabilitaPressoFlessioneCheck(params) {
             <hr />
         </div>
 
-    const finalContent =
-        <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected} isCheck={true}
-            title={check_title}
-            formula={''}
-            formulaVal={check_formulaVal}
-            value={check}
-            description={''}
-        />
+    const finalContent = ''
+        // <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected} isCheck={true}
+        //     title={check_title}
+        //     formula={''}
+        //     formulaVal={check_formulaVal}
+        //     value={check}
+        //     description={''}
+        // />
 
-    const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
+    const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: 125, isDisabled: isDisabled }
     return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
 
 }

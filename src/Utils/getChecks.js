@@ -187,4 +187,60 @@ export function get_InstabilitaLateroTorsionaleCheck(sig_myd, sig_mzd, f_myd, f_
     }
 }
 
+export function get_InstabilitaPressoFlessioneCheck() {
 
+    return {
+
+        check1: (sig_c0d / (kcrit_c_y * f_c0d)) + (sig_myd / (kcrit_m_y * f_myd)) + km * (sig_mzd / f_mzd),
+        check1_title: ``,
+        check1_formula: ``,
+        check1_formulaVal: ``,
+        check1_description: ``,
+
+        check2: (sig_c0d / (kcrit_c_y * f_c0d)) + km * (sig_myd / (kcrit_m_y * f_myd)) + (sig_mzd / f_mzd),
+        check2_title: ``,
+        check2_formula: ``,
+        check2_formulaVal: ``,
+        check2_description: ``,
+
+        check3: (sig_c0d / (kcrit_c_z * f_c0d)) + (sig_myd / (kcrit_m_y * f_myd)) + km * (sig_mzd / f_mzd),
+        check3_title: ``,
+        check3_formula: ``,
+        check3_formulaVal: ``,
+        check3_description: ``,
+
+        check4: (sig_c0d / (kcrit_c_z * f_c0d)) + km * (sig_myd / (kcrit_m_y * f_myd)) + (sig_mzd / f_mzd),
+        check4_title: ``,
+        check4_formula: ``,
+        check4_formulaVal: ``,
+        check4_description: ``,
+
+
+
+        check1: (sig_c0d / (kcrit_c_y * f_c0d)) + (sig_myd / f_myd) + km * (sig_mzd / (kcrit_m_z * f_mzd)),
+        check1_title: ``,
+        check1_formula: ``,
+        check1_formulaVal: ``,
+        check1_description: ``,
+
+        check2: (sig_c0d / (kcrit_c_y * f_c0d)) + km * (sig_myd / f_myd) + (sig_mzd / (kcrit_m_z * f_mzd)),
+        check2_title: ``,
+        check2_formula: ``,
+        check2_formulaVal: ``,
+        check2_description: ``,
+
+        check3: (sig_c0d / (kcrit_c_z * f_c0d)) + (sig_myd / f_myd) + km * (sig_mzd / (kcrit_m_z * f_mzd)),
+        check3_title: ``,
+        check3_formula: ``,
+        check3_formulaVal: ``,
+        check3_description: ``,
+
+        check4: (sig_c0d / (kcrit_c_z * f_c0d)) + km * (sig_myd / f_myd) + (sig_mzd / (kcrit_m_z * f_mzd)),
+        check4_title: ``,
+        check4_formula: ``,
+        check4_formulaVal: ``,
+        check4_description: ``,
+
+
+    }
+}
