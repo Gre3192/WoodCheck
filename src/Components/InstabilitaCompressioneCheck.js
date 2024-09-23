@@ -8,6 +8,8 @@ import { get_sig_c0d } from "../Utils/getTensioni";
 import { get_f_c0d } from "../Utils/getResistenze";
 import { get_Compressione0Check } from "../Utils/getChecks";
 import { useState } from "react";
+import get_lambda_c from "../Utils/get_lambda_c";
+import get_lambda_rel_c from "../Utils/get_lambda_rel_c";
 
 
 export default function InstabilitaCompressioneCheck(params) {
@@ -19,40 +21,77 @@ export default function InstabilitaCompressioneCheck(params) {
     const Ned = rawNed > 0 ? rawNed : 0
     const isDisabled = Ned <= 0 ? true : false
 
-
     const Atot = 26
-    const Aeff = 1289.6
     const kmod = 27527
     const fc0k = 45646
+    const L = 45646
+    const beta_y = 45646
+    const beta_z = 45646
+    const E005 = 45646
+    const Ig_y = 45646
+    const Ig_z = 45646
     const gm = getGamma('m0')
 
-    const { sig_c0d, sig_c0d_title, sig_c0d_formula, sig_c0d_formulaVal, sig_c0d_description } = get_sig_c0d(Ned, Atot)
-    const { f_c0d, f_c0d_title, f_c0d_formula, f_c0d_formulaVal, f_c0d_description } = get_f_c0d(kmod, fc0k, gm)
-
-    const { check, check_title, check_formulaVal } = get_Compressione0Check(sig_c0d, f_c0d)
 
 
+
+    const {
+        
+        Ncr_y,
+        Ncr_y_title,
+        Ncr_y_formula,
+        Ncr_y_formulaVal,
+        Ncr_y_description,
+
+        Ncr_z,
+        Ncr_z_title,
+        Ncr_z_formula,
+        Ncr_z_formulaVal,
+        Ncr_z_description
+    
+    } = get_Ncr(L,beta_y,beta_z,Ig_y,Ig_z,E005)
+
+    const { 
+        
+        lambda_c_y,
+        lambda_c_y_title,
+        lambda_c_y_formula,
+        lambda_c_y_formulaVal,
+        lambda_c_y_description,
+    
+        lambda_c_z,
+        lambda_c_z_title,
+        lambda_c_z_formula,
+        lambda_c_z_formulaVal,
+        lambda_c_z_description
+
+    } = get_lambda_c(Atot, fc0k, Ncr_y, Ncr_z)
+
+    const {
+
+        lambda_rel_c_y,
+        lambda_rel_c_y_title,
+        lambda_rel_c_y_formula,
+        lambda_rel_c_y_formulaVal,
+        lambda_rel_c_y_description,
+
+        lambda_rel_c_z,
+        lambda_rel_c_z_title,
+        lambda_rel_c_z_formula,
+        lambda_rel_c_z_formulaVal,
+        lambda_rel_c_z_description,
+
+    } = get_lambda_rel_c(lambda_c_y,lambda_c_z,fc0k,E005)
+
+
+
+    
 
     const title = 'Verifica Instabilità a Compressione - Instabilità di colonna [NTC18 - \u00A74.4.8.2.2]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={sig_c0d_title}
-                formula={sig_c0d_formula}
-                formulaVal={sig_c0d_formulaVal}
-                value={sig_c0d}
-                description={sig_c0d_description}
-            />
-            <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={f_c0d_title}
-                formula={f_c0d_formula}
-                formulaVal={f_c0d_formulaVal}
-                value={f_c0d}
-                description={f_c0d_description}
-            />
-            <hr />
+
         </div>
 
     const finalContent =
