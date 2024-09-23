@@ -1,9 +1,9 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import HomePage from "./Pages/HomePage/HomePage"
 import { useEffect } from 'react';
-import WoodStructures from './Pages/WoodStructures/WoodStructures';
+import WoodChecks from './Pages/WoodChecks/WoodChecks';
 import 'katex/dist/katex.min.css';
-
+import Layout from './Layout/Layout';
 
 
 function App() {
@@ -20,9 +20,8 @@ function App() {
 
     <HashRouter>
       <Routes>
-        <Route>
-          {/* <Route path="/" element={<ActionsOnStructures />} />  */}
-          <Route path="/" element={<WoodStructures />} /> 
+        <Route element={<Layout />}>
+          <Route path="/" element={<WoodChecks />} /> 
 
           
         </Route>

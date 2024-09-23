@@ -14,7 +14,7 @@ import InstabilitaCompressioneCheck from "../../Components/InstabilitaCompressio
 import InstabilitaLateroTorsionaleCheck from "../../Components/InstabilitaLateroTorsionaleCheck" 
 import InstabilitaPressoFlessioneCheck from "../../Components/InstabilitaPressoFlessioneCheck"
 
-export default function WoodStructures(params) {
+export default function WoodChecks(params) {
 
 
 
