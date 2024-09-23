@@ -76,7 +76,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps}) {
 
         {/* Sezione centrale */}
         <div
-          className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+          className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[4000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
             }`}
         >
           {isOpen && (
