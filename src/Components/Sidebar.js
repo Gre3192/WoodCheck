@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 export const sidebarItem = [
   {
       name: "Progetto",
-      link: "/Progetto"
+      link: "/project"
   },
   {
       name: "Verifiche",
-      link: "/Verifiche"
+      link: "/checks"
   },
   {
       name: "Collegamenti",
-      link: "/Collegamenti"
+      link: "/joins"
   },
 ]
 

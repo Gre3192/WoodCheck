@@ -37,7 +37,7 @@ export default function StepBox({
                     const itemValue = typeof item === 'object' && item !== null ? item.value : item;
 
                     return (
-                        <div key={index} className={'w-full flex justify-between gap-8'}>
+                        <div key={index} className={'w-full flex items-center justify-between gap-8'}>
                             <Latex>
                                 {`$ \\displaystyle
                                     ${titles[index] ? titles[index] : 'titles = '}

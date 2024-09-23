@@ -45,7 +45,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps}) {
     <div className={`p-5 ${isDisabled ? 'text-gray-400' : null}`} ref={cardRef}>
       <div className="bg-white shadow-lg rounded-lg border border-gray-200 ">
         <div
-          className={`flex justify-between items-center cursor-pointer p-6 transition-colors duration-300 ease-in-out ${isOpen ? 'bg-gray-100' : 'hover:bg-gray-100'}`}
+          className={`flex justify-between items-center cursor-pointer p-3 transition-colors duration-300 ease-in-out ${isOpen ? 'bg-gray-100' : 'hover:bg-gray-100'}`}
           onClick={toggleCard}
         >
           <div className="flex items-center">
@@ -56,16 +56,16 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps}) {
             </button>
             <h2 className="text-lg font-semibold">{title}</h2>
           </div>
-          <div className="flex">
+          <div className="flex gap-2">
             <button
-              className={`border border-gray-300 rounded-lg p-3 mx-2 transition duration-100 ${isFormulaSelected ? 'bg-blue-100 hover:bg-blue-200' : 'bg-white hover:bg-gray-200'}`}
+              className={`border border-gray-300 rounded-lg p-3  transition duration-100 ${isFormulaSelected ? 'bg-blue-100 hover:bg-blue-200' : 'bg-white hover:bg-gray-200'}`}
               onClick={handleFormulaIconClick}
             >
               <FormulaIcon width="20" height="20" className={`text-black ${isFormulaSelected ? 'fill-blue-700 ' : ''}`} />
             </button>
             
             <button
-              className={`border border-gray-300 rounded-lg p-3 mx-2 transition duration-100 ${isFormulaValSelected ? 'bg-blue-100 hover:bg-blue-200' : 'bg-white hover:bg-gray-200'}`}
+              className={`border border-gray-300 rounded-lg p-3  transition duration-100 ${isFormulaValSelected ? 'bg-blue-100 hover:bg-blue-200' : 'bg-white hover:bg-gray-200'}`}
               onClick={handleFormulaValIconClick}
             >
               <FormulaValIcon width="20" height="20" className={`text-black hover:text-blue-500 ${isFormulaValSelected ? 'fill-blue-700' : ''}`} />

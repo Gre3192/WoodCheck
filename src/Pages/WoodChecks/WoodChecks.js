@@ -20,8 +20,7 @@ export default function WoodChecks(params) {
 
     return (
 
-        <>
-
+        <div className="h-[92vh] overflow-y-scroll">
             <InputForces />
             <div className="px-5">
                 <h1 className="text-lg font-bold" >
@@ -47,7 +46,7 @@ export default function WoodChecks(params) {
                 <InstabilitaCompressioneCheck/>
                 <InstabilitaPressoFlessioneCheck/>
             </div>
-        </>
+        </div>
 
     )
 
