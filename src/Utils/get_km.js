@@ -6,8 +6,8 @@ export default function get_km(shape = 'rettangolare') {
         km_title: `k_m = `,
         km_formula: ``,
         km_formulaVal: ``,
-        km_description: shape?.toLocaleLowerCase() === 'rettangolare' ? `Coefficiente per la disomogeneità del materiale per sezione rettangolare` : 
-        `Coefficiente per la disomogeneità del materiale per sezione non rettangolare`,
+        km_description: shape?.toLocaleLowerCase() === 'rettangolare' ? `Coefficiente per la disomogeneità del materiale per sezioni rettangolari` : 
+        `Coefficiente per la disomogeneità del materiale per sezioni non rettangolari`,
 
     }
 }
