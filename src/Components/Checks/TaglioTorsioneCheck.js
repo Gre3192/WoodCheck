@@ -35,6 +35,7 @@ export default function TaglioTorsioneCheck(params) {
     const fvk = mecchanicProps?.fvk
     const Ig_tor = geometryMass?.value.Ig_tor
     const b = sectionGeometry?.b
+    const h = sectionGeometry?.h
     const shape = sectionGeometry?.shape
     const woodType = mecchanicProps?.woodType
     
@@ -85,7 +86,7 @@ export default function TaglioTorsioneCheck(params) {
         ksh_formulaVal,
         ksh_description
 
-    } = get_ksh(shape)
+    } = get_ksh(shape,h,b)
 
     const {
 

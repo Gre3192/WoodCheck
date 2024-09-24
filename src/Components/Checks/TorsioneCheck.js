@@ -33,11 +33,12 @@ export default function TorsioneCheck(params) {
     const fvk = mecchanicProps?.fvk
     const Ig_tor = geometryMass?.value.Ig_tor
     const b = sectionGeometry?.b
+    const h = sectionGeometry?.h
     const shape = sectionGeometry?.shape
     const woodType = mecchanicProps?.woodType
     
 
-    
+
     const classLoad = 'permanente'
     const serviceClass = 1
 
@@ -54,7 +55,7 @@ export default function TorsioneCheck(params) {
         ksh_formulaVal,
         ksh_description
 
-    } = get_ksh(shape)
+    } = get_ksh(shape,h,b)
 
     const {
 
