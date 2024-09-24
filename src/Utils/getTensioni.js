@@ -49,7 +49,7 @@ export function get_sig_cAlphad(Ned, Atot) {
         sig_cAlphad_title: `\\sigma_{c,\\alpha,d} = `,
         sig_cAlphad_formula: `\\dfrac{N_{Ed}}{A_{tot}} = `,
         sig_cAlphad_formulaVal: `\\dfrac{${Math.abs(Ned)}}{${Atot}} = `,
-        sig_cAlphad_description: `Tensione di progetto a compressione inclinata di \\alpha rispetto alla fibratura`
+        sig_cAlphad_description: `Tensione di progetto a compressione inclinata di $\\alpha$ rispetto alla fibratura`
     }
 }
 
