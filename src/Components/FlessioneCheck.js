@@ -16,8 +16,8 @@ export default function FlessioneCheck(params) {
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Med_y: rawMed_y, Med_z: rawMed_z } = useRecoilValue(forcesStateAtom)
-    const Med_y = rawMed_y > 0 ? rawMed_y : 0
-    const Med_z = rawMed_z > 0 ? rawMed_z : 0
+    const Med_y = rawMed_y && rawMed_y != 0 ? Math.abs(rawMed_y) : 0
+    const Med_z = rawMed_z && rawMed_z != 0 ? Math.abs(rawMed_z) : 0
     const isDisabled = Med_y == 0 && Med_z == 0 ? true : false
 
 

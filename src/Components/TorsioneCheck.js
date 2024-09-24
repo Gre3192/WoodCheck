@@ -15,7 +15,7 @@ export default function TorsioneCheck(params) {
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Med_tor: rawMed_tor } = useRecoilValue(forcesStateAtom)
-    const Med_tor = rawMed_tor > 0 ? rawMed_tor : 0
+    const Med_tor = rawMed_tor && rawMed_tor != 0 ? Math.abs(rawMed_tor) : 0
     const isDisabled = Med_tor == 0 ? true : false
 
     const kmod = 0.7

@@ -21,8 +21,8 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
 
     const { Ned: rawNed, Med_y: rawMed_y, Med_z: rawMed_z } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed > 0 ? rawNed : 0
-    const Med_y = rawMed_y > 0 ? rawMed_y : 0
-    const Med_z = rawMed_z > 0 ? rawMed_z : 0
+    const Med_y = rawMed_y > 0 ? Math.abs(rawMed_y) : 0
+    const Med_z = rawMed_z > 0 ? Math.abs(rawMed_z) : 0
     const isDisabled = Med_y == 0 && Med_z == 0 ? true : false
 
 

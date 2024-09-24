@@ -15,8 +15,8 @@ export default function TaglioCheck(params) {
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Ved_y: rawVed_y, Ved_z: rawVed_z } = useRecoilValue(forcesStateAtom)
-    const Ved_y = rawVed_y > 0 ? rawVed_y : 0
-    const Ved_z = rawVed_z > 0 ? rawVed_z : 0
+    const Ved_y = rawVed_y && rawVed_y != 0 ? Math.abs(rawVed_y) : 0
+    const Ved_z = rawVed_z && rawVed_z != 0 ? Math.abs(rawVed_z) : 0
     const isDisabled = Ved_y == 0 && Ved_z == 0 ? true : false
 
 
