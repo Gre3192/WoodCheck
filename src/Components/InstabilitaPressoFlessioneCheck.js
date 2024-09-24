@@ -17,6 +17,7 @@ import get_beta_c from "../Utils/get_beta_c";
 import get_k from "../Utils/get_k";
 import get_kcrit_c from "../Utils/get_kcrit_c";
 import { get_InstabilitaPressoFlessioneCheck } from "../Utils/getChecks";
+import getKm from "../Utils/getKm";
 
 
 export default function InstabilitaPressoFlessioneCheck(params) {
@@ -48,12 +49,22 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const beta_z = 0.2
     const E005 = 0.7
     const G005 = 0.7
-
+    const shape = 'rettangolare'
 
 
     const khy = 45646
     const khz = 45646
-    const km = 0.9
+
+
+    const {
+
+        km,
+        km_title,
+        km_formula,
+        km_formulaVal,
+        km_description,
+
+    } = getKm(shape)
 
     const {
 
@@ -524,6 +535,14 @@ export default function InstabilitaPressoFlessioneCheck(params) {
                 formulaVal={kcrit_c_z_formulaVal}
                 value={kcrit_c_z}
                 description={kcrit_c_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={km_title}
+                formula={km_formula}
+                formulaVal={km_formulaVal}
+                value={km}
+                description={km_description}
             />
             <hr />
         </div>

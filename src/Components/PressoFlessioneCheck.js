@@ -10,6 +10,9 @@ import { get_f_c0d, get_f_myd, get_f_mzd } from "../Utils/getResistenze";
 import { get_PressoflessioneCheck } from "../Utils/getChecks";
 import StepBox from "./StepBox";
 import { useState } from "react";
+import getKm from "../Utils/getKm";
+
+
 
 export default function PressoFlessioneCheck(params) {
 
@@ -26,24 +29,99 @@ export default function PressoFlessioneCheck(params) {
     const Atot = 26
     const Wel_y = 1561
     const Wel_z = 1561
-    const Aeff = 1289.6
     const gm = getGamma('m0')
     const kmod = 27527
     const khy = 3423
     const khz = 234234
     const fmk = 5464
-    const km = 0.7
     const fc0k = 64
+    const shape = 'rettangolare'
 
 
-    const { sig_c0d, sig_c0d_title, sig_c0d_formula, sig_c0d_formulaVal, sig_c0d_description } = get_sig_c0d(Ned, Atot)
-    const { sig_myd, sig_myd_title, sig_myd_formula, sig_myd_formulaVal, sig_myd_description } = get_sig_myd(Med_y, Wel_y)
-    const { sig_mzd, sig_mzd_title, sig_mzd_formula, sig_mzd_formulaVal, sig_mzd_description } = get_sig_mzd(Med_z, Wel_z)
-    const { f_c0d, f_c0d_title, f_c0d_formula, f_c0d_formulaVal, f_c0d_description } = get_f_c0d(kmod, fc0k, gm)
-    const { f_myd, f_myd_title, f_myd_formula, f_myd_formulaVal, f_myd_description } = get_f_myd(khy, kmod, fmk, gm)
-    const { f_mzd, f_mzd_title, f_mzd_formula, f_mzd_formulaVal, f_mzd_description } = get_f_mzd(khz, kmod, fmk, gm)
 
-    const { check_z, check_z_title, check_z_formulaVal, check_y, check_y_title, check_y_formulaVal } = get_PressoflessioneCheck(sig_c0d, sig_myd, sig_mzd, f_c0d, f_myd, f_mzd, km)
+    const {
+
+        km,
+        km_title,
+        km_formula,
+        km_formulaVal,
+        km_description,
+
+    } = getKm(shape)
+
+    const {
+
+        sig_c0d,
+        sig_c0d_title,
+        sig_c0d_formula,
+        sig_c0d_formulaVal,
+        sig_c0d_description
+
+    } = get_sig_c0d(Ned, Atot)
+
+    const {
+
+        sig_myd,
+        sig_myd_title,
+        sig_myd_formula,
+        sig_myd_formulaVal,
+        sig_myd_description
+
+    } = get_sig_myd(Med_y, Wel_y)
+
+    const {
+
+        sig_mzd,
+        sig_mzd_title,
+        sig_mzd_formula,
+        sig_mzd_formulaVal,
+        sig_mzd_description
+
+    } = get_sig_mzd(Med_z, Wel_z)
+
+    const {
+
+        f_c0d,
+        f_c0d_title,
+        f_c0d_formula,
+        f_c0d_formulaVal,
+        f_c0d_description
+
+    } = get_f_c0d(kmod, fc0k, gm)
+
+    const {
+
+        f_myd,
+        f_myd_title,
+        f_myd_formula,
+        f_myd_formulaVal,
+        f_myd_description
+
+    } = get_f_myd(khy, kmod, fmk, gm)
+
+    const {
+
+        f_mzd,
+        f_mzd_title,
+        f_mzd_formula,
+        f_mzd_formulaVal,
+        f_mzd_description
+
+    } = get_f_mzd(khz, kmod, fmk, gm)
+
+
+    const {
+
+        check_z,
+        check_z_title,
+        check_z_formulaVal,
+        check_y,
+        check_y_title,
+        check_y_formulaVal
+
+    } = get_PressoflessioneCheck(sig_c0d, sig_myd, sig_mzd, f_c0d, f_myd, f_mzd, km)
+
+
 
 
     const title = 'Verifica a Presso-Flessione [NTC18 - \u00A74.4.8.1.8]'
@@ -98,10 +176,13 @@ export default function PressoFlessioneCheck(params) {
                 description={f_mzd_description}
             />
             <hr />
-            <div className="flex justify-between items-center">
-                <Latex>{`$k_m = ${km}$`}</Latex>
-                <div>Coefficiente per la ridistribuzione delle tensioni e disomogeneità del materiale </div>
-            </div>
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={km_title}
+                formula={km_formula}
+                formulaVal={km_formulaVal}
+                value={km}
+                description={km_description}
+            />
             <hr />
         </div>
 

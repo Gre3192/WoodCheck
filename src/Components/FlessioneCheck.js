@@ -28,17 +28,72 @@ export default function FlessioneCheck(params) {
     const khy = 1289.6
     const khz = 1289.6
     const fmk = 1289.6
-
     const gm = getGamma('m0')
-    const km = getKm('rettangolare')
     const kmod = 0.7
+    const shape = 'rettangolare'
 
 
-    const { sig_myd, sig_myd_title, sig_myd_formula, sig_myd_formulaVal, sig_myd_description } = get_sig_myd(Med_y, Wel_y)
-    const { sig_mzd, sig_mzd_title, sig_mzd_formula, sig_mzd_formulaVal, sig_mzd_description } = get_sig_mzd(Med_z, Wel_z)
-    const { f_myd, f_myd_title, f_myd_formula, f_myd_formulaVal, f_myd_description } = get_f_myd(khy, kmod, fmk, gm)
-    const { f_mzd, f_mzd_title, f_mzd_formula, f_mzd_formulaVal, f_mzd_description } = get_f_mzd(khz, kmod, fmk, gm)
-    const { check_z, check_z_title, check_z_formulaVal, check_y, check_y_title, check_y_formulaVal } = get_flessioneCheck(sig_myd, sig_mzd, f_myd, f_mzd, km)
+    const {
+
+        km,
+        km_title,
+        km_formula,
+        km_formulaVal,
+        km_description,
+
+    } = getKm(shape)
+
+    const {
+
+        sig_myd,
+        sig_myd_title,
+        sig_myd_formula,
+        sig_myd_formulaVal,
+        sig_myd_description
+
+    } = get_sig_myd(Med_y, Wel_y)
+
+    const {
+
+        sig_mzd,
+        sig_mzd_title,
+        sig_mzd_formula,
+        sig_mzd_formulaVal,
+        sig_mzd_description
+
+    } = get_sig_mzd(Med_z, Wel_z)
+
+    const {
+
+        f_myd,
+        f_myd_title,
+        f_myd_formula,
+        f_myd_formulaVal,
+        f_myd_description
+
+    } = get_f_myd(khy, kmod, fmk, gm)
+
+    const {
+
+        f_mzd,
+        f_mzd_title,
+        f_mzd_formula,
+        f_mzd_formulaVal,
+        f_mzd_description
+
+    } = get_f_mzd(khz, kmod, fmk, gm)
+
+    const {
+
+        check_z,
+        check_z_title,
+        check_z_formulaVal,
+
+        check_y,
+        check_y_title,
+        check_y_formulaVal
+
+    } = get_flessioneCheck(sig_myd, sig_mzd, f_myd, f_mzd, km)
 
     // -------------------------------------------------------------------------------
     const title = 'Verifica a Flessione [NTC18 - \u00A74.4.8.1.6]'
@@ -77,7 +132,14 @@ export default function FlessioneCheck(params) {
                 description={f_mzd_description}
             />
             <hr />
-
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={km_title}
+                formula={km_formula}
+                formulaVal={km_formulaVal}
+                value={km}
+                description={km_description}
+            />
+            <hr />
         </div>
 
     const finalContent =

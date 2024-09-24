@@ -11,6 +11,8 @@ import get_sig_m_crit from "../Utils/get_sig_m_crit";
 import get_kcrit_m from "../Utils/get_kcrit_m";
 import getMcrit from "../Utils/getMcrit";
 import { useState } from "react";
+import getKm from "../Utils/getKm";
+
 
 export default function InstabilitaLateroTorsionaleCheck(params) {
 
@@ -35,21 +37,63 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const Ig_z = 45646
     const Ig_y = 45646
     const Ig_tor = 45646
-
     const kmod = 0.3
     const khy = 0.18
     const khz = 0.16
-    const km = 0.7
-
+    const shape = 'rettangolare'
     const gm = getGamma('m0')
     const leff = 2.6
 
 
 
-    const { sig_myd, sig_myd_title, sig_myd_formula, sig_myd_formulaVal, sig_myd_description } = get_sig_myd(Med_y, Wel_y)
-    const { sig_mzd, sig_mzd_title, sig_mzd_formula, sig_mzd_formulaVal, sig_mzd_description } = get_sig_mzd(Med_z, Wel_z)
-    const { f_myd, f_myd_title, f_myd_formula, f_myd_formulaVal, f_myd_description } = get_f_myd(khy, kmod, fmk, gm)
-    const { f_mzd, f_mzd_title, f_mzd_formula, f_mzd_formulaVal, f_mzd_description } = get_f_mzd(khz, kmod, fmk, gm)
+    const {
+
+        km,
+        km_title,
+        km_formula,
+        km_formulaVal,
+        km_description,
+
+    } = getKm(shape)
+
+    const {
+
+        sig_myd,
+        sig_myd_title,
+        sig_myd_formula,
+        sig_myd_formulaVal,
+        sig_myd_description
+
+    } = get_sig_myd(Med_y, Wel_y)
+
+    const {
+
+        sig_mzd,
+        sig_mzd_title,
+        sig_mzd_formula,
+        sig_mzd_formulaVal,
+        sig_mzd_description
+
+    } = get_sig_mzd(Med_z, Wel_z)
+
+    const {
+        f_myd,
+        f_myd_title,
+        f_myd_formula,
+        f_myd_formulaVal,
+        f_myd_description
+
+    } = get_f_myd(khy, kmod, fmk, gm)
+
+    const {
+
+        f_mzd,
+        f_mzd_title,
+        f_mzd_formula,
+        f_mzd_formulaVal,
+        f_mzd_description
+
+    } = get_f_mzd(khz, kmod, fmk, gm)
 
     const {
 
@@ -244,6 +288,14 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 formulaVal={kcrit_m_z_formulaVal}
                 value={kcrit_m_z}
                 description={kcrit_m_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={km_title}
+                formula={km_formula}
+                formulaVal={km_formulaVal}
+                value={km}
+                description={km_description}
             />
             <hr />
         </div>
