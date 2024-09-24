@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import { get_tau_d } from "../Utils/getTensioni"
@@ -22,7 +22,8 @@ export default function TaglioCheck(params) {
 
     const shape = 'rettangolare'
     const Atot = 26
-    const gm = getGamma('m0')
+    const woodType='lamellare'
+    const gm = get_gammaM(woodType)
     const kmod = 0.7
     const fvk = 9
 

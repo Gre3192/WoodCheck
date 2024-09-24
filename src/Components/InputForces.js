@@ -27,8 +27,6 @@ export default function InputForces() {
     { titleInputBox: 'M_{Ed,tor}', name: 'Med_tor', isLatexTitle: true }
   ];
 
-  console.log(forces)
-
   return (
     <div className="p-5 items-center">
       <h2 className="text-lg font-bold mb-4">Azioni agenti sulla sezione</h2>
@@ -49,7 +47,7 @@ export default function InputForces() {
         ))}
       </form>
 
-      <div className='flex justify-center mt-10'>
+      <div className='flex justify-center mt-5'>
         <ActionSectionDraw
           shape={'rettangolare'}
           Ned={forces.Ned}

@@ -1,5 +1,5 @@
 import Latex from "react-latex-next";
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
@@ -21,11 +21,17 @@ export default function Trazione90Check(params) {
 
     const Atot = 26
     const Aeff = 1289.6
-    const gm0 = getGamma('m0')
-
+    const woodType = 'lamellare'
+    
     const NcRd = 161
     const check = Ned / NcRd
+    
 
+
+
+    const gm0 = get_gammaM(woodType)
+
+    
     const title = 'Verifica a Trazione perpendicolare alla fibratura [NTC18 -\u00A74.4.8.1.2]'
 
     const centralContent =

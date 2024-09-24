@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
@@ -29,9 +29,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const fmk = 45646
     const E005 = 2.6
     const G005 = 2.6
-
     const Atot = 26
-    const Aeff = 1289.6
     const Wel_y = 45646
     const Wel_z = 45646
     const Ig_z = 45646
@@ -40,11 +38,19 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const kmod = 0.3
     const khy = 0.18
     const khz = 0.16
+    const woodType='lamellare'
     const shape = 'rettangolare'
-    const gm = getGamma('m0')
     const leff = 2.6
+    
 
 
+
+
+
+    
+
+    
+    const gm = get_gammaM(woodType)
 
     const {
 

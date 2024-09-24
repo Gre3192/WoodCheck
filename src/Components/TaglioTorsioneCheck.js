@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
@@ -20,22 +20,70 @@ export default function TaglioTorsioneCheck(params) {
     const Ved_z = rawVed_z && rawVed_z != 0 ? Math.abs(rawVed_z) : 0
     const isDisabled = (Ved_y == 0 && Ved_z == 0) || Med_tor == 0 ? true : false
 
-
+    
     const Atot = 26
     const Aeff = 1289.6
-    const gm = getGamma('m0')
-    const shape = 'rettangolare'
+    const shape = 'circolare'
     const kmod = 465
     const fvk = 9
     const Itor = 98798
     const b = 453
+    const woodType = 'lamellare'
+    
+    
+    
+    
+    
+    
+    const gm = get_gammaM(woodType)
 
+    const {
 
-    const { tau_tord, tau_tord_title, tau_tord_formula, tau_tord_formulaVal, tau_tord_description } = get_tau_tord(Med_tor, b, Itor)
-    const { tau_d, tau_d_title, tau_d_formula, tau_d_formulaVal, tau_d_description } = get_tau_d(shape, Ved_y, Ved_z, Atot)
-    const { fvd, fvd_title, fvd_formula, fvd_formulaVal, fvd_description } = get_fvd(kmod, fvk, gm)
-    const { ksh, ksh_title, ksh_formula, ksh_formulaVal, ksh_description } = getKsh('circolare')
-    const { check, check_title, check_formulaVal } = get_TaglioTorsioneCheck(tau_tord, tau_d, fvd, ksh)
+        tau_tord,
+        tau_tord_title,
+        tau_tord_formula,
+        tau_tord_formulaVal,
+        tau_tord_description
+
+    } = get_tau_tord(Med_tor, b, Itor)
+
+    const {
+
+        tau_d,
+        tau_d_title,
+        tau_d_formula,
+        tau_d_formulaVal,
+        tau_d_description
+
+    } = get_tau_d(shape, Ved_y, Ved_z, Atot)
+
+    const {
+
+        fvd,
+        fvd_title,
+        fvd_formula,
+        fvd_formulaVal,
+        fvd_description
+
+    } = get_fvd(kmod, fvk, gm)
+
+    const {
+
+        ksh,
+        ksh_title,
+        ksh_formula,
+        ksh_formulaVal,
+        ksh_description
+
+    } = getKsh(shape)
+
+    const {
+
+        check,
+        check_title,
+        check_formulaVal
+
+    } = get_TaglioTorsioneCheck(tau_tord, tau_d, fvd, ksh)
 
 
     const title = 'Verifica a Taglio e Torsione [NTC18 - \u00A74.4.8.1.11]'

@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
@@ -28,10 +28,17 @@ export default function FlessioneCheck(params) {
     const khy = 1289.6
     const khz = 1289.6
     const fmk = 1289.6
-    const gm = getGamma('m0')
+    const woodType = 'lamellare'
     const kmod = 0.7
     const shape = 'rettangolare'
 
+
+
+
+
+
+
+    const gm = get_gammaM(woodType)
 
     const {
 

@@ -1,5 +1,5 @@
 import Latex from "react-latex-next";
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import getCheckSymbol from "../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
@@ -29,15 +29,20 @@ export default function PressoFlessioneCheck(params) {
     const Atot = 26
     const Wel_y = 1561
     const Wel_z = 1561
-    const gm = getGamma('m0')
     const kmod = 27527
     const khy = 3423
     const khz = 234234
     const fmk = 5464
     const fc0k = 64
     const shape = 'rettangolare'
+    const woodType = 'lamellare'
+    
+    
 
 
+
+    
+    const gm = get_gammaM(woodType)
 
     const {
 

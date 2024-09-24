@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
@@ -43,8 +43,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const Ig_tor = 45646
     const leff = 45646
     const L = 45646
-    const gm = getGamma('m0')
-    const woodType = 'lamellare'
+    const woodType='lamellare'
     const beta_y = 0.7
     const beta_z = 0.2
     const E005 = 0.7
@@ -52,7 +51,13 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const shape = 'rettangolare'
     const khy = 45646
     const khz = 45646
+    
 
+
+
+
+
+    const gm = get_gammaM(woodType)
 
     const {
 

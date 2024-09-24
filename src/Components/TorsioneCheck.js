@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
@@ -21,16 +21,59 @@ export default function TorsioneCheck(params) {
     const kmod = 0.7
     const Atot = 26
     const Aeff = 1289.6
-    const gm = getGamma('m0')
     const fvk = 9
     const Itor = 98798
     const b = 453
+    const woodType = 'lamellare'
 
 
-    const { ksh, ksh_title, ksh_formula, ksh_formulaVal, ksh_description } = getKsh('circolare')
-    const { tau_tord, tau_tord_title, tau_tord_formula, tau_tord_formulaVal, tau_tord_description } = get_tau_tord(Med_tor, b, Itor)
-    const { fvd, fvd_title, fvd_formula, fvd_formulaVal, fvd_description } = get_fvd(kmod, fvk, gm)
-    const { check, check_title, check_formulaVal } = get_TorsioneCheck(tau_tord, fvd, ksh)
+
+
+
+    
+
+
+    const gm = get_gammaM(woodType)
+
+    const {
+
+        ksh,
+        ksh_title,
+        ksh_formula,
+        ksh_formulaVal,
+        ksh_description
+
+    } = getKsh('circolare')
+
+    const {
+
+        tau_tord,
+        tau_tord_title,
+        tau_tord_formula,
+        tau_tord_formulaVal,
+        tau_tord_description
+
+    } = get_tau_tord(Med_tor, b, Itor)
+
+    const {
+
+        fvd,
+        fvd_title,
+        fvd_formula,
+        fvd_formulaVal,
+        fvd_description
+
+    } = get_fvd(kmod, fvk, gm)
+
+    const {
+
+        check,
+        check_title,
+        check_formulaVal
+
+    } = get_TorsioneCheck(tau_tord, fvd, ksh)
+
+
 
     const title = 'Verifica a Torsione [NTC18 - \u00A74.4.8.1.10]'
 

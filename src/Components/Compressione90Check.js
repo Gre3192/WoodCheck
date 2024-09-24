@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
@@ -18,18 +18,47 @@ export default function Compressione90Check(params) {
     const Ned = rawNed > 0 ? rawNed : 0
     const isDisabled = Ned <= 0 ? true : false
 
-    
+
     const Atot = 26
     const Aeff = 1289.6
     const kmod = 27527
     const fc90k = 45646
-    const gm = getGamma('m0')
+    const woodType = 'lamellare'
 
 
-    const { sig_c90d, sig_c90d_title, sig_c90d_formula, sig_c90d_formulaVal, sig_c90d_description } = get_sig_c90d(Ned, Atot)
-    const { f_c90d, f_c90d_title, f_c90d_formula, f_c90d_formulaVal, f_c90d_description } = get_f_c90d(kmod, fc90k, gm)
 
-    const { check, check_title, check_formulaVal } = get_Compressione90Check(sig_c90d, f_c90d)
+
+
+
+    const gm = get_gammaM(woodType)
+
+    const {
+
+        sig_c90d,
+        sig_c90d_title,
+        sig_c90d_formula,
+        sig_c90d_formulaVal,
+        sig_c90d_description
+
+    } = get_sig_c90d(Ned, Atot)
+
+    const {
+
+        f_c90d,
+        f_c90d_title,
+        f_c90d_formula,
+        f_c90d_formulaVal,
+        f_c90d_description
+
+    } = get_f_c90d(kmod, fc90k, gm)
+
+    const {
+
+        check,
+        check_title,
+        check_formulaVal
+
+    } = get_Compressione90Check(sig_c90d, f_c90d)
 
 
     const title = 'Verifica a Compressione perpendicolare alla fibratura [NTC18 - \u00A74.4.8.1.4]'

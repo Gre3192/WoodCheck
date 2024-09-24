@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import customDecimal from "../Utils/customDecimal";
@@ -34,11 +34,15 @@ export default function InstabilitaCompressioneCheck(params) {
     const E005 = 45646
     const Ig_y = 45646
     const Ig_z = 45646
-    const gm = getGamma('m0')
     const woodType = 'lamellare'
+    
+    
 
 
 
+    
+    
+    const gm = get_gammaM(woodType)
 
     const {
 

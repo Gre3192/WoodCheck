@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
@@ -27,17 +27,59 @@ export default function CompressioneAlphaCheck(params) {
     const fc0k = 45646
     const fc90k = 45646
     const alpha = 45
-    const gm = getGamma('m0')
+    const woodType = 'lamellare'
 
 
 
-    
-    const { sig_cAlphad, sig_cAlphad_title, sig_cAlphad_formula, sig_cAlphad_formulaVal, sig_cAlphad_description } = get_sig_cAlphad(Ned, Atot)
-    const { f_c0d, f_c0d_title, f_c0d_formula, f_c0d_formulaVal, f_c0d_description } = get_f_c0d(kmod, fc0k, gm)
-    const { f_c90d, f_c90d_title, f_c90d_formula, f_c90d_formulaVal, f_c90d_description } = get_f_c90d(kmod, fc90k, gm)
-    const { f_cAlphad, f_cAlphad_title, f_cAlphad_formula, f_cAlphad_formulaVal, f_cAlphad_description } = get_f_cAlphad(f_c0d, f_c90d, alpha)
+    const gm = get_gammaM(woodType)
 
-    const { check, check_title, check_formulaVal } = get_CompressioneAlphaCheck(sig_cAlphad, f_cAlphad)
+    const {
+
+        sig_cAlphad,
+        sig_cAlphad_title,
+        sig_cAlphad_formula,
+        sig_cAlphad_formulaVal,
+        sig_cAlphad_description
+
+    } = get_sig_cAlphad(Ned, Atot)
+
+    const {
+
+        f_c0d,
+        f_c0d_title,
+        f_c0d_formula,
+        f_c0d_formulaVal,
+        f_c0d_description
+
+    } = get_f_c0d(kmod, fc0k, gm)
+
+    const {
+
+        f_c90d,
+        f_c90d_title,
+        f_c90d_formula,
+        f_c90d_formulaVal,
+        f_c90d_description
+
+    } = get_f_c90d(kmod, fc90k, gm)
+
+    const {
+
+        f_cAlphad,
+        f_cAlphad_title,
+        f_cAlphad_formula,
+        f_cAlphad_formulaVal,
+        f_cAlphad_description
+
+    } = get_f_cAlphad(f_c0d, f_c90d, alpha)
+
+    const {
+
+        check,
+        check_title,
+        check_formulaVal
+
+    } = get_CompressioneAlphaCheck(sig_cAlphad, f_cAlphad)
 
 
 

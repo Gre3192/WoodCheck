@@ -1,5 +1,5 @@
 import Latex from "react-latex-next";
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
@@ -25,7 +25,6 @@ export default function TensoFlessioneCheck(params) {
 
     const Atot = 26
     const Aeff = 1289.6
-    const gm = getGamma('m0')
     const Wel_y = 543
     const Wel_z = 543
     const kmod = 564
@@ -34,7 +33,15 @@ export default function TensoFlessioneCheck(params) {
     const khy = 564
     const khz = 564
     const shape='rettangolare'
+    const woodType = 'lamellare'
+    
 
+
+
+
+
+    
+    const gm = get_gammaM(woodType)
 
     const {
 

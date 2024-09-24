@@ -1,4 +1,4 @@
-import getGamma from "../Utils/getGamma";
+import get_gammaM from "../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../Atom/forcesStateAtom";
 import CheckCard from "./CheckCard";
@@ -24,13 +24,43 @@ export default function Compressione0Check(params) {
     const Aeff = 1289.6
     const kmod = 27527
     const fc0k = 45646
-    const gm = getGamma('m0')
+    const woodType = 'lamellare'
 
-    const { sig_c0d, sig_c0d_title, sig_c0d_formula, sig_c0d_formulaVal, sig_c0d_description } = get_sig_c0d(Ned, Atot)
-    const { f_c0d, f_c0d_title, f_c0d_formula, f_c0d_formulaVal, f_c0d_description } = get_f_c0d(kmod, fc0k, gm)
 
-    const { check, check_title, check_formulaVal } = get_Compressione0Check(sig_c0d, f_c0d)
 
+
+
+
+    
+    const gm = get_gammaM(woodType)
+
+    const {
+
+        sig_c0d,
+        sig_c0d_title,
+        sig_c0d_formula,
+        sig_c0d_formulaVal,
+        sig_c0d_description
+
+    } = get_sig_c0d(Ned, Atot)
+
+    const {
+
+        f_c0d,
+        f_c0d_title,
+        f_c0d_formula,
+        f_c0d_formulaVal,
+        f_c0d_description
+
+    } = get_f_c0d(kmod, fc0k, gm)
+
+    const {
+
+        check,
+        check_title,
+        check_formulaVal
+
+    } = get_Compressione0Check(sig_c0d, f_c0d)
 
 
     const title = 'Verifica a Compressione parallela alla fibratura [NTC18 - \u00A74.4.8.1.3]'
