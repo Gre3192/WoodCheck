@@ -16,6 +16,7 @@ import get_kmod from "../../Utils/get_kmod";
 import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
+import get_kh from "../../Utils/get_kh";
 
 
 
@@ -46,11 +47,11 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const Ig_tor = geometryMass?.value.Ig_tor
     const shape = sectionGeometry?.shape
     const woodType = mecchanicProps?.woodType
+    const b = sectionGeometry?.b
+    const h = sectionGeometry?.h
 
 
 
-    const khy = 0.18
-    const khz = 0.16
     const leff = 2.6
     const serviceClass = 1
     const classLoad = 'permanente'
@@ -61,6 +62,22 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
+
+    const {
+
+        kh_y,
+        kh_y_title,
+        kh_y_formula,
+        kh_y_formulaVal,
+        kh_y_description,
+
+        kh_z,
+        kh_z_title,
+        kh_z_formula,
+        kh_z_formulaVal,
+        kh_z_description
+
+    } = get_kh(h, b, shape, woodType)
 
     const {
 
@@ -99,7 +116,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
         f_myd_formulaVal,
         f_myd_description
 
-    } = get_f_myd(khy, kmod, fmk, gm)
+    } = get_f_myd(kh_y, kmod, fmk, gm)
 
     const {
 
@@ -109,7 +126,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
         f_mzd_formulaVal,
         f_mzd_description
 
-    } = get_f_mzd(khz, kmod, fmk, gm)
+    } = get_f_mzd(kh_z, kmod, fmk, gm)
 
     const {
 

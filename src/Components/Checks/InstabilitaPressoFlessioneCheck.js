@@ -22,6 +22,7 @@ import get_km from "../../Utils/get_km";
 import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
+import get_kh from "../../Utils/get_kh";
 
 
 export default function InstabilitaPressoFlessioneCheck(params) {
@@ -52,15 +53,14 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const G_05 = mecchanicProps?.G_05
     const shape = sectionGeometry?.shape
     const woodType = mecchanicProps?.woodType
-
+    const b = sectionGeometry?.b
+    const h = sectionGeometry?.h
 
 
     const leff = 45646
     const L = 45646
     const beta_y = 0.7
     const beta_z = 0.2
-    const khy = 45646
-    const khz = 45646
     const serviceClass = 1
     const classLoad = 'permanente'
 
@@ -68,6 +68,22 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
+
+    const {
+
+        kh_y,
+        kh_y_title,
+        kh_y_formula,
+        kh_y_formulaVal,
+        kh_y_description,
+
+        kh_z,
+        kh_z_title,
+        kh_z_formula,
+        kh_z_formulaVal,
+        kh_z_description
+
+    } = get_kh(h, b, shape, woodType)
 
     const {
 
@@ -127,7 +143,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
         f_myd_formulaVal,
         f_myd_description
 
-    } = get_f_myd(khy, kmod, fmk, gm)
+    } = get_f_myd(kh_y, kmod, fmk, gm)
 
     const {
 
@@ -137,7 +153,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
         f_mzd_formulaVal,
         f_mzd_description
 
-    } = get_f_mzd(khz, kmod, fmk, gm)
+    } = get_f_mzd(kh_z, kmod, fmk, gm)
 
     const {
 
