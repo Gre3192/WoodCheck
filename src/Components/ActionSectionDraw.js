@@ -2,14 +2,17 @@
 
 
 
-export default function ActionSectionDraw({ Ned, Ved_y, Ved_z, Med_y, Med_z, Med_tor }) {
+export default function ActionSectionDraw({ shape = 'rettangolare', Ned, Ved_y, Ved_z, Med_y, Med_z, Med_tor }) {
 
     return (
 
-        <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+        <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
 
-            <g transform={`translate(100, 50)`}>
-                <rect x="0" y="0" width="200" height="300" fill="#EAD9C8" stroke="black" stroke-width="2" />
+            <g transform={`translate(300, 50)`}>
+
+                {shape?.toLowerCase() === 'rettangolare' ? <rect x="0" y="0" width="200" height="300" fill="#EAD9C8" stroke="black" stroke-width="2" />
+                    : <circle cx="100" cy="150" r="100" fill="#EAD9C8" stroke="black" stroke-width="2" />
+                }
 
                 {/* Mtor Orario */}
                 {
@@ -110,6 +113,27 @@ export default function ActionSectionDraw({ Ned, Ved_y, Ved_z, Med_y, Med_z, Med
                         : null
                 }
             </g>
+
+            <g transform={`translate(-30, 225) scale(0.5)`}>
+                {/* Asse Y (orizzontale)  */}
+                <line x1="150" y1="150" x2="250" y2="150" stroke="black" stroke-width="2" />
+                <polygon points="250,150 240,145 240,155" fill="black" />
+                <text x="255" y="155" font-family="Arial" font-size="25" fill="black">Y</text>
+                {/* Asse Z (verticale) */}
+                <line x1="150" y1="150" x2="150" y2="50" stroke="black" stroke-width="2" />
+                <polygon points="150,50 145,60 155,60" fill="black" />
+                <text x="155" y="45" font-family="Arial" font-size="25" fill="black">Z</text>
+                {/* Asse X (diagonale) */}
+                <g transform={`translate(0, 0) rotate(210,150,150)`}>
+                    <line x1="150" y1="150" x2="150" y2="50" stroke="black" stroke-width="2" />
+                    <polygon points="150,50 145,60 155,60" fill="black" />
+                </g>
+                <text x="80" y="260" font-family="Arial" font-size="25" fill="black">X</text>
+                {/* Punto di origine  */}
+                <circle cx="150" cy="150" r="3" fill="black" />
+            </g>
+
+
         </svg >
     )
 }

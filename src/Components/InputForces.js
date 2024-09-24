@@ -51,6 +51,7 @@ export default function InputForces() {
 
       <div className='flex justify-center mt-10'>
         <ActionSectionDraw
+          shape={'rettangolare'}
           Ned={forces.Ned}
           Ved_y={forces.Ved_y}
           Ved_z={forces.Ved_z}
