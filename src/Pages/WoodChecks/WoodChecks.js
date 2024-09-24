@@ -32,7 +32,6 @@ export default function WoodChecks(params) {
         </div> */}
 
         <div className="h-[92vh] overflow-y-scroll">
-            <SectionSelector/>
             <InputForces />
             <div className="px-5">
                 <h1 className="text-lg font-bold" >
