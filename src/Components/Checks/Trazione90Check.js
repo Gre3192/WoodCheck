@@ -48,10 +48,6 @@ export default function Trazione90Check(params) {
         <div className="flex flex-col gap-4">
 
            
-                <div className="flex justify-between items-center">
-                    <Latex>{`$N_{c,Rd} = \\dfrac{A_{tot}\\cdot f_{yk}}{\\gamma_{M0}} = \\dfrac{${Atot}\\cdot ${fyk}}{${gm0}} = ${NcRd}$`}</Latex>
-                    <div>Resistenza a Compressione  per sezioni in Classe 1, 2 e 3</div>
-                </div>
         
         </div>
 
