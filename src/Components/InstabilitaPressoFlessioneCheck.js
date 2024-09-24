@@ -43,14 +43,14 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const Ig_tor = 45646
     const leff = 45646
     const L = 45646
-    const woodType='lamellare'
     const beta_y = 0.7
     const beta_z = 0.2
     const E005 = 0.7
     const G005 = 0.7
-    const shape = 'rettangolare'
     const khy = 45646
     const khz = 45646
+    const shape = 'rettangolare'
+    const woodType='lamellare'
     
 
 

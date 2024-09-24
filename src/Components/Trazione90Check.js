@@ -20,11 +20,10 @@ export default function Trazione90Check(params) {
 
 
     const Atot = 26
-    const Aeff = 1289.6
-    const woodType = 'lamellare'
-    
+    const Aeff = 1289
     const NcRd = 161
     const check = Ned / NcRd
+    const woodType = 'lamellare'
     
 
 

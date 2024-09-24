@@ -21,16 +21,15 @@ export default function FlessioneCheck(params) {
     const isDisabled = Med_y == 0 && Med_z == 0 ? true : false
 
 
-    const Atot = 26
-    const Aeff = 1289.6
+
     const Wel_y = 1289.6
     const Wel_z = 1289.6
     const khy = 1289.6
     const khz = 1289.6
     const fmk = 1289.6
-    const woodType = 'lamellare'
     const kmod = 0.7
     const shape = 'rettangolare'
+    const woodType = 'lamellare'
 
 
 
@@ -102,7 +101,6 @@ export default function FlessioneCheck(params) {
 
     } = get_flessioneCheck(sig_myd, sig_mzd, f_myd, f_mzd, km)
 
-    // -------------------------------------------------------------------------------
     const title = 'Verifica a Flessione [NTC18 - \u00A74.4.8.1.6]'
 
     const centralContent =

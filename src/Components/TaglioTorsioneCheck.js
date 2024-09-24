@@ -20,21 +20,21 @@ export default function TaglioTorsioneCheck(params) {
     const Ved_z = rawVed_z && rawVed_z != 0 ? Math.abs(rawVed_z) : 0
     const isDisabled = (Ved_y == 0 && Ved_z == 0) || Med_tor == 0 ? true : false
 
-    
+
     const Atot = 26
     const Aeff = 1289.6
-    const shape = 'circolare'
     const kmod = 465
     const fvk = 9
     const Itor = 98798
     const b = 453
     const woodType = 'lamellare'
-    
-    
-    
-    
-    
-    
+    const shape = 'circolare'
+
+
+
+
+
+
     const gm = get_gammaM(woodType)
 
     const {

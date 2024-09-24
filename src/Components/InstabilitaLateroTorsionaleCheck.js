@@ -38,18 +38,18 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const kmod = 0.3
     const khy = 0.18
     const khz = 0.16
-    const woodType='lamellare'
-    const shape = 'rettangolare'
     const leff = 2.6
-    
+    const shape = 'rettangolare'
+    const woodType = 'lamellare'
 
 
 
 
 
-    
 
-    
+
+
+
     const gm = get_gammaM(woodType)
 
     const {
