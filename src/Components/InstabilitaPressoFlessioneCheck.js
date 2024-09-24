@@ -335,11 +335,195 @@ export default function InstabilitaPressoFlessioneCheck(params) {
             />
             <hr />
             <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={sig_myd_title}
+                formula={sig_myd_formula}
+                formulaVal={sig_myd_formulaVal}
+                value={sig_myd}
+                description={sig_myd_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={sig_mzd_title}
+                formula={sig_mzd_formula}
+                formulaVal={sig_mzd_formulaVal}
+                value={sig_mzd}
+                description={sig_mzd_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={f_c0d_title}
                 formula={f_c0d_formula}
                 formulaVal={f_c0d_formulaVal}
                 value={f_c0d}
                 description={f_c0d_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={f_myd_title}
+                formula={f_myd_formula}
+                formulaVal={f_myd_formulaVal}
+                value={f_myd}
+                description={f_myd_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={f_mzd_title}
+                formula={f_mzd_formula}
+                formulaVal={f_mzd_formulaVal}
+                value={f_mzd}
+                description={f_mzd_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={Mcrit_y_title}
+                formula={Mcrit_y_formula}
+                formulaVal={Mcrit_y_formulaVal}
+                value={Mcrit_y}
+                description={Mcrit_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={Mcrit_z_title}
+                formula={Mcrit_z_formula}
+                formulaVal={Mcrit_z_formulaVal}
+                value={Mcrit_z}
+                description={Mcrit_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={sigma_m_crit_y_title}
+                formula={sigma_m_crit_y_formula}
+                formulaVal={sigma_m_crit_y_formulaVal}
+                value={sigma_m_crit_y}
+                description={sigma_m_crit_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={sigma_m_crit_z_title}
+                formula={sigma_m_crit_z_formula}
+                formulaVal={sigma_m_crit_z_formulaVal}
+                value={sigma_m_crit_z}
+                description={sigma_m_crit_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={lambda_rel_m_y_title}
+                formula={lambda_rel_m_y_formula}
+                formulaVal={lambda_rel_m_y_formulaVal}
+                value={lambda_rel_m_y}
+                description={lambda_rel_m_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={lambda_rel_m_z_title}
+                formula={lambda_rel_m_z_formula}
+                formulaVal={lambda_rel_m_z_formulaVal}
+                value={lambda_rel_m_z}
+                description={lambda_rel_m_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={kcrit_m_y_title}
+                formula={kcrit_m_y_formula}
+                formulaVal={kcrit_m_y_formulaVal}
+                value={kcrit_m_y}
+                description={kcrit_m_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={kcrit_m_z_title}
+                formula={kcrit_m_z_formula}
+                formulaVal={kcrit_m_z_formulaVal}
+                value={kcrit_m_z}
+                description={kcrit_m_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={Ncr_y_title}
+                formula={Ncr_y_formula}
+                formulaVal={Ncr_y_formulaVal}
+                value={Ncr_y}
+                description={Ncr_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={Ncr_z_title}
+                formula={Ncr_z_formula}
+                formulaVal={Ncr_z_formulaVal}
+                value={Ncr_z}
+                description={Ncr_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={lambda_c_y_title}
+                formula={lambda_c_y_formula}
+                formulaVal={lambda_c_y_formulaVal}
+                value={lambda_c_y}
+                description={lambda_c_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={lambda_c_z_title}
+                formula={lambda_c_z_formula}
+                formulaVal={lambda_c_z_formulaVal}
+                value={lambda_c_z}
+                description={lambda_c_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={lambda_rel_c_y_title}
+                formula={lambda_rel_c_y_formula}
+                formulaVal={lambda_rel_c_y_formulaVal}
+                value={lambda_rel_c_y}
+                description={lambda_rel_c_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={lambda_rel_c_z_title}
+                formula={lambda_rel_c_z_formula}
+                formulaVal={lambda_rel_c_z_formulaVal}
+                value={lambda_rel_c_z}
+                description={lambda_rel_c_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={beta_c_title}
+                formula={beta_c_formula}
+                formulaVal={beta_c_formulaVal}
+                value={beta_c}
+                description={beta_c_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={k_y_title}
+                formula={k_y_formula}
+                formulaVal={k_y_formulaVal}
+                value={k_y}
+                description={k_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={k_z_title}
+                formula={k_z_formula}
+                formulaVal={k_z_formulaVal}
+                value={k_z}
+                description={k_z_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={kcrit_c_y_title}
+                formula={kcrit_c_y_formula}
+                formulaVal={kcrit_c_y_formulaVal}
+                value={kcrit_c_y}
+                description={kcrit_c_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={kcrit_c_z_title}
+                formula={kcrit_c_z_formula}
+                formulaVal={kcrit_c_z_formulaVal}
+                value={kcrit_c_z}
+                description={kcrit_c_z_description}
             />
             <hr />
         </div>
