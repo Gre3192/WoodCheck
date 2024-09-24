@@ -4,16 +4,20 @@ import { Link } from "react-router-dom";
 
 export const sidebarItem = [
   {
-      name: "Progetto",
-      link: "/project"
+    name: "Progetto",
+    link: "/project"
   },
   {
-      name: "Verifiche",
-      link: "/checks"
+    name: "Verifiche",
+    link: "/checks"
   },
   {
-      name: "Collegamenti",
-      link: "/joins"
+    name: "Travi speciali",
+    link: "/specialBeams"
+  },
+  {
+    name: "Collegamenti",
+    link: "/joins"
   },
 ]
 

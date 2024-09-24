@@ -6,7 +6,7 @@ import 'katex/dist/katex.min.css';
 import Layout from './Layout/Layout';
 import WoodProject from './Pages/WoodProject/WoodProject';
 import WoodJoin from './Pages/WoodJoin/WoodJoin';
-
+import WoodSpecialBeams from './Pages/WoodSpecialBeams/WoodSpecialBeams';
 
 function App() {
 
@@ -23,8 +23,9 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/checks" element={<WoodChecks />} />
           <Route path="/project" element={<WoodProject />} />
+          <Route path="/checks" element={<WoodChecks />} />
+          <Route path="/specialBeams" element={<WoodSpecialBeams />} />
           <Route path="/joins" element={<WoodJoin />} />
         </Route>
       </Routes>

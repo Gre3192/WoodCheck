@@ -2,7 +2,7 @@ const kdefData = {
     "Legno massiccio": {
       riferimento: "UNI EN 14081-1",
       classiServizio: {
-        1: 0.60,
+        1: 0.60, 
         2: 0.80,
         3: 2.00
       }
@@ -68,23 +68,31 @@ const kdefData = {
     }
   };
   
-  const getKdef = (materiale, classeServizio) => {
-    
-    const materialData = kdefData[materiale];
-    
-    if (!materialData) {
-      throw new Error("Materiale non trovato.");
-    }
-    
-    const kdef = materialData.classiServizio[classeServizio];
-    
-    if (kdef === undefined) {
-      throw new Error("Classe di servizio non valida.");
-    }
-    
-    return kdef;
-  };
   
 
-  export default getKdef
+  export default function get_kdef(material = 'lamellare', serviceClass = 1) {
+
+    const materialFound = Object.keys(kdefData).find((key) =>
+      key.toLowerCase().includes(material.toLowerCase())
+    );
+
+    if (!materialFound) {
+      throw new Error("Materiale non trovato.");
+    }
+
+    const materialData = kdefData[materialFound];
+  
+    const serviceData = materialData.classiServizio[serviceClass];
+
+    if (!serviceData) {
+      throw new Error("Classe di servizio non valida.");
+    }
+  
+    const kdef = serviceData
+
+    console.log(kdef)
+
+    return kdef;
+  
+  };
   
