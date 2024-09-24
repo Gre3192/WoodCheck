@@ -24,8 +24,8 @@ export default function TorsioneCheck(params) {
     const fvk = 9
     const Itor = 98798
     const b = 453
+    const shape = 'circolare'
     const woodType = 'lamellare'
-
 
 
 
@@ -43,7 +43,7 @@ export default function TorsioneCheck(params) {
         ksh_formulaVal,
         ksh_description
 
-    } = getKsh('circolare')
+    } = getKsh(shape)
 
     const {
 

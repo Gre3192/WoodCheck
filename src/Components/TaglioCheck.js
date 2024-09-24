@@ -20,14 +20,20 @@ export default function TaglioCheck(params) {
     const isDisabled = Ved_y == 0 && Ved_z == 0 ? true : false
 
 
-    const shape = 'rettangolare'
     const Atot = 26
-    const woodType='lamellare'
-    const gm = get_gammaM(woodType)
     const kmod = 0.7
     const fvk = 9
+    const shape = 'rettangolare'
+    const woodType='lamellare'
+    
 
 
+
+
+
+
+    const gm = get_gammaM(woodType)
+    
     const {
 
         tau_d,
