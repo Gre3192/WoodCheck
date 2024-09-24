@@ -3,13 +3,13 @@ import { FaChevronDown } from "react-icons/fa";
 import { ReactComponent as FormulaIcon } from '../Assets/formulaIcon.svg';
 import { ReactComponent as FormulaValIcon } from '../Assets/formulaValcon.svg';
 
-export default function CheckCard({ props, isFormulaProps, isFormulaValProps}) {
+export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) {
   const { title = 'title', centralContent = 'centralContent', finalContent = 'finalContent', check = 0, isDisabled = false } = props;
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const { isFormulaSelected , setIsFormulaSelected } = isFormulaProps;
-  const { isFormulaValSelected , setIsFormulaValSelected  } = isFormulaValProps;
+  const { isFormulaSelected, setIsFormulaSelected } = isFormulaProps;
+  const { isFormulaValSelected, setIsFormulaValSelected } = isFormulaValProps;
 
   const cardRef = useRef(null);
 
@@ -45,7 +45,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps}) {
     <div className={`p-5 ${isDisabled ? 'text-gray-400' : null}`} ref={cardRef}>
       <div className="bg-white shadow-lg rounded-lg border border-gray-200 ">
         <div
-          className={`flex justify-between items-center cursor-pointer p-3 transition-colors duration-300 ease-in-out ${isOpen ? 'bg-gray-100' : 'hover:bg-gray-100'}`}
+          className={`flex justify-between items-center cursor-pointer p-3 transition-colors duration-300 ease-in-out ${isOpen ? 'bg-gray-200' : 'hover:bg-gray-200'}`}
           onClick={toggleCard}
         >
           <div className="flex items-center">
@@ -63,7 +63,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps}) {
             >
               <FormulaIcon width="20" height="20" className={`text-black ${isFormulaSelected ? 'fill-blue-700 ' : ''}`} />
             </button>
-            
+
             <button
               className={`border border-gray-300 rounded-lg p-3  transition duration-100 ${isFormulaValSelected ? 'bg-blue-100 hover:bg-blue-200' : 'bg-white hover:bg-gray-200'}`}
               onClick={handleFormulaValIconClick}
@@ -75,10 +75,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps}) {
         <hr />
 
         {/* Sezione centrale */}
-        <div
-          className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[4000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-            }`}
-        >
+        <div className={`transition-all duration-300 ease-in-out overflow-auto ${isOpen ? 'max-h-[50vh] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
           {isOpen && (
             <div>
               <div className="p-6">{centralContent}</div>
@@ -87,7 +84,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps}) {
         </div>
 
         {/* Sezione finale */}
-        <div className="flex p-6 justify-between items-center pt-5">
+        <div className={`flex p-6 justify-between items-center pt-5 ${isOpen ? 'bg-gray-100' : null}`}>
           {finalContent}
         </div>
       </div>
