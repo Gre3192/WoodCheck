@@ -10,6 +10,7 @@ export default function get_gammaM(woodType = 'lamellare', columnTableNTC = 'A')
         else if (woodType?.toLowerCase().includes('compensato')) return 1.40
         else if (woodType?.toLowerCase().includes('pannelli di scaglie')) return 1.40
         else if (woodType?.toLowerCase().includes('unioni')) return 1.50
+        else if (woodType?.toLowerCase().includes('eccezzionali')) return 1
     }
     else if (columnTableNTC?.toUpperCase() === 'B') {
         
@@ -20,6 +21,7 @@ export default function get_gammaM(woodType = 'lamellare', columnTableNTC = 'A')
         else if (woodType?.toLowerCase().includes('compensato')) return 1.30
         else if (woodType?.toLowerCase().includes('pannelli di scaglie')) return 1.30
         else if (woodType?.toLowerCase().includes('unioni')) return 1.40
+        else if (woodType?.toLowerCase().includes('eccezzionali')) return 1
     }
 
 }
