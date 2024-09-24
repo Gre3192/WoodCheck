@@ -39,7 +39,8 @@ export default function TensoFlessioneCheck(params) {
     const fc0k = mecchanicProps?.fc0k
     const shape = sectionGeometry?.shape
     const woodType = mecchanicProps?.woodType
-    
+    const b = sectionGeometry?.b
+    const h = sectionGeometry?.h
     
 
     const serviceClass = 1
