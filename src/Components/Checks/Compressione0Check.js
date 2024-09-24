@@ -1,5 +1,4 @@
 import get_gammaM from "../../Utils/get_gammaM";
-import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import StepBox from "../StepBox";
@@ -8,10 +7,16 @@ import { get_f_c0d } from "../../Utils/getResistenze";
 import { get_Compressione0Check } from "../../Utils/getChecks";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
+import { useRecoilValue } from 'recoil';
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 
 
 
 export default function Compressione0Check(params) {
+
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -22,11 +27,11 @@ export default function Compressione0Check(params) {
 
 
 
-    const Atot = 26
-    const fc0k = 45646
+    const Atot = geometryMass?.value.Atot
+    const fc0k = mecchanicProps?.fc0k
+    const woodType = mecchanicProps?.woodType
     const serviceClass = 1
     const classLoad = 'permanente'
-    const woodType = 'lamellare'
 
 
 

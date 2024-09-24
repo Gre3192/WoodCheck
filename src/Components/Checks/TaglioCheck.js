@@ -8,8 +8,17 @@ import CheckCard from "../CheckCard";
 import StepBox from "../StepBox";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
+
+
 
 export default function TaglioCheck(params) {
+
+    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -20,13 +29,14 @@ export default function TaglioCheck(params) {
     const isDisabled = Ved_y == 0 && Ved_z == 0 ? true : false
 
 
-    const Atot = 26
-    const fvk = 9
-    const serviceClass = 1
-    const shape = 'rettangolare'
+    const Atot = geometryMass?.value.Atot
+    const fvk = mecchanicProps?.fvk
+    const shape = sectionGeometry?.shape
+    const woodType = mecchanicProps?.woodType
+    
+    
     const classLoad = 'permanente'
-    const woodType = 'lamellare'
-
+    const serviceClass = 1
 
 
     const kmod = get_kmod(woodType, serviceClass, classLoad)

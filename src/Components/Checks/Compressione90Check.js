@@ -8,9 +8,14 @@ import { get_f_c90d } from "../../Utils/getResistenze";
 import { get_Compressione90Check } from "../../Utils/getChecks";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
-
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 
 export default function Compressione90Check(params) {
+
+    
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -20,12 +25,14 @@ export default function Compressione90Check(params) {
     const isDisabled = Ned <= 0 ? true : false
 
 
-    const Atot = 26
-    const Aeff = 1289.6
-    const fc90k = 45646
+
+    
+    const Atot = geometryMass?.value.Atot
+    const fc90k = mecchanicProps?.fc90k
+    const woodType = mecchanicProps?.woodType
+
     const serviceClass = 1
     const classLoad = 'permanente'
-    const woodType = 'lamellare'
 
 
 

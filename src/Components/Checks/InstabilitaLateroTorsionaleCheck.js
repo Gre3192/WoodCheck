@@ -13,9 +13,17 @@ import getMcrit from "../../Utils/getMcrit";
 import { useState } from "react";
 import get_km from "../../Utils/get_km";
 import get_kmod from "../../Utils/get_kmod";
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
+
 
 
 export default function InstabilitaLateroTorsionaleCheck(params) {
+
+    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -27,23 +35,25 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const isDisabled = Med_y == 0 && Med_z == 0 ? true : false
 
 
-    const fmk = 45646
-    const E0_05 = 2.6
-    const G005 = 2.6
-    const Atot = 26
-    const Wel_y = 45646
-    const Wel_z = 45646
-    const Ig_z = 45646
-    const Ig_y = 45646
-    const Ig_tor = 45646
+    const fmk = mecchanicProps?.fmk
+    const E0_05 = mecchanicProps?.E0_05
+    const G_05 = mecchanicProps?.G_05
+    const Atot = geometryMass?.value.Atot
+    const Wel_y = geometryMass?.value.Wel_y
+    const Wel_z = geometryMass?.value.Wel_z
+    const Ig_z = geometryMass?.value.Ig_z
+    const Ig_y = geometryMass?.value.Ig_y
+    const Ig_tor = geometryMass?.value.Ig_tor
+    const shape = sectionGeometry?.shape
+    const woodType = mecchanicProps?.woodType
+
+
 
     const khy = 0.18
     const khz = 0.16
     const leff = 2.6
-    const shape = 'rettangolare'
     const serviceClass = 1
     const classLoad = 'permanente'
-    const woodType = 'lamellare'
 
 
 
@@ -115,7 +125,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
         Mcrit_z_formulaVal,
         Mcrit_z_description
 
-    } = getMcrit(E0_05, Ig_z, Ig_y, G005, Ig_tor, leff)
+    } = getMcrit(E0_05, Ig_z, Ig_y, G_05, Ig_tor, leff)
 
     const {
 

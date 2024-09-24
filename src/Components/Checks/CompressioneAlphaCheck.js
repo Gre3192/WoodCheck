@@ -8,28 +8,32 @@ import { get_f_cAlphad, get_f_c0d, get_f_c90d } from "../../Utils/getResistenze"
 import { get_CompressioneAlphaCheck } from "../../Utils/getChecks";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
-
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 
 export default function CompressioneAlphaCheck(params) {
+
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed > 0 ? rawNed : 0
-
-
     const isDisabled = Ned <= 0 ? true : false
 
 
-    const Atot = 26
-    const fc0k = 45646
-    const fc90k = 45646
+    
+    const Atot = geometryMass?.value.Atot
+    const fc0k = mecchanicProps?.fc0k
+    const fc90k = mecchanicProps?.fc90k
+    const woodType = mecchanicProps?.woodType
+
+
     const alpha = 45
     const serviceClass = 1
     const classLoad = 'permanente'
-    const woodType = 'lamellare'
-
 
 
     const kmod = get_kmod(woodType, serviceClass, classLoad)

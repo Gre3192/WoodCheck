@@ -10,10 +10,16 @@ import { get_f_t0d, get_f_myd, get_f_mzd } from "../../Utils/getResistenze";
 import { useState } from "react";
 import get_km from "../../Utils/get_km";
 import get_kmod from "../../Utils/get_kmod";
-
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 
 
 export default function TensoFlessioneCheck(params) {
+
+    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -25,18 +31,20 @@ export default function TensoFlessioneCheck(params) {
     const isDisabled = Ned >= 0 || (Med_y == 0 && Med_z == 0) ? true : false
 
 
-    const Atot = 26
-    const Aeff = 1289.6
-    const Wel_y = 543
-    const Wel_z = 543
-    const fmk = 564
-    const fc0k = 564
+    const Atot = geometryMass?.value.Atot
+    const Wel_y = geometryMass?.value.Wel_y
+    const Wel_z = geometryMass?.value.Wel_z
+    const fmk = mecchanicProps?.fmk
+    const fc0k = mecchanicProps?.fc0k
+    const shape = sectionGeometry?.shape
+    const woodType = mecchanicProps?.woodType
+    
+    
     const khy = 564
     const khz = 564
     const serviceClass = 1
-    const shape = 'rettangolare'
     const classLoad = 'permanente'    
-    const woodType = 'lamellare'
+
 
 
 

@@ -6,30 +6,37 @@ import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
+
+
 
 export default function Trazione90Check(params) {
+
+    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed < 0 ? rawNed : 0
-    const geometryMass = 464
-    const fyk = 453
-
     const isDisabled = Ned >= 0 ? true : false
 
 
-    const Atot = 26
-    const Aeff = 1289
+
+
+    const Atot = geometryMass?.Atot
+    const shape = sectionGeometry?.shape
+    const woodType = mecchanicProps?.woodType
+
+
     const NcRd = 161
     const check = Ned / NcRd
     const serviceClass = 1
-    const shape = 'rettangolare'
     const classLoad = 'permanente'
-    const woodType = 'lamellare'
-
-
 
     const kmod = get_kmod(woodType, serviceClass, classLoad)
     const gm0 = get_gammaM(woodType)

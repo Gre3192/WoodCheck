@@ -9,9 +9,18 @@ import StepBox from "../StepBox";
 import { get_TorsioneCheck } from "../../Utils/getChecks";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
+
+
 
 
 export default function TorsioneCheck(params) {
+
+    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -20,16 +29,17 @@ export default function TorsioneCheck(params) {
     const Med_tor = rawMed_tor && rawMed_tor != 0 ? Math.abs(rawMed_tor) : 0
     const isDisabled = Med_tor == 0 ? true : false
 
-    const Atot = 26
-    const Aeff = 1289.6
-    const fvk = 9
-    const Itor = 98798
-    const b = 453
-    const serviceClass = 1
-    const shape = 'rettangolare'
-    const classLoad = 'permanente'
-    const woodType = 'lamellare'
 
+    const fvk = mecchanicProps?.fvk
+    const Ig_tor = geometryMass?.value.Ig_tor
+    const b = sectionGeometry?.b
+    const shape = sectionGeometry?.shape
+    const woodType = mecchanicProps?.woodType
+    
+
+    
+    const classLoad = 'permanente'
+    const serviceClass = 1
 
 
     const kmod = get_kmod(woodType, serviceClass, classLoad)
@@ -54,7 +64,7 @@ export default function TorsioneCheck(params) {
         tau_tord_formulaVal,
         tau_tord_description
 
-    } = get_tau_tord(Med_tor, b, Itor)
+    } = get_tau_tord(Med_tor, b, Ig_tor)
 
     const {
 

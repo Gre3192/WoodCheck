@@ -12,11 +12,17 @@ import StepBox from "../StepBox";
 import { useState } from "react";
 import get_km from "../../Utils/get_km";
 import get_kmod from "../../Utils/get_kmod";
-
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 
 
 
 export default function PressoFlessioneCheck(params) {
+
+    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -28,17 +34,20 @@ export default function PressoFlessioneCheck(params) {
     const isDisabled = Ned == 0 || (Med_y == 0 && Med_z == 0) ? true : false
 
 
-    const Atot = 26
-    const Wel_y = 1561
-    const Wel_z = 1561
+    const Atot = geometryMass?.value.Atot
+    const Wel_y =  geometryMass?.value.Wel_y
+    const Wel_z = geometryMass?.value.Wel_z
+    const fc0k = mecchanicProps?.fc0k
+    const fmk =  mecchanicProps?.fmk
+    const shape = sectionGeometry?.shape
+    const woodType = mecchanicProps?.woodType
+    
+    
+    
     const khy = 3423
     const khz = 234234
-    const fmk = 5464
-    const fc0k = 64
     const serviceClass = 1
-    const shape = 'rettangolare'
     const classLoad = 'permanente'
-    const woodType = 'lamellare'
 
 
 

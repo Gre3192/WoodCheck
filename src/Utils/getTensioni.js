@@ -88,13 +88,13 @@ export function get_tau_d(shape = 'rettangolare', Ved_y, Ved_z, Atot) {
     }
 }
 
-export function get_tau_tord(Med_tor, b, Itor) {
+export function get_tau_tord(Med_tor, b, Ig_tor) {
 
     return {
-        tau_tord: (Med_tor * b) / Itor,
+        tau_tord: (Med_tor * b) / Ig_tor,
         tau_tord_title: `\\tau_{tor,d} = `,
         tau_tord_formula: `\\dfrac{M_{Ed,tor} \\cdot b}{I_{tor}} = `,
-        tau_tord_formulaVal: `\\dfrac{${Med_tor} \\cdot ${b}}{${Itor}} = `,
+        tau_tord_formulaVal: `\\dfrac{${Med_tor} \\cdot ${b}}{${Ig_tor}} = `,
         tau_tord_description: `Tensione di progetto massima per torsione`
     }
 }

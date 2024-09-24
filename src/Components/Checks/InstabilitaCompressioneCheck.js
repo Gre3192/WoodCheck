@@ -15,9 +15,15 @@ import get_beta_c from "../../Utils/get_beta_c";
 import get_k from "../../Utils/get_k";
 import get_kcrit_c from "../../Utils/get_kcrit_c";
 import get_kmod from "../../Utils/get_kmod";
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+
 
 
 export default function InstabilitaCompressioneCheck(params) {
+
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -26,18 +32,20 @@ export default function InstabilitaCompressioneCheck(params) {
     const Ned = rawNed > 0 ? rawNed : 0
     const isDisabled = Ned <= 0 ? true : false
 
-    const Atot = 26
-    const fc0k = 45646
+
+    const Atot = geometryMass?.value.Atot
+    const fc0k = mecchanicProps?.fc0k
+    const E0_05 = mecchanicProps?.E0_05
+    const Ig_y = geometryMass?.value.Ig_y
+    const Ig_z = geometryMass?.value.Ig_z
+    const woodType = mecchanicProps?.woodType
+
+
     const L = 45646
     const beta_y = 45646
     const beta_z = 45646
-    const E0_05 = 45646
-    const Ig_y = 45646
-    const Ig_z = 45646
     const serviceClass = 1
     const classLoad = 'permanente'
-    const woodType = 'lamellare'
-
 
 
     const kmod = get_kmod(woodType, serviceClass, classLoad)

@@ -19,10 +19,16 @@ import get_kcrit_c from "../../Utils/get_kcrit_c";
 import { get_InstabilitaPressoFlessioneCheck } from "../../Utils/getChecks";
 import get_kmod from "../../Utils/get_kmod";
 import get_km from "../../Utils/get_km";
-
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
+import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 
 
 export default function InstabilitaPressoFlessioneCheck(params) {
+
+    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
+    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -34,27 +40,29 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const isDisabled = Ned == 0 || (Med_y == 0 && Med_z == 0) ? true : false
 
 
-    const Atot = 26
-    const fc0k = 45646
-    const fmk = 45646
-    const Wel_y = 45646
-    const Wel_z = 45646
-    const Ig_y = 45646
-    const Ig_z = 45646
-    const Ig_tor = 45646
+    const Atot = geometryMass?.value.Atot
+    const fc0k = mecchanicProps?.fc0k
+    const fmk =  mecchanicProps?.fmk
+    const Wel_y =  geometryMass?.value.Wel_y
+    const Wel_z = geometryMass?.value.Wel_z
+    const Ig_y = geometryMass?.value.Ig_y
+    const Ig_z = geometryMass?.value.Ig_z
+    const Ig_tor = geometryMass?.value.Ig_tor
+    const E0_05 = mecchanicProps?.E0_05
+    const G_05 = mecchanicProps?.G_05
+    const shape = sectionGeometry?.shape
+    const woodType = mecchanicProps?.woodType
+
+
+
     const leff = 45646
     const L = 45646
     const beta_y = 0.7
     const beta_z = 0.2
-    const E0_05 = 0.7
-    const G005 = 0.7
     const khy = 45646
     const khz = 45646
-    const shape = 'rettangolare'
     const serviceClass = 1
     const classLoad = 'permanente'
-    const woodType = 'lamellare'
-
 
 
     const kmod = get_kmod(woodType, serviceClass, classLoad)
@@ -145,7 +153,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
         Mcrit_z_formulaVal,
         Mcrit_z_description
 
-    } = getMcrit(E0_05, Ig_z, Ig_y, G005, Ig_tor, leff)
+    } = getMcrit(E0_05, Ig_z, Ig_y, G_05, Ig_tor, leff)
 
     const {
 
