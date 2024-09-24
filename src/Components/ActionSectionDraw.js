@@ -6,10 +6,10 @@ export default function ActionSectionDraw({ Ned, Ved_y, Ved_z, Med_y, Med_z, Med
 
     return (
 
-        <svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+        <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
 
-            <g transform={`translate(100, 0)`}>
-                <rect x="0" y="0" width="200" height="300" fill="none" stroke="black" stroke-width="1" />
+            <g transform={`translate(100, 50)`}>
+                <rect x="0" y="0" width="200" height="300" fill="#EAD9C8" stroke="black" stroke-width="2" />
 
                 {/* Mtor Orario */}
                 {
