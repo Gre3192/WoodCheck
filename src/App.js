@@ -7,6 +7,7 @@ import Layout from './Layout/Layout';
 import WoodProject from './Pages/WoodProject/WoodProject';
 import WoodJoin from './Pages/WoodJoin/WoodJoin';
 import WoodSpecialBeams from './Pages/WoodSpecialBeams/WoodSpecialBeams';
+import LoadCombination from './Pages/LoadCombination/LoadCombination';
 
 function App() {
 
@@ -15,14 +16,13 @@ function App() {
   }, []);
 
 
-
-
   return (
 
     <HashRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/loadCombination" element={<LoadCombination />} />
           <Route path="/project" element={<WoodProject />} />
           <Route path="/checks" element={<WoodChecks />} />
           <Route path="/specialBeams" element={<WoodSpecialBeams />} />

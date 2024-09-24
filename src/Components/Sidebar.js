@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 
 export const sidebarItem = [
   {
+    name: "Combinazioni di carcio",
+    link: "/loadCombination"
+  },
+  {
     name: "Progetto",
     link: "/project"
   },
