@@ -18,7 +18,7 @@ export default function TaglioTorsioneCheck(params) {
     const Med_tor = rawMed_tor > 0 ? rawMed_tor : 0
     const Ved_y = rawVed_y > 0 ? rawVed_y : 0
     const Ved_z = rawVed_z > 0 ? rawVed_z : 0
-    const isDisabled = Ved_y == 0 && Ved_z == 0 && Med_tor == 0 ? true : false
+    const isDisabled = (Ved_y == 0 && Ved_z == 0) || Med_tor == 0 ? true : false
 
 
     const Atot = 26
