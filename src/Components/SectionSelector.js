@@ -6,7 +6,7 @@ import { meccanicPropSectionAtom } from '../Atom/meccanicPropSectionAtom';
 
 const SectionSelector = () => {
 
-  const [sectionGeometry, setSectionGeometry] = useRecoilState(meccanicPropSectionAtom);
+  const [woodProperties, setWoodProperties] = useRecoilState(meccanicPropSectionAtom);
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
@@ -25,7 +25,7 @@ const SectionSelector = () => {
     .sort((a, b) => a.sectionName.localeCompare(b.sectionName));
 
   const handleSelect = (section) => {
-    setSectionGeometry(section);
+    setWoodProperties(section);
     setSearchTerm(section.sectionName);
     setIsOpen(false);
   };
@@ -35,21 +35,44 @@ const SectionSelector = () => {
     setIsOpen(e.target.value.length > 0);
   };
 
-  const handleClearInput = (e) => {
-    e?.preventDefault();
-    setSearchTerm('');
-    setSectionGeometry((prev) => {
-      const resetSection = { sectionName: '', shape: 'doppioT' };
-      Object.keys(prev).forEach((key) => {
-        if (key !== 'sectionName' && key !== 'shape') resetSection[key] = '0';
-      });
-      return resetSection;
-    });
-  };
-
-  //   const handleClearInput = () => {
-  //     setSectionGeometry({});
+  // const handleClearInput = (e) => {
+  //   e?.preventDefault();
+  //   setSearchTerm('');
+  //   setWoodProperties((prev) => {
+  //     const resetSection = { sectionName: '', shape: 'doppioT' };
+  //     Object.keys(prev).forEach((key) => {
+  //       if (key !== 'sectionName' && key !== 'shape') resetSection[key] = '0';
+  //     });
+  //     return resetSection;
+  //   });
   // };
+
+    const handleClearInput = () => {
+      setWoodProperties(
+        {
+          sectionName: '',
+          treeClass: '',
+          woodType: '',
+          fmk: null,                          
+          ft0k: null,                          
+          ft90k: null,                        
+          fc0k: null,                           
+          fc90k: null,                        
+          fvk: null,                          
+          frk: null,                          
+          E0_mean: null,                 
+          E0_05: null,                     
+          E90_mean: null,                  
+          E90_05: null,                     
+          G_mean: null,                     
+          G_05: null,                      
+          Gr_mean: null,                    
+          Gr_05: null,                      
+          rho_k: null,                         
+          rho_mean: null                 
+        }
+      );
+  };
 
   const handleInputFocus = () => setIsInputFocused(true);
   const handleInputBlur = () => setTimeout(() => setIsInputFocused(false), 150);
@@ -65,8 +88,8 @@ const SectionSelector = () => {
 
 
   useEffect(() => {
-    if (sectionGeometry) setSearchTerm(sectionGeometry.sectionName);
-  }, [sectionGeometry]);
+    if (woodProperties) setSearchTerm(woodProperties.sectionName);
+  }, [woodProperties]);
 
   return (
     <div ref={ref}>
@@ -97,7 +120,7 @@ const SectionSelector = () => {
                   return (
                     <div
                       key={section.sectionName}
-                      className={`p-2 cursor-pointer ${sectionGeometry.sectionName === section.sectionName
+                      className={`p-2 cursor-pointer ${woodProperties.sectionName === section.sectionName
                         ? "bg-blue-500 text-white hover:bg-blue-400"
                         : "hover:bg-gray-300"
                         }`}

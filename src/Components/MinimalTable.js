@@ -1,7 +1,7 @@
 import Latex from 'react-latex-next';
 import InputBox from './InputBox';
 
-export default function MinimalTable({ list, isInput = false }) {
+export default function MinimalTable({ list, isInput = true }) {
 
     return (
         <div className="overflow-x-auto">

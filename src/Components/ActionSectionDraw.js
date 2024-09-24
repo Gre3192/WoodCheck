@@ -1,8 +1,12 @@
+import { useRecoilValue } from 'recoil';
+import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
 
 
 
 
 export default function ActionSectionDraw({ shape = 'rettangolare', Ned, Ved_y, Ved_z, Med_y, Med_z, Med_tor }) {
+
+    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
 
     return (
 
@@ -10,8 +14,9 @@ export default function ActionSectionDraw({ shape = 'rettangolare', Ned, Ved_y, 
 
             <g transform={`translate(300, 50)`}>
 
-                {shape?.toLowerCase() === 'rettangolare' ? <rect x="0" y="0" width="200" height="300" fill="#EAD9C8" stroke="black" stroke-width="2" />
-                    : <circle cx="100" cy="150" r="100" fill="#EAD9C8" stroke="black" stroke-width="2" />
+                {sectionGeometry?.shape?.toLowerCase() === 'circolare' ?
+                    <circle cx="100" cy="150" r="100" fill="#EAD9C8" stroke="black" stroke-width="2" /> :
+                    <rect x="0" y="0" width="200" height="300" fill="#EAD9C8" stroke="black" stroke-width="2" />
                 }
 
                 {/* Mtor Orario */}

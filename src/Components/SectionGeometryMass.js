@@ -16,10 +16,9 @@ export default function SectionGeometryMass({ sectionGeometryMass }) {
         { label: 'A_{tot}\\\\\\text{[$mm^2$]}', value: customDecimal(sectionGeometryMass?.valori.Atot, 2), textHover: 'Area totale' },
         { label: 'I_{g,y}\\\\\\text{[$mm^4$]}', value: customDecimal(sectionGeometryMass?.valori.ig_y, 2), textHover: 'Momento di inerzia attorno a Y-Y' },
         { label: 'I_{g,z}\\\\\\text{[$mm^4$]}', value: customDecimal(sectionGeometryMass?.valori.ig_z, 2), textHover: 'Momento di inerzia attorno a Z-Z' },
+        { label: 'I_{g,tor}\\\\\\text{[$mm^4$]}', value: customDecimal(sectionGeometryMass?.valori.ig_z, 2), textHover: 'Momento di inerzia attorno a X-X' },
         { label: 'W_{el,sup}\\\\\\text{[$mm^3$]}', value: customDecimal(sectionGeometryMass?.valori.wel_sup_y, 2), textHover: 'Modulo di resistenza elastico lembo superiore' },
         { label: 'W_{el,inf}\\\\\\text{[$mm^3$]}', value: customDecimal(sectionGeometryMass?.valori.wel_inf_y, 2), textHover: 'Modulo di resistenza elastico lembo inferiore' },
-        { label: 'W_{pl,y}\\\\\\text{[$mm^3$]}', value: customDecimal(sectionGeometryMass?.valori.wpl_y, 2), textHover: 'Modulo di resistenza plastico attorno a Y-Y' },
-        { label: 'W_{pl,z}\\\\\\text{[$mm^3$]}', value: customDecimal(sectionGeometryMass?.valori.wpl_z, 2), textHover: 'Modulo di resistenza plastico attorno a Z-Z' }
     ]
 
     return (
