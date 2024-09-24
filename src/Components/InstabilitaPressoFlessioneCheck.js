@@ -28,7 +28,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const Ned = rawNed > 0 ? rawNed : 0
     const Med_y = rawMed_y > 0 ? rawMed_y : 0
     const Med_z = rawMed_z > 0 ? rawMed_z : 0
-    const isDisabled = Med_y == 0 && Med_z == 0 ? true : false
+    const isDisabled = Ned == 0 || (Med_y == 0 && Med_z == 0) ? true : false
 
 
     const Atot = 26
