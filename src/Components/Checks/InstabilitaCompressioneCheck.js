@@ -31,7 +31,7 @@ export default function InstabilitaCompressioneCheck(params) {
     const L = 45646
     const beta_y = 45646
     const beta_z = 45646
-    const E005 = 45646
+    const E0_05 = 45646
     const Ig_y = 45646
     const Ig_z = 45646
     const serviceClass = 1
@@ -78,7 +78,7 @@ export default function InstabilitaCompressioneCheck(params) {
         Ncr_z_formulaVal,
         Ncr_z_description
 
-    } = get_Ncr(L, beta_y, beta_z, Ig_y, Ig_z, E005)
+    } = get_Ncr(L, beta_y, beta_z, Ig_y, Ig_z, E0_05)
 
     const {
 
@@ -110,7 +110,7 @@ export default function InstabilitaCompressioneCheck(params) {
         lambda_rel_c_z_formulaVal,
         lambda_rel_c_z_description,
 
-    } = get_lambda_rel_c(lambda_c_y, lambda_c_z, fc0k, E005)
+    } = get_lambda_rel_c(lambda_c_y, lambda_c_z, fc0k, E0_05)
 
     const {
 

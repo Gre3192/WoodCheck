@@ -46,7 +46,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const L = 45646
     const beta_y = 0.7
     const beta_z = 0.2
-    const E005 = 0.7
+    const E0_05 = 0.7
     const G005 = 0.7
     const khy = 45646
     const khz = 45646
@@ -145,7 +145,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
         Mcrit_z_formulaVal,
         Mcrit_z_description
 
-    } = getMcrit(E005, Ig_z, Ig_y, G005, Ig_tor, leff)
+    } = getMcrit(E0_05, Ig_z, Ig_y, G005, Ig_tor, leff)
 
     const {
 
@@ -209,7 +209,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
         Ncr_z_formulaVal,
         Ncr_z_description
 
-    } = get_Ncr(L, beta_y, beta_z, Ig_y, Ig_z, E005)
+    } = get_Ncr(L, beta_y, beta_z, Ig_y, Ig_z, E0_05)
 
     const {
 
@@ -241,7 +241,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
         lambda_rel_c_z_formulaVal,
         lambda_rel_c_z_description,
 
-    } = get_lambda_rel_c(lambda_c_y, lambda_c_z, fc0k, E005)
+    } = get_lambda_rel_c(lambda_c_y, lambda_c_z, fc0k, E0_05)
 
     const {
 

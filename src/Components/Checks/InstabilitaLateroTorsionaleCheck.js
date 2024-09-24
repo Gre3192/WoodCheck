@@ -28,7 +28,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
 
 
     const fmk = 45646
-    const E005 = 2.6
+    const E0_05 = 2.6
     const G005 = 2.6
     const Atot = 26
     const Wel_y = 45646
@@ -115,7 +115,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
         Mcrit_z_formulaVal,
         Mcrit_z_description
 
-    } = getMcrit(E005, Ig_z, Ig_y, G005, Ig_tor, leff)
+    } = getMcrit(E0_05, Ig_z, Ig_y, G005, Ig_tor, leff)
 
     const {
 
