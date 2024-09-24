@@ -20,17 +20,42 @@ export default function TaglioCheck(params) {
     const isDisabled = Ved_y == 0 && Ved_z == 0 ? true : false
 
 
-    const shape = true
+    const shape = 'rettangolare'
     const Atot = 26
-    const Aeff = 1289.6
     const gm = getGamma('m0')
     const kmod = 0.7
     const fvk = 9
 
 
-    const { tau_d, tau_d_title, tau_d_formula, tau_d_formulaVal, tau_d_description } = get_tau_d(shape, Ved_y, Ved_z, Atot)
-    const { fvd, fvd_title, fvd_formula, fvd_formulaVal, fvd_description } = get_fvd(kmod, fvk, gm)
-    const { check, check_title, check_formulaVal } = get_TaglioCheck(tau_d, fvd)
+    const {
+
+        tau_d,
+        tau_d_title,
+        tau_d_formula,
+        tau_d_formulaVal,
+        tau_d_description
+
+    } = get_tau_d(shape, Ved_y, Ved_z, Atot)
+
+    const {
+
+        fvd,
+        fvd_title,
+        fvd_formula,
+        fvd_formulaVal,
+        fvd_description
+
+    } = get_fvd(kmod, fvk, gm)
+
+    const {
+
+        check,
+        check_title,
+        check_formulaVal
+
+    } = get_TaglioCheck(tau_d, fvd)
+
+
 
 
     const title = 'Verifica a Taglio [NTC18 - \u00A74.4.8.1.9]'

@@ -24,7 +24,7 @@ export default function TaglioTorsioneCheck(params) {
     const Atot = 26
     const Aeff = 1289.6
     const gm = getGamma('m0')
-    const shape = true
+    const shape = 'rettangolare'
     const kmod = 465
     const fvk = 9
     const Itor = 98798

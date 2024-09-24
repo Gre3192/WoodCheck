@@ -75,16 +75,16 @@ export function get_sig_mzd(Med_z, Wel_z) {
     }
 }
 
-export function get_tau_d(shape, Ved_y, Ved_z, Atot) {
+export function get_tau_d(shape = 'rettangolare', Ved_y, Ved_z, Atot) {
 
     // ricordati di inserire kef
 
     return {
-        tau_d: (shape ? (3 / 2) : (4 / 3)) * (Math.sqrt(Ved_y ** 2 + Ved_z ** 2) / Atot),
+        tau_d: (shape.toLowerCase() === 'rettangolare' ? (3 / 2) : (4 / 3)) * (Math.sqrt(Ved_y ** 2 + Ved_z ** 2) / Atot),
         tau_d_title: `\\tau_{d} = `,
         tau_d_formula: `${shape ? '\\dfrac{3}{2}' : '\\dfrac{4}{3} '}\\cdot\\dfrac{\\sqrt{V_{Ed,y}^2+V_{Ed,z}^2}}{A_{tot}} = `,
         tau_d_formulaVal: `${shape ? '\\dfrac{3}{2}' : '\\dfrac{4}{3} '}\\cdot\\dfrac{\\sqrt{${Ved_y}^2+${Ved_z}^2}}{${Atot}} = `,
-        tau_d_description: `Tensione tangenziale di progetto massima per sezioni ${shape ? 'rettangolari' : 'circolari'}`
+        tau_d_description: `Tensione tangenziale di progetto massima per sezioni ${shape.toLowerCase() === 'rettangolare' ? 'rettangolari' : 'circolari'}`
     }
 }
 
