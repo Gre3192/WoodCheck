@@ -14,7 +14,7 @@ import get_Ncr from "../../Utils/get_Ncr";
 import get_beta_c from "../../Utils/get_beta_c";
 import get_k from "../../Utils/get_k";
 import get_kcrit_c from "../../Utils/get_kcrit_c";
-import getKmod from "../../Utils/getKmod";
+import get_kmod from "../../Utils/get_kmod";
 
 
 export default function InstabilitaCompressioneCheck(params) {
@@ -40,7 +40,7 @@ export default function InstabilitaCompressioneCheck(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 

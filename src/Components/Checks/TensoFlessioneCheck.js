@@ -8,8 +8,8 @@ import { get_TensoflessioneCheck } from "../../Utils/getChecks";
 import { get_sig_t0d, get_sig_myd, get_sig_mzd } from "../../Utils/getTensioni";
 import { get_f_t0d, get_f_myd, get_f_mzd } from "../../Utils/getResistenze";
 import { useState } from "react";
-import getKm from "../../Utils/getKm";
-import getKmod from "../../Utils/getKmod";
+import get_km from "../../Utils/get_km";
+import get_kmod from "../../Utils/get_kmod";
 
 
 
@@ -40,7 +40,7 @@ export default function TensoFlessioneCheck(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 
@@ -52,7 +52,7 @@ export default function TensoFlessioneCheck(params) {
         km_formulaVal,
         km_description,
 
-    } = getKm(shape)
+    } = get_km(shape)
 
     const {
 

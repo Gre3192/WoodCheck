@@ -11,8 +11,8 @@ import get_sig_m_crit from "../../Utils/get_sig_m_crit";
 import get_kcrit_m from "../../Utils/get_kcrit_m";
 import getMcrit from "../../Utils/getMcrit";
 import { useState } from "react";
-import getKm from "../../Utils/getKm";
-import getKmod from "../../Utils/getKmod";
+import get_km from "../../Utils/get_km";
+import get_kmod from "../../Utils/get_kmod";
 
 
 export default function InstabilitaLateroTorsionaleCheck(params) {
@@ -48,7 +48,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 
@@ -60,7 +60,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
         km_formulaVal,
         km_description,
 
-    } = getKm(shape)
+    } = get_km(shape)
 
     const {
 

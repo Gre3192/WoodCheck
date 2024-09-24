@@ -1,4 +1,4 @@
-export default function getKsh(shape = `circolare`, h = null, b = null) {
+export default function get_ksh(shape = `circolare`, h = null, b = null) {
 
     if (shape.toLocaleLowerCase() === `circolare`)
         return {

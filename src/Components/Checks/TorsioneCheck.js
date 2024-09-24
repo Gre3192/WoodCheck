@@ -2,13 +2,13 @@ import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
-import getKsh from "../../Utils/getKsh";
+import get_ksh from "../../Utils/get_ksh";
 import { get_fvd } from "../../Utils/getResistenze";
 import { get_tau_tord } from "../../Utils/getTensioni";
 import StepBox from "../StepBox";
 import { get_TorsioneCheck } from "../../Utils/getChecks";
 import { useState } from "react";
-import getKmod from "../../Utils/getKmod";
+import get_kmod from "../../Utils/get_kmod";
 
 
 export default function TorsioneCheck(params) {
@@ -32,7 +32,7 @@ export default function TorsioneCheck(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 
@@ -44,7 +44,7 @@ export default function TorsioneCheck(params) {
         ksh_formulaVal,
         ksh_description
 
-    } = getKsh(shape)
+    } = get_ksh(shape)
 
     const {
 

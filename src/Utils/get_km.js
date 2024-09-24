@@ -1,4 +1,4 @@
-export default function getKm(shape = 'rettangolare') {
+export default function get_km(shape = 'rettangolare') {
 
     return {
 

@@ -7,7 +7,7 @@ import { get_TaglioCheck } from "../../Utils/getChecks";
 import CheckCard from "../CheckCard";
 import StepBox from "../StepBox";
 import { useState } from "react";
-import getKmod from "../../Utils/getKmod";
+import get_kmod from "../../Utils/get_kmod";
 
 export default function TaglioCheck(params) {
 
@@ -29,7 +29,7 @@ export default function TaglioCheck(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
     
@@ -61,7 +61,7 @@ export default function TaglioCheck(params) {
 
     } = get_TaglioCheck(tau_d, fvd)
 
-    getKmod('lamellare',1,'permanente')
+    get_kmod('lamellare',1,'permanente')
 
 
     const title = 'Verifica a Taglio [NTC18 - \u00A74.4.8.1.9]'

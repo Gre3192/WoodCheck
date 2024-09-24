@@ -2,13 +2,13 @@ import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
-import getKsh from "../../Utils/getKsh";
+import get_ksh from "../../Utils/get_ksh";
 import { get_tau_tord, get_tau_d } from "../../Utils/getTensioni";
 import { get_fvd } from "../../Utils/getResistenze";
 import { get_TaglioTorsioneCheck } from "../../Utils/getChecks";
 import StepBox from "../StepBox";
 import { useState } from "react";
-import getKmod from "../../Utils/getKmod";
+import get_kmod from "../../Utils/get_kmod";
 
 
 export default function TaglioTorsioneCheck(params) {
@@ -34,7 +34,7 @@ export default function TaglioTorsioneCheck(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 
@@ -76,7 +76,7 @@ export default function TaglioTorsioneCheck(params) {
         ksh_formulaVal,
         ksh_description
 
-    } = getKsh(shape)
+    } = get_ksh(shape)
 
     const {
 

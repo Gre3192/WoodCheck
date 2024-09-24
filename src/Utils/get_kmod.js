@@ -69,7 +69,7 @@ const kmodData = {
 };
 
 
-export default function getKmod(material = 'lamellare', serviceClass = 1, classLoad = 'permanente') {
+export default function get_kmod(material = 'lamellare', serviceClass = 1, classLoad = 'permanente') {
 
   const materialFound = Object.keys(kmodData).find((key) =>
     key.toLowerCase().includes(material.toLowerCase())

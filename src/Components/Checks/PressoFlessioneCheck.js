@@ -10,8 +10,8 @@ import { get_f_c0d, get_f_myd, get_f_mzd } from "../../Utils/getResistenze";
 import { get_PressoflessioneCheck } from "../../Utils/getChecks";
 import StepBox from "../StepBox";
 import { useState } from "react";
-import getKm from "../../Utils/getKm";
-import getKmod from "../../Utils/getKmod";
+import get_km from "../../Utils/get_km";
+import get_kmod from "../../Utils/get_kmod";
 
 
 
@@ -42,7 +42,7 @@ export default function PressoFlessioneCheck(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
     
     const gm = get_gammaM(woodType)
 
@@ -54,7 +54,7 @@ export default function PressoFlessioneCheck(params) {
         km_formulaVal,
         km_description,
 
-    } = getKm(shape)
+    } = get_km(shape)
 
     const {
 

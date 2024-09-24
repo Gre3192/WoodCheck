@@ -17,8 +17,8 @@ import get_beta_c from "../../Utils/get_beta_c";
 import get_k from "../../Utils/get_k";
 import get_kcrit_c from "../../Utils/get_kcrit_c";
 import { get_InstabilitaPressoFlessioneCheck } from "../../Utils/getChecks";
-import getKmod from "../../Utils/getKmod";
-import getKm from "../../Utils/getKm";
+import get_kmod from "../../Utils/get_kmod";
+import get_km from "../../Utils/get_km";
 
 
 
@@ -57,7 +57,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 
@@ -69,7 +69,7 @@ export default function InstabilitaPressoFlessioneCheck(params) {
         km_formulaVal,
         km_description,
 
-    } = getKm(shape)
+    } = get_km(shape)
 
     const {
 

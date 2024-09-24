@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import { useState } from "react";
-import getKmod from "../../Utils/getKmod";
+import get_kmod from "../../Utils/get_kmod";
 
 export default function Trazione90Check(params) {
 
@@ -31,7 +31,7 @@ export default function Trazione90Check(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
     const gm0 = get_gammaM(woodType)
 
     

@@ -5,7 +5,7 @@ import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import Latex from "react-latex-next";
 import { useState } from "react";
-import getKmod from "../../Utils/getKmod";
+import get_kmod from "../../Utils/get_kmod";
 
 
 export default function Trazione0Check(params) {
@@ -35,7 +35,7 @@ export default function Trazione0Check(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
     const gm0 = get_gammaM(woodType)
 
     const title = 'Verifica a Trazione parallela alla fibratura [NTC18 - \u00A74.4.8.1.1]'

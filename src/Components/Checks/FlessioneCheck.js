@@ -2,13 +2,13 @@ import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
-import getKm from "../../Utils/getKm";
+import get_km from "../../Utils/get_km";
 import { get_sig_myd, get_sig_mzd } from "../../Utils/getTensioni"
 import { get_f_myd, get_f_mzd } from "../../Utils/getResistenze"
 import StepBox from "../StepBox";
 import { get_flessioneCheck } from "../../Utils/getChecks";
 import { useState } from "react";
-import getKmod from "../../Utils/getKmod";
+import get_kmod from "../../Utils/get_kmod";
 
 
 export default function FlessioneCheck(params) {
@@ -35,7 +35,7 @@ export default function FlessioneCheck(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 
@@ -47,7 +47,7 @@ export default function FlessioneCheck(params) {
         km_formulaVal,
         km_description,
 
-    } = getKm(shape)
+    } = get_km(shape)
 
     const {
 

@@ -7,7 +7,7 @@ import { get_sig_c0d } from "../../Utils/getTensioni";
 import { get_f_c0d } from "../../Utils/getResistenze";
 import { get_Compressione0Check } from "../../Utils/getChecks";
 import { useState } from "react";
-import getKmod from "../../Utils/getKmod";
+import get_kmod from "../../Utils/get_kmod";
 
 
 
@@ -30,7 +30,7 @@ export default function Compressione0Check(params) {
 
 
 
-    const kmod = getKmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 
