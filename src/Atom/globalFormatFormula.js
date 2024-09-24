@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const globalFormatFormula = atom({
+export const globalFormatFormulaAtom = atom({
   key: 'globalFormatFormula', 
   default: {
     isGlobalFormula: false,

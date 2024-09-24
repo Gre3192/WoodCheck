@@ -10,15 +10,23 @@ import TensoFlessioneCheck from "../../Components/TensoFlessioneCheck"
 import TorsioneCheck from "../../Components/TorsioneCheck"
 import Trazione0Check from "../../Components/Trazione0Check"
 import Trazione90Check from "../../Components/Trazione90Check"
-import InstabilitaCompressioneCheck from "../../Components/InstabilitaCompressioneCheck" 
-import InstabilitaLateroTorsionaleCheck from "../../Components/InstabilitaLateroTorsionaleCheck" 
+import InstabilitaCompressioneCheck from "../../Components/InstabilitaCompressioneCheck"
+import InstabilitaLateroTorsionaleCheck from "../../Components/InstabilitaLateroTorsionaleCheck"
 import InstabilitaPressoFlessioneCheck from "../../Components/InstabilitaPressoFlessioneCheck"
+import ControlPanel from "../../Components/ControlPanel"
+
 
 export default function WoodChecks(params) {
 
 
 
-    return (
+    return (<>
+
+        {/* <div className="sticky p-5">
+            <ControlPanel />
+        </div> */}
+
+
 
         <div className="h-[92vh] overflow-y-scroll">
             <InputForces />
@@ -42,12 +50,12 @@ export default function WoodChecks(params) {
                 <h1 className="text-lg font-bold" >
                     Verifiche di Stabilità
                 </h1>
-                <InstabilitaLateroTorsionaleCheck/>
-                <InstabilitaCompressioneCheck/>
-                <InstabilitaPressoFlessioneCheck/>
+                <InstabilitaLateroTorsionaleCheck />
+                <InstabilitaCompressioneCheck />
+                <InstabilitaPressoFlessioneCheck />
             </div>
         </div>
-
+    </>
     )
 
 

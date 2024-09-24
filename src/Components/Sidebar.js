@@ -52,7 +52,7 @@ const Sidebar = () => {
   return (
     <>
       <div onClick={handleSidebarClick} className="flex flex-col top-0 z-20">
-        <div className={`w-64 bg-gray-800 h-screen text-white p-6 pr-0 fixed transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-52'}`}>
+        <div className={`w-64 bg-[#7C6A55] h-screen text-white p-6 pr-0 fixed transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-52'}`}>
           <div className='relative flex flex-col h-full'>
             <button onClick={toggleSidebar} className={`scale-150 pr-4 self-end top-0 right-0 ${!isOpen ? 'visible' : 'hidden'}`}>
               <FaBars />
@@ -74,7 +74,7 @@ const Sidebar = () => {
                         <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpenSection ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                           <ul className="list-none ml-4 mt-2">
                             {item.fields.map((subItem, subIndex) => (
-                              <li key={subIndex} className="py-1 hover:bg-gray-700 hover:text-gray-300 rounded cursor-pointer">
+                              <li key={subIndex} className="py-1 hover:bg-[#9A8161] hover:text-gray-300 rounded cursor-pointer">
                                 <Link to={subItem.link} onClick={handleLinkClick} className="block px-2">
                                   {subItem.name}
                                 </Link>
@@ -85,7 +85,7 @@ const Sidebar = () => {
                       </div>
                     ) : (
                       <div onClick={(e) => { e.stopPropagation(); }}>
-                        <Link to={item.link} onClick={handleLinkClick} className="block px-2 py-1 hover:bg-gray-700 hover:text-gray-300 rounded cursor-pointer">
+                        <Link to={item.link} onClick={handleLinkClick} className="block px-2 py-1 hover:bg-[#9A8161] hover:text-gray-300 rounded cursor-pointer">
                           {item.name}
                         </Link>
                       </div>

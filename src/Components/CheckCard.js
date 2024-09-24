@@ -1,12 +1,44 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { ReactComponent as FormulaIcon } from '../Assets/formulaIcon.svg';
 import { ReactComponent as FormulaValIcon } from '../Assets/formulaValcon.svg';
+import { useRecoilState } from "recoil";
+import { globalFormatFormulaAtom } from "../Atom/globalFormatFormula";
 
 export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) {
   const { title = 'title', centralContent = 'centralContent', finalContent = 'finalContent', check = 0, isDisabled = false } = props;
 
+  const [globalFormatFormula, setGlobalFormatFormula] = useRecoilState(globalFormatFormulaAtom);
+  const { isGlobalFormula, isGlobalFormulaVal } = globalFormatFormula;
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+
+
+    if (isGlobalFormula) {
+      setIsFormulaSelected(true);
+      if (isFormulaValSelected) {
+        setIsFormulaValSelected(false);
+      }
+    } else {
+      setIsFormulaSelected(false)
+    }
+
+    if (isGlobalFormulaVal) {
+      if (isFormulaValSelected) {
+        setIsFormulaValSelected(false);
+      } else {
+        setIsFormulaValSelected(true);
+        setIsFormulaSelected(true);
+      }
+    }else {
+      setIsFormulaValSelected(false)
+    }
+
+
+  }, [globalFormatFormula])
+
+
 
   const { isFormulaSelected, setIsFormulaSelected } = isFormulaProps;
   const { isFormulaValSelected, setIsFormulaValSelected } = isFormulaValProps;
