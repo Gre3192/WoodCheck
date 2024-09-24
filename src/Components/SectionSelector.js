@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import sectionProfiles from '../Json/steelSectionGeometry.json';
+import sectionProfiles from '../Json/woodPropreties.json';
 import { useRecoilState } from 'recoil';
-import { geometrySectionSteelAtom } from '../Atom/geometrySectionAtom';
+import { meccanicPropSectionAtom } from '../Atom/meccanicPropSectionAtom';
+
 
 const SectionSelector = () => {
 
-  const [sectionGeometry, setSectionGeometry] = useRecoilState(geometrySectionSteelAtom);
+  const [sectionGeometry, setSectionGeometry] = useRecoilState(meccanicPropSectionAtom);
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);

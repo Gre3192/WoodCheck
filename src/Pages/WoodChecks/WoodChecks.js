@@ -20,6 +20,7 @@ import InstabilitaPressoFlessioneCheck from "../../Components/Checks/Instabilita
 
 import InputForces from "../../Components/InputForces"
 import ControlPanel from "../../Components/ControlPanel"
+import SectionSelector from "../../Components/SectionSelector"
 
 
 export default function WoodChecks(params) {
@@ -31,6 +32,7 @@ export default function WoodChecks(params) {
         </div> */}
 
         <div className="h-[92vh] overflow-y-scroll">
+            <SectionSelector/>
             <InputForces />
             <div className="px-5">
                 <h1 className="text-lg font-bold" >
