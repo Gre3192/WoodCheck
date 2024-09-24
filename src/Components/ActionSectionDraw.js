@@ -16,7 +16,7 @@ export default function ActionSectionDraw({ shape = 'rettangolare', Ned, Ved_y, 
 
                 {/* Mtor Orario */}
                 {
-                    Med_tor > 0 ?
+                    Med_tor < 0 ?
                         <g transform={`translate(100, 150) rotate(45)`}>
                             <path d="M -50 0 A 50 50 0 0 1 50 0" fill="none" stroke="black" stroke-width="2" />
                             <g transform="translate(0, 10) rotate(90,50,0)">
@@ -27,7 +27,7 @@ export default function ActionSectionDraw({ shape = 'rettangolare', Ned, Ved_y, 
                 }
                 {/* Mtor Antiorario */}
                 {
-                    Med_tor < 0 ?
+                    Med_tor > 0 ?
                         <g transform={`translate(100, 150) rotate(45)`}>
                             <path d="M -50 0 A 50 50 0 0 1 50 0" fill="none" stroke="black" stroke-width="2" />
                             <g transform="translate(-100, 10) rotate(90,50,0)">
