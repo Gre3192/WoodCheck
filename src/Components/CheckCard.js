@@ -75,7 +75,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
         <hr />
 
         {/* Sezione centrale */}
-        <div className={`transition-all duration-300 ease-in-out overflow-auto ${isOpen ? 'max-h-[50vh] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+        <div className={`transition-all duration-500 ease-in-out overflow-auto ${isOpen ? 'max-h-[50vh] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
           {isOpen && (
             <div>
               <div className="p-6">{centralContent}</div>
