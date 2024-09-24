@@ -1,15 +1,16 @@
-import get_gammaM from "../Utils/get_gammaM";
+import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import CheckCard from "./CheckCard";
-import StepBox from "./StepBox";
-import { get_sig_c0d } from "../Utils/getTensioni";
-import { get_f_c0d } from "../Utils/getResistenze";
-import { get_Compressione0Check } from "../Utils/getChecks";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import CheckCard from "../CheckCard";
+import StepBox from "../StepBox";
+import { get_sig_c90d } from "../../Utils/getTensioni";
+import { get_f_c90d } from "../../Utils/getResistenze";
+import { get_Compressione90Check } from "../../Utils/getChecks";
 import { useState } from "react";
+import getKmod from "../../Utils/getKmod";
 
 
-export default function Compressione0Check(params) {
+export default function Compressione90Check(params) {
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -19,40 +20,38 @@ export default function Compressione0Check(params) {
     const isDisabled = Ned <= 0 ? true : false
 
 
-
     const Atot = 26
     const Aeff = 1289.6
-    const kmod = 27527
-    const fc0k = 45646
+    const fc90k = 45646
+    const serviceClass = 1
+    const classLoad = 'permanente'
     const woodType = 'lamellare'
 
 
 
+    const kmod = getKmod(woodType, serviceClass, classLoad)
 
-
-
-    
     const gm = get_gammaM(woodType)
 
     const {
 
-        sig_c0d,
-        sig_c0d_title,
-        sig_c0d_formula,
-        sig_c0d_formulaVal,
-        sig_c0d_description
+        sig_c90d,
+        sig_c90d_title,
+        sig_c90d_formula,
+        sig_c90d_formulaVal,
+        sig_c90d_description
 
-    } = get_sig_c0d(Ned, Atot)
+    } = get_sig_c90d(Ned, Atot)
 
     const {
 
-        f_c0d,
-        f_c0d_title,
-        f_c0d_formula,
-        f_c0d_formulaVal,
-        f_c0d_description
+        f_c90d,
+        f_c90d_title,
+        f_c90d_formula,
+        f_c90d_formulaVal,
+        f_c90d_description
 
-    } = get_f_c0d(kmod, fc0k, gm)
+    } = get_f_c90d(kmod, fc90k, gm)
 
     const {
 
@@ -60,27 +59,27 @@ export default function Compressione0Check(params) {
         check_title,
         check_formulaVal
 
-    } = get_Compressione0Check(sig_c0d, f_c0d)
+    } = get_Compressione90Check(sig_c90d, f_c90d)
 
 
-    const title = 'Verifica a Compressione parallela alla fibratura [NTC18 - \u00A74.4.8.1.3]'
+    const title = 'Verifica a Compressione perpendicolare alla fibratura [NTC18 - \u00A74.4.8.1.4]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
             <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={sig_c0d_title}
-                formula={sig_c0d_formula}
-                formulaVal={sig_c0d_formulaVal}
-                value={sig_c0d}
-                description={sig_c0d_description}
+                title={sig_c90d_title}
+                formula={sig_c90d_formula}
+                formulaVal={sig_c90d_formulaVal}
+                value={sig_c90d}
+                description={sig_c90d_description}
             />
             <hr />
             <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={f_c0d_title}
-                formula={f_c0d_formula}
-                formulaVal={f_c0d_formulaVal}
-                value={f_c0d}
-                description={f_c0d_description}
+                title={f_c90d_title}
+                formula={f_c90d_formula}
+                formulaVal={f_c90d_formulaVal}
+                value={f_c90d}
+                description={f_c90d_description}
             />
             <hr />
         </div>

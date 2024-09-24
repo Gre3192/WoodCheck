@@ -1,12 +1,14 @@
-import get_gammaM from "../Utils/get_gammaM";
+import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import CheckCard from "./CheckCard";
-import StepBox from "./StepBox";
-import { get_sig_cAlphad } from "../Utils/getTensioni";
-import { get_f_cAlphad, get_f_c0d, get_f_c90d } from "../Utils/getResistenze";
-import { get_CompressioneAlphaCheck } from "../Utils/getChecks";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import CheckCard from "../CheckCard";
+import StepBox from "../StepBox";
+import { get_sig_cAlphad } from "../../Utils/getTensioni";
+import { get_f_cAlphad, get_f_c0d, get_f_c90d } from "../../Utils/getResistenze";
+import { get_CompressioneAlphaCheck } from "../../Utils/getChecks";
 import { useState } from "react";
+import getKmod from "../../Utils/getKmod";
+
 
 export default function CompressioneAlphaCheck(params) {
 
@@ -15,21 +17,22 @@ export default function CompressioneAlphaCheck(params) {
 
     const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
     const Ned = rawNed > 0 ? rawNed : 0
-    const geometryMass = 464
-    const fyk = 453
+
 
     const isDisabled = Ned <= 0 ? true : false
 
 
     const Atot = 26
-    const Aeff = 1289.6
-    const kmod = 27527
     const fc0k = 45646
     const fc90k = 45646
     const alpha = 45
+    const serviceClass = 1
+    const classLoad = 'permanente'
     const woodType = 'lamellare'
 
 
+
+    const kmod = getKmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 

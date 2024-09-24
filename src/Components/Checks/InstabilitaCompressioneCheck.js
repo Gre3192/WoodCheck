@@ -1,19 +1,20 @@
-import get_gammaM from "../Utils/get_gammaM";
+import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import customDecimal from "../Utils/customDecimal";
-import CheckCard from "./CheckCard";
-import StepBox from "./StepBox";
-import { get_sig_c0d } from "../Utils/getTensioni";
-import { get_f_c0d } from "../Utils/getResistenze";
-import { get_InstabilitaCompressioneCheck } from "../Utils/getChecks";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import customDecimal from "../../Utils/customDecimal";
+import CheckCard from "../CheckCard";
+import StepBox from "../StepBox";
+import { get_sig_c0d } from "../../Utils/getTensioni";
+import { get_f_c0d } from "../../Utils/getResistenze";
+import { get_InstabilitaCompressioneCheck } from "../../Utils/getChecks";
 import { useState } from "react";
-import get_lambda_c from "../Utils/get_lambda_c";
-import get_lambda_rel_c from "../Utils/get_lambda_rel_c";
-import get_Ncr from "../Utils/get_Ncr";
-import get_beta_c from "../Utils/get_beta_c";
-import get_k from "../Utils/get_k";
-import get_kcrit_c from "../Utils/get_kcrit_c";
+import get_lambda_c from "../../Utils/get_lambda_c";
+import get_lambda_rel_c from "../../Utils/get_lambda_rel_c";
+import get_Ncr from "../../Utils/get_Ncr";
+import get_beta_c from "../../Utils/get_beta_c";
+import get_k from "../../Utils/get_k";
+import get_kcrit_c from "../../Utils/get_kcrit_c";
+import getKmod from "../../Utils/getKmod";
 
 
 export default function InstabilitaCompressioneCheck(params) {
@@ -26,7 +27,6 @@ export default function InstabilitaCompressioneCheck(params) {
     const isDisabled = Ned <= 0 ? true : false
 
     const Atot = 26
-    const kmod = 27527
     const fc0k = 45646
     const L = 45646
     const beta_y = 45646
@@ -34,14 +34,14 @@ export default function InstabilitaCompressioneCheck(params) {
     const E005 = 45646
     const Ig_y = 45646
     const Ig_z = 45646
+    const serviceClass = 1
+    const classLoad = 'permanente'
     const woodType = 'lamellare'
-    
-    
 
 
 
-    
-    
+    const kmod = getKmod(woodType, serviceClass, classLoad)
+
     const gm = get_gammaM(woodType)
 
     const {

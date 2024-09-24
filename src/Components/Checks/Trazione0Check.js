@@ -1,10 +1,11 @@
-import get_gammaM from "../Utils/get_gammaM";
-import getCheckSymbol from "../Utils/getCheckSymbol";
+import get_gammaM from "../../Utils/get_gammaM";
+import getCheckSymbol from "../../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import CheckCard from "./CheckCard";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import CheckCard from "../CheckCard";
 import Latex from "react-latex-next";
 import { useState } from "react";
+import getKmod from "../../Utils/getKmod";
 
 
 export default function Trazione0Check(params) {
@@ -27,11 +28,14 @@ export default function Trazione0Check(params) {
 
     const NcRd = 161
     const check = Ned / NcRd
+    const serviceClass = 1
+    const shape = 'rettangolare'
+    const classLoad = 'permanente'
     const woodType = 'lamellare'
 
 
 
-
+    const kmod = getKmod(woodType, serviceClass, classLoad)
     const gm0 = get_gammaM(woodType)
 
     const title = 'Verifica a Trazione parallela alla fibratura [NTC18 - \u00A74.4.8.1.1]'

@@ -1,17 +1,18 @@
-import get_gammaM from "../Utils/get_gammaM";
+import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import CheckCard from "./CheckCard";
-import StepBox from "./StepBox";
-import { get_sig_myd, get_sig_mzd } from "../Utils/getTensioni";
-import { get_f_myd, get_f_mzd } from "../Utils/getResistenze";
-import { get_InstabilitaLateroTorsionaleCheck } from "../Utils/getChecks";
-import get_lambda_rel_m from "../Utils/get_lambda_rel_m";
-import get_sig_m_crit from "../Utils/get_sig_m_crit";
-import get_kcrit_m from "../Utils/get_kcrit_m";
-import getMcrit from "../Utils/getMcrit";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import CheckCard from "../CheckCard";
+import StepBox from "../StepBox";
+import { get_sig_myd, get_sig_mzd } from "../../Utils/getTensioni";
+import { get_f_myd, get_f_mzd } from "../../Utils/getResistenze";
+import { get_InstabilitaLateroTorsionaleCheck } from "../../Utils/getChecks";
+import get_lambda_rel_m from "../../Utils/get_lambda_rel_m";
+import get_sig_m_crit from "../../Utils/get_sig_m_crit";
+import get_kcrit_m from "../../Utils/get_kcrit_m";
+import getMcrit from "../../Utils/getMcrit";
 import { useState } from "react";
-import getKm from "../Utils/getKm";
+import getKm from "../../Utils/getKm";
+import getKmod from "../../Utils/getKmod";
 
 
 export default function InstabilitaLateroTorsionaleCheck(params) {
@@ -35,20 +36,19 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const Ig_z = 45646
     const Ig_y = 45646
     const Ig_tor = 45646
-    const kmod = 0.3
+
     const khy = 0.18
     const khz = 0.16
     const leff = 2.6
     const shape = 'rettangolare'
+    const serviceClass = 1
+    const classLoad = 'permanente'
     const woodType = 'lamellare'
 
 
 
 
-
-
-
-
+    const kmod = getKmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 

@@ -1,23 +1,25 @@
-import get_gammaM from "../Utils/get_gammaM";
+import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import CheckCard from "./CheckCard";
-import StepBox from "./StepBox";
-import { get_sig_c0d, get_sig_myd, get_sig_mzd } from "../Utils/getTensioni";
-import { get_f_c0d, get_f_myd, get_f_mzd } from "../Utils/getResistenze";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import CheckCard from "../CheckCard";
+import StepBox from "../StepBox";
+import { get_sig_c0d, get_sig_myd, get_sig_mzd } from "../../Utils/getTensioni";
+import { get_f_c0d, get_f_myd, get_f_mzd } from "../../Utils/getResistenze";
 import { useState } from "react";
-import getMcrit from "../Utils/getMcrit";
-import get_sig_m_crit from "../Utils/get_sig_m_crit";
-import get_lambda_rel_m from "../Utils/get_lambda_rel_m";
-import get_kcrit_m from "../Utils/get_kcrit_m";
-import get_Ncr from "../Utils/get_Ncr";
-import get_lambda_c from "../Utils/get_lambda_c";
-import get_lambda_rel_c from "../Utils/get_lambda_rel_c";
-import get_beta_c from "../Utils/get_beta_c";
-import get_k from "../Utils/get_k";
-import get_kcrit_c from "../Utils/get_kcrit_c";
-import { get_InstabilitaPressoFlessioneCheck } from "../Utils/getChecks";
-import getKm from "../Utils/getKm";
+import getMcrit from "../../Utils/getMcrit";
+import get_sig_m_crit from "../../Utils/get_sig_m_crit";
+import get_lambda_rel_m from "../../Utils/get_lambda_rel_m";
+import get_kcrit_m from "../../Utils/get_kcrit_m";
+import get_Ncr from "../../Utils/get_Ncr";
+import get_lambda_c from "../../Utils/get_lambda_c";
+import get_lambda_rel_c from "../../Utils/get_lambda_rel_c";
+import get_beta_c from "../../Utils/get_beta_c";
+import get_k from "../../Utils/get_k";
+import get_kcrit_c from "../../Utils/get_kcrit_c";
+import { get_InstabilitaPressoFlessioneCheck } from "../../Utils/getChecks";
+import getKmod from "../../Utils/getKmod";
+import getKm from "../../Utils/getKm";
+
 
 
 export default function InstabilitaPressoFlessioneCheck(params) {
@@ -33,7 +35,6 @@ export default function InstabilitaPressoFlessioneCheck(params) {
 
 
     const Atot = 26
-    const kmod = 27527
     const fc0k = 45646
     const fmk = 45646
     const Wel_y = 45646
@@ -50,12 +51,13 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const khy = 45646
     const khz = 45646
     const shape = 'rettangolare'
-    const woodType='lamellare'
-    
+    const serviceClass = 1
+    const classLoad = 'permanente'
+    const woodType = 'lamellare'
 
 
 
-
+    const kmod = getKmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 

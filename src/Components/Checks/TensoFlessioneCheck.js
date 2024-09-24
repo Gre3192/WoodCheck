@@ -1,14 +1,16 @@
 import Latex from "react-latex-next";
-import get_gammaM from "../Utils/get_gammaM";
+import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import CheckCard from "./CheckCard";
-import StepBox from "./StepBox";
-import { get_TensoflessioneCheck } from "../Utils/getChecks";
-import { get_sig_t0d, get_sig_myd, get_sig_mzd } from "../Utils/getTensioni";
-import { get_f_t0d, get_f_myd, get_f_mzd } from "../Utils/getResistenze";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import CheckCard from "../CheckCard";
+import StepBox from "../StepBox";
+import { get_TensoflessioneCheck } from "../../Utils/getChecks";
+import { get_sig_t0d, get_sig_myd, get_sig_mzd } from "../../Utils/getTensioni";
+import { get_f_t0d, get_f_myd, get_f_mzd } from "../../Utils/getResistenze";
 import { useState } from "react";
-import getKm from "../Utils/getKm";
+import getKm from "../../Utils/getKm";
+import getKmod from "../../Utils/getKmod";
+
 
 
 export default function TensoFlessioneCheck(params) {
@@ -27,20 +29,19 @@ export default function TensoFlessioneCheck(params) {
     const Aeff = 1289.6
     const Wel_y = 543
     const Wel_z = 543
-    const kmod = 564
     const fmk = 564
     const fc0k = 564
     const khy = 564
     const khz = 564
-    const shape='rettangolare'
+    const serviceClass = 1
+    const shape = 'rettangolare'
+    const classLoad = 'permanente'    
     const woodType = 'lamellare'
-    
 
 
 
+    const kmod = getKmod(woodType, serviceClass, classLoad)
 
-
-    
     const gm = get_gammaM(woodType)
 
     const {

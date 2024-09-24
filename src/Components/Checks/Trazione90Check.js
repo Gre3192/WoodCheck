@@ -1,10 +1,11 @@
 import Latex from "react-latex-next";
-import get_gammaM from "../Utils/get_gammaM";
-import getCheckSymbol from "../Utils/getCheckSymbol";
+import get_gammaM from "../../Utils/get_gammaM";
+import getCheckSymbol from "../../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import CheckCard from "./CheckCard";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import CheckCard from "../CheckCard";
 import { useState } from "react";
+import getKmod from "../../Utils/getKmod";
 
 export default function Trazione90Check(params) {
 
@@ -23,11 +24,14 @@ export default function Trazione90Check(params) {
     const Aeff = 1289
     const NcRd = 161
     const check = Ned / NcRd
+    const serviceClass = 1
+    const shape = 'rettangolare'
+    const classLoad = 'permanente'
     const woodType = 'lamellare'
-    
 
 
 
+    const kmod = getKmod(woodType, serviceClass, classLoad)
     const gm0 = get_gammaM(woodType)
 
     

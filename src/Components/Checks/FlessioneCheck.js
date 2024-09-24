@@ -1,13 +1,14 @@
-import get_gammaM from "../Utils/get_gammaM";
+import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import CheckCard from "./CheckCard";
-import getKm from "../Utils/getKm";
-import { get_sig_myd, get_sig_mzd } from "../Utils/getTensioni"
-import { get_f_myd, get_f_mzd } from "../Utils/getResistenze"
-import StepBox from "./StepBox";
-import { get_flessioneCheck } from "../Utils/getChecks";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import CheckCard from "../CheckCard";
+import getKm from "../../Utils/getKm";
+import { get_sig_myd, get_sig_mzd } from "../../Utils/getTensioni"
+import { get_f_myd, get_f_mzd } from "../../Utils/getResistenze"
+import StepBox from "../StepBox";
+import { get_flessioneCheck } from "../../Utils/getChecks";
 import { useState } from "react";
+import getKmod from "../../Utils/getKmod";
 
 
 export default function FlessioneCheck(params) {
@@ -27,15 +28,14 @@ export default function FlessioneCheck(params) {
     const khy = 1289.6
     const khz = 1289.6
     const fmk = 1289.6
-    const kmod = 0.7
     const shape = 'rettangolare'
+    const serviceClass = 1
+    const classLoad = 'permanente'
     const woodType = 'lamellare'
 
 
 
-
-
-
+    const kmod = getKmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 

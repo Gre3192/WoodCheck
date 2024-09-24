@@ -1,13 +1,15 @@
-import get_gammaM from "../Utils/get_gammaM";
+import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import CheckCard from "./CheckCard";
-import getKsh from "../Utils/getKsh";
-import { get_tau_tord, get_tau_d } from "../Utils/getTensioni";
-import { get_fvd } from "../Utils/getResistenze";
-import { get_TaglioTorsioneCheck } from "../Utils/getChecks";
-import StepBox from "./StepBox";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import CheckCard from "../CheckCard";
+import getKsh from "../../Utils/getKsh";
+import { get_tau_tord, get_tau_d } from "../../Utils/getTensioni";
+import { get_fvd } from "../../Utils/getResistenze";
+import { get_TaglioTorsioneCheck } from "../../Utils/getChecks";
+import StepBox from "../StepBox";
 import { useState } from "react";
+import getKmod from "../../Utils/getKmod";
+
 
 export default function TaglioTorsioneCheck(params) {
 
@@ -22,18 +24,17 @@ export default function TaglioTorsioneCheck(params) {
 
 
     const Atot = 26
-    const Aeff = 1289.6
-    const kmod = 465
     const fvk = 9
     const Itor = 98798
     const b = 453
+    const serviceClass = 1
     const woodType = 'lamellare'
     const shape = 'circolare'
+    const classLoad = 'permanente'
 
 
 
-
-
+    const kmod = getKmod(woodType, serviceClass, classLoad)
 
     const gm = get_gammaM(woodType)
 

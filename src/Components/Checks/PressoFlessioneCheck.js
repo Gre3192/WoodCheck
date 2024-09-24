@@ -1,16 +1,18 @@
 import Latex from "react-latex-next";
-import get_gammaM from "../Utils/get_gammaM";
-import getCheckSymbol from "../Utils/getCheckSymbol";
+import get_gammaM from "../../Utils/get_gammaM";
+import getCheckSymbol from "../../Utils/getCheckSymbol";
 import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../Atom/forcesStateAtom";
-import customDecimal from "../Utils/customDecimal";
-import CheckCard from "./CheckCard";
-import { get_sig_c0d, get_sig_myd, get_sig_mzd } from "../Utils/getTensioni";
-import { get_f_c0d, get_f_myd, get_f_mzd } from "../Utils/getResistenze";
-import { get_PressoflessioneCheck } from "../Utils/getChecks";
-import StepBox from "./StepBox";
+import { forcesStateAtom } from "../../Atom/forcesStateAtom";
+import customDecimal from "../../Utils/customDecimal";
+import CheckCard from "../CheckCard";
+import { get_sig_c0d, get_sig_myd, get_sig_mzd } from "../../Utils/getTensioni";
+import { get_f_c0d, get_f_myd, get_f_mzd } from "../../Utils/getResistenze";
+import { get_PressoflessioneCheck } from "../../Utils/getChecks";
+import StepBox from "../StepBox";
 import { useState } from "react";
-import getKm from "../Utils/getKm";
+import getKm from "../../Utils/getKm";
+import getKmod from "../../Utils/getKmod";
+
 
 
 
@@ -29,18 +31,18 @@ export default function PressoFlessioneCheck(params) {
     const Atot = 26
     const Wel_y = 1561
     const Wel_z = 1561
-    const kmod = 27527
     const khy = 3423
     const khz = 234234
     const fmk = 5464
     const fc0k = 64
+    const serviceClass = 1
     const shape = 'rettangolare'
+    const classLoad = 'permanente'
     const woodType = 'lamellare'
-    
-    
 
 
 
+    const kmod = getKmod(woodType, serviceClass, classLoad)
     
     const gm = get_gammaM(woodType)
 

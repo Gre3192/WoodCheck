@@ -1,32 +1,34 @@
-import Compressione0Check from "../../Components/Compressione0Check"
-import Compressione90Check from "../../Components/Compressione90Check"
-import CompressioneAlphaCheck from "../../Components/CompressioneAlphaCheck"
-import FlessioneCheck from "../../Components/FlessioneCheck"
+import Trazione0Check from "../../Components/Checks/Trazione0Check"
+import Trazione90Check from "../../Components/Checks/Trazione90Check"
+
+import Compressione0Check from "../../Components/Checks/Compressione0Check"
+import Compressione90Check from "../../Components/Checks/Compressione90Check"
+import CompressioneAlphaCheck from "../../Components/Checks/CompressioneAlphaCheck"
+
+import FlessioneCheck from "../../Components/Checks/FlessioneCheck"
+import PressoFlessioneCheck from "../../Components/Checks/PressoFlessioneCheck"
+import TensoFlessioneCheck from "../../Components/Checks/TensoFlessioneCheck"
+
+import TaglioCheck from "../../Components/Checks/TaglioCheck"
+import TorsioneCheck from "../../Components/Checks/TorsioneCheck"
+import TaglioTorsioneCheck from "../../Components/Checks/TaglioTorsioneCheck"
+
+import InstabilitaCompressioneCheck from "../../Components/Checks/InstabilitaCompressioneCheck"
+import InstabilitaLateroTorsionaleCheck from "../../Components/Checks/InstabilitaLateroTorsionaleCheck"
+import InstabilitaPressoFlessioneCheck from "../../Components/Checks/InstabilitaPressoFlessioneCheck"
+
+
 import InputForces from "../../Components/InputForces"
-import PressoFlessioneCheck from "../../Components/PressoFlessioneCheck"
-import TaglioCheck from "../../Components/TaglioCheck"
-import TaglioTorsioneCheck from "../../Components/TaglioTorsioneCheck"
-import TensoFlessioneCheck from "../../Components/TensoFlessioneCheck"
-import TorsioneCheck from "../../Components/TorsioneCheck"
-import Trazione0Check from "../../Components/Trazione0Check"
-import Trazione90Check from "../../Components/Trazione90Check"
-import InstabilitaCompressioneCheck from "../../Components/InstabilitaCompressioneCheck"
-import InstabilitaLateroTorsionaleCheck from "../../Components/InstabilitaLateroTorsionaleCheck"
-import InstabilitaPressoFlessioneCheck from "../../Components/InstabilitaPressoFlessioneCheck"
 import ControlPanel from "../../Components/ControlPanel"
 
 
 export default function WoodChecks(params) {
-
-
 
     return (<>
 
         {/* <div className="sticky p-5">
             <ControlPanel />
         </div> */}
-
-
 
         <div className="h-[92vh] overflow-y-scroll">
             <InputForces />
