@@ -50,8 +50,6 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const E005 = 0.7
     const G005 = 0.7
     const shape = 'rettangolare'
-
-
     const khy = 45646
     const khz = 45646
 
