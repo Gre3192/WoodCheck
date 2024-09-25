@@ -43,7 +43,7 @@ export default function StepBox({
                                     ${titles[index] ? titles[index] : 'titles = '}
                                     ${isFormula && formulas[index] ? formulas[index] : ''}
                                     ${isFormula && isFormulaVal && formulaVals[index] ? formulaVals[index] : ''}
-                                    ${itemValue ? itemValue : '0'}
+                                    ${itemValue ? customDecimal(itemValue, 2) : '0'}
                                     ${isCheck ? getCheckSymbol(itemValue) : ''}
                                 $`}
                             </Latex>
@@ -55,7 +55,7 @@ export default function StepBox({
                             {
                                 isCheck ?
                                     <div className="flex gap-2 items-center">
-                                        <Latex>{`${customDecimal(itemValue, 2) * 100}\u0025`}</Latex>
+                                        <Latex>{`${customDecimal(itemValue * 100, 2)} \u0025`}</Latex>
                                         {getCheckCircle(itemValue)}
                                     </div>
                                     : null
