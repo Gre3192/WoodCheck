@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import SectionDrawing from './SectionDrawing';
+import React, {useEffect } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import SectionShapeToggleBar from './SectionShapeToggleBar';
 import SectionSelector from './SectionSelector';
