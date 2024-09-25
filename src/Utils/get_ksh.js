@@ -13,7 +13,7 @@ export default function get_ksh(shape = `circolare`, h = null, b = null) {
         return {
             ksh: Math.min(1 + 0.15 * (h / b), 2),
             ksh_title: `k_{sh} = `,
-            ksh_formula: `\\min\\left[1+0.15\\cdot\\left(\\dfrac{h}{b}\\right), 2\\right] = `,
+            ksh_formula: `\\min\\left[1+0.15\\cdot\\left(\\dfrac{h}{b}\\right); 2\\right] = `,
             ksh_formulaVal: `\\min\\left[1+0.15\\cdot\\left(\\dfrac{${h}}{${b}}\\right); 2\\right] = `,
             ksh_description: `Coefficiente di forma per sezioni rettangolari piene, di lati b e h con b<h`
         }
