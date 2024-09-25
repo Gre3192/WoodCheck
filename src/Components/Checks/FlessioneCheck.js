@@ -45,7 +45,7 @@ export default function FlessioneCheck(params) {
     const serviceClass = 1
     const classLoad = 'permanente'
 
-
+    
 
     const kmod = get_kmod(woodType, serviceClass, classLoad)
 
@@ -66,6 +66,14 @@ export default function FlessioneCheck(params) {
         kh_z_description
 
     } = get_kh(h, b, shape, woodType)
+
+
+    console.log(h);
+    console.log(b);
+    console.log(shape);
+    console.log(woodType);
+    console.log(kh_y);
+
 
     const {
 
@@ -147,6 +155,22 @@ export default function FlessioneCheck(params) {
                 formulaVal={sig_mzd_formulaVal}
                 value={sig_mzd}
                 description={sig_mzd_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={kh_y_title}
+                formula={kh_y_formula}
+                formulaVal={kh_y_formulaVal}
+                value={kh_y}
+                description={kh_y_description}
+            />
+            <hr />
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={kh_z_title}
+                formula={kh_z_formula}
+                formulaVal={kh_z_formulaVal}
+                value={kh_z}
+                description={kh_z_description}
             />
             <hr />
             <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
