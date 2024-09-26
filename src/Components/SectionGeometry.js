@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import SectionShapeToggleBar from './SectionShapeToggleBar';
 import SectionSelector from './SectionSelector';
 import MinimalTable from './MinimalTable';
@@ -12,13 +12,11 @@ export default function SectionGeometry() {
 
 
   const [sectionGeometry, setSectionGeometry] = useRecoilState(sectionGeometryAtom)
-  const setSectionGeometryMass = useSetRecoilState(sectionGeometryMassAtom)
-
-  const sectionGeometryMass = getGeometryMass(sectionGeometry)
+  const [sectionGeometryMass, setSectionGeometryMass] = useRecoilState(sectionGeometryMassAtom)
 
 
   useEffect(() => {
-    setSectionGeometryMass(sectionGeometryMass)
+    setSectionGeometryMass(getGeometryMass(sectionGeometry))
   }, [sectionGeometry])
 
 
@@ -51,7 +49,7 @@ export default function SectionGeometry() {
 
     switch (shape) {
 
-      case 'rettangolare': arrayObj = [
+      default: arrayObj = [
         {
           name: "b",
           label: 'b\\\\\\text{[mm]}',

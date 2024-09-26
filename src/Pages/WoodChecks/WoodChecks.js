@@ -20,13 +20,25 @@ import InstabilitaPressoFlessioneCheck from "../../Components/Checks/Instabilita
 
 import InputForces from "../../Components/InputForces"
 import ControlPanel from "../../Components/ControlPanel"
-import SectionSelector from "../../Components/SectionSelector"
 import SectionGeometry from "../../Components/SectionGeometry"
 import ServiceClassSelector from "../../Components/ServiceClassSelector"
 import DurationClassSelector from "../../Components/DurationClassSelector"
+import { useRecoilValue } from "recoil"
+import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom"
+import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom"
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom"
+import inputAlert from "../../Utils/InputAlert"
+
 
 
 export default function WoodChecks(params) {
+
+
+    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
+    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
+
+
 
     return (<>
 
@@ -34,35 +46,43 @@ export default function WoodChecks(params) {
             <ControlPanel />
         </div> */}
 
+
         <div className="h-[92vh] overflow-y-scroll">
-            <DurationClassSelector/>
-            <ServiceClassSelector/>
+            <DurationClassSelector />
+            <ServiceClassSelector />
             <SectionGeometry />
             <InputForces />
-            <div className="px-5">
-                <h1 className="text-lg font-bold" >
-                    Verifiche di Resistenza
-                </h1>
-                <Trazione0Check />
-                <Trazione90Check />
-                <Compressione0Check />
-                <Compressione90Check />
-                <CompressioneAlphaCheck />
-                <FlessioneCheck />
-                <TensoFlessioneCheck />
-                <PressoFlessioneCheck />
-                <TaglioCheck />
-                <TorsioneCheck />
-                <TaglioTorsioneCheck />
-            </div>
-            <div className="px-5">
-                <h1 className="text-lg font-bold" >
-                    Verifiche di Stabilità
-                </h1>
-                <InstabilitaLateroTorsionaleCheck />
-                <InstabilitaCompressioneCheck />
-                <InstabilitaPressoFlessioneCheck />
-            </div>
+
+            {!sectionGeometry.shape || !mecchanicProps.fc0k  ?
+                inputAlert(sectionGeometry.shape, mecchanicProps.fc0k, serviceDuration.durabilityClass, serviceDuration.serviceClass)
+                :
+                <>
+                    <div className="px-5">
+                        <h1 className="text-lg font-bold" >
+                            Verifiche di Resistenza
+                        </h1>
+                        <Trazione0Check />
+                        <Trazione90Check />
+                        <Compressione0Check />
+                        <Compressione90Check />
+                        <CompressioneAlphaCheck />
+                        <FlessioneCheck />
+                        <TensoFlessioneCheck />
+                        <PressoFlessioneCheck />
+                        <TaglioCheck />
+                        <TorsioneCheck />
+                        <TaglioTorsioneCheck />
+                    </div>
+                    <div className="px-5">
+                        <h1 className="text-lg font-bold" >
+                            Verifiche di Stabilità
+                        </h1>
+                        <InstabilitaLateroTorsionaleCheck />
+                        <InstabilitaCompressioneCheck />
+                        <InstabilitaPressoFlessioneCheck />
+                    </div>
+                </>
+            }
         </div>
     </>
     )

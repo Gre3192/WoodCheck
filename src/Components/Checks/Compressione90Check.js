@@ -73,6 +73,16 @@ export default function Compressione90Check(params) {
 
     const centralContent =
         <div className="flex flex-col gap-4">
+            <div className="mb-2 font-semibold ">Calcolo Geometria</div>
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={geometryMass?.title.Atot}
+                formula={geometryMass?.formula.Atot}
+                formulaVal={geometryMass?.formulaVal.Atot}
+                value={geometryMass?.value.Atot}
+                description={geometryMass?.description.Atot}
+            />
+            <hr />
+            <div className="mb-2 font-semibold ">Calcolo Tensioni</div>
             <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={sig_c90d_title}
                 formula={sig_c90d_formula}
@@ -81,6 +91,7 @@ export default function Compressione90Check(params) {
                 description={sig_c90d_description}
             />
             <hr />
+            <div className="mb-2 font-semibold ">Calcolo Resistenze</div>
             <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={f_c90d_title}
                 formula={f_c90d_formula}

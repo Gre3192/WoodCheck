@@ -44,6 +44,8 @@ export default function InputForces() {
   return (
     <div className="p-5 items-center">
 
+
+
       <div className='flex justify-between'>
         <h2 className="text-lg font-bold mb-4">Azioni agenti sulla sezione</h2>
         <button
@@ -53,7 +55,6 @@ export default function InputForces() {
           <FaRedo/>
         </button>
       </div>
-
 
 
 

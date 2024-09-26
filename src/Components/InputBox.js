@@ -3,7 +3,6 @@ import Latex from 'react-latex-next';
 export default function InputBox({ props }) {
 
     const {
-
         titleInputBox = "Default Title",
         placeholder = "Default Placeholder...",
         type = "Default Text",

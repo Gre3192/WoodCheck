@@ -28,14 +28,14 @@ export default function CompressioneAlphaCheck(params) {
     const Ned = rawNed > 0 ? rawNed : 0
     const isDisabled = Ned <= 0 ? true : false
 
-    
+
     const Atot = geometryMass?.value.Atot
     const fc0k = mecchanicProps?.fc0k
     const fc90k = mecchanicProps?.fc90k
     const woodType = mecchanicProps?.woodType
     const serviceClass = serviceDuration?.serviceClass
     const durationClass = serviceDuration?.durabilityClass
-    
+
     const alpha = 45
 
 
@@ -100,6 +100,16 @@ export default function CompressioneAlphaCheck(params) {
 
     const centralContent =
         <div className="flex flex-col gap-4">
+            <div className="mb-2 font-semibold ">Calcolo Geometria</div>
+            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                title={geometryMass?.title.Atot}
+                formula={geometryMass?.formula.Atot}
+                formulaVal={geometryMass?.formulaVal.Atot}
+                value={geometryMass?.value.Atot}
+                description={geometryMass?.description.Atot}
+            />
+            <hr />
+            <div className="mb-2 font-semibold ">Calcolo Tensioni</div>
             <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                 title={sig_cAlphad_title}
                 formula={sig_cAlphad_formula}
@@ -108,29 +118,30 @@ export default function CompressioneAlphaCheck(params) {
                 description={sig_cAlphad_description}
             />
             <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={f_c0d_title}
-                formula={f_c0d_formula}
-                formulaVal={f_c0d_formulaVal}
-                value={f_c0d}
-                description={f_c0d_description}
-            />
-            <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={f_c90d_title}
-                formula={f_c90d_formula}
-                formulaVal={f_c90d_formulaVal}
-                value={f_c90d}
-                description={f_c90d_description}
-            />
-            <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={f_cAlphad_title}
-                formula={f_cAlphad_formula}
-                formulaVal={f_cAlphad_formulaVal}
-                value={f_cAlphad}
-                description={f_cAlphad_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Resistenze</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={f_c0d_title}
+                    formula={f_c0d_formula}
+                    formulaVal={f_c0d_formulaVal}
+                    value={f_c0d}
+                    description={f_c0d_description}
+                />
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={f_c90d_title}
+                    formula={f_c90d_formula}
+                    formulaVal={f_c90d_formulaVal}
+                    value={f_c90d}
+                    description={f_c90d_description}
+                />
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={f_cAlphad_title}
+                    formula={f_cAlphad_formula}
+                    formulaVal={f_cAlphad_formulaVal}
+                    value={f_cAlphad}
+                    description={f_cAlphad_description}
+                />
+            </div>
             <hr />
         </div>
 

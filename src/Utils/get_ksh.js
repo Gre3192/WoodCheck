@@ -3,7 +3,7 @@ import customDecimal from "./customDecimal"
 
 export default function get_ksh(shape = `circolare`, h = null, b = null) {
 
-    if (shape.toLocaleLowerCase() === `circolare`)
+    if (shape?.toLocaleLowerCase() === `circolare`)
         return {
             ksh: 1.2,
             ksh_title: `k_{sh} = `,
@@ -11,7 +11,7 @@ export default function get_ksh(shape = `circolare`, h = null, b = null) {
             ksh_formulaVal: ``,
             ksh_description: `Coefficiente di forma per sezioni circolari piene`
         }
-    else if (shape.toLocaleLowerCase() === `rettangolare`) {
+    else if (shape?.toLocaleLowerCase() === `rettangolare`) {
 
         return {
             ksh: Math.min(1 + 0.15 * (h / b), 2),

@@ -44,7 +44,7 @@ export default function FlessioneCheck(params) {
     const serviceClass = serviceDuration?.serviceClass
     const durationClass = serviceDuration?.durabilityClass
 
-    
+
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)
 
@@ -132,61 +132,85 @@ export default function FlessioneCheck(params) {
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={sig_myd_title}
-                formula={sig_myd_formula}
-                formulaVal={sig_myd_formulaVal}
-                value={sig_myd}
-                description={sig_myd_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Geometria</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={geometryMass?.title.Wel_y}
+                    formula={geometryMass?.formula.Wel_y}
+                    formulaVal={geometryMass?.formulaVal.Wel_y}
+                    value={geometryMass?.value.Wel_y}
+                    description={geometryMass?.description.Wel_y}
+                />
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={geometryMass?.title.Wel_z}
+                    formula={geometryMass?.formula.Wel_z}
+                    formulaVal={geometryMass?.formulaVal.Wel_z}
+                    value={geometryMass?.value.Wel_z}
+                    description={geometryMass?.description.Wel_z}
+                />
+            </div>
             <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={sig_mzd_title}
-                formula={sig_mzd_formula}
-                formulaVal={sig_mzd_formulaVal}
-                value={sig_mzd}
-                description={sig_mzd_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Tensioni</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={sig_myd_title}
+                    formula={sig_myd_formula}
+                    formulaVal={sig_myd_formulaVal}
+                    value={sig_myd}
+                    description={sig_myd_description}
+                />
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={sig_mzd_title}
+                    formula={sig_mzd_formula}
+                    formulaVal={sig_mzd_formulaVal}
+                    value={sig_mzd}
+                    description={sig_mzd_description}
+                />
+            </div>
             <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={kh_y_title}
-                formula={kh_y_formula}
-                formulaVal={kh_y_formulaVal}
-                value={kh_y}
-                description={kh_y_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Coefficienti</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={km_title}
+                    formula={km_formula}
+                    formulaVal={km_formulaVal}
+                    value={km}
+                    description={km_description}
+                />
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={kh_y_title}
+                    formula={kh_y_formula}
+                    formulaVal={kh_y_formulaVal}
+                    value={kh_y}
+                    description={kh_y_description}
+                />
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={kh_z_title}
+                    formula={kh_z_formula}
+                    formulaVal={kh_z_formulaVal}
+                    value={kh_z}
+                    description={kh_z_description}
+                />
+            </div>
             <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={kh_z_title}
-                formula={kh_z_formula}
-                formulaVal={kh_z_formulaVal}
-                value={kh_z}
-                description={kh_z_description}
-            />
-            <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={f_myd_title}
-                formula={f_myd_formula}
-                formulaVal={f_myd_formulaVal}
-                value={f_myd}
-                description={f_myd_description}
-            />
-            <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={f_mzd_title}
-                formula={f_mzd_formula}
-                formulaVal={f_mzd_formulaVal}
-                value={f_mzd}
-                description={f_mzd_description}
-            />
-            <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={km_title}
-                formula={km_formula}
-                formulaVal={km_formulaVal}
-                value={km}
-                description={km_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Resistenze</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={f_myd_title}
+                    formula={f_myd_formula}
+                    formulaVal={f_myd_formulaVal}
+                    value={f_myd}
+                    description={f_myd_description}
+                />
+
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={f_mzd_title}
+                    formula={f_mzd_formula}
+                    formulaVal={f_mzd_formulaVal}
+                    value={f_mzd}
+                    description={f_mzd_description}
+                />
+            </div>
             <hr />
         </div>
 
