@@ -17,6 +17,7 @@ import get_kcrit_c from "../../Utils/get_kcrit_c";
 import get_kmod from "../../Utils/get_kmod";
 import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 
@@ -24,6 +25,8 @@ export default function InstabilitaCompressioneCheck(params) {
 
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
+
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -39,13 +42,13 @@ export default function InstabilitaCompressioneCheck(params) {
     const Ig_y = geometryMass?.value.Ig_y
     const Ig_z = geometryMass?.value.Ig_z
     const woodType = mecchanicProps?.woodType
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass
 
 
     const L = 45646
     const beta_y = 45646
     const beta_z = 45646
-    const serviceClass = 1
-    const durationClass = 'permanente'
 
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)

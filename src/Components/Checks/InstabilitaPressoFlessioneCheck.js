@@ -23,6 +23,8 @@ import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 import get_kh from "../../Utils/get_kh";
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
+
 
 
 export default function InstabilitaPressoFlessioneCheck(params) {
@@ -30,6 +32,8 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
+
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -55,14 +59,14 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const woodType = mecchanicProps?.woodType
     const b = sectionGeometry?.b
     const h = sectionGeometry?.h
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass
 
 
     const leff = 45646
     const L = 45646
     const beta_y = 0.7
     const beta_z = 0.2
-    const serviceClass = 1
-    const durationClass = 'permanente'
 
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)
@@ -362,6 +366,11 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     } = get_InstabilitaPressoFlessioneCheck(sig_c0d, sig_myd, sig_mzd, f_c0d, f_myd, f_mzd, kcrit_c_y, kcrit_c_z, kcrit_m_y, kcrit_m_z, km)
 
 
+
+
+
+
+    
     const title = 'Verifica a Instabilità a Presso-Flessione - Instabilità composta trave-colonna [CNR DT 206-R1/2018 - \u00A77.6.1.2.3]'
 
     const centralContent =

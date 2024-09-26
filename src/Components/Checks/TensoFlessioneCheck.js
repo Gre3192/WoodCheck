@@ -14,6 +14,7 @@ import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 import get_kh from "../../Utils/get_kh";
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 export default function TensoFlessioneCheck(params) {
@@ -21,6 +22,7 @@ export default function TensoFlessioneCheck(params) {
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -41,10 +43,8 @@ export default function TensoFlessioneCheck(params) {
     const woodType = mecchanicProps?.woodType
     const b = sectionGeometry?.b
     const h = sectionGeometry?.h
-    
-
-    const serviceClass = 1
-    const durationClass = 'permanente'    
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass   
 
 
 
@@ -153,6 +153,9 @@ export default function TensoFlessioneCheck(params) {
 
 
 
+
+
+    
     const title = 'Verifica a Tenso-Flessione [NTC18 - \u00A74.4.8.1.7]'
 
     const centralContent =

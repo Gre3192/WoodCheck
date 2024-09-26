@@ -28,7 +28,6 @@ export default function CompressioneAlphaCheck(params) {
     const Ned = rawNed > 0 ? rawNed : 0
     const isDisabled = Ned <= 0 ? true : false
 
-
     
     const Atot = geometryMass?.value.Atot
     const fc0k = mecchanicProps?.fc0k

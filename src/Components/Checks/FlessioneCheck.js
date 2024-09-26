@@ -13,6 +13,7 @@ import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 import get_kh from "../../Utils/get_kh";
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 
@@ -21,6 +22,8 @@ export default function FlessioneCheck(params) {
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
+
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -38,12 +41,8 @@ export default function FlessioneCheck(params) {
     const shape = sectionGeometry?.shape
     const h = sectionGeometry?.h
     const b = sectionGeometry?.b
-
-
-
-
-    const serviceClass = 1
-    const durationClass = 'permanente'
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass
 
     
 
@@ -66,14 +65,6 @@ export default function FlessioneCheck(params) {
         kh_z_description
 
     } = get_kh(h, b, shape, woodType)
-
-
-    console.log(h);
-    console.log(b);
-    console.log(shape);
-    console.log(woodType);
-    console.log(kh_y);
-
 
     const {
 

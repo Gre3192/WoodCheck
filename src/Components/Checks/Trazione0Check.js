@@ -9,6 +9,7 @@ import get_kmod from "../../Utils/get_kmod";
 import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 
@@ -17,6 +18,7 @@ export default function Trazione0Check(params) {
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -30,13 +32,13 @@ export default function Trazione0Check(params) {
     const Atot = geometryMass?.Atot
     const shape = sectionGeometry?.shape
     const woodType = mecchanicProps?.woodType
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass  
 
 
 
     const NcRd = 161
     const check = Ned / NcRd
-    const serviceClass = 1
-    const durationClass = 'permanente'
 
 
 

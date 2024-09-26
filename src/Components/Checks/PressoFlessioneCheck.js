@@ -16,6 +16,7 @@ import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 import get_kh from "../../Utils/get_kh";
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 
@@ -24,6 +25,8 @@ export default function PressoFlessioneCheck(params) {
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
+
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -44,11 +47,8 @@ export default function PressoFlessioneCheck(params) {
     const woodType = mecchanicProps?.woodType
     const b = sectionGeometry?.b
     const h = sectionGeometry?.h
-    
-    
-
-    const serviceClass = 1
-    const durationClass = 'permanente'
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass
 
 
 
@@ -141,7 +141,6 @@ export default function PressoFlessioneCheck(params) {
         f_mzd_description
 
     } = get_f_mzd(kh_z, kmod, fmk, gm)
-
 
     const {
 

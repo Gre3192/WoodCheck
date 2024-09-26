@@ -17,6 +17,7 @@ import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 import get_kh from "../../Utils/get_kh";
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 
@@ -25,6 +26,8 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
+
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -49,12 +52,12 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
     const woodType = mecchanicProps?.woodType
     const b = sectionGeometry?.b
     const h = sectionGeometry?.h
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass
 
 
 
     const leff = 2.6
-    const serviceClass = 1
-    const durationClass = 'permanente'
 
 
 
@@ -191,7 +194,6 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
         kcrit_m_z_description
 
     } = get_kcrit_m(lambda_rel_m_y, lambda_rel_m_z)
-
 
     const {
 

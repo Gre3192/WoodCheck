@@ -12,6 +12,7 @@ import get_kmod from "../../Utils/get_kmod";
 import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 
@@ -20,6 +21,7 @@ export default function TaglioTorsioneCheck(params) {
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -38,10 +40,8 @@ export default function TaglioTorsioneCheck(params) {
     const h = sectionGeometry?.h
     const shape = sectionGeometry?.shape
     const woodType = mecchanicProps?.woodType
-    
-
-    const durationClass = 'permanente'
-    const serviceClass = 1
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass
 
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)
@@ -96,6 +96,10 @@ export default function TaglioTorsioneCheck(params) {
 
     } = get_TaglioTorsioneCheck(tau_tord, tau_d, fvd, ksh)
 
+
+
+
+    
 
     const title = 'Verifica a Taglio e Torsione [NTC18 - \u00A74.4.8.1.11]'
 

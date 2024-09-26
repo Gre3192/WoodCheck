@@ -28,12 +28,9 @@ export default function Compressione90Check(params) {
     const isDisabled = Ned <= 0 ? true : false
 
 
-
-    
     const Atot = geometryMass?.value.Atot
     const fc90k = mecchanicProps?.fc90k
     const woodType = mecchanicProps?.woodType
-
     const serviceClass = serviceDuration?.serviceClass
     const durationClass = serviceDuration?.durabilityClass
 

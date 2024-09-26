@@ -11,7 +11,7 @@ import get_kmod from "../../Utils/get_kmod";
 import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
-
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 export default function TaglioCheck(params) {
@@ -19,6 +19,7 @@ export default function TaglioCheck(params) {
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -33,10 +34,8 @@ export default function TaglioCheck(params) {
     const fvk = mecchanicProps?.fvk
     const shape = sectionGeometry?.shape
     const woodType = mecchanicProps?.woodType
-    
-    
-    const durationClass = 'permanente'
-    const serviceClass = 1
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass
 
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)
@@ -71,9 +70,9 @@ export default function TaglioCheck(params) {
 
     } = get_TaglioCheck(tau_d, fvd)
 
-    get_kmod('lamellare',1,'permanente')
 
 
+    
     const title = 'Verifica a Taglio [NTC18 - \u00A74.4.8.1.9]'
 
     const centralContent =
