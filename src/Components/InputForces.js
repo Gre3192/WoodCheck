@@ -48,9 +48,9 @@ export default function InputForces() {
         <h2 className="text-lg font-bold mb-4">Azioni agenti sulla sezione</h2>
         <button
           onClick={handleReset}
-          className="flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 bg-white font-semibold hover:bg-gray-200 transition duration-100"
+          className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
         >
-          <FaRedo />
+          <FaRedo/>
         </button>
       </div>
 
