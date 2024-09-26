@@ -39,11 +39,11 @@ export default function TorsioneCheck(params) {
     
 
 
-    const classLoad = 'permanente'
+    const durationClass = 'permanente'
     const serviceClass = 1
 
 
-    const kmod = get_kmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, durationClass)
 
     const gm = get_gammaM(woodType)
 

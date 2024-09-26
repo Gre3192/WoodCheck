@@ -62,10 +62,10 @@ export default function InstabilitaPressoFlessioneCheck(params) {
     const beta_y = 0.7
     const beta_z = 0.2
     const serviceClass = 1
-    const classLoad = 'permanente'
+    const durationClass = 'permanente'
 
 
-    const kmod = get_kmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, durationClass)
 
     const gm = get_gammaM(woodType)
 

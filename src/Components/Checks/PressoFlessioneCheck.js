@@ -48,11 +48,11 @@ export default function PressoFlessioneCheck(params) {
     
 
     const serviceClass = 1
-    const classLoad = 'permanente'
+    const durationClass = 'permanente'
 
 
 
-    const kmod = get_kmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, durationClass)
     
     const gm = get_gammaM(woodType)
 

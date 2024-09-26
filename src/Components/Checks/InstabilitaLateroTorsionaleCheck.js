@@ -54,12 +54,12 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
 
     const leff = 2.6
     const serviceClass = 1
-    const classLoad = 'permanente'
+    const durationClass = 'permanente'
 
 
 
 
-    const kmod = get_kmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, durationClass)
 
     const gm = get_gammaM(woodType)
 

@@ -45,10 +45,10 @@ export default function InstabilitaCompressioneCheck(params) {
     const beta_y = 45646
     const beta_z = 45646
     const serviceClass = 1
-    const classLoad = 'permanente'
+    const durationClass = 'permanente'
 
 
-    const kmod = get_kmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, durationClass)
 
     const gm = get_gammaM(woodType)
 

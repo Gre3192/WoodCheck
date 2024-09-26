@@ -10,12 +10,15 @@ import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
+import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
+
 
 export default function Compressione90Check(params) {
 
     
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
+    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
@@ -31,12 +34,12 @@ export default function Compressione90Check(params) {
     const fc90k = mecchanicProps?.fc90k
     const woodType = mecchanicProps?.woodType
 
-    const serviceClass = 1
-    const classLoad = 'permanente'
+    const serviceClass = serviceDuration?.serviceClass
+    const durationClass = serviceDuration?.durabilityClass
 
 
 
-    const kmod = get_kmod(woodType, serviceClass, classLoad)
+    const kmod = get_kmod(woodType, serviceClass, durationClass)
 
     const gm = get_gammaM(woodType)
 

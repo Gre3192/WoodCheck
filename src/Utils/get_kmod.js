@@ -69,7 +69,7 @@ const kmodData = {
 };
 
 
-export default function get_kmod(material = 'lamellare', serviceClass = 1, classLoad = 'permanente') {
+export default function get_kmod(material = 'lamellare', serviceClass = 1, durationClass = 'permanente') {
 
   const materialFound = Object.keys(kmodData).find((key) =>
     key.toLowerCase().includes(material.toLowerCase())
@@ -86,7 +86,7 @@ export default function get_kmod(material = 'lamellare', serviceClass = 1, class
   }
 
   const classLoadFound = Object.keys(serviceData).find((key) =>
-    key.toLowerCase().includes(classLoad.toLowerCase())
+    key.toLowerCase().includes(durationClass.toLowerCase())
   );
   if (!classLoadFound) {
     throw new Error("Classe di durata del carico non valida.");
