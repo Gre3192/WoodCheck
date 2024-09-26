@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil';
 import { forcesStateAtom } from '../Atom/forcesStateAtom';
 import InputBox from './InputBox';
 import ActionSectionDraw from './ActionSectionDraw';
+import { FaRedo } from 'react-icons/fa';
 
 export default function InputForces() {
 
@@ -18,6 +19,19 @@ export default function InputForces() {
     }));
   };
 
+  const handleReset = () => {
+    setForces(
+      {
+        Ned: null,
+        Ved_y: null,
+        Ved_z: null,
+        Med_y: null,
+        Med_z: null,
+        Med_tor: null
+      }
+    )
+  }
+
   const inputForcesConfig = [
     { titleInputBox: 'N_{Ed}', name: 'Ned', isLatexTitle: true },
     { titleInputBox: 'V_{Ed,y}', name: 'Ved_y', isLatexTitle: true },
@@ -29,7 +43,20 @@ export default function InputForces() {
 
   return (
     <div className="p-5 items-center">
-      <h2 className="text-lg font-bold mb-4">Azioni agenti sulla sezione</h2>
+
+      <div className='flex justify-between'>
+        <h2 className="text-lg font-bold mb-4">Azioni agenti sulla sezione</h2>
+        <button
+          onClick={handleReset}
+          className="flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 bg-white font-semibold hover:bg-gray-200 transition duration-100"
+        >
+          <FaRedo />
+        </button>
+      </div>
+
+
+
+
       <form className="grid grid-cols-6 gap-4">
         {inputForcesConfig.map((item, index) => (
           <InputBox

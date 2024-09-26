@@ -1,37 +1,26 @@
 import React, { useState } from 'react';
 
 const DurationClassSelector = () => {
-  const [selectedYears, setSelectedYears] = useState('');
-  const [durationClass, setDurationClass] = useState('');
+
+  const [durationClass, setDurationClass] = useState('permanente');
+
 
   const handleChange = (event) => {
-    const years = event.target.value;
-    setSelectedYears(years);
-
-    // Associare gli anni alla classe di durata
-    if (years > 10) {
-      setDurationClass('Permanente');
-    } else if (years >= 0.5 && years <= 10) {
-      setDurationClass('Lunga durata');
-    } else if (years >= 0.02 && years < 0.5) {
-      setDurationClass('Media durata');
-    } else if (years < 0.02) {
-      setDurationClass('Breve durata');
-    } else {
-      setDurationClass('Istantaneo');
-    }
+    const duration = event.target.value;
+    setDurationClass(duration)
   };
+
+  
 
   return (
     <div className="p-4">
       <div className="flex items-center">
-        <label htmlFor="years" className="mr-4">Seleziona la durata del carico (in anni):</label>
-        <select id="years" value={selectedYears} onChange={handleChange} className="border px-2 py-1 rounded">
-          <option value="">-- Seleziona --</option>
-          <option value="0.001">Meno di 1 settimana</option>
-          <option value="0.1">1 settimana - 6 mesi</option>
-          <option value="1">6 mesi - 10 anni</option>
-          <option value="11">Più di 10 anni</option>
+        <label htmlFor="years" className="mr-4">Seleziona la durata del carico:</label>
+        <select id="years" value={durationClass} onChange={handleChange} className="border px-2 py-1 rounded  cursor-pointer">
+          <option value="breve durata">Meno di 1 settimana</option>
+          <option value="media durata">1 settimana - 6 mesi</option>
+          <option value="lunga durata">6 mesi - 10 anni</option>
+          <option value="permanente">Più di 10 anni</option>
         </select>
       </div>
 
