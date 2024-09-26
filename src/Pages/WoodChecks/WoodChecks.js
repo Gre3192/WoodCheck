@@ -22,6 +22,8 @@ import InputForces from "../../Components/InputForces"
 import ControlPanel from "../../Components/ControlPanel"
 import SectionSelector from "../../Components/SectionSelector"
 import SectionGeometry from "../../Components/SectionGeometry"
+import ServiceClassSelector from "../../Components/ServiceClassSelector"
+import DurationClassSelector from "../../Components/DurationClassSelector"
 
 
 export default function WoodChecks(params) {
@@ -33,6 +35,8 @@ export default function WoodChecks(params) {
         </div> */}
 
         <div className="h-[92vh] overflow-y-scroll">
+            <DurationClassSelector/>
+            <ServiceClassSelector/>
             <SectionGeometry />
             <InputForces />
             <div className="px-5">

@@ -1,4 +1,4 @@
-import React, {useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import SectionShapeToggleBar from './SectionShapeToggleBar';
 import SectionSelector from './SectionSelector';
@@ -16,15 +16,22 @@ export default function SectionGeometry() {
 
   const sectionGeometryMass = getGeometryMass(sectionGeometry)
 
-  
+
   useEffect(() => {
     setSectionGeometryMass(sectionGeometryMass)
   }, [sectionGeometry])
-  
+
 
   // Cambia la forma della sezione dalla ToggleBar
   const handleSectionShape = (shape) => {
-    setSectionGeometry((prev) => ({ ...prev, shape: shape }))
+    setSectionGeometry({
+
+      shape: shape,
+      b: null,
+      h: null,
+      r: null
+      
+    })
   };
 
   const sectionShapeToggleBarProps = {
@@ -94,8 +101,8 @@ export default function SectionGeometry() {
       {/* Input valori geometria sezione */}
       <div className="p-5">
         <div className="mb-2">
-             <SectionSelector />
-             <SectionShapeToggleBar props={sectionShapeToggleBarProps} />
+          <SectionSelector />
+          <SectionShapeToggleBar props={sectionShapeToggleBarProps} />
         </div>
         <MinimalTable list={inputBoxGeometryConfig(sectionGeometry.shape)} />
       </div>
