@@ -27,7 +27,7 @@ export default function SectionGeometry() {
   const handleReset = () => {
     setSectionGeometry(
       {
-        shape: '',
+        shape: 'rettangolare',
         b: '',
         h: '',
         r: ''
