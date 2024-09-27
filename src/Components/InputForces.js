@@ -4,12 +4,14 @@ import { forcesStateAtom } from '../Atom/forcesStateAtom';
 import InputBox from './InputBox';
 import ActionSectionDraw from './ActionSectionDraw';
 import { FaRedo } from 'react-icons/fa';
+import MinimalTable from './MinimalTable';
+
 
 export default function InputForces() {
 
   const [forces, setForces] = useRecoilState(forcesStateAtom);
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     const numericValue = value === '' ? null : parseFloat(value);
 
@@ -32,48 +34,82 @@ export default function InputForces() {
     )
   }
 
-  const inputForcesConfig = [
-    { titleInputBox: 'N_{Ed}', name: 'Ned', isLatexTitle: true },
-    { titleInputBox: 'V_{Ed,y}', name: 'Ved_y', isLatexTitle: true },
-    { titleInputBox: 'V_{Ed,z}', name: 'Ved_z', isLatexTitle: true },
-    { titleInputBox: 'M_{Ed,y}', name: 'Med_y', isLatexTitle: true },
-    { titleInputBox: 'M_{Ed,z}', name: 'Med_z', isLatexTitle: true },
-    { titleInputBox: 'M_{Ed,tor}', name: 'Med_tor', isLatexTitle: true }
-  ];
+
+  const inputBoxActionConfig = () => {
+
+    let arrayObj = [
+
+      {
+        name: 'Ned',
+        label: 'N_{Ed}\\\\\\text{[$kN$]}',
+        placeholder: "Base...",
+        textHover: "Base",
+        value: forces['Ned'] === null ? '' : forces['Ned'],
+      },
+      {
+        name: 'Ved_y',
+        label: 'V_{Ed,y}\\\\\\text{[$kN$]}',
+        placeholder: "Base...",
+        textHover: "Base",
+        value: forces['Ved_y'] === null ? '' : forces['Ved_y'],
+      },
+      {
+        name: 'Ved_z',
+        label: 'V_{Ed,z}\\\\\\text{[$kN$]}',
+        placeholder: "Base...",
+        textHover: "Base",
+        value: forces['Ved_z'] === null ? '' : forces['Ved_z'],
+      },
+      {
+        name: 'Med_y',
+        label: 'M_{Ed,y}\\\\\\text{[$kN\\cdot m$]}',
+        placeholder: "Base...",
+        textHover: "Base",
+        value: forces['Med_y'] === null ? '' : forces['Med_y'],
+      },
+      {
+        name: 'Med_z',
+        label: 'M_{Ed,z}\\\\\\text{[$kN\\cdot m$]}',
+        placeholder: "Base...",
+        textHover: "Base",
+        value: forces['Med_z'] === null ? '' : forces['Med_z'],
+      },
+      {
+        name: 'Med_tor',
+        label: 'M_{Ed,tor}\\\\\\text{[$kN\\cdot m$]}',
+        placeholder: "Base...",
+        textHover: "Base",
+        value: forces['Med_tor'] === null ? '' : forces['Med_tor'],
+      }
+    ]
+
+
+    arrayObj.map((item) => {
+      item.handleInputChange = handleInputChange
+      item.isLatexTitle = true
+      item.type = 'number'
+    })
+
+    console.log(typeof arrayObj)
+    return arrayObj
+  }
 
   return (
     <div className="p-5 items-center">
-
-
-
-      <div className='flex justify-between'>
-        <h2 className="text-lg font-bold mb-4">Azioni agenti sulla sezione</h2>
+      <div className='flex justify-between items-center mb-4'>
+        <h2 className="text-lg font-bold">Azioni agenti sulla sezione</h2>
         <button
           onClick={handleReset}
           className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
         >
-          <FaRedo/>
+          <FaRedo />
         </button>
       </div>
 
 
 
-      <form className="grid grid-cols-6 gap-4">
-        {inputForcesConfig.map((item, index) => (
-          <InputBox
-            key={index}
-            props={{
-              name: item.name,
-              titleInputBox: item.titleInputBox,
-              placeholder: 'Inserisci valore...',
-              type: 'number',
-              value: forces[item.name] === null ? '' : forces[item.name],
-              handleInputChange: handleChange,
-              isLatexTitle: item.isLatexTitle
-            }}
-          />
-        ))}
-      </form>
+      <MinimalTable list={inputBoxActionConfig()} />
+
 
       <div className='flex justify-center mt-5'>
         <ActionSectionDraw

@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRecoilState } from 'recoil';
 import SectionShapeToggleBar from './SectionShapeToggleBar';
-import SectionSelector from './SectionSelector';
 import MinimalTable from './MinimalTable';
 import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
-import getGeometryMass from '../Utils/getGeometryMass';
-import { sectionGeometryMassAtom } from '../Atom/sectionGeometryMassAtom';
+import { FaRedo } from 'react-icons/fa';
 
 
 export default function SectionGeometry() {
 
 
   const [sectionGeometry, setSectionGeometry] = useRecoilState(sectionGeometryAtom)
-  const [sectionGeometryMass, setSectionGeometryMass] = useRecoilState(sectionGeometryMassAtom)
-
-
-  useEffect(() => {
-    setSectionGeometryMass(getGeometryMass(sectionGeometry))
-  }, [sectionGeometry])
 
 
   // Cambia la forma della sezione dalla ToggleBar
@@ -25,12 +17,23 @@ export default function SectionGeometry() {
     setSectionGeometry({
 
       shape: shape,
-      b: null,
-      h: null,
-      r: null
-      
+      b: '',
+      h: '',
+      r: ''
+
     })
   };
+
+  const handleReset = () => {
+    setSectionGeometry(
+      {
+        shape: '',
+        b: '',
+        h: '',
+        r: ''
+      }
+    )
+  }
 
   const sectionShapeToggleBarProps = {
     sectionShape: sectionGeometry?.shape,
@@ -52,14 +55,14 @@ export default function SectionGeometry() {
       default: arrayObj = [
         {
           name: "b",
-          label: 'b\\\\\\text{[mm]}',
+          label: 'b\\\\\\text{[$mm$]}',
           placeholder: "Base...",
           textHover: "Base",
           value: sectionGeometry.b,
         },
         {
           name: "h",
-          label: 'h\\\\\\text{[mm]}',
+          label: 'h\\\\\\text{[$mm$]}',
           placeholder: "Altezza...",
           textHover: "Altezza",
           value: sectionGeometry.h,
@@ -70,7 +73,7 @@ export default function SectionGeometry() {
       case 'circolare': arrayObj = [
         {
           name: "r",
-          label: 'r\\\\\\text{[mm]}',
+          label: 'r\\\\\\text{[$mm$]}',
           placeholder: "Raggio esterno...",
           textHover: "Raggio",
           value: sectionGeometry.r,
@@ -90,18 +93,21 @@ export default function SectionGeometry() {
 
 
   return (
-    <>
-      <div className="p-5 flex items-center">
-        <p className="text-xl font-semibold mr-5">Geometria sezione</p>
+    <div className="p-5 items-center">
+      <div className='flex justify-between items-center mb-4'>
+        <h2 className="text-lg font-bold ">Geometria</h2>
+        <button
+          onClick={handleReset}
+          className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
+        >
+          <FaRedo />
+        </button>
       </div>
 
 
       {/* Input valori geometria sezione */}
-      <div className="p-5">
-        <div className="mb-2">
-          <SectionSelector />
-          <SectionShapeToggleBar props={sectionShapeToggleBarProps} />
-        </div>
+      <div className="flex flex-col gap-4">
+        <SectionShapeToggleBar props={sectionShapeToggleBarProps} />
         <MinimalTable list={inputBoxGeometryConfig(sectionGeometry.shape)} />
       </div>
 
@@ -111,6 +117,6 @@ export default function SectionGeometry() {
       {/* Geometria delle masse*/}
       {/* <SectionGeometryMass sectionGeometryMass={sectionGeometryMass} /> */}
 
-    </>
+    </div>
   );
 }

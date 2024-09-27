@@ -31,8 +31,14 @@ const ServiceClassTable = () => {
         },
     ];
 
-    return (
-        <div className="p-4">
+    return (<div  className="p-5 items-center">
+    
+    
+    <div className='flex justify-between items-center mb-4'>
+        <h2 className="text-lg font-bold ">Classe di servizio</h2>
+      </div>
+
+        <div className="p-0">
             <table className="table-auto w-full border-collapse border border-gray-300">
                 <thead>
                     <tr className="bg-gray-200">
@@ -61,6 +67,7 @@ const ServiceClassTable = () => {
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };

@@ -10,10 +10,17 @@ const DurationClassSelector = () => {
     setDurationClass(duration)
   };
 
-  
+
 
   return (
-    <div className="p-4">
+    <div className="p-5 items-center">
+      <div className='flex justify-between items-center'>
+        <h2 className="text-lg font-bold ">Classe di durata del carico</h2>
+      </div>
+
+
+
+
       <div className="flex items-center">
         <label htmlFor="years" className="mr-4">Seleziona la durata del carico:</label>
         <select id="years" value={durationClass} onChange={handleChange} className="border px-2 py-1 rounded  cursor-pointer">
@@ -24,12 +31,8 @@ const DurationClassSelector = () => {
         </select>
       </div>
 
-      {durationClass && (
-        <div className="mt-4">
-          <h3 className="text-lg font-bold">Classe di durata: {durationClass}</h3>
-        </div>
-      )}
     </div>
+
   );
 };
 

@@ -8,7 +8,7 @@ export default function SectionShapeToggleBar({ props }) {
     return (
         <>
        
-            <div class="flex space-x-4">
+            <div className="flex space-x-4">
                 <button
                     className={`px-4 py-2 border w-full font-semibold rounded-lg transition ${sectionShape === 'rettangolare' ? 'bg-blue-500 text-white hover:bg-blue-600' : 'bg-gray-200 hover:bg-gray-300'}`}
                     onClick={() => handleSectionTypeChange('rettangolare')}
