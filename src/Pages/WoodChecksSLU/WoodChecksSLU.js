@@ -43,6 +43,7 @@ export default function WoodChecksSLU(params) {
                 <button
                     onClick={handleOpen}
                     className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
+                    title={isOpen ? 'Visualizza le verifiche necessarie' : 'Visualizza tutte le verifiche'}
                 >
                     {isOpen ? <FaEye /> : <FaEyeSlash />}
                 </button>
