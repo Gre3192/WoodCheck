@@ -17,14 +17,6 @@ import InstabilitaCompressioneCheck from "../../Components/Checks/InstabilitaCom
 import InstabilitaLateroTorsionaleCheck from "../../Components/Checks/InstabilitaLateroTorsionaleCheck"
 import InstabilitaPressoFlessioneCheck from "../../Components/Checks/InstabilitaPressoFlessioneCheck"
 
-
-import InputForces from "../../Components/InputForces"
-import ControlPanel from "../../Components/ControlPanel"
-import SectionGeometry from "../../Components/SectionGeometry"
-import ServiceClassSelector from "../../Components/ServiceClassSelector"
-import DurationClassSelector from "../../Components/DurationClassSelector"
-import SectionGeometryMass from "../../Components/SectionGeometryMass"
-import WoodClass from "../../Components/WoodClass"
 import ActionSectionDraw from "../../Components/ActionSectionDraw"
 
 
