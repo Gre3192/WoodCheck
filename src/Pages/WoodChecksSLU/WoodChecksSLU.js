@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 import Trazione0Check from "../../Components/Checks/Trazione0Check"
 import Trazione90Check from "../../Components/Checks/Trazione90Check"
 
@@ -24,18 +27,30 @@ import ActionSectionDraw from "../../Components/ActionSectionDraw"
 
 export default function WoodChecksSLU(params) {
 
+    const [isOpen, setisOpen] = useState(false)
 
 
 
+    const handleOpen = () => {
+        setisOpen(!isOpen)
+    }
 
 
 
     return (
         <>
-            <div className="h-[92vh] overflow-y-scroll">
-            <div className='flex justify-center mt-5'>
-                <ActionSectionDraw />
+            <div className='flex justify-end pr-6 pb-3'>
+                <button
+                    onClick={handleOpen}
+                    className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
+                >
+                    {isOpen ? <FaEye /> : <FaEyeSlash />}
+                </button>
             </div>
+            <div className="h-[92vh] overflow-y-scroll">
+                <div className='flex justify-center mt-5'>
+                    <ActionSectionDraw />
+                </div>
                 <div className="px-5">
                     <h1 className="text-lg font-bold" >
                         Verifiche di Resistenza
