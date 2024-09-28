@@ -29,7 +29,7 @@ import WoodClass from "../../Components/WoodClass"
 
 
 
-export default function WoodChecks(params) {
+export default function WoodChecksSLU(params) {
 
 
 

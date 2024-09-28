@@ -40,13 +40,13 @@ export default function WoodClass() {
   }
 
   const minimalTablewoodClassConfig1 = [
-    { label: 'f_{c,0,k}\\\\\\text{[$mm^2$]}', value: woodProperties.fc0k ? woodProperties.fc0k : '-', textHover: 'Area totale' },
-    { label: 'f_{c,90,k}\\\\\\text{[$mm^2$]}', value: woodProperties.fc90k ? woodProperties.fc90k : '-', textHover: 'Area totale' },
-    { label: 'f_{t,0,k}\\\\\\text{[$mm^2$]}', value: woodProperties.ft0k ? woodProperties.ft0k : '-', textHover: 'Area totale' },
-    { label: 'f_{t,90,k}\\\\\\text{[$mm^2$]}', value: woodProperties.ft90k ? woodProperties.ft90k : '-', textHover: 'Area totale' },
-    { label: 'f_{m,k}\\\\\\text{[$mm^2$]}', value: woodProperties.fmk ? woodProperties.fmk : '-', textHover: 'Area totale' },
-    { label: 'f_{v,k}\\\\\\text{[$mm^2$]}', value: woodProperties.fvk ? woodProperties.fvk : '-', textHover: 'Area totale' },
-    { label: 'f_{r,k}\\\\\\text{[$mm^2$]}', value: woodProperties.frk ? woodProperties.frk : '-', textHover: 'Area totale' }
+    { label: 'f_{c,0,k}\\\\\\text{[$MPa$]}', value: woodProperties.fc0k ? woodProperties.fc0k : '-', textHover: 'Area totale' },
+    { label: 'f_{c,90,k}\\\\\\text{[$MPa$]}', value: woodProperties.fc90k ? woodProperties.fc90k : '-', textHover: 'Area totale' },
+    { label: 'f_{t,0,k}\\\\\\text{[$MPa$]}', value: woodProperties.ft0k ? woodProperties.ft0k : '-', textHover: 'Area totale' },
+    { label: 'f_{t,90,k}\\\\\\text{[$MPa$]}', value: woodProperties.ft90k ? woodProperties.ft90k : '-', textHover: 'Area totale' },
+    { label: 'f_{m,k}\\\\\\text{[$MPa$]}', value: woodProperties.fmk ? woodProperties.fmk : '-', textHover: 'Area totale' },
+    { label: 'f_{v,k}\\\\\\text{[$MPa$]}', value: woodProperties.fvk ? woodProperties.fvk : '-', textHover: 'Area totale' },
+    { label: 'f_{r,k}\\\\\\text{[$MPa$]}', value: woodProperties.frk ? woodProperties.frk : '-', textHover: 'Area totale' }
 
   ]
   const minimalTablewoodClassConfig2 = [

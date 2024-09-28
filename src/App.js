@@ -1,7 +1,8 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import HomePage from "./Pages/HomePage/HomePage"
 import { useEffect } from 'react';
-import WoodChecks from './Pages/WoodChecks/WoodChecks';
+import WoodChecksSLU from './Pages/WoodChecksSLU/WoodChecksSLU';
+import WoodChecksSLE from './Pages/WoodChecksSLE/WoodChecksSLE';
 import 'katex/dist/katex.min.css';
 import Layout from './Layout/Layout';
 import WoodProject from './Pages/WoodProject/WoodProject';
@@ -24,7 +25,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/loadCombination" element={<LoadCombination />} />
           <Route path="/project" element={<WoodProject />} />
-          <Route path="/checks" element={<WoodChecks />} />
+          <Route path="/checksslu" element={<WoodChecksSLU />} />
+          <Route path="/checkssle" element={<WoodChecksSLE />} />
           <Route path="/specialBeams" element={<WoodSpecialBeams />} />
           <Route path="/joins" element={<WoodJoin />} />
         </Route>

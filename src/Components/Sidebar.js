@@ -12,8 +12,12 @@ export const sidebarItem = [
     link: "/project"
   },
   {
-    name: "Verifiche",
-    link: "/checks"
+    name: "Verifiche SLU",
+    link: "/checksslu"
+  },
+  {
+    name: "Verifiche SLE",
+    link: "/checkssle"
   },
   {
     name: "Travi speciali",
