@@ -22,7 +22,7 @@ function Geometry(params) {
         {
           name: "h",
           label: 'h\\\\\\text{[mm]}',
-          placeholder: "Altezza sezione...",
+          placeholder: "Altezza...",
           textHover: "Altezza sezione",
           value: sectionGeometry.h,
         },
@@ -33,8 +33,8 @@ function Geometry(params) {
         {
           name: "r",
           label: 'r\\\\\\text{[mm]}',
-          placeholder: "Raggio esterno...",
-          textHover: "Raggio esterno",
+          placeholder: "Raggio...",
+          textHover: "Raggio",
           value: sectionGeometry.r,
         }
       ]
