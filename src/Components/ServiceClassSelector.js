@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { serviceDurationClassAtom } from '../Atom/serviceDurationClassAtom';
+import { FaMinus, FaPlus } from 'react-icons/fa';
+
 
 const ServiceClassTable = () => {
 
     const [serviceClass, setServiceClass] = useRecoilState(serviceDurationClassAtom);
+    const [isOpen, setisOpen] = useState(false)
 
     const handleCheck = (event) => {
         const { value } = event.target;
@@ -13,6 +16,10 @@ const ServiceClassTable = () => {
             serviceClass: value,
         }));
     };
+
+    const handleOpen = () => {
+        setisOpen(!isOpen)
+    }
 
     const classes = [
         {
@@ -39,41 +46,55 @@ const ServiceClassTable = () => {
         <div className="p-5 items-center">
 
             <div className='flex justify-between items-center mb-4'>
-                <h2 className="text-lg font-bold ">Classe di servizio</h2>
+                <h2 className="text-lg font-bold flex gap-2">
+                    <p>
+                        Classe di servizio{!isOpen ? `:` : null}
+                    </p>
+                    <p className='font-normal'>
+                        {!isOpen ? `${serviceClass.serviceClass}` : null}
+                    </p>
+                </h2>
+                <button
+                    onClick={handleOpen}
+                    className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
+                >
+                    {isOpen ? <FaMinus /> : <FaPlus />}
+                </button>
             </div>
-
-            <div className="p-0">
-                <table className="table-auto w-full border-collapse border border-gray-300">
-                    <thead>
-                        <tr className="bg-gray-200">
-                            <th className="border border-gray-300 px-4 py-2 text-left w-1/5">Seleziona</th>
-                            <th className="border border-gray-300 px-4 py-2 text-left">Descrizione</th>
-                            <th className="border border-gray-300 px-4 py-2 text-left">Luoghi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {classes.map((item, index) => (
-                            <tr key={index}  >
-                                <td className="border flex items-center gap-2 border-gray-300 px-4 py-2">
-                                    <div>
-                                        <input
-                                            type="radio"
-                                            name="serviceClass"
-                                            value={item.value}
-                                            checked={serviceClass.serviceClass === item.value}
-                                            onChange={handleCheck}
-                                            className="h-5 w-5 text-blue-600 cursor-pointer"
-                                        />
-                                    </div>
-                                    <p>{item.label}</p>
-                                </td>
-                                <td className="border border-gray-300 px-4 py-2">{item.description}</td>
-                                <td className="border border-gray-300 px-4 py-2">{item.places}</td>
+            {isOpen ?
+                <div className="p-0">
+                    <table className="table-auto w-full border-collapse border border-gray-300">
+                        <thead>
+                            <tr className="bg-gray-200">
+                                <th className="border border-gray-300 px-4 py-2 text-left w-1/5">Seleziona</th>
+                                <th className="border border-gray-300 px-4 py-2 text-left">Descrizione</th>
+                                <th className="border border-gray-300 px-4 py-2 text-left">Luoghi</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {classes.map((item, index) => (
+                                <tr key={index}  >
+                                    <td className="border flex items-center gap-2 border-gray-300 px-4 py-2">
+                                        <div>
+                                            <input
+                                                type="radio"
+                                                name="serviceClass"
+                                                value={item.value}
+                                                checked={serviceClass.serviceClass === item.value}
+                                                onChange={handleCheck}
+                                                className="h-5 w-5 text-blue-600 cursor-pointer"
+                                            />
+                                        </div>
+                                        <p>{item.label}</p>
+                                    </td>
+                                    <td className="border border-gray-300 px-4 py-2">{item.description}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{item.places}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                : null}
         </div>
     );
 };
