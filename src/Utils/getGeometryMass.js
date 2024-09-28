@@ -1,6 +1,10 @@
 export default function getGeometryMass(sectionGeometry) {
 
-    const { shape, b, h, r } = sectionGeometry
+    let { shape, b, h, r } = sectionGeometry
+
+    b = b ? b : 0
+    h = h ? h : 0
+    r = r ? r : 0
 
     switch (shape?.toLowerCase()) {
 
