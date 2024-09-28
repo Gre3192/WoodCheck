@@ -74,7 +74,7 @@ export default function SectionGeometry() {
         {
           name: "r",
           label: 'r\\\\\\text{[$mm$]}',
-          placeholder: "Raggio esterno...",
+          placeholder: "Raggio...",
           textHover: "Raggio",
           value: sectionGeometry.r,
         }
