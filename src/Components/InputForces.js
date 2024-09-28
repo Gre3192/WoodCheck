@@ -42,43 +42,37 @@ export default function InputForces() {
       {
         name: 'Ned',
         label: 'N_{Ed}\\\\\\text{[$kN$]}',
-        placeholder: "Base...",
-        textHover: "Base",
+        textHover: "Compressione/Trazione",
         value: forces['Ned'] === null ? '' : forces['Ned'],
       },
       {
         name: 'Ved_y',
         label: 'V_{Ed,y}\\\\\\text{[$kN$]}',
-        placeholder: "Base...",
-        textHover: "Base",
+        textHover: "Taglio lungo y",
         value: forces['Ved_y'] === null ? '' : forces['Ved_y'],
       },
       {
         name: 'Ved_z',
         label: 'V_{Ed,z}\\\\\\text{[$kN$]}',
-        placeholder: "Base...",
-        textHover: "Base",
+        textHover: "Taglio lungo z",
         value: forces['Ved_z'] === null ? '' : forces['Ved_z'],
       },
       {
         name: 'Med_y',
         label: 'M_{Ed,y}\\\\\\text{[$kN\\cdot m$]}',
-        placeholder: "Base...",
-        textHover: "Base",
+        textHover: "Momento flettente attorno l'asse y",
         value: forces['Med_y'] === null ? '' : forces['Med_y'],
       },
       {
         name: 'Med_z',
         label: 'M_{Ed,z}\\\\\\text{[$kN\\cdot m$]}',
-        placeholder: "Base...",
-        textHover: "Base",
+        textHover: "Momento flettente attorno l'asse z",
         value: forces['Med_z'] === null ? '' : forces['Med_z'],
       },
       {
         name: 'Med_tor',
         label: 'M_{Ed,tor}\\\\\\text{[$kN\\cdot m$]}',
-        placeholder: "Base...",
-        textHover: "Base",
+        textHover: "Momento torcente",
         value: forces['Med_tor'] === null ? '' : forces['Med_tor'],
       }
     ]
@@ -90,7 +84,6 @@ export default function InputForces() {
       item.type = 'number'
     })
 
-    console.log(typeof arrayObj)
     return arrayObj
   }
 

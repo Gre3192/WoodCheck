@@ -18,7 +18,7 @@ export const meccanicPropSectionAtom = atom({
     E0_05: null,                      // Modulo elastico parallelo alle fibre caratteristico
     E90_mean: null,                   // Modulo elastico ortogonale medio
     E90_05: null,                     // Modulo elastico ortogonale alle fibre caratteristico
-    G_mean: null,                      // Modulo elastico tangenziale medio
+    G_mean: null,                      // Modulo di taglio tangenziale medio
     G_05: null,                        // Modulo di taglio caratterisitco
     Gr_mean: null,                     // Modulo di rototaglio medio
     Gr_05: null,                       // Modulo di rototaglio caratteristico

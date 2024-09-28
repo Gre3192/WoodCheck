@@ -40,26 +40,26 @@ export default function WoodClass() {
   }
 
   const minimalTablewoodClassConfig1 = [
-    { label: 'f_{c,0,k}\\\\\\text{[$MPa$]}', value: woodProperties.fc0k ? woodProperties.fc0k : '-', textHover: 'Area totale' },
-    { label: 'f_{c,90,k}\\\\\\text{[$MPa$]}', value: woodProperties.fc90k ? woodProperties.fc90k : '-', textHover: 'Area totale' },
-    { label: 'f_{t,0,k}\\\\\\text{[$MPa$]}', value: woodProperties.ft0k ? woodProperties.ft0k : '-', textHover: 'Area totale' },
-    { label: 'f_{t,90,k}\\\\\\text{[$MPa$]}', value: woodProperties.ft90k ? woodProperties.ft90k : '-', textHover: 'Area totale' },
-    { label: 'f_{m,k}\\\\\\text{[$MPa$]}', value: woodProperties.fmk ? woodProperties.fmk : '-', textHover: 'Area totale' },
-    { label: 'f_{v,k}\\\\\\text{[$MPa$]}', value: woodProperties.fvk ? woodProperties.fvk : '-', textHover: 'Area totale' },
-    { label: 'f_{r,k}\\\\\\text{[$MPa$]}', value: woodProperties.frk ? woodProperties.frk : '-', textHover: 'Area totale' }
+    { label: 'f_{c,0,k}\\\\\\text{[$MPa$]}', value: woodProperties.fc0k ? woodProperties.fc0k : '-', textHover: 'Resistenza a compressione parallela alla fibratura' },
+    { label: 'f_{c,90,k}\\\\\\text{[$MPa$]}', value: woodProperties.fc90k ? woodProperties.fc90k : '-', textHover: 'Resistenza a compressione ortogonale alla fibratura' },
+    { label: 'f_{t,0,k}\\\\\\text{[$MPa$]}', value: woodProperties.ft0k ? woodProperties.ft0k : '-', textHover: 'Resistenza a trazione parallela alla fibratura' },
+    { label: 'f_{t,90,k}\\\\\\text{[$MPa$]}', value: woodProperties.ft90k ? woodProperties.ft90k : '-', textHover: 'Resistenza a trazione ortogonale alla fibratura' },
+    { label: 'f_{m,k}\\\\\\text{[$MPa$]}', value: woodProperties.fmk ? woodProperties.fmk : '-', textHover: 'Resistenza a flessione' },
+    { label: 'f_{v,k}\\\\\\text{[$MPa$]}', value: woodProperties.fvk ? woodProperties.fvk : '-', textHover: 'Resistenza a taglio' },
+    { label: 'f_{r,k}\\\\\\text{[$MPa$]}', value: woodProperties.frk ? woodProperties.frk : '-', textHover: 'Resistenza a rototaglio' }
 
   ]
   const minimalTablewoodClassConfig2 = [
-    { label: 'E_{0,mean}\\\\\\text{[$mm^2$]}', value: woodProperties.E0_mean ? woodProperties.E0_mean : '-', textHover: 'Area totale' },
-    { label: 'E_{0,05}\\\\\\text{[$mm^2$]}', value: woodProperties.E0_05 ? woodProperties.E0_05 : '-', textHover: 'Area totale' },
-    { label: 'E_{90,mean}\\\\\\text{[$mm^2$]}', value: woodProperties.E90_mean ? woodProperties.E90_mean : '-', textHover: 'Area totale' },
-    { label: 'E_{90,05}\\\\\\text{[$mm^2$]}', value: woodProperties.E90_05 ? woodProperties.E90_05 : '-', textHover: 'Area totale' },
-    { label: 'G_{mean}\\\\\\text{[$mm^2$]}', value: woodProperties.G_mean ? woodProperties.G_mean : '-', textHover: 'Area totale' },
-    { label: 'G_{05}\\\\\\text{[$mm^2$]}', value: woodProperties.G_05 ? woodProperties.G_05 : '-', textHover: 'Area totale' },
-    { label: 'G_{r,mean}\\\\\\text{[$mm^2$]}', value: woodProperties.Gr_mean ? woodProperties.Gr_mean : '-', textHover: 'Area totale' },
-    { label: 'G_{r,05}\\\\\\text{[$mm^2$]}', value: woodProperties.Gr_05 ? woodProperties.Gr_05 : '-', textHover: 'Area totale' },
-    { label: '\\rho_{k}\\\\\\text{[$mm^2$]}', value: woodProperties.rho_k ? woodProperties.rho_k : '-', textHover: 'Area totale' },
-    { label: '\\rho_{mean}\\\\\\text{[$mm^2$]}', value: woodProperties.rho_mean ? woodProperties.rho_mean : '-', textHover: 'Area totale' },
+    { label: 'E_{0,mean}\\\\\\text{[$mm^2$]}', value: woodProperties.E0_mean ? woodProperties.E0_mean : '-', textHover: 'Modulo di resistenza elastico medio parallelo alla fibratura' },
+    { label: 'E_{0,05}\\\\\\text{[$mm^2$]}', value: woodProperties.E0_05 ? woodProperties.E0_05 : '-', textHover: 'Modulo di resistenza elastico caratteristico parallelo alla fibratura' },
+    { label: 'E_{90,mean}\\\\\\text{[$mm^2$]}', value: woodProperties.E90_mean ? woodProperties.E90_mean : '-', textHover: 'Modulo di resistenza elastico medio ortogonale alla fibratura' },
+    { label: 'E_{90,05}\\\\\\text{[$mm^2$]}', value: woodProperties.E90_05 ? woodProperties.E90_05 : '-', textHover: 'Modulo di resistenza elastico caratteristico ortogonale alla fibratura' },
+    { label: 'G_{mean}\\\\\\text{[$mm^2$]}', value: woodProperties.G_mean ? woodProperties.G_mean : '-', textHover: 'Modulo di taglio medio' },
+    { label: 'G_{05}\\\\\\text{[$mm^2$]}', value: woodProperties.G_05 ? woodProperties.G_05 : '-', textHover: 'Modulo di taglio caratteristico' },
+    { label: 'G_{r,mean}\\\\\\text{[$mm^2$]}', value: woodProperties.Gr_mean ? woodProperties.Gr_mean : '-', textHover: 'Modulo di rototaglio medio' },
+    { label: 'G_{r,05}\\\\\\text{[$mm^2$]}', value: woodProperties.Gr_05 ? woodProperties.Gr_05 : '-', textHover: 'Modulo di rototaglio caratteristico' },
+    { label: '\\rho_{k}\\\\\\text{[$mm^2$]}', value: woodProperties.rho_k ? woodProperties.rho_k : '-', textHover: 'Massa volumica caratteristica' },
+    { label: '\\rho_{mean}\\\\\\text{[$mm^2$]}', value: woodProperties.rho_mean ? woodProperties.rho_mean : '-', textHover: 'Massa volumica media' },
   ]
 
 

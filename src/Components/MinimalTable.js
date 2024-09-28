@@ -30,7 +30,7 @@ export default function MinimalTable({ list, isInput = true }) {
                                             props={{
                                                 name: item.name,
                                                 titleInputBox: item.titleInputBox,
-                                                placeholder: 'Inserisci valore...',
+                                                placeholder: item.placeholder ? item.placeholder : 'Inserisci valore...',
                                                 type: 'number',
                                                 value: item.value,
                                                 handleInputChange: item.handleInputChange,

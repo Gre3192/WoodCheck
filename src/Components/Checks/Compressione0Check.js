@@ -11,7 +11,8 @@ import { useRecoilValue } from 'recoil';
 import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
 import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
-
+import { PDFDownloadLink, Document, Page, Text, Image, View, StyleSheet } from '@react-pdf/renderer'; // Importa i componenti di react-pdf
+import katex from "katex";
 
 
 export default function Compressione0Check() {
@@ -27,7 +28,7 @@ export default function Compressione0Check() {
     const Ned = rawNed > 0 ? rawNed : 0;
     const isDisabled = Ned <= 0;
   
-    // Memorizza l'intero componente usando useMemo
+
     const memoizedComponent = useMemo(() => {
 
       const Atot = geometryMass?.value.Atot;
@@ -36,7 +37,6 @@ export default function Compressione0Check() {
       const serviceClass = serviceDuration?.serviceClass;
       const durationClass = serviceDuration?.durabilityClass;
   
-      // Usare useMemo per evitare ricalcoli inutili all'interno del componente
       const kmod = get_kmod(woodType, serviceClass, durationClass);
       const gm = get_gammaM(woodType);
   
@@ -61,10 +61,11 @@ export default function Compressione0Check() {
         check_title,
         check_formulaVal
       } = get_Compressione0Check(sig_c0d, f_c0d);
-  
+
+
       const title = 'Verifica a Compressione parallela alla fibratura [NTC18 - \u00A74.4.8.1.3]';
   
-      const centralContent = (
+      const centralContent = 
         <div className="flex flex-col gap-4">
           <div className="mb-2 font-semibold ">Calcolo Geometria</div>
           <StepBox
@@ -100,7 +101,7 @@ export default function Compressione0Check() {
           />
           <hr />
         </div>
-      );
+
   
       const finalContent = (
         <StepBox
@@ -116,7 +117,7 @@ export default function Compressione0Check() {
       );
   
       const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled };
-      return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
+      return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
     }, [geometryMass, mecchanicProps, serviceDuration, Ned, isFormulaSelected, isFormulaValSelected]);
   
     return memoizedComponent;
