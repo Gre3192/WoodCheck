@@ -40,15 +40,6 @@ export default function WoodChecksSLU(params) {
     return (
         <>
             <div className="h-[92vh] overflow-y-scroll">
-                <DurationClassSelector />
-                <ServiceClassSelector />
-                <WoodClass/>
-                <SectionGeometry />
-                <InputForces />
-                <SectionGeometryMass/>
-
-
-                
                 <div className="px-5">
                     <h1 className="text-lg font-bold" >
                         Verifiche di Resistenza
