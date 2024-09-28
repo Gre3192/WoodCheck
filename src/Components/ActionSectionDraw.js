@@ -1,12 +1,14 @@
 import { useRecoilValue } from 'recoil';
 import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
+import { forcesStateAtom } from '../Atom/forcesStateAtom';
 
 
 
 
-export default function ActionSectionDraw({ shape = 'rettangolare', Ned, Ved_y, Ved_z, Med_y, Med_z, Med_tor }) {
+export default function ActionSectionDraw() {
 
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
+    const {Ned, Ved_y, Ved_z, Med_y, Med_z, Med_tor} = useRecoilValue(forcesStateAtom)
 
     return (
 

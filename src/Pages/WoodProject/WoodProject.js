@@ -4,6 +4,7 @@ import ServiceClassSelector from "../../Components/ServiceClassSelector"
 import DurationClassSelector from "../../Components/DurationClassSelector"
 import SectionGeometryMass from "../../Components/SectionGeometryMass"
 import WoodClass from "../../Components/WoodClass"
+import ActionSectionDraw from "../../Components/ActionSectionDraw"
 
 export default function WoodProject(params) {
 
@@ -17,6 +18,9 @@ export default function WoodProject(params) {
             <WoodClass />
             <SectionGeometry />
             <InputForces />
+            <div className='flex justify-center mt-5'>
+                <ActionSectionDraw />
+            </div>
             <SectionGeometryMass />
         </div>
 

@@ -104,17 +104,7 @@ export default function InputForces() {
       <MinimalTable list={inputBoxActionConfig()} />
 
 
-      <div className='flex justify-center mt-5'>
-        <ActionSectionDraw
-          shape={'rettangolare'}
-          Ned={forces.Ned}
-          Ved_y={forces.Ved_y}
-          Ved_z={forces.Ved_z}
-          Med_y={forces.Med_y}
-          Med_z={forces.Med_z}
-          Med_tor={forces.Med_tor}
-        />
-      </div>
+
 
 
     </div>

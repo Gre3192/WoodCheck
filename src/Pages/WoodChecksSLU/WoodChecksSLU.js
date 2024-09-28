@@ -25,6 +25,7 @@ import ServiceClassSelector from "../../Components/ServiceClassSelector"
 import DurationClassSelector from "../../Components/DurationClassSelector"
 import SectionGeometryMass from "../../Components/SectionGeometryMass"
 import WoodClass from "../../Components/WoodClass"
+import ActionSectionDraw from "../../Components/ActionSectionDraw"
 
 
 
@@ -40,6 +41,9 @@ export default function WoodChecksSLU(params) {
     return (
         <>
             <div className="h-[92vh] overflow-y-scroll">
+            <div className='flex justify-center mt-5'>
+                <ActionSectionDraw />
+            </div>
                 <div className="px-5">
                     <h1 className="text-lg font-bold" >
                         Verifiche di Resistenza
