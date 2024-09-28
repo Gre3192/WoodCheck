@@ -92,6 +92,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
             <button
               className={`border border-gray-300 rounded-lg p-3 transition duration-100 ${isFormulaSelected ? 'bg-blue-100 hover:bg-blue-200' : 'bg-white hover:bg-gray-200'}`}
               onClick={handleFormulaIconClick}
+              title="Visualizza le formule"
             >
               <FormulaIcon width="20" height="20" className={`text-black ${isFormulaSelected ? 'fill-blue-700' : ''}`} />
             </button>
@@ -99,6 +100,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
             <button
               className={`border border-gray-300 rounded-lg p-3  transition duration-100 ${isFormulaValSelected ? 'bg-blue-100 hover:bg-blue-200' : 'bg-white hover:bg-gray-200'}`}
               onClick={handleFormulaValIconClick}
+              title="Visualizza le formule e  valori"
             >
               <FormulaValIcon width="20" height="20" className={`text-black hover:text-blue-500 ${isFormulaValSelected ? 'fill-blue-700' : ''}`} />
             </button>
