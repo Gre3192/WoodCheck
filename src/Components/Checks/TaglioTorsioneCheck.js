@@ -86,7 +86,7 @@ export default function TaglioTorsioneCheck(params) {
         ksh_formulaVal,
         ksh_description
 
-    } = get_ksh(shape,h,b)
+    } = get_ksh(shape, h, b)
 
     const {
 
@@ -99,43 +99,69 @@ export default function TaglioTorsioneCheck(params) {
 
 
 
-    
+
 
     const title = 'Verifica a Taglio e Torsione [NTC18 - \u00A74.4.8.1.11]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={tau_d_title}
-                formula={tau_d_formula}
-                formulaVal={tau_d_formulaVal}
-                value={tau_d}
-                description={tau_d_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Geometria</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={geometryMass?.title.Atot}
+                    formula={geometryMass?.formula.Atot}
+                    formulaVal={geometryMass?.formulaVal.Atot}
+                    value={geometryMass?.value.Atot}
+                    description={geometryMass?.description.Atot}
+                />
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={geometryMass?.title.Ig_tor}
+                    formula={geometryMass?.formula.Ig_tor}
+                    formulaVal={geometryMass?.formulaVal.Ig_tor}
+                    value={geometryMass?.value.Ig_tor}
+                    description={geometryMass?.description.Ig_tor}
+                />
+            </div>
             <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={tau_tord_title}
-                formula={tau_tord_formula}
-                formulaVal={tau_tord_formulaVal}
-                value={tau_tord}
-                description={tau_tord_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Tensioni</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={tau_d_title}
+                    formula={tau_d_formula}
+                    formulaVal={tau_d_formulaVal}
+                    value={tau_d}
+                    description={tau_d_description}
+                />
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={tau_tord_title}
+                    formula={tau_tord_formula}
+                    formulaVal={tau_tord_formulaVal}
+                    value={tau_tord}
+                    description={tau_tord_description}
+                />
+            </div>
             <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={fvd_title}
-                formula={fvd_formula}
-                formulaVal={fvd_formulaVal}
-                value={fvd}
-                description={fvd_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Coefficienti</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={ksh_title}
+                    formula={ksh_formula}
+                    formulaVal={ksh_formulaVal}
+                    value={ksh}
+                    description={ksh_description}
+                />
+            </div>
             <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={ksh_title}
-                formula={ksh_formula}
-                formulaVal={ksh_formulaVal}
-                value={ksh}
-                description={ksh_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Resistenze</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={fvd_title}
+                    formula={fvd_formula}
+                    formulaVal={fvd_formulaVal}
+                    value={fvd}
+                    description={fvd_description}
+                />
+            </div>
             <hr />
         </div>
 

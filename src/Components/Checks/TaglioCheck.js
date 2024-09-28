@@ -41,7 +41,7 @@ export default function TaglioCheck(params) {
     const kmod = get_kmod(woodType, serviceClass, durationClass)
 
     const gm = get_gammaM(woodType)
-    
+
     const {
 
         tau_d,
@@ -72,29 +72,47 @@ export default function TaglioCheck(params) {
 
 
 
-    
+
     const title = 'Verifica a Taglio [NTC18 - \u00A74.4.8.1.9]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={tau_d_title}
-                formula={tau_d_formula}
-                formulaVal={tau_d_formulaVal}
-                value={tau_d}
-                description={tau_d_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Geometria</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={geometryMass?.title.Atot}
+                    formula={geometryMass?.formula.Atot}
+                    formulaVal={geometryMass?.formulaVal.Atot}
+                    value={geometryMass?.value.Atot}
+                    description={geometryMass?.description.Atot}
+                />
+            </div>
             <hr />
-            <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={fvd_title}
-                formula={fvd_formula}
-                formulaVal={fvd_formulaVal}
-                value={fvd}
-                description={fvd_description}
-            />
+            <div className="mb-2 font-semibold ">Calcolo Tensioni</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={tau_d_title}
+                    formula={tau_d_formula}
+                    formulaVal={tau_d_formulaVal}
+                    value={tau_d}
+                    description={tau_d_description}
+                />
+            </div>
             <hr />
-
+            <div className="mb-2 font-semibold ">Calcolo Resistenze</div>
+            <div className="flex flex-col gap-7">
+                <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
+                    title={fvd_title}
+                    formula={fvd_formula}
+                    formulaVal={fvd_formulaVal}
+                    value={fvd}
+                    description={fvd_description}
+                />
+            </div>
+            <hr />
         </div>
+
+
 
     const finalContent =
         <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected} isCheck={true}

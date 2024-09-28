@@ -336,7 +336,7 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
                 />
             </div>
             <hr />
-            <div className="mb-2 font-semibold ">Calcolo Coefficienti di instabilità</div>
+            <div className="mb-2 font-semibold ">Calcolo Coefficienti di instabilità latero-torsionale</div>
             <div className="flex flex-col gap-7">
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
                     title={Mcrit_y_title}
