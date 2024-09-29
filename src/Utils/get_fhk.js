@@ -7,8 +7,8 @@ export default function get_fhk() {
     const preforatura = true
     const d = 34
     const rho_k = 242
-
-
+    const alpha_join = 90
+    const fh0k = 453
 
 
 
@@ -38,7 +38,7 @@ export default function get_fhk() {
             }
             else {
                 return {
-                    fhk: 0.082 * (1 - 0.01 * d) * rho_k,
+                    fhk: null,
                     fhk_title: `f_{h,k} = `,
                     fhk_formula: ``,
                     fhk_formulaVal: ``,

@@ -24,6 +24,8 @@ import ActionSectionDraw from "../../Components/ActionSectionDraw"
 import WoodClass from '../../Components/WoodClass';
 import ServiceClassSelector from "../../Components/ServiceClassSelector"
 import DurationClassSelector from '../../Components/DurationClassSelector';
+import NavigationPage from '../../Components/NavigationPage';
+
 
 
 
@@ -38,10 +40,20 @@ export default function WoodChecksSLU(params) {
         setShowAll(!showAll)
     }
 
+    const route = {
 
+        prevLink: '/project',
+        prevTitle: 'Progetto',
+        nextLink: '/checkssle',
+        nextTitle: 'Verifiche SLE'
+    }
 
     return (
         <>
+
+            <NavigationPage route={route} />
+
+
             <div className='flex justify-between px-6 pb-3 shadow-lg sticky'>
 
                 <div className='flex gap-8 '>

@@ -5,25 +5,39 @@ import DurationClassSelector from "../../Components/DurationClassSelector"
 import SectionGeometryMass from "../../Components/SectionGeometryMass"
 import WoodClass from "../../Components/WoodClass"
 import ActionSectionDraw from "../../Components/ActionSectionDraw"
+import NavigationPage from "../../Components/NavigationPage"
+
 
 export default function WoodProject(params) {
 
 
+    const route = {
+
+        prevLink: '/loadCombination',
+        prevTitle: 'Combinazioni di carico',
+        nextLink: '/checksslu',
+        nextTitle: 'Verifiche SLU'
+    }
 
     return (
 
-        <div className="h-[92vh] overflow-y-scroll">
-            <DurationClassSelector />
-            <ServiceClassSelector />
-            <WoodClass />
-            <SectionGeometry />
-            <InputForces />
-            <div className='flex justify-center mt-5'>
-                <ActionSectionDraw />
+        <>
+            <div className='shadow-lg sticky'>
+                <NavigationPage route={route} />
             </div>
-            <SectionGeometryMass />
-        </div>
 
+            <div className="h-[92vh] overflow-y-scroll">
+                <DurationClassSelector />
+                <ServiceClassSelector />
+                <WoodClass />
+                <SectionGeometry />
+                <InputForces />
+                <div className='flex justify-center mt-5'>
+                    <ActionSectionDraw />
+                </div>
+                <SectionGeometryMass />
+            </div>
+        </>
     )
 
 
