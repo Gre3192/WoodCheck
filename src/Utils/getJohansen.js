@@ -3,12 +3,12 @@ function getJohansen(params) {
 
 
     const shearPlane = 2
-    const connectionType = 'Legno-Legno'
+    const connectionType = 'legno-legno'
     const acciaio_esterno = 1
 
     const beta = fh2k / fh1k
 
-    if (connectionType === 'Legno-Legno') {
+    if (connectionType === 'legno-legno') {
 
         if (shearPlane = 1) {
             rk1a = fh1k * t1 * d
@@ -33,7 +33,7 @@ function getJohansen(params) {
         }
     }
 
-    if (connectionType === 'Acciaio-Legno') {
+    if (connectionType === 'acciaio-legno') {
 
         if (shearPlane = 1) { }
 
