@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 
 
-
-
 export default function NavigationPage({ route }) {
 
     const { prevLink, prevTitle, currentTitle, nextLink, nextTitle } = route
@@ -14,11 +12,13 @@ export default function NavigationPage({ route }) {
 
 
             {!prevLink && !prevTitle ?
-                <div></div> 
+                <div></div>
                 :
-                <Link to={prevLink} className="flex items-center gap-2 justify-start">
-                    <FaArrowLeft />
-                    {prevTitle}
+                <Link to={prevLink} className="flex justify-start">
+                    <div className='hover:bg-[#d6c7b2]  px-2 py-1 rounded flex items-center gap-2 duration-300'>
+                        <FaArrowLeft />
+                        {prevTitle}
+                    </div>
                 </Link>
             }
 
@@ -28,11 +28,13 @@ export default function NavigationPage({ route }) {
 
 
             {!nextLink && !nextTitle ?
-                <div></div> 
+                <div></div>
                 :
-                <Link to={nextLink} className="flex items-center gap-2 justify-end">
-                    {nextTitle}
-                    <FaArrowRight  />
+                <Link to={nextLink} className="flex justify-end ">
+                    <div className={`hover:bg-[#d6c7b2] px-2 py-1 rounded flex items-center gap-2 duration-300`}>
+                        {nextTitle}
+                        <FaArrowRight />
+                    </div>
                 </Link>
             }
         </div>
