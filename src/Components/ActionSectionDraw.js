@@ -8,7 +8,7 @@ import { forcesStateAtom } from '../Atom/forcesStateAtom';
 export default function ActionSectionDraw() {
 
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
-    const {Ned, Ved_y, Ved_z, Med_y, Med_z, Med_tor} = useRecoilValue(forcesStateAtom)
+    const { Ned, Ved_y, Ved_z, Med_y, Med_z, Med_tor } = useRecoilValue(forcesStateAtom)
 
     return (
 
@@ -43,7 +43,7 @@ export default function ActionSectionDraw() {
                         </g>
                         : null
                 }
-                {/* Vy  */}
+                {/* Vy */}
                 {
                     Ved_y > 0 ?
                         <g transform={`translate(100, ${Med_y > 0 ? '160' : '150'}) rotate(0)`} >
@@ -52,16 +52,19 @@ export default function ActionSectionDraw() {
                         </g>
                         : null
                 }
-                {/* Vz  */}
+                {/* Vz */}
                 {
                     Ved_z > 0 ?
                         <g transform={`translate(${Med_z > 0 ? '90' : '100'}, 150) rotate(270)`} >
                             <line x1="0" y1="0" x2="130" y2="0" stroke="red" strokeWidth="2" />
                             <polygon points="140,0 130,-5 130,5" fill="red" />
+                            <text x="60" y="-12" fill="red" fontSize="14" fontWeight="bold">
+                                {Ved_z} kN
+                            </text>
                         </g>
                         : null
                 }
-                {/* -Vy  */}
+                {/* -Vy */}
                 {
                     Ved_y < 0 ?
                         <g transform={`translate(100, ${Med_y < 0 ? '160' : '150'}) rotate(180)`} >
@@ -70,46 +73,59 @@ export default function ActionSectionDraw() {
                         </g>
                         : null
                 }
-                {/* -Vz  */}
+                {/* -Vz */}
                 {
                     Ved_z < 0 ?
                         <g transform={`translate(${Med_z < 0 ? '90' : '100'}, 150) rotate(90)`} >
                             <line x1="0" y1="0" x2="130" y2="0" stroke="red" strokeWidth="2" />
                             <polygon points="140,0 130,-5 130,5" fill="red" />
+                            <text x="65" y="15" fill="red" fontSize="14" fontWeight="bold">
+                                {Ved_z} kN
+                            </text>
                         </g>
                         : null
                 }
-                {/* My  */}
+                {/* My */}
                 {
                     Med_y > 0 ?
                         <g transform={`translate(100, ${Ved_y > 0 ? '140' : '150'}) rotate(0)`} >
                             <line x1="0" y1="0" x2="130" y2="0" stroke="green" strokeWidth="2" />
                             <polygon points="140,0 130,-5 130,5" fill="green" />
                             <polygon points="148,0 138,-5 138,5" fill="green" />
+                            <text x="120" y="-10" fill="green" fontSize="14" fontWeight="bold">
+                                {Med_y}{' kN\u00B7m'}
+                            </text>
                         </g>
                         : null
                 }
-                {/* Mz  */}
+                {/* Mz */}
                 {
-                    Med_z > 0 ?
-                        <g transform={`translate(${Ved_z > 0 ? '110' : '100'}, 150) rotate(270)`} >
+                    Med_z > 0 ? (
+                        <g transform={`translate(${Ved_z > 0 ? '110' : '100'}, 150) rotate(270)`}>
                             <line x1="0" y1="0" x2="130" y2="0" stroke="green" strokeWidth="2" />
                             <polygon points="140,0 130,-5 130,5" fill="green" />
                             <polygon points="148,0 138,-5 138,5" fill="green" />
+                            <text x="60" y="20" fill="green" fontSize="14" fontWeight="bold">
+                                {Med_z}{' kN\u00B7m'}
+                            </text>
                         </g>
-                        : null
+                    ) : null
                 }
-                {/* -My  */}
+                {/* -My */}
                 {
                     Med_y < 0 ?
-                        <g transform={`translate(100, ${Ved_y < 0 ? '140' : '150'}) rotate(180)`} >
+                        <g transform={`translate(100, ${Ved_y < 0 ? '140' : '150'}) rotate(180)`}>
                             <line x1="0" y1="0" x2="130" y2="0" stroke="green" strokeWidth="2" />
                             <polygon points="140,0 130,-5 130,5" fill="green" />
                             <polygon points="148,0 138,-5 138,5" fill="green" />
+
+                            <text x="60" y="20"fill="green"fontSize="14"fontWeight="bold"transform="rotate(-180, 60, 20)">
+                                {Med_y}{' kN\u00B7m'}
+                            </text>
                         </g>
                         : null
                 }
-                {/* -Mz  */}
+                {/* -Mz */}
                 {
                     Med_z < 0 ?
                         <g transform={`translate(${Ved_z < 0 ? '110' : '100'}, 150) rotate(90)`} >
@@ -122,7 +138,7 @@ export default function ActionSectionDraw() {
             </g>
 
             <g transform={`translate(-30, 225) scale(0.5)`}>
-                {/* Asse Y (orizzontale)  */}
+                {/* Asse Y (orizzontale) */}
                 <line x1="150" y1="150" x2="250" y2="150" stroke="black" strokeWidth="2" />
                 <polygon points="250,150 240,145 240,155" fill="black" />
                 <text x="255" y="155" fontFamily="Arial" fontSize="25" fill="black">Y</text>
@@ -136,7 +152,7 @@ export default function ActionSectionDraw() {
                     <polygon points="150,50 145,60 155,60" fill="black" />
                 </g>
                 <text x="80" y="260" fontFamily="Arial" fontSize="25" fill="black">X</text>
-                {/* Punto di origine  */}
+                {/* Punto di origine */}
                 <circle cx="150" cy="150" r="3" fill="black" />
             </g>
 

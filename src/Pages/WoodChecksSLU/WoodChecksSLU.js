@@ -46,10 +46,10 @@ export default function WoodChecksSLU(params) {
 
                 <div className='flex gap-8 '>
                     <div className='flex flex-col'>
-                    <ServiceClassSelector viewType='dropdown'/>
+                        <ServiceClassSelector viewType='dropdown' />
                     </div>
                     <div className='flex flex-col'>
-      <DurationClassSelector viewType='dropdown'/>
+                        <DurationClassSelector viewType='dropdown' />
                     </div>
                     <WoodClass isMinimalTable={false} isTitle={false} />
                 </div>
@@ -62,7 +62,7 @@ export default function WoodChecksSLU(params) {
                     {showAll ? <FaEye /> : <FaEyeSlash />}
                 </button>
             </div>
-            
+
             <div className="h-[85vh] overflow-y-scroll">
                 <div className='flex justify-center mt-5'>
                     <ActionSectionDraw />
