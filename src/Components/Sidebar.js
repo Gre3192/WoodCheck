@@ -25,7 +25,7 @@ export const sidebarItem = [
     link: "/specialBeams"
   },
   {
-    name: "Intaglio all'appoggio",
+    name: "Intagli all'appoggio",
     link: "/notchbearing"
   },
   {
