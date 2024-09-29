@@ -75,7 +75,7 @@ export default function WoodChecksSLU(params) {
                 </button>
             </div>
 
-            <div className="h-[85vh] overflow-y-scroll">
+            <div className="h-[83vh] overflow-y-scroll">
                 <div className='flex justify-center mt-5'>
                     <ActionSectionDraw />
                 </div>

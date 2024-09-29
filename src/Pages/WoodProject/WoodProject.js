@@ -26,7 +26,7 @@ export default function WoodProject(params) {
                 <NavigationPage route={route} />
             </div>
 
-            <div className="h-[92vh] overflow-y-scroll">
+            <div className="h-[90vh] overflow-y-scroll">
                 <DurationClassSelector />
                 <ServiceClassSelector />
                 <WoodClass />
