@@ -22,6 +22,8 @@ import InstabilitaPressoFlessioneCheck from "../../Components/Checks/Instabilita
 
 import ActionSectionDraw from "../../Components/ActionSectionDraw"
 import WoodClass from '../../Components/WoodClass';
+import ServiceClassSelector from "../../Components/ServiceClassSelector"
+import DurationClassSelector from '../../Components/DurationClassSelector';
 
 
 
@@ -40,28 +42,17 @@ export default function WoodChecksSLU(params) {
 
     return (
         <>
-            <div className='flex justify-between pr-6 pb-3'>
+            <div className='flex justify-between px-6 pb-3 shadow-lg sticky'>
 
                 <div className='flex gap-8 '>
                     <div className='flex flex-col'>
-                        <label htmlFor="mySelect">Classe di sevizio</label>
-                        <select id="mySelect" value={''} onChange={() => { }}>
-                            <option value="opzione1">Opzione 1</option>
-                            <option value="opzione2">Opzione 2</option>
-                            <option value="opzione3">Opzione 3</option>
-                        </select>
+                    <ServiceClassSelector viewType='dropdown'/>
                     </div>
                     <div className='flex flex-col'>
-                        <label htmlFor="mySelect">Classe di durata</label>
-                        <select id="mySelect" value={''} onChange={() => { }}>
-                            <option value="opzione1">Opzione 1</option>
-                            <option value="opzione2">Opzione 2</option>
-                            <option value="opzione3">Opzione 3</option>
-                        </select>
+      <DurationClassSelector viewType='dropdown'/>
                     </div>
                     <WoodClass isMinimalTable={false} isTitle={false} />
                 </div>
-
 
                 <button
                     onClick={handleOpen}

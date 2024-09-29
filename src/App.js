@@ -10,6 +10,7 @@ import WoodJoin from './Pages/WoodJoin/WoodJoin';
 import WoodSpecialBeams from './Pages/WoodSpecialBeams/WoodSpecialBeams';
 import LoadCombination from './Pages/LoadCombination/LoadCombination';
 import MadePDF from './Pages/MadePDF/MadePDF';
+import NotchBearing from './Pages/NotchBearing/NotchBearing';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/specialBeams" element={<WoodSpecialBeams />} />
           <Route path="/joins" element={<WoodJoin />} />
           <Route path="/madepdf" element={<MadePDF />} />
+          <Route path="/notchbearing" element={<NotchBearing />} />
         </Route>
       </Routes>
     </HashRouter>

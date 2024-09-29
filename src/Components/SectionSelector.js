@@ -116,7 +116,7 @@ const SectionSelector = () => {
                 </div>
               ))
             ) : (
-              <div className="p-2 text-gray-700">Nessuna sezione trovata</div>
+              <div className="p-2 text-gray-700">Nessuna classe trovata</div>
             )}
           </div>
         )}
