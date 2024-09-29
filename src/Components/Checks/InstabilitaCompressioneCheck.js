@@ -21,7 +21,7 @@ import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 
-export default function InstabilitaCompressioneCheck(params) {
+export default function InstabilitaCompressioneCheck({ showAll }) {
 
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
     const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
@@ -342,7 +342,11 @@ export default function InstabilitaCompressioneCheck(params) {
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check_y, check_z], isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
-
+    return (
+      !showAll && isDisabled ? 
+      null 
+      :
+      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+    )
 }
 

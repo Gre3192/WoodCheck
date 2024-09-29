@@ -17,7 +17,7 @@ import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 
-export default function FlessioneCheck(params) {
+export default function FlessioneCheck({ showAll }) {
 
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
@@ -224,7 +224,11 @@ export default function FlessioneCheck(params) {
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check_y, check_z], isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
-
+    return (
+      !showAll && isDisabled ? 
+      null 
+      :
+      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+    )
 }
 

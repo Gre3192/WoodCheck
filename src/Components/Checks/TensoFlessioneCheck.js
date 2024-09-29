@@ -17,7 +17,7 @@ import get_kh from "../../Utils/get_kh";
 import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
-export default function TensoFlessioneCheck(params) {
+export default function TensoFlessioneCheck({ showAll }) {
 
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
@@ -245,7 +245,11 @@ export default function TensoFlessioneCheck(params) {
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check_z, check_y], isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
-
+    return (
+      !showAll && isDisabled ? 
+      null 
+      :
+      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+    )
 }
 

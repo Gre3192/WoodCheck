@@ -13,7 +13,7 @@ import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
 import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
-export default function Compressione90Check(params) {
+export default function Compressione90Check({ showAll }) {
 
     
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
@@ -112,7 +112,11 @@ export default function Compressione90Check(params) {
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
-
+    return (
+      !showAll && isDisabled ? 
+      null 
+      :
+      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+    )
 }
 

@@ -21,7 +21,7 @@ import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
 
 
 
-export default function InstabilitaLateroTorsionaleCheck(params) {
+export default function InstabilitaLateroTorsionaleCheck({ showAll }) {
 
     const sectionGeometry = useRecoilValue(sectionGeometryAtom)
     const geometryMass = useRecoilValue(sectionGeometryMassAtom)
@@ -408,7 +408,11 @@ export default function InstabilitaLateroTorsionaleCheck(params) {
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check1, check2, check3, check4], isDisabled: isDisabled }
-    return <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />;
-
+    return (
+      !showAll && isDisabled ? 
+      null 
+      :
+      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+    )
 }
 

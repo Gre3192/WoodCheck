@@ -9,6 +9,7 @@ import WoodProject from './Pages/WoodProject/WoodProject';
 import WoodJoin from './Pages/WoodJoin/WoodJoin';
 import WoodSpecialBeams from './Pages/WoodSpecialBeams/WoodSpecialBeams';
 import LoadCombination from './Pages/LoadCombination/LoadCombination';
+import MadePDF from './Pages/MadePDF/MadePDF';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/checkssle" element={<WoodChecksSLE />} />
           <Route path="/specialBeams" element={<WoodSpecialBeams />} />
           <Route path="/joins" element={<WoodJoin />} />
+          <Route path="/madepdf" element={<MadePDF />} />
         </Route>
       </Routes>
     </HashRouter>

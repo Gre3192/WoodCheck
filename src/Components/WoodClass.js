@@ -6,7 +6,7 @@ import { useRecoilState } from 'recoil';
 import { meccanicPropSectionAtom } from '../Atom/meccanicPropSectionAtom';
 
 
-export default function WoodClass() {
+export default function WoodClass({ isMinimalTable = true, isTitle = true }) {
 
 
   const [woodProperties, setWoodProperties] = useRecoilState(meccanicPropSectionAtom);
@@ -64,22 +64,34 @@ export default function WoodClass() {
 
 
   return (
-    <div className="p-5 items-center">
-      <div className='flex justify-between items-center mb-4'>
-        <h2 className="text-lg font-bold ">Classe legno</h2>
-        <button
-          onClick={handleReset}
-          className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
-        >
-          <FaRedo />
-        </button>
-      </div>
+    <div className={`${isTitle ? 'p-5' : ''} items-center`}>
+
+      {isTitle ?
+        <div className='flex justify-between items-center mb-4'>
+          <h2 className="text-lg font-bold ">Classe legno</h2>
+          <button
+            onClick={handleReset}
+            className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
+          >
+            <FaRedo />
+          </button>
+        </div>
+        :
+        null
+      }
+
 
       {/* Input valori geometria sezione */}
       <div className="flex flex-col gap-4">
         <SectionSelector />
-        <MinimalTable list={minimalTablewoodClassConfig1} isInput={false} />
-        <MinimalTable list={minimalTablewoodClassConfig2} isInput={false} />
+
+        {isMinimalTable ?
+          <>
+            <MinimalTable list={minimalTablewoodClassConfig1} isInput={false} />
+            <MinimalTable list={minimalTablewoodClassConfig2} isInput={false} />
+          </>
+          : null
+        }
       </div>
 
       {/* Disegno della sezione */}

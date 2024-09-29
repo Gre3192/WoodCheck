@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { FaBars, FaArrowLeft, FaCog, FaChevronDown } from 'react-icons/fa';
+import { FaBars, FaArrowLeft, FaCog, FaChevronDown, FaFilePdf } from 'react-icons/fa';
 import { Link } from "react-router-dom";
+
 
 export const sidebarItem = [
   {
@@ -26,7 +27,7 @@ export const sidebarItem = [
   {
     name: "Collegamenti",
     link: "/joins"
-  },
+  }
 ]
 
 const Sidebar = () => {
@@ -107,11 +108,11 @@ const Sidebar = () => {
               })}
             </ul>
             <Link
-              to="/Setting"
-              className="absolute bottom-9 right-4 scale-150 transform transition-transform duration-300 hover:scale-175 hover:rotate-180 fa-cog"
+              to="/madepdf"
               onClick={handleCogClick}
+              className="absolute bottom-9 right-4 transform transition-transform duration-300  hover:animate-wobble"
             >
-              <FaCog />
+              <FaFilePdf />
             </Link>
           </div>
         </div>

@@ -28,8 +28,8 @@ export default function SectionGeometryMass() {
 
     const minimalTableGeometryMassConfig = [
         { label: 'A_{tot}\\\\\\text{[$mm^2$]}', value: sectionGeometryMass?.value.Atot ? customDecimal(sectionGeometryMass?.value.Atot, 2) : '-', textHover: 'Area totale' },
-        { label: 'I_{g,y}\\\\\\text{[$mm^4$]}', value: sectionGeometryMass?.value.Ig_y ? customDecimal(sectionGeometryMass?.value.Ig_y, 2) : '-', textHover: 'Momento di inerzia attorno a Y-Y' },
-        { label: 'I_{g,z}\\\\\\text{[$mm^4$]}', value: sectionGeometryMass?.value.Ig_z ? customDecimal(sectionGeometryMass?.value.Ig_z, 2) : '-', textHover: 'Momento di inerzia attorno a Z-Z' },
+        { label: 'I_{g,y}\\\\\\text{[$mm^4$]}', value: sectionGeometryMass?.value.Ig_y ? customDecimal(sectionGeometryMass?.value.Ig_y, 2) : '-', textHover: 'Momento di inerzia attorno a y' },
+        { label: 'I_{g,z}\\\\\\text{[$mm^4$]}', value: sectionGeometryMass?.value.Ig_z ? customDecimal(sectionGeometryMass?.value.Ig_z, 2) : '-', textHover: 'Momento di inerzia attorno a z' },
         { label: 'I_{g,tor}\\\\\\text{[$mm^4$]}', value: sectionGeometryMass?.value.Ig_tor ? customDecimal(sectionGeometryMass?.value.Ig_tor, 2) : '-', textHover: 'Momento di inerzia attorno a X-X' },
         { label: 'W_{el,y}\\\\\\text{[$mm^3$]}', value: sectionGeometryMass?.value.Wel_y ? customDecimal(sectionGeometryMass?.value.Wel_y, 2) : '-', textHover: 'Modulo di resistenza elastico attorno a y' },
         { label: 'W_{el,z}\\\\\\text{[$mm^3$]}', value: sectionGeometryMass?.value.Wel_z ? customDecimal(sectionGeometryMass?.value.Wel_z, 2) : '-', textHover: 'Modulo di resistenza elastico attorno a z' },
