@@ -122,7 +122,7 @@ const DurationClassSelector = ({ viewType = 'table' }) => {
           >
             {classes.map((item) => (
               <option key={item.value} value={item.value}>
-                {capitalizeFirstLetter(item.value)}
+                 {'Carico '}{capitalizeFirstLetter(item.value)}
               </option>
             ))}
           </select>
