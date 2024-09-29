@@ -44,6 +44,7 @@ export default function WoodChecksSLU(params) {
 
         prevLink: '/project',
         prevTitle: 'Progetto',
+        currentTitle: 'Verifiche SLU',
         nextLink: '/checkssle',
         nextTitle: 'Verifiche SLE'
     }

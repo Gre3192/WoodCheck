@@ -15,6 +15,7 @@ export default function WoodProject(params) {
 
         prevLink: '/loadCombination',
         prevTitle: 'Combinazioni di carico',
+        currentTitle: 'Progetto',
         nextLink: '/checksslu',
         nextTitle: 'Verifiche SLU'
     }
