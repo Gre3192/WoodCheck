@@ -8,7 +8,7 @@ export default function NavigationPage({ route }) {
     const { prevLink, prevTitle, currentTitle, nextLink, nextTitle } = route
 
     return (
-        <div className="px-6 pb-3 grid grid-cols-3 items-center sticky">
+        <div className="text-[#F5F5DC]  px-6 py-3 grid grid-cols-3 items-center sticky bg-gradient-to-r from-[#7C6A55] to-[#AC9588]">
 
 
             {!prevLink && !prevTitle ?
