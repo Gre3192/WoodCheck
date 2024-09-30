@@ -55,7 +55,7 @@ export default function WoodChecksSLU(params) {
             <NavigationPage route={route} />
 
 
-            <div className='flex justify-between px-6 pb-3 shadow-lg sticky'>
+            <div className='flex justify-between px-6 py-3 shadow-lg sticky'>
 
                 <div className='flex gap-8 '>
                     <div className='flex flex-col'>
