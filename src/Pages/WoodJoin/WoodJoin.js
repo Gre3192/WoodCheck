@@ -9,7 +9,7 @@ export default function WoodJoin(params) {
 
     const route = {
         prevLink: '/notchbearing',
-        prevTitle: "Intagli all'apposggio",
+        prevTitle: "Intagli all'appoggio",
         currentTitle: "Collegamenti",
         nextLink: '',
         nextTitle: ''
