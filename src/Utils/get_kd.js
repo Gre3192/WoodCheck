@@ -10,8 +10,8 @@ export default function get_kd() {
 
         kd: Math.min(d / 8, 1),
         kd_title: `kd = `,
-        kd_formula: ``,
-        kd_formulaVal: ``,
+        kd_formula: `\\text{min}\\left(\\dfrac{d}{8}; 1\\right) = `,
+        kd_formulaVal: `\\text{min}\\left(\\dfrac{${d}}{8}; 1\\right) =`,
         kd_description: ``,
 
     }

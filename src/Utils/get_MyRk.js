@@ -26,7 +26,7 @@ export default function get_MyRk() {
                 My_Rk_title: `M_{y,Rk} = `,
                 My_Rk_formula: `0.45\\cdot f_u\\cdot d^{2.6} = `,
                 My_Rk_formulaVal: `0.45\\cdot ${fu}\\cdot ${d}^{2.6} = `,
-                My_Rk_description: `Momento caratteristico di snervamento per chiodi con gambo quadrato`,
+                My_Rk_description: `Momento caratteristico di snervamento per chiodi con gambo quadro e scanalato`,
             }
         }
     }
@@ -72,10 +72,10 @@ export default function get_MyRk() {
     }
     else if (joinType.toLowerCase().includes('graffe') || joinType.toLowerCase().includes('cambratte')) {
         return {
-            My_Rk: 0.2 * fu * d ** 3,
+            My_Rk: 240 * (d ** (2.6)),
             My_Rk_title: `M_{y,Rk} = `,
-            My_Rk_formula: `0.2\\cdot f_u\\cdot d^{2.6} = `,
-            My_Rk_formulaVal: `0.2\\cdot ${fu}\\cdot ${d}^{2.6} = `,
+            My_Rk_formula: `240\\cdot d^{2.6} = `,
+            My_Rk_formulaVal: `240\\cdot ${d}^{2.6} = `,
             My_Rk_description: `Momento caratteristico di snervamento ${joinType.toLowerCase().includes('graffe') ? 'per graffe' : 'per cambratte'}`,
         }
     }
