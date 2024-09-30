@@ -1,0 +1,35 @@
+<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" >
+  
+
+  <rect x="0" y="0" width="600" height="200" fill="none" stroke="black" stroke-width="5"/>
+  
+  
+  
+  <!-- Trave Semplice rastremazione -->
+  <!-- <polygon points="0,100 600,100 600,10 0,50" 
+  fill="none" stroke="white" stroke-width="2" /> -->
+
+  <!-- Trave Doppia rastremazione -->
+  <!-- <polygon points="0,100 600,100 600,50 300,10 0,50" 
+  fill="none" stroke="white" stroke-width="2" /> -->
+
+  <!-- Trave Curva -->
+  <polygon points="1,160 20,160 200,100 190,70 1,133" 
+    fill="none" stroke="white" stroke-width="1" />
+
+  <polygon points="1,160 20,160 200,100 190,70 1,133" fill="none" stroke="white" stroke-width="1"
+    transform="scale(-1, 1) translate(-600, 0)" />
+
+  <!-- <path d="M 20 160 A 50 50 0 0 1 200 100" stroke="blue" fill="none" stroke-width="2"/> -->
+
+  <!-- <path d="M 200 100 A 100 100 0 0 1 300 200" stroke="blue" fill="none" stroke-width="2"/> -->
+  <circle cx="300" cy="280" r="206" fill="none" stroke="red" stroke-width="1" />
+
+
+
+
+
+
+</svg>
+
+

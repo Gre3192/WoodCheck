@@ -17,7 +17,7 @@ export default function get_Fax_Rk() {
     const fc90k = 'liscio'     //Dell'elemento in esame
     const l_ef = 'liscio'
     const alpha_viti = 'liscio'
-
+    const gambo = 'liscio'
 
 
     if (joinType.toLowerCase().includes('chiodi')) {
@@ -42,7 +42,7 @@ export default function get_Fax_Rk() {
     }
     else if (joinType.toLowerCase().includes('bulloni')) {
         return {
-            Fax_Rk: min(fu * (Math.PI * d ** 2 / 4), (((Math.PI * dr ** 2) / 4) - ((Math.PI * d ** 2) / 4)) * 3 * fc90k),
+            Fax_Rk: Math.min(fu * (Math.PI * d ** 2 / 4), (((Math.PI * dr ** 2) / 4) - ((Math.PI * d ** 2) / 4)) * 3 * fc90k),
             Fax_Rk_title: `F_{ax,Rk} = `,
             Fax_Rk_formula: ``,
             Fax_Rk_formulaVal: ``,
