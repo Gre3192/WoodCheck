@@ -2,7 +2,7 @@ import customDecimal from "./customDecimal"
 
 
 
-export default function get_fh0k() {
+export default function get_fh0_k() {
 
     const preforatura = true
     const d = 34
