@@ -32,21 +32,55 @@ export default function WoodJoin(params) {
 
                 <div className='flex gap-8 '>
                     <div className='flex flex-col'>
-                        <JoinTypeSelector  />
+                        <JoinTypeSelector />
                     </div>
                     <div className='flex flex-col'>
-                        <SharePlaneSelector  />
+                        <SharePlaneSelector />
                     </div>
                 </div>
 
 
             </div>
 
-            <ConnecionSharePlaneDraw/>
 
+
+            <div className="h-[83vh] overflow-y-scroll">
+                <ConnecionSharePlaneDraw />
+                <div>
+                    <h1 className="text-lg font-bold" >Resistenze a rifollamento</h1>
+                    <div>
+
+                    </div>
+                    <h1 className="text-lg font-bold" >Momento caratteristico di snervamento</h1>
+                    <div>
+
+                    </div>
+                    <h1 className="text-lg font-bold" >Resistenze a estrazione</h1>
+                    <div>
+
+                    </div>
+                    <h1 className="text-lg font-bold" >Johansen</h1>
+                    <div>
+
+                    </div>
+                    <h1 className="text-lg font-bold" >Spaziature minime</h1>
+                    <div>
+
+                    </div>
+                    <h1 className="text-lg font-bold" >Massimo numero di righe</h1>
+                    <div>
+
+                    </div>
+                    <h1 className="text-lg font-bold" >Minimo numero di connettori per riga</h1>
+                    <div>
+
+                    </div>
+                    <h1 className="text-lg font-bold" >Verifica connessione</h1>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-
     )
-
-
 }
