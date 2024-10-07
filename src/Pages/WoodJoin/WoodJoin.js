@@ -2,6 +2,8 @@ import SharePlaneSelector from "../../Components/SharePlaneSelector";
 import JoinTypeSelector from "../../Components/JoinTypeSelector";
 import NavigationPage from "../../Components/NavigationPage"
 import ConnecionSharePlaneDraw from "../../Components/ConnecionSharePlaneDraw";
+import get_Johansen from "../../Utils/get_Johansen";
+import Latex from "react-latex-next";
 
 
 
@@ -60,7 +62,37 @@ export default function WoodJoin(params) {
 
                     </div>
                     <h1 className="text-lg font-bold" >Johansen</h1>
-                    <div>
+                    <div className="flex flex-col gap-5">
+                        <Latex>
+                            {`$${get_Johansen().rk1a_title}$`}
+                            {`$${get_Johansen().rk1a_formula}$`}
+                            {`$${get_Johansen().rk1a_formulaVal}$`}
+                            {`$${get_Johansen().rk1a}$`}
+                        </Latex>
+                        <Latex>
+                            {`$${get_Johansen().rk1b_title}$`}
+                            {`$${get_Johansen().rk1b_formula}$`}
+                            {`$${get_Johansen().rk1b_formulaVal}$`}
+                            {`$${get_Johansen().rk1b}$`}
+                        </Latex>
+                        <Latex>
+                            {`$${get_Johansen().rk2a_prev_title}$`}
+                            {`$${get_Johansen().rk2a_prev_formula}$`}
+                            {`$${get_Johansen().rk2a_prev_formulaVal}$`}
+                            {`$${get_Johansen().rk2a_prev}$`}
+                        </Latex>
+                        <Latex>
+                            {`$${get_Johansen().rk2a_title}$`}
+                            {`$${get_Johansen().rk2a_formula}$`}
+                            {`$${get_Johansen().rk2a_formulaVal}$`}
+                            {`$${get_Johansen().rk2a}$`}
+                        </Latex>
+                        <Latex>
+                            {`$${get_Johansen().rk3_title}$`}
+                            {`$${get_Johansen().rk3_formula}$`}
+                            {`$${get_Johansen().rk3_formulaVal}$`}
+                            {`$${get_Johansen().rk3}$`}
+                        </Latex>
 
                     </div>
                     <h1 className="text-lg font-bold" >Spaziature minime</h1>

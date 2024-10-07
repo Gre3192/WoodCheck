@@ -8,7 +8,7 @@ function get_coeff_fax(params) {
 }
 
 
-export default function get_Johansen(params) {
+export default function get_Johansen() {
 
     const shearPlane = 2
     const joinType = `legno-legno`
@@ -21,7 +21,7 @@ export default function get_Johansen(params) {
     const fax_rk = 989
     const myrk = 989
     const beta = fh2k / fh1k
-    const coeff_fax = get_coeff_fax(params)
+    const coeff_fax = 161
 
 
     if (joinType == `legno-legno`) {
@@ -61,7 +61,7 @@ export default function get_Johansen(params) {
                 rk1b_formula: `f_{h,2,k} \\cdot t_2 \\cdot d = `,
                 rk1c_prev_formula: `\\dfrac{f_{h,1,k} \\cdot t_1 \\cdot d}{1+\\beta} \\left[ \\sqrt{\\beta + 2\\cdot\\beta^2 \\left[ 1 + \\dfrac{t_2}{t_1} + \\left( \\dfrac{t_2}{t_1} \\right)^2 \\right] + \\beta^3 \\cdot\\left( \\dfrac{t_2}{t_1} \\right)^2} - \\beta\\cdot \\left( 1 + \\dfrac{t_2}{t_1} \\right) \\right] = `,
                 rk1c_formula: `R^*_{k,IC} + \\text{min}\\left(${coeff_fax}\\cdot R^*_{k,IC}; \\dfrac{F_{ax,rk}}{4}\\right) = `,
-                rk2a_prev_formula: `1.05\\cdot\\dfrac{f_{h,1,k} \\cdot t_1 \\cdot d}{2+\\beta} \\left[ \\sqrt{2\\cdot\\beta\\cdot (1+\\beta) + \\dfrac{4 \\cdot \\beta\\cdot(2+\\beta) \\cdot M_{y,k}}{f_{h,1,k} \\cdot d \\cdot t_1^2}} - \\beta \\right] = `,
+                rk2a_prev_formula: `1.05\\cdot\\dfrac{f_{h,1,k} \\cdot t_1 \\cdot d}{2+\\beta} \\left[ \\sqrt{2\\cdot\\beta \\cdot (1+\\beta) + \\dfrac{4 \\cdot \\beta \\cdot (2+\\beta) \\cdot M_{y,k}}{f_{h,1,k} \\cdot d \\cdot t_1^2}} - \\beta \\right] = `,
                 rk2a_formula: `R^*_{k,IIA} + \\text{min}\\left(${coeff_fax}\\cdot R^*_{k,IIA}; \\dfrac{F_{ax,rk}}{4}\\right) = `,
                 rk2b_prev_formula: `1.05\\cdot\\dfrac{f_{h,1,k} \\cdot t_2 \\cdot d}{1+2\\cdot \\beta} \\left[ \\sqrt{2 \\cdot \\beta^2\\cdot(1+\\beta) + \\dfrac{4 \\cdot \\beta\\cdot(1+2\\cdot\\beta) \\cdot M_{y,k}}{f_{h,1,k} \\cdot d \\cdot t_2^2}} - \\beta \\right] = `,
                 rk2b_formula: `R^*_{k,IIB} + \\text{min}\\left(${coeff_fax}\\cdot R^*_{k,IIB}; \\dfrac{F_{ax,rk}}{4}\\right) = `,
@@ -71,13 +71,13 @@ export default function get_Johansen(params) {
                 rk1a_formulaVal: `${fh1k} \\cdot ${t1} \\cdot ${d} = `,
                 rk1b_formulaVal: `${fh2k} \\cdot ${t1} \\cdot ${d} = `,
                 rk1c_prev_formulaVal: `\\dfrac{${fh1k} \\cdot ${t1} \\cdot ${d}}{1+${beta}} \\left[ \\sqrt{${beta} + 2\\cdot ${beta}^2 \\left[ 1 + \\dfrac{${t2}}{${t1}} + \\left( \\dfrac{${t2}}{${t1}} \\right)^2 \\right] + ${beta}^3 \\cdot\\left( \\dfrac{${t2}}{${t1}} \\right)^2} - \\beta\\cdot \\left( 1 + \\dfrac{${t2}}{${t1}} \\right) \\right] = `,
-                rk1c_formulaVal: `${rk1c_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk1c_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                rk1c_formulaVal: `${rk1c_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk1c_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
                 rk2a_prev_formulaVal: `1.05\\cdot\\dfrac{${fh1k} \\cdot ${t1} \\cdot ${d}}{2+${beta}} \\left[ \\sqrt{2\\cdot ${beta}\\cdot (1+${beta}) + \\dfrac{4 \\cdot ${beta} \\cdot(2+${beta}) \\cdot ${myrk}}{${fh1k} \\cdot ${d} \\cdot ${t1}^2}} - ${beta} \\right] = `,
-                rk2a_formulaVal: `${rk2a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2a_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                rk2a_formulaVal: `${rk2a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2a_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
                 rk2b_prev_formulaVal: `1.05\\cdot\\dfrac{${fh1k} \\cdot ${t2} \\cdot ${d}}{1+2\\cdot ${beta}} \\left[ \\sqrt{2 \\cdot ${beta}^2\\cdot(1+${beta}) + \\dfrac{4 \\cdot ${beta}\\cdot(1+2\\cdot ${beta}) \\cdot ${myrk}}{${fh1k} \\cdot ${d} \\cdot ${t2}^2}} - ${beta} \\right] = `,
-                rk2b_formulaVal: `${rk2b_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2b_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                rk2b_formulaVal: `${rk2b_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2b_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
                 rk3_prev_formulaVal: `1.15\\cdot\\dfrac{2 \\cdot ${beta}}{\\sqrt{1+${beta}}} \\sqrt{2 \\cdot ${myrk} \\cdot ${fh1k} \\cdot ${d}} = `,
-                rk3_formulaVal: `${rk3_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                rk3_formulaVal: `${rk3_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
 
                 rk1a_description: ``,
                 rk1b_description: ``,
@@ -122,9 +122,9 @@ export default function get_Johansen(params) {
                 rk1a_formulaVal: `${fh1k} \\cdot ${t1} \\cdot ${d} = `,
                 rk1b_formulaVal: `0.5 \\cdot ${fh2k} \\cdot ${t2} \\cdot ${d} = `,
                 rk2a_prev_formulaVal: `1.05 \\cdot \\dfrac{${fh1k} \\cdot ${t1} \\cdot ${d}}{2+${beta}} \\left[ \\sqrt{2\\cdot ${beta}(1+${beta}) + \\dfrac{4 \\cdot ${beta}(2+${beta}) \\cdot ${myrk}}{${fh1k} \\cdot ${d} \\cdot ${t1}^2}} - ${beta} \\right] = `,
-                rk2a_formulaVal: `${rk2a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2a_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                rk2a_formulaVal: `${rk2a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2a_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
                 rk3_prev_formulaVal: `1.15 \\cdot \\dfrac{2 \\cdot ${beta}}{\\sqrt{1+${beta}} \\sqrt{2 \\cdot ${myrk} \\cdot ${fh1k} \\cdot ${d}} = `,
-                rk3_formulaVal: `${rk3_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                rk3_formulaVal: `${rk3_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
 
                 rk1a_description: ``,
                 rk1b_description: ``,
@@ -174,12 +174,12 @@ export default function get_Johansen(params) {
 
                 rk1a_formulaVal: `0.4\\cdot ${fh1k} \\cdot ${t1} \\cdot ${d} = `,
                 rk2a_prev_formulaVal: `1.15\\cdot\\sqrt{2\\cdot ${myrk} \\cdot ${fh1k} \\cdot ${d} } = `,
-                rk2a_formulaVal: `${rk2a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2a_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                rk2a_formulaVal: `${rk2a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2a_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
                 rk1b_formulaVal: `${fh1k} \\cdot ${t1} \\cdot ${d} = `,
                 rk2b_prev_formulaVal: `${fh1k} \\cdot ${d} \\cdot ${t1} \\left[ \\sqrt{2 + \\dfrac{4 \\cdot ${myrk}}{${fh1k} \\cdot ${d} \\cdot ${t1}^2}} - 1 \\right] = `,
-                rk2b_formulaVal: `${rk2b_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2b_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                rk2b_formulaVal: `${rk2b_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2b_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
                 rk3_prev_formulaVal: `2.3 \\cdot \\sqrt{${myrk} \\cdot ${fh1k} \\cdot ${d}} = `,
-                rk3_formulaVal: `${rk3_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                rk3_formulaVal: `${rk3_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
 
                 rk1a_description: ``,
                 rk2a_prev_description: ``,
@@ -219,9 +219,9 @@ export default function get_Johansen(params) {
 
                     rk1a_formulaVal: `${fh1k} \\cdot ${t1} \\cdot ${d} = `,
                     rk2a_prev_formulaVal: `${fh1k} \\cdot ${d} \\cdot ${t1} \\left[ \\sqrt{2 + \\dfrac{4 \\cdot ${myrk}}{${fh1k} \\cdot ${d} \\cdot ${t1}^2}} - 1 \\right] = `,
-                    rk2a_formulaVal: `${rk2a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2a_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                    rk2a_formulaVal: `${rk2a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2a_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
                     rk3a_prev_formulaVal: `2.3 \\cdot \\sqrt{${myrk} \\cdot ${fh1k} \\cdot ${d}} = `,
-                    rk3a_formulaVal: `${rk3a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3a_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                    rk3a_formulaVal: `${rk3a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3a_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
 
                     rk1a_description: ``,
                     rk2a_prev_description: ``,
@@ -258,9 +258,9 @@ export default function get_Johansen(params) {
 
                     rk1b_formulaVal: `0.5\\cdot ${fh2k} \\cdot ${t2} \\cdot ${d} = `,
                     rk3b_prev_formulaVal: `1.15\\cdot\\sqrt{2\\cdot ${myrk} \\cdot ${fh2k} \\cdot ${d} } = `,
-                    rk3b_formulaVal: `${rk3b_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3b_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                    rk3b_formulaVal: `${rk3b_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3b_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
                     rk3c_prev_formulaVal: `2.3 \\cdot \\sqrt{${myrk} \\cdot ${fh2k} \\cdot ${d}} = `,
-                    rk3c_formulaVal: `${rk3c_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3c_prev}; \\dfrac{${fax_rk}{4}\\right) = `,
+                    rk3c_formulaVal: `${rk3c_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3c_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
 
                     rk1b_description: ``,
                     rk3b_prev_description: ``,
