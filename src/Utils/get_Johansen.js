@@ -20,22 +20,22 @@ export default function get_Johansen(params) {
 
     const beta = fh2k / fh1k
 
-    if (joinType === `legno-legno`) {
+    if (joinType == `legno-legno`) {
 
-        if (shearPlane === 1) {
+        if (shearPlane == 1) {
 
             return {
 
                 rk1a: fh1k * t1 * d,
                 rk1b: fh2k * t2 * d,
                 rk1c_prev: ((fh1k * t1 * d) / (1 + beta)) * (Math.sqrt(beta + 2 * (beta ** 2) * (1 + (t2 / t1) + ((t2 / t1) ** 2)) + (beta ** 3) * (t2 / t1) ** 2)) - beta * (1 + (t2 / t1)),
-                rk1c: rk1c_prev + Math.min(coeff_fax * rk1c_prev, fax_rk / 4),
+                rk1c: rk1c_prev + Math.min(coeff_fax * rk1c_prev, (fax_rk / 4)),
                 rk2a_prev: 1.05 * ((fh1k * t1 * d) / (2 + beta)) * (Math.sqrt(2 * beta * (1 + beta) + ((4 * beta * (2 + beta) * myrk) / (fh1k * (t1 ** 2) * d))) - beta),
-                rk2a: rk2a_prev + Math.min(coeff_fax * rk2a_prev, fax_rk / 4),
+                rk2a: rk2a_prev + Math.min(coeff_fax * rk2a_prev, (fax_rk / 4)),
                 rk2b_prev: 1.05 * ((fh1k * t2 * d) / (1 + 2 * beta)) * (Math.sqrt(2 * (beta ** 2) * (1 + beta) + ((4 * beta * (1 + 2 * beta) * myrk) / (fh1k * (t2 ** 2) * d))) - beta),
-                rk2b: rk2b_prev + Math.min(coeff_fax * rk2b_prev, fax_rk / 4),
+                rk2b: rk2b_prev + Math.min(coeff_fax * rk2b_prev, (fax_rk / 4)),
                 rk3_prev: 1.15 * Math.sqrt(((2 * beta) / (1 + beta))) * Math.sqrt(2 * myrk * fh1k * d),
-                rk3: rk3_prev + Math.min(coeff_fax * rk3_prev, fax_rk / 4),
+                rk3: rk3_prev + Math.min(coeff_fax * rk3_prev, (fax_rk / 4)),
 
                 rk1a_title: `(a) R_{k,IA} = `,
                 rk1b_title: `(b) R_{k,IB} = `,
@@ -82,7 +82,7 @@ export default function get_Johansen(params) {
                 rk3_description: ``,
             }
         }
-        else if (shearPlane === 2) {
+        else if (shearPlane == 2) {
 
             return {
 
@@ -123,20 +123,130 @@ export default function get_Johansen(params) {
             }
         }
     }
-    else if (joinType === `acciaio-legno`) {
+    else if (joinType == `acciaio-legno`) {
 
-        if (shearPlane = 1) {
+        if (shearPlane == 1) {
 
+            return {
 
+                rk1a: 0.4 * fh1k * t1 * d,                                                                  //piastra acciao sottile
+                rk2a_prev: 1.15 * Math.sqrt(2 * myrk * fh1k * d),                                           //piastra acciao sottile
+                rk2a: rk2a_prev + Math.min(coeff_fax * rk2a_prev, (fax_rk / 4)),
+                rk1b: fh1k * t1 * d,                                                                        //piastra acciao spessa
+                rk2b_prev: fh1k * d * t1 * (Math.sqrt(2 + ((4 * myrk) / (fh1k * d * (t1 ** 2)))) - 1),      //piastra acciao spessa
+                rk2b: rk2b_prev + Math.min(coeff_fax * rk2b_prev, (fax_rk / 4)),
+                rk3_prev: 2.3 * Math.sqrt(myrk * fh1k * d),                                                 //piastra acciao spessa
+                rk3: rk3_prev + Math.min(coeff_fax * rk3_prev, (fax_rk / 4)),
 
+                rk1a_title: `(a) R_{k,IA} = `,
+                rk2a_prev_title: `(b) R_{k,IIA} = `,
+                rk2a_title: ` `,
+                rk1b_title: `(c) R_{k,IB} = `,
+                rk2b_prev_title: `(d) R_{k,IIB} = `,
+                rk2b_title: ` `,
+                rk3_prev_title: `(e) R_{k,III} = `,
+                rk3_title: ` `,
+
+                rk1a_formula: `0.4\\cdot f_{h,1,k} \\cdot t_1 \\cdot d = `,
+                rk2a_prev_formula: `1.15\\cdot\\sqrt{2\\cdot M_{y,k} \\cdot f_{h,1,k} \\cdot d } = `,
+                rk2a_formula: ``,
+                rk1b_formula: `f_{h,1,k} \\cdot t_1 \\cdot d = `,
+                rk2b_prev_formula: `f_{h,1,k} \\cdot d \\cdot t_1 \\left[ \\sqrt{2 + \\dfrac{4 \\cdot M_{y,k}}{f_{h,1,k} \\cdot d \\cdot t_1^2}} - 1 \\right] = `,
+                rk2b_formula: ``,
+                rk3_prev_formula: `2.3 \\cdot \\sqrt{M_{y,k} \\cdot f_{h,1,k} \\cdot d} = `,
+                rk3_formula: ``,
+
+                rk1a_formulaVal: `0.4\\cdot ${fh1k} \\cdot ${t1} \\cdot ${d} = `,
+                rk2a_prev_formulaVal: `1.15\\cdot\\sqrt{2\\cdot ${myrk} \\cdot ${fh1k} \\cdot ${d} } = `,
+                rk2a_formulaVal: ``,
+                rk1b_formulaVal: `${fh1k} \\cdot ${t1} \\cdot ${d} = `,
+                rk2b_prev_formulaVal: `${fh1k} \\cdot ${d} \\cdot ${t1} \\left[ \\sqrt{2 + \\dfrac{4 \\cdot ${myrk}}{${fh1k} \\cdot ${d} \\cdot ${t1}^2}} - 1 \\right] = `,
+                rk2b_formulaVal: ``,
+                rk3_prev_formulaVal: `2.3 \\cdot \\sqrt{${myrk} \\cdot ${fh1k} \\cdot ${d}} = `,
+                rk3_formulaVal: ``,
+
+                rk1a_description: ``,
+                rk2a_prev_description: ``,
+                rk2a_description: ``,
+                rk1b_description: ``,
+                rk2b_prev_description: ``,
+                rk2b_description: ``,
+                rk3_prev_description: ``,
+                rk3_description: ``,
+            }
         }
-        else if (shearPlane = 2) {
-            if (acciaio_prevesterno_previnterno = 1) {
+        else if (shearPlane == 2) {
 
+            if (acciaio_interno_esterno == 1) {
 
-            } else if (acciaio_prevesterno_previnterno = 2) {
+                return {
+                    rk1a: fh1k * t1 * d,
+                    rk2a_prev: fh1k * d * t1 * (Math.sqrt(2 + ((4 * myrk) / (fh1k * d * (t1 ** 2)))) - 1),
+                    rk2a: rk2a_prev + Math.min(coeff_fax * rk2a_prev, (fax_rk / 4)),
+                    rk3a_prev: 2.3 * Math.sqrt(myrk * fh1k * d),
+                    rk3a: rk3a_prev + Math.min(coeff_fax * rk3a_prev, (fax_rk / 4)),
 
+                    rk1a_title: `(f) R_{k,IA} = `,
+                    rk2a_prev_title: `(g) R_{k,IIA} = `,
+                    rk2a_title: ``,
+                    rk3a_prev_title: `(h) R_{k,IIIA} = `,
+                    rk3a_title: ``,
 
+                    rk1a_formula: `f_{h,1,k} \\cdot t_1 \\cdot d = `,
+                    rk2a_prev_formula: `f_{h,1,k} \\cdot d \\cdot t_1 \\left[ \\sqrt{2 + \\dfrac{4 \\cdot M_{y,k}}{f_{h,1,k} \\cdot d \\cdot t_1^2}} - 1 \\right] = `,
+                    rk2a_formula: ``,
+                    rk3a_prev_formula: `2.3 \\cdot \\sqrt{M_{y,k} \\cdot f_{h,1,k} \\cdot d} = `,
+                    rk3a_formula: ``,
+
+                    rk1a_formulaVal: `${fh1k} \\cdot ${t1} \\cdot ${d} = `,
+                    rk2a_prev_formulaVal: `${fh1k} \\cdot ${d} \\cdot ${t1} \\left[ \\sqrt{2 + \\dfrac{4 \\cdot ${myrk}}{${fh1k} \\cdot ${d} \\cdot ${t1}^2}} - 1 \\right] = `,
+                    rk2a_formulaVal: ``,
+                    rk3a_prev_formulaVal: `2.3 \\cdot \\sqrt{${myrk} \\cdot ${fh1k} \\cdot ${d}} = `,
+                    rk3a_formulaVal: ``,
+
+                    rk1a_description: ``,
+                    rk2a_prev_description: ``,
+                    rk2a_description: ``,
+                    rk3a_prev_description: ``,
+                    rk3a_description: ``,
+
+                }
+            } 
+            else if (acciaio_interno_esterno == 2) {
+
+                return {
+
+                    rk1b: 0.5 * fh2k * t2 * d,
+                    rk3b_prev: 1.15 * Math.sqrt(2 * myrk * fh2k * d),                                            //piastra acciao sottile
+                    rk3b: rk3b_prev + Math.min(coeff_fax * rk3b_prev, (fax_rk / 4)),
+                    rk3c_prev: 2.3 * Math.sqrt(myrk * fh2k * d),                                                 //piastra acciao spessa
+                    rk3c: rk3c_prev + Math.min(coeff_fax * rk3c_prev, (fax_rk / 4)),
+
+                    rk1b_title: `(j) R_{k,IB} = `,
+                    rk3b_prev_title: `(k) R_{k,IIIB} = `,                                           
+                    rk3b_title: ``,
+                    rk3c_prev_title: `(l) R_{k,IIIC} = `,                                               
+                    rk3c_title: ``,
+
+                    rk1b_formula: `0.5\\cdot f_{h,2,k} \\cdot t_2 \\cdot d = `,
+                    rk3b_prev_formula: `1.15\\cdot\\sqrt{2\\cdot M_{y,k} \\cdot f_{h,2,k} \\cdot d } = `,                                           
+                    rk3b_formula: ``,
+                    rk3c_prev_formula: `2.3 \\cdot \\sqrt{M_{y,k} \\cdot f_{h,2,k} \\cdot d} = `,                                               
+                    rk3c_formula: ``,
+
+                    rk1b_formulaVal: `0.5\\cdot ${fh2k} \\cdot ${t2} \\cdot ${d} = `,
+                    rk3b_prev_formulaVal: `1.15\\cdot\\sqrt{2\\cdot ${myrk} \\cdot ${fh2k} \\cdot ${d} } = `,                                           
+                    rk3b_formulaVal: ``,
+                    rk3c_prev_formulaVal: `2.3 \\cdot \\sqrt{${myrk} \\cdot ${fh2k} \\cdot ${d}} = `,                                               
+                    rk3c_formulaVal: ``,
+
+                    rk1b_description: ``,
+                    rk3b_prev_description: ``,                                           
+                    rk3b_description: ``,
+                    rk3c_prev_description: ``,                                               
+                    rk3c_description: ``,
+
+                }
             }
         }
     }
