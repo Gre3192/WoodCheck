@@ -31,7 +31,6 @@ export default function WoodJoin(params) {
 
 
             <div className='flex justify-between px-6 py-3 shadow-lg sticky'>
-
                 <div className='flex gap-8 '>
                     <div className='flex flex-col'>
                         <JoinTypeSelector />
@@ -40,8 +39,6 @@ export default function WoodJoin(params) {
                         <SharePlaneSelector />
                     </div>
                 </div>
-
-
             </div>
 
 
@@ -49,6 +46,14 @@ export default function WoodJoin(params) {
             <div className="h-[83vh] overflow-y-scroll">
                 <ConnecionSharePlaneDraw />
                 <div>
+                    <h1 className="text-lg font-bold" >Verifica diametri minimi</h1>
+                    <div>
+
+                    </div>
+                    <h1 className="text-lg font-bold" >Verifica preforatura</h1>
+                    <div>
+
+                    </div>
                     <h1 className="text-lg font-bold" >Resistenze a rifollamento</h1>
                     <div>
 

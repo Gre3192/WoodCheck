@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { serviceDurationClassAtom } from '../Atom/serviceDurationClassAtom';
 import { useRecoilState } from 'recoil';
+import { joinProprertiesAtom } from '../Atom/joinProprertiesAtom';
 import capitalizeFirstLetter from '../Utils/capitalizeFirstLetter';
 
 const SharePlaneSelector = () => {
+
+  const [joinProprerties, setJoinProprerties] = useRecoilState(joinProprertiesAtom);
 
 
   const classes = [
@@ -19,22 +21,21 @@ const SharePlaneSelector = () => {
 
 
 
-
   return (
     <>
-        <div className="">
-          <select
-            className="w-full py-2 px-3 border border-gray-300 rounded-md cursor-pointer"
-            value={''}
-            onChange={()=>{}}
-          >
-            {classes.map((item) => (
-              <option key={item.value} value={item.value}>
-                  {capitalizeFirstLetter(item.label)}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div className="">
+        <select
+          className="w-full py-2 px-3 border border-gray-300 rounded-md cursor-pointer"
+          value={joinProprerties?.shearPlane || ''}
+          onChange={(e) => setJoinProprerties({ ...joinProprerties, shearPlane: e.target.value })}
+        >
+          {classes.map((item) => (
+            <option key={item.value} value={item.value}>
+              {capitalizeFirstLetter(item.label)}
+            </option>
+          ))}
+        </select>
+      </div>
     </>
   );
 };

@@ -1,12 +1,16 @@
 import { useRecoilValue } from 'recoil';
 import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
 import { forcesStateAtom } from '../Atom/forcesStateAtom';
+import { joinProprertiesAtom } from '../Atom/joinProprertiesAtom';
 
 
 
 
 export default function ConnecionSharePlaneDraw() {
 
+    const joinProprerties = useRecoilValue(joinProprertiesAtom);
+
+    const { shearPlane } = joinProprerties
 
     return (
 
@@ -15,7 +19,7 @@ export default function ConnecionSharePlaneDraw() {
 
 
             {/* Connessione Legno-Legno (2 piano di taglio)  */}
-            { true ? 
+            {shearPlane == 2 ?
                 <g transform="translate(150, 150)">
                     <rect x="0" y="0" width="100" height="200" fill="#EAD9C8" stroke="black" strokeWidth="2" />
                     <rect x="100" y="100" width="100" height="200" fill="#EAD9C8" stroke="black" strokeWidth="2" />
@@ -25,7 +29,7 @@ export default function ConnecionSharePlaneDraw() {
 
 
             {/* Connessione Legno-Legno (1 piano di taglio)  */}
-            {false ?
+            {shearPlane == 1 ?
                 <g transform="translate(200, 150)">
                     <rect x="0" y="0" width="100" height="200" fill="#EAD9C8" stroke="black" strokeWidth="2" />
                     <rect x="100" y="100" width="100" height="200" fill="#EAD9C8" stroke="black" strokeWidth="2" />
