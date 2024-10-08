@@ -114,14 +114,14 @@ export default function get_Johansen() {
 
                 rk1a_formula: `f_{h,1,k} \\cdot t_1 \\cdot d = `,
                 rk1b_formula: `0.5 \\cdot f_{h,2,k} \\cdot t_2 \\cdot d = `,
-                rk2a_prev_formula: `1.05 \\cdot \\dfrac{f_{h,1,k} \\cdot t_1 \\cdot d}{2+\\beta} \\left[ \\sqrt{2\\cdot\\beta(1+\\beta) + \\dfrac{4 \\cdot \\beta(2+\\beta) \\cdot M_{y,k}}{f_{h,1,k} \\cdot d \\cdot t_1^2}} - \\beta \\right] = `,
+                rk2a_prev_formula: `1.05 \\cdot \\dfrac{f_{h,1,k} \\cdot t_1 \\cdot d}{2+\\beta} \\left[ \\sqrt{2\\cdot\\beta\\cdot(1+\\beta) + \\dfrac{4 \\cdot \\beta\\cdot(2+\\beta) \\cdot M_{y,k}}{f_{h,1,k} \\cdot d \\cdot t_1^2}} - \\beta \\right] = `,
                 rk2a_formula: `R^*_{k,IIA} + \\text{min}\\left(${coeff_fax}\\cdot R^*_{k,IIA}; \\dfrac{F_{ax,rk}}{4}\\right) = `,
                 rk3_prev_formula: `1.15 \\cdot \\dfrac{2 \\cdot \\beta}{\\sqrt{1+\\beta}} \\sqrt{2 \\cdot M_{y,k} \\cdot f_{h,1,k} \\cdot d} = `,
                 rk3_formula: `R^*_{k,III} + \\text{min}\\left(${coeff_fax}\\cdot R^*_{k,III}; \\dfrac{F_{ax,rk}}{4}\\right) = `,
 
                 rk1a_formulaVal: `${fh1k} \\cdot ${t1} \\cdot ${d} = `,
                 rk1b_formulaVal: `0.5 \\cdot ${fh2k} \\cdot ${t2} \\cdot ${d} = `,
-                rk2a_prev_formulaVal: `1.05 \\cdot \\dfrac{${fh1k} \\cdot ${t1} \\cdot ${d}}{2+${beta}} \\left[ \\sqrt{2\\cdot ${beta}(1+${beta}) + \\dfrac{4 \\cdot ${beta}(2+${beta}) \\cdot ${myrk}}{${fh1k} \\cdot ${d} \\cdot ${t1}^2}} - ${beta} \\right] = `,
+                rk2a_prev_formulaVal: `1.05 \\cdot \\dfrac{${fh1k} \\cdot ${t1} \\cdot ${d}}{2+${beta}} \\left[ \\sqrt{2\\cdot ${beta}\\cdot(1+${beta}) + \\dfrac{4 \\cdot ${beta}\\cdot(2+${beta}) \\cdot ${myrk}}{${fh1k} \\cdot ${d} \\cdot ${t1}^2}} - ${beta} \\right] = `,
                 rk2a_formulaVal: `${rk2a_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk2a_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
                 rk3_prev_formulaVal: `1.15 \\cdot \\dfrac{2 \\cdot ${beta}}{\\sqrt{1+${beta}} \\sqrt{2 \\cdot ${myrk} \\cdot ${fh1k} \\cdot ${d}} = `,
                 rk3_formulaVal: `${rk3_prev} + \\text{min}\\left(${coeff_fax}\\cdot ${rk3_prev}; \\dfrac{${fax_rk}}{4}\\right) = `,
