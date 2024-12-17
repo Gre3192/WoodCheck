@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { serviceDurationClassAtom } from '../Atom/serviceDurationClassAtom';
 import { useRecoilState } from 'recoil';
-import { FaMinus, FaPlus } from 'react-icons/fa';
 import capitalizeFirstLetter from '../Utils/capitalizeFirstLetter';
+import OpenCloseButton from './Element/Button/OpenCloseButton';
+
 
 const DurationClassSelector = ({ viewType = 'table' }) => {
   const [durationClass, setDurationClass] = useRecoilState(serviceDurationClassAtom);
@@ -66,12 +67,7 @@ const DurationClassSelector = ({ viewType = 'table' }) => {
                 {!isOpen ? `${capitalizeFirstLetter(durationClass.durationClass)}` : null}
               </p>
             </h2>
-            <button
-              onClick={handleOpen}
-              className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
-            >
-              {isOpen ? <FaMinus /> : <FaPlus />}
-            </button>
+            <OpenCloseButton isOpen={isOpen} onClick={handleOpen} />
           </div>
 
           {isOpen ?
@@ -109,9 +105,6 @@ const DurationClassSelector = ({ viewType = 'table' }) => {
               </table>
             </div>
             : null}
-
-
-
         </div>
         :
         <div className="">
@@ -122,7 +115,7 @@ const DurationClassSelector = ({ viewType = 'table' }) => {
           >
             {classes.map((item) => (
               <option key={item.value} value={item.value}>
-                 {'Carico '}{capitalizeFirstLetter(item.value)}
+                {'Carico '}{capitalizeFirstLetter(item.value)}
               </option>
             ))}
           </select>

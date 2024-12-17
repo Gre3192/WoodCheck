@@ -3,8 +3,7 @@ import { useRecoilState } from 'recoil';
 import SectionShapeToggleBar from './SectionShapeToggleBar';
 import MinimalTable from './MinimalTable';
 import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
-import { FaRedo } from 'react-icons/fa';
-
+import ResetButton from './Element/Button/ResetButton';
 
 export default function SectionGeometry() {
 
@@ -96,12 +95,7 @@ export default function SectionGeometry() {
     <div className="p-5 items-center">
       <div className='flex justify-between items-center mb-4'>
         <h2 className="text-lg font-bold ">Geometria</h2>
-        <button
-          onClick={handleReset}
-          className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
-        >
-          <FaRedo />
-        </button>
+        <ResetButton onClick={handleReset}/>
       </div>
 
 

@@ -4,7 +4,7 @@ import MinimalTable from './MinimalTable';
 import { FaRedo } from 'react-icons/fa';
 import { useRecoilState } from 'recoil';
 import { meccanicPropSectionAtom } from '../Atom/meccanicPropSectionAtom';
-
+import ResetButton from './Element/Button/ResetButton';
 
 export default function WoodClass({ isMinimalTable = true, isTitle = true }) {
 
@@ -69,12 +69,7 @@ export default function WoodClass({ isMinimalTable = true, isTitle = true }) {
       {isTitle ?
         <div className='flex justify-between items-center mb-4'>
           <h2 className="text-lg font-bold ">Classe legno</h2>
-          <button
-            onClick={handleReset}
-            className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
-          >
-            <FaRedo />
-          </button>
+          <ResetButton onClick={handleReset}/>
         </div>
         :
         null

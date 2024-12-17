@@ -4,6 +4,7 @@ import getCheckSymbol from "../Utils/getCheckSymbol";
 import getCheckCircle from "../Utils/getCheckCircle";
 import customDecimal from "../Utils/customDecimal";
 
+
 export default function StepBox({
     title = '',
     formula = '',
@@ -35,7 +36,6 @@ export default function StepBox({
                 {values.map((item, index) => {
 
                     const itemValue = typeof item === 'object' && item !== null ? item.value : item;
-
                     return (
                         <div key={index} className={'w-full flex items-center justify-between gap-8'}>
                             <Latex>

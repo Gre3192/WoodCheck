@@ -1,4 +1,3 @@
-import Latex from "react-latex-next";
 import customDecimal from "../Utils/customDecimal";
 import MinimalTable from "./MinimalTable";
 import { useState, useEffect } from "react";
@@ -6,8 +5,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { sectionGeometryMassAtom } from '../Atom/sectionGeometryMassAtom';
 import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
 import getGeometryMass from "../Utils/getGeometryMass";
-import { FaPlus, FaMinus } from 'react-icons/fa';
-
+import OpenCloseButton from "./Element/Button/OpenCloseButton";
 
 
 export default function SectionGeometryMass() {
@@ -39,12 +37,7 @@ export default function SectionGeometryMass() {
         <div className="p-5 items-center">
             <div className='flex justify-between items-center mb-4'>
                 <h2 className="text-lg font-bold">Geometria delle masse</h2>
-                <button
-                    onClick={toggleTable}
-                    className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
-                >
-                    {isExpanded ? <FaMinus /> : <FaPlus />}
-                </button>
+                <OpenCloseButton isOpen={isExpanded} onClick={toggleTable}/>
             </div>
 
             {/* Modalità Minimizzata */}

@@ -7,7 +7,8 @@ export default function get_MyRk() {
 
     const joinType = 'chodi'
     const gamboShape = 'cilindrico'
-
+    const fu = 4234
+    const d = 4234
 
 
     if (joinType.toLowerCase().includes('chiodi')) {

@@ -3,9 +3,8 @@ import { useRecoilState } from 'recoil';
 import { forcesStateAtom } from '../Atom/forcesStateAtom';
 import InputBox from './InputBox';
 import ActionSectionDraw from './ActionSectionDraw';
-import { FaRedo } from 'react-icons/fa';
 import MinimalTable from './MinimalTable';
-
+import ResetButton from './Element/Button/ResetButton';
 
 export default function InputForces() {
 
@@ -91,22 +90,9 @@ export default function InputForces() {
     <div className="p-5 items-center">
       <div className='flex justify-between items-center mb-4'>
         <h2 className="text-lg font-bold">Azioni agenti sulla sezione</h2>
-        <button
-          onClick={handleReset}
-          className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
-        >
-          <FaRedo />
-        </button>
+        <ResetButton onClick={handleReset} />
       </div>
-
-
-
       <MinimalTable list={inputBoxActionConfig()} />
-
-
-
-
-
     </div>
   );
 }

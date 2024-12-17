@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { serviceDurationClassAtom } from '../Atom/serviceDurationClassAtom';
-import { FaMinus, FaPlus } from 'react-icons/fa';
+import OpenCloseButton from './Element/Button/OpenCloseButton';
 
 const ServiceClassTable = ({ viewType = 'table' }) => {
+
     const [serviceClass, setServiceClass] = useRecoilState(serviceDurationClassAtom);
     const [isOpen, setisOpen] = useState(false);
 
@@ -24,12 +25,12 @@ const ServiceClassTable = ({ viewType = 'table' }) => {
             value: '1',
             label: 'Classe di servizio 1',
             description: "È caratterizzata da un'umidità del materiale in equilibrio con l'ambiente a una temperatura di 20 °C e un'umidità relativa dell'aria circostante che non superi il 65%, se non per poche settimane all'anno.",
-            places: 'Ambiente al chiuso, riscaldato d’inverno.',
+            places: "Ambiente al chiuso, riscaldato d'inverno.",
         },
         {
             value: '2',
             label: 'Classe di servizio 2',
-            description: "È caratterizzata da un'umidità del materiale in equilibrio con l'ambiente a una temperatura di 20 °C e un'umidità relativa dell'aria circostante che superi l’85% solo per poche settimane all'anno.",
+            description: "È caratterizzata da un'umidità del materiale in equilibrio con l'ambiente a una temperatura di 20 °C e un'umidità relativa dell'aria circostante che superi l'85% solo per poche settimane all'anno.",
             places: "Ambiente al chiuso, anche non riscaldato d'inverno; Ambiente all'aperto ma non direttamente esposto alle intemperie.",
         },
         {
@@ -55,12 +56,7 @@ const ServiceClassTable = ({ viewType = 'table' }) => {
                                 {!isOpen ? `${serviceClass.serviceClass}` : null}
                             </p>
                         </h2>
-                        <button
-                            onClick={handleOpen}
-                            className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
-                        >
-                            {isOpen ? <FaMinus /> : <FaPlus />}
-                        </button>
+                        <OpenCloseButton isOpen={isOpen} onClick={handleOpen} />
                     </div>
 
                     {isOpen ?
@@ -95,7 +91,9 @@ const ServiceClassTable = ({ viewType = 'table' }) => {
                                     ))}
                                 </tbody>
                             </table>
-                        </div> : null}
+                        </div>
+
+                        : null}
                 </div>
 
 

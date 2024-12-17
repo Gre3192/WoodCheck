@@ -1,27 +1,27 @@
-function get_coeff_fax(params) {
+function get_coeff_fax(connectorType) {
 
-    if (true) return 0.15
-    else if (true) return 0.25
-    else if (true) return 1
-    else if (true) return 0
+    if (connectorType == 'chiodi') return 0.15
+    else if (connectorType == 'bulloni') return 0.25
+    else if (connectorType == 'viti') return 1
+    else if (connectorType == 'spinotti') return 0
 
 }
 
 
-export default function get_Johansen() {
+export default function get_Johansen(joinProprerties) {
 
-    const shearPlane = 2
+    const { connectorType, shearPlane, d} = joinProprerties
+
     const joinType = `legno-legno`
     const acciaio_interno_esterno = true
     const fh1k = 26
     const fh2k = 26
     const t1 = 26
     const t2 = 26
-    const d = 26
     const fax_rk = 989
     const myrk = 989
     const beta = fh2k / fh1k
-    const coeff_fax = 161
+    const coeff_fax = get_coeff_fax(connectorType)
 
 
     if (joinType == `legno-legno`) {

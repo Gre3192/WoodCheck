@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom"
 
-const Navbar = () => {
+export default function Navbar({ title }) {
 
     return (
         <Link to={'/'}>
             <div className="relative">
                 <div className="p-2 text-white bg-[#9A8161] sticky font-bold">
-                    WoodCheck
+                    {title}
                 </div>
             </div>
         </Link>
     )
 }
-
-export default Navbar

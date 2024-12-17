@@ -1,13 +1,21 @@
 import SharePlaneSelector from "../../Components/SharePlaneSelector";
-import JoinTypeSelector from "../../Components/JoinTypeSelector";
+import JoinTypeSelector from "../../Components/ConnectorTypeSelector";
 import NavigationPage from "../../Components/NavigationPage"
 import ConnecionSharePlaneDraw from "../../Components/ConnecionSharePlaneDraw";
 import get_Johansen from "../../Utils/get_Johansen";
 import Latex from "react-latex-next";
+import { useRecoilValue } from "recoil";
+import { joinProprertiesAtom } from "../../Atom/joinProprertiesAtom";
 
 
 
 export default function WoodJoin(params) {
+
+    const joinProprerties = useRecoilValue(joinProprertiesAtom)
+    const { connectorType } = joinProprerties
+
+    console.log(connectorType);
+    
 
     const route = {
         prevLink: '/notchbearing',
@@ -48,7 +56,7 @@ export default function WoodJoin(params) {
                 <div>
                     <h1 className="text-lg font-bold" >Verifica diametri minimi</h1>
                     <div>
-
+                        
                     </div>
                     <h1 className="text-lg font-bold" >Verifica preforatura</h1>
                     <div>
@@ -69,36 +77,11 @@ export default function WoodJoin(params) {
                     <h1 className="text-lg font-bold" >Johansen</h1>
                     <div className="flex flex-col gap-5">
                         <Latex>
-                            {`$${get_Johansen().rk1a_title}$`}
-                            {`$${get_Johansen().rk1a_formula}$`}
-                            {`$${get_Johansen().rk1a_formulaVal}$`}
-                            {`$${get_Johansen().rk1a}$`}
+                            {`$${get_Johansen(joinProprerties).rk2a_title}$`}
+                            {`$${get_Johansen(joinProprerties).rk2a_formula}$`}
+                            {`$${get_Johansen(joinProprerties).rk2a_formulaVal}$`}
+                            {`$${get_Johansen(joinProprerties).rk2a}$`}
                         </Latex>
-                        <Latex>
-                            {`$${get_Johansen().rk1b_title}$`}
-                            {`$${get_Johansen().rk1b_formula}$`}
-                            {`$${get_Johansen().rk1b_formulaVal}$`}
-                            {`$${get_Johansen().rk1b}$`}
-                        </Latex>
-                        <Latex>
-                            {`$${get_Johansen().rk2a_prev_title}$`}
-                            {`$${get_Johansen().rk2a_prev_formula}$`}
-                            {`$${get_Johansen().rk2a_prev_formulaVal}$`}
-                            {`$${get_Johansen().rk2a_prev}$`}
-                        </Latex>
-                        <Latex>
-                            {`$${get_Johansen().rk2a_title}$`}
-                            {`$${get_Johansen().rk2a_formula}$`}
-                            {`$${get_Johansen().rk2a_formulaVal}$`}
-                            {`$${get_Johansen().rk2a}$`}
-                        </Latex>
-                        <Latex>
-                            {`$${get_Johansen().rk3_title}$`}
-                            {`$${get_Johansen().rk3_formula}$`}
-                            {`$${get_Johansen().rk3_formulaVal}$`}
-                            {`$${get_Johansen().rk3}$`}
-                        </Latex>
-
                     </div>
                     <h1 className="text-lg font-bold" >Spaziature minime</h1>
                     <div>

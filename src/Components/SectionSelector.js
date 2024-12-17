@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 import { meccanicPropSectionAtom } from '../Atom/meccanicPropSectionAtom';
 
 const SectionSelector = () => {
+
   const [woodProperties, setWoodProperties] = useRecoilState(meccanicPropSectionAtom);
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +17,7 @@ const SectionSelector = () => {
     ...sectionData,
   }));
 
+  
   // Filtra e ordina le sezioni in base al termine di ricerca
   const filteredSections = sectionList
     .filter(({ sectionName }) => sectionName?.toLowerCase().includes(searchTerm?.toLowerCase()))

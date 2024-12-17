@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 
 import Trazione0Check from "../../Components/Checks/Trazione0Check"
 import Trazione90Check from "../../Components/Checks/Trazione90Check"
@@ -26,6 +26,8 @@ import ServiceClassSelector from "../../Components/ServiceClassSelector"
 import DurationClassSelector from '../../Components/DurationClassSelector';
 import NavigationPage from '../../Components/NavigationPage';
 
+import VisibilityButton from '../../Components/Element/Button/VisibilityButton';
+
 
 
 
@@ -33,8 +35,6 @@ import NavigationPage from '../../Components/NavigationPage';
 export default function WoodChecksSLU(params) {
 
     const [showAll, setShowAll] = useState(false)
-
-
 
     const handleOpen = () => {
         setShowAll(!showAll)
@@ -54,7 +54,6 @@ export default function WoodChecksSLU(params) {
 
             <NavigationPage route={route} />
 
-
             <div className='flex justify-between px-6 py-3 shadow-lg sticky'>
 
                 <div className='flex gap-8 '>
@@ -66,14 +65,7 @@ export default function WoodChecksSLU(params) {
                     </div>
                     <WoodClass isMinimalTable={false} isTitle={false} />
                 </div>
-
-                <button
-                    onClick={handleOpen}
-                    className="flex items-center p-3 border border-gray-300 rounded-lg text-gray-500 bg-white font-semibold hover:bg-gray-200 transition duration-100"
-                    title={showAll ? 'Visualizza le verifiche necessarie' : 'Visualizza tutte le verifiche'}
-                >
-                    {showAll ? <FaEye /> : <FaEyeSlash />}
-                </button>
+                <VisibilityButton isOpen={showAll} onClick={handleOpen}/>
             </div>
 
             <div className="h-[83vh] overflow-y-scroll">

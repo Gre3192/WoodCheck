@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div className="h-screen flex flex-col">
       {/* <div className="sticky top-0 z-10">
-        <Navbar />
+        <Navbar title={'WoodCheck'}/>
       </div> */}
       <div className="flex flex-grow h-screen">
         <Sidebar />
