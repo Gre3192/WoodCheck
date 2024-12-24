@@ -1,5 +1,5 @@
 import NavigationPage from "../../Components/NavigationPage"
-
+import SpecialBeamsSvg from "../../Components/SvgComponent/SpecialBeamsSvg"
 
 
 
@@ -18,12 +18,14 @@ export default function WoodSpecialBeams(params) {
 
     return (
 
-        <div>
-            <div className='shadow-lg sticky'>
+        <>
+            {/* <div className='shadow-lg sticky'>
                 <NavigationPage route={route} />
+            </div> */}
+            <div className='flex flex-col items-center justify-center'>
+                <SpecialBeamsSvg />
             </div>
-            Travi Speciali
-        </div>
+        </>
 
     )
 

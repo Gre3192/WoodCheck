@@ -23,11 +23,6 @@ export default function Trazione90Check({ showAll, sectionProp, sectionGeometryM
     const serviceClass = sectionProp?.serviceClass
     const durationClass = sectionProp?.durationClass    
 
-
-    console.log(woodType);
-console.log(serviceClass);
-console.log(durationClass);
-
     const NcRd = 161
     const check = Ned / NcRd
 

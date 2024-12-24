@@ -45,14 +45,14 @@ export default function InstabilitaPressoFlessioneCheck({ showAll, sectionProp, 
     const G_05 = sectionProp?.mechanics?.G_05
     const shape = sectionProp?.geometry?.shape
     const woodType = sectionProp?.mechanics?.woodType
-    const b = sectionProp?.geometry?.b?.value
-    const h = sectionProp?.geometry?.h?.value
+    const b = sectionProp?.geometry?.b?.value * setUom(sectionProp?.geometry?.b?.uom)
+    const h = sectionProp?.geometry?.h?.value * setUom(sectionProp?.geometry?.h?.uom)
     const serviceClass = sectionProp?.serviceClass
     const durationClass = sectionProp?.durationClass
 
 
     const leff = 45646
-    const l = sectionProp?.geometry?.l?.value
+    const l = sectionProp?.geometry?.l?.value * setUom(sectionProp?.geometry?.l?.uom)
     const beta_y = sectionProp?.geometry?.beta_y
     const beta_z = sectionProp?.geometry?.beta_y
 
@@ -636,10 +636,10 @@ export default function InstabilitaPressoFlessioneCheck({ showAll, sectionProp, 
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: 125, isDisabled: isDisabled }
     return (
-      !showAll && isDisabled ? 
-      null 
-      :
-      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+        !showAll && isDisabled ?
+            null
+            :
+            <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
     )
 }
 

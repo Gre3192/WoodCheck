@@ -34,7 +34,7 @@ export default function InstabilitaCompressioneCheck({ showAll, sectionProp, sec
     const woodType = sectionProp?.mechanics?.woodType
     const serviceClass = sectionProp?.serviceClass
     const durationClass = sectionProp?.durationClass
-    const l = sectionProp?.geometry?.l?.value
+    const l = sectionProp?.geometry?.l?.value * setUom(sectionProp?.geometry?.l?.uom)
     const beta_y = sectionProp?.geometry?.beta_y
     const beta_z = sectionProp?.geometry?.beta_y
 

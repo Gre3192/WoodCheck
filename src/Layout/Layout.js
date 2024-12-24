@@ -16,10 +16,10 @@ const user = {
 const navigation = [
   { name: 'Combinazioni', link: '/loadCombination' },
   { name: 'Progetto', link: '/project' },
-  { name: 'Verifiche SLU', link: '/checksslu' },
-  { name: 'Verifiche SLE', link: '/checkssle' },
+  { name: 'Verifiche SLU', link: '/checksSlu' },
+  { name: 'Verifiche SLE', link: '/checksSle' },
   { name: 'Travi speciali', link: '/specialBeams' },
-  { name: 'Connessioni', link: '/joins' },
+  // { name: 'Connessioni', link: '/joins' },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -47,7 +47,7 @@ export default function Layout() {
 
     let stepError = []
 
-    if (linkDestination === "/checksslu" || linkDestination === "/checkssle") {
+    if (linkDestination === "/checksSlu" || linkDestination === "/checksSle" || linkDestination === "/specialBeams") {
       if (!(sectionProp.durationClass)) stepError.push("Inserisci la Classe di durata")
       if (!(sectionProp.serviceClass)) stepError.push("Inserisci la Classe di servizio")
       if (!(sectionProp.geometry.shape)) stepError.push("Inserisci la forma della sezione")

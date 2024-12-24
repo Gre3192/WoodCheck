@@ -24,8 +24,8 @@ export default function TaglioTorsioneCheck({ showAll, sectionProp, sectionGeome
     const Atot = sectionGeometryMass?.value.Atot
     const fvk = sectionProp?.mechanics?.fvk
     const Ig_tor = sectionGeometryMass?.value.Ig_tor
-    const b = sectionProp.geometry?.b?.value
-    const h = sectionProp.geometry?.h?.value
+    const b = sectionProp.geometry?.b?.value *setUom(sectionProp.geometry?.b?.uom)
+    const h = sectionProp.geometry?.h?.value *setUom(sectionProp.geometry?.h?.uom)
     const shape = sectionProp.geometry?.shape
     const woodType = sectionProp?.mechanics?.woodType
     const serviceClass = sectionProp?.serviceClass

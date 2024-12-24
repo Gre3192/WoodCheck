@@ -38,8 +38,8 @@ export default function InstabilitaLateroTorsionaleCheck({ showAll, sectionProp,
     const Ig_tor = sectionGeometryMass?.value.Ig_tor
     const shape = sectionProp?.geometry?.shape
     const woodType = sectionProp?.mechanics?.woodType
-    const b = sectionProp?.geometry?.b?.value
-    const h = sectionProp?.geometry?.h?.value
+    const b = sectionProp?.geometry?.b?.value * setUom(sectionProp?.geometry?.b?.uom)
+    const h = sectionProp?.geometry?.h?.value * setUom(sectionProp?.geometry?.h?.uom) 
     const serviceClass = sectionProp?.serviceClass
     const durationClass = sectionProp?.durationClass
 

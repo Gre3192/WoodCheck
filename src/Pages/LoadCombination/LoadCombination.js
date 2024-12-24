@@ -20,9 +20,9 @@ export default function LoadCombination(params) {
     return (
 
         <>
-            <div className='shadow-lg sticky'>
+            {/* <div className='shadow-lg sticky'>
                 <NavigationPage route={route} />
-            </div>
+            </div> */}
             Combinazioni di carico
 
 
