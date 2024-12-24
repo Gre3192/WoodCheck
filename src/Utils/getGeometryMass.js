@@ -1,14 +1,15 @@
-export default function getGeometryMass(sectionGeometry) {
+import setUom from "./setUom"
 
-    let { shape, b, h, r } = sectionGeometry
+export default function getGeometryMass(shape, b, h, r ) {
 
-    b = b ? b : 0
-    h = h ? h : 0
-    r = r ? r : 0
+    b = b?.value ? b.value * setUom(b.uom) : null
+    h = h?.value ? h.value * setUom(h.uom) : null
+    r = r?.value ? r.value * setUom(r.uom) : null
+
 
     switch (shape?.toLowerCase()) {
 
-        case 'rettangolare':
+        case 'rectangular':
             return {
                 value: {
                     Atot: b * h,
@@ -52,7 +53,7 @@ export default function getGeometryMass(sectionGeometry) {
                 }
             }
 
-        case 'circolare':
+        case 'circle':
             return {
                 value: {
                     Atot: Math.PI * (r ** 2),
@@ -96,4 +97,5 @@ export default function getGeometryMass(sectionGeometry) {
                 }
             }
     }
+
 }

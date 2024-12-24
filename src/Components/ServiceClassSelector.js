@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { serviceDurationClassAtom } from '../Atom/serviceDurationClassAtom';
-import OpenCloseButton from './Element/Button/OpenCloseButton';
+import OpenCloseButton from './ElementUI/Button/OpenCloseButton';
 
 const ServiceClassTable = ({ viewType = 'table' }) => {
 

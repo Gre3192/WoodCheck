@@ -1,6 +1,4 @@
-import NavigationPage from "../../Components/NavigationPage"
-
-
+import SleSvgBeam from "../../Components/SvgComponent/SleSvgBeam"
 
 
 
@@ -19,10 +17,14 @@ export default function WoodChecksSLE(params) {
 
     return (
         <>
-            <div className='shadow-lg sticky'>
+            {/* <div className='shadow-lg sticky'>
                 <NavigationPage route={route} />
+            </div> */}
+
+            <div className="flex justify-center">
+                <SleSvgBeam />
             </div>
-            Verifiche SLE
+
         </>
     )
 }

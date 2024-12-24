@@ -90,8 +90,6 @@ const kdefData = {
   
     const kdef = serviceData
 
-    console.log(kdef)
-
     return kdef;
   
   };

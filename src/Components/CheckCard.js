@@ -14,7 +14,6 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
 
   useEffect(() => {
 
-
     if (isGlobalFormula) {
       setIsFormulaSelected(true);
       if (isFormulaValSelected) {
@@ -31,10 +30,9 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
         setIsFormulaValSelected(true);
         setIsFormulaSelected(true);
       }
-    }else {
+    } else {
       setIsFormulaValSelected(false)
     }
-
 
   }, [globalFormatFormula])
 
@@ -44,6 +42,9 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
   const { isFormulaValSelected, setIsFormulaValSelected } = isFormulaValProps;
 
   const cardRef = useRef(null);
+
+
+
 
   const toggleCard = () => {
     setIsOpen(!isOpen);
@@ -109,7 +110,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
         <hr />
 
         {/* Sezione centrale */}
-        <div className={`transition-all duration-500 ease-in-out overflow-auto ${isOpen ? 'max-h-[50vh] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+        <div className={`transition-all duration-500 ease-in-out overflow-auto ${isOpen ? 'max-h-[65vh] opacity-100' : 'max-h-0 opacity-0 '}`}>
           {isOpen && (
             <div>
               <div className="p-6">{centralContent}</div>

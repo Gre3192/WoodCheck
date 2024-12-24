@@ -1,6 +1,4 @@
 import get_gammaM from "../../Utils/get_gammaM";
-import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import get_km from "../../Utils/get_km";
 import { get_sig_myd, get_sig_mzd } from "../../Utils/getTensioni"
@@ -9,45 +7,34 @@ import StepBox from "../StepBox";
 import { get_flessioneCheck } from "../../Utils/getChecks";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
-import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
-import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
-import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 import get_kh from "../../Utils/get_kh";
-import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
+import setUom from "../../Utils/setUom";
 
 
 
-export default function FlessioneCheck({ showAll }) {
-
-    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
-    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
-    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
-    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
+export default function FlessioneCheck({ showAll, sectionProp, sectionGeometryMass }) {
 
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
-    const { Med_y: rawMed_y, Med_z: rawMed_z } = useRecoilValue(forcesStateAtom)
-    const Med_y = rawMed_y && rawMed_y != 0 ? Math.abs(rawMed_y) : 0
-    const Med_z = rawMed_z && rawMed_z != 0 ? Math.abs(rawMed_z) : 0
+    const Med_y = sectionProp?.actingLoad?.Med_y?.value && sectionProp?.actingLoad?.Med_y?.value != 0 ? Math.abs(sectionProp?.actingLoad?.Med_y?.value) * setUom(sectionProp?.actingLoad?.Med_y?.uom) : 0
+    const Med_z = sectionProp?.actingLoad?.Med_z?.value && sectionProp?.actingLoad?.Med_z?.value != 0 ? Math.abs(sectionProp?.actingLoad?.Med_z?.value) * setUom(sectionProp?.actingLoad?.Med_z?.uom) : 0
+
     const isDisabled = Med_y == 0 && Med_z == 0 ? true : false
 
+    const Wel_y = sectionGeometryMass?.value?.Wel_y
+    const Wel_z = sectionGeometryMass?.value?.Wel_z
 
-    const Wel_y = geometryMass?.value.Wel_y
-    const Wel_z = geometryMass?.value.Wel_z
-    const woodType = mecchanicProps?.woodType
-    const fmk = mecchanicProps?.fmk
-    const shape = sectionGeometry?.shape
-    const h = sectionGeometry?.h
-    const b = sectionGeometry?.b
-    const serviceClass = serviceDuration?.serviceClass
-    const durationClass = serviceDuration?.durabilityClass
-
-
+    const fmk = sectionProp?.mechanics?.fmk
+    const shape = sectionProp?.geometry?.shape
+    const h = sectionProp?.geometry.h?.value * setUom(sectionProp?.geometry.h?.value?.uom)
+    const b = sectionProp?.geometry.b?.value * setUom(sectionProp?.geometry.b?.value?.uom)
+    const woodType = sectionProp?.mechanics?.woodType;
+    const serviceClass = sectionProp?.serviceClass;
+    const durationClass = sectionProp?.durationClass;
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)
-
     const gm = get_gammaM(woodType)
 
     const {
@@ -135,18 +122,18 @@ export default function FlessioneCheck({ showAll }) {
             <div className="mb-2 font-semibold ">Calcolo Geometria</div>
             <div className="flex flex-col gap-7">
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Wel_y}
-                    formula={geometryMass?.formula.Wel_y}
-                    formulaVal={geometryMass?.formulaVal.Wel_y}
-                    value={geometryMass?.value.Wel_y}
-                    description={geometryMass?.description.Wel_y}
+                    title={sectionGeometryMass?.title.Wel_y}
+                    formula={sectionGeometryMass?.formula.Wel_y}
+                    formulaVal={sectionGeometryMass?.formulaVal.Wel_y}
+                    value={sectionGeometryMass?.value.Wel_y}
+                    description={sectionGeometryMass?.description.Wel_y}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Wel_z}
-                    formula={geometryMass?.formula.Wel_z}
-                    formulaVal={geometryMass?.formulaVal.Wel_z}
-                    value={geometryMass?.value.Wel_z}
-                    description={geometryMass?.description.Wel_z}
+                    title={sectionGeometryMass?.title.Wel_z}
+                    formula={sectionGeometryMass?.formula.Wel_z}
+                    formulaVal={sectionGeometryMass?.formulaVal.Wel_z}
+                    value={sectionGeometryMass?.value.Wel_z}
+                    description={sectionGeometryMass?.description.Wel_z}
                 />
             </div>
             <hr />
@@ -225,10 +212,10 @@ export default function FlessioneCheck({ showAll }) {
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check_y, check_z], isDisabled: isDisabled }
     return (
-      !showAll && isDisabled ? 
-      null 
-      :
-      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+        !showAll && isDisabled ?
+            null
+            :
+            <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
     )
 }
 

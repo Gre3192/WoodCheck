@@ -1,6 +1,4 @@
 import get_gammaM from "../../Utils/get_gammaM";
-import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import get_ksh from "../../Utils/get_ksh";
 import { get_fvd } from "../../Utils/getResistenze";
@@ -9,41 +7,28 @@ import StepBox from "../StepBox";
 import { get_TorsioneCheck } from "../../Utils/getChecks";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
-import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
-import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
-import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
-import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
+import setUom from "../../Utils/setUom";
 
 
+export default function TorsioneCheck({ showAll, sectionProp, sectionGeometryMass }) {
 
-
-export default function TorsioneCheck({ showAll }) {
-
-    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
-    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
-    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
-    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
-
+    
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
-    const { Med_tor: rawMed_tor } = useRecoilValue(forcesStateAtom)
-    const Med_tor = rawMed_tor && rawMed_tor != 0 ? Math.abs(rawMed_tor) : 0
+    const Med_tor = sectionProp?.actingLoad?.Med_tor?.value && sectionProp?.actingLoad?.Med_tor?.value != 0 ? Math.abs(sectionProp?.actingLoad?.Med_tor?.value) * setUom(sectionProp?.actingLoad?.Med_tor?.uom) : 0
     const isDisabled = Med_tor == 0 ? true : false
 
-
-    const fvk = mecchanicProps?.fvk
-    const Ig_tor = geometryMass?.value.Ig_tor
-    const b = sectionGeometry?.b
-    const h = sectionGeometry?.h
-    const shape = sectionGeometry?.shape
-    const woodType = mecchanicProps?.woodType
-    const serviceClass = serviceDuration?.serviceClass
-    const durationClass = serviceDuration?.durabilityClass
-
+    const fvk = sectionProp.mechanics?.fvk
+    const Ig_tor = sectionGeometryMass?.value.Ig_tor
+    const b = sectionProp?.geometry.b?.value?.value * setUom(sectionProp?.geometry.b?.value?.uom)
+    const h = sectionProp?.geometry.h?.value * setUom(sectionProp?.geometry.h?.value?.uom)
+    const shape = sectionProp?.geometry?.shape
+    const woodType = sectionProp.mechanics?.woodType
+    const serviceClass = sectionProp?.serviceClass
+    const durationClass = sectionProp?.durationClass
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)
-
     const gm = get_gammaM(woodType)
 
     const {
@@ -93,11 +78,11 @@ export default function TorsioneCheck({ showAll }) {
             <div className="mb-2 font-semibold ">Calcolo Geometria</div>
             <div className="flex flex-col gap-7">
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Ig_tor}
-                    formula={geometryMass?.formula.Ig_tor}
-                    formulaVal={geometryMass?.formulaVal.Ig_tor}
-                    value={geometryMass?.value.Ig_tor}
-                    description={geometryMass?.description.Ig_tor}
+                    title={sectionGeometryMass?.title.Ig_tor}
+                    formula={sectionGeometryMass?.formula.Ig_tor}
+                    formulaVal={sectionGeometryMass?.formulaVal.Ig_tor}
+                    value={sectionGeometryMass?.value.Ig_tor}
+                    description={sectionGeometryMass?.description.Ig_tor}
                 />
             </div>
             <hr />
@@ -147,10 +132,10 @@ export default function TorsioneCheck({ showAll }) {
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
     return (
-      !showAll && isDisabled ? 
-      null 
-      :
-      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+        !showAll && isDisabled ?
+            null
+            :
+            <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
     )
 }
 

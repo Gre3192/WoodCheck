@@ -1,41 +1,32 @@
 import Latex from "react-latex-next";
 import get_gammaM from "../../Utils/get_gammaM";
 import getCheckSymbol from "../../Utils/getCheckSymbol";
-import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
-import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
-import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
-import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
-import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
+import setUom from "../../Utils/setUom";
 
 
 
-export default function Trazione90Check({ showAll }) {
-
-    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
-    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
-    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
-    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
+export default function Trazione90Check({ showAll, sectionProp, sectionGeometryMass }) {
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
-    const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
-    const Ned = rawNed < 0 ? rawNed : 0
+    const Ned = sectionProp.actingLoad.Ned.value < 0 ? sectionProp.actingLoad.Ned.value * setUom(sectionProp?.actingLoad?.Ned?.uom) : 0
     const isDisabled = Ned >= 0 ? true : false
 
 
+    const Atot = sectionGeometryMass?.value?.Atot
+    const shape = sectionProp?.geometry?.shape
+    const woodType = sectionProp?.mechanics?.woodType
+    const serviceClass = sectionProp?.serviceClass
+    const durationClass = sectionProp?.durationClass    
 
 
-    const Atot = geometryMass?.Atot
-    const shape = sectionGeometry?.shape
-    const woodType = mecchanicProps?.woodType
-    const serviceClass = serviceDuration?.serviceClass
-    const durationClass = serviceDuration?.durabilityClass   
-
+    console.log(woodType);
+console.log(serviceClass);
+console.log(durationClass);
 
     const NcRd = 161
     const check = Ned / NcRd

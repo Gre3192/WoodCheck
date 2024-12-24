@@ -28,10 +28,10 @@ export const sidebarItem = [
     name: "Intagli all'appoggio",
     link: "/notchbearing"
   },
-  // {
-  //   name: "Collegamenti",
-  //   link: "/joins"
-  // }
+  {
+    name: "Collegamenti",
+    link: "/joins"
+  }
 ]
 
 const Sidebar = () => {

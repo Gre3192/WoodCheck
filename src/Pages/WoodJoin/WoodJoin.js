@@ -13,8 +13,6 @@ export default function WoodJoin(params) {
 
     const joinProprerties = useRecoilValue(joinProprertiesAtom)
     const { connectorType } = joinProprerties
-
-    console.log(connectorType);
     
 
     const route = {

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="0 0 500 200">
+  <!-- Linea che rappresenta la trave -->
+  <line x1="50" y1="100" x2="450" y2="100" stroke="black" stroke-width="10" />
+  
+  <!-- Supporto a sinistra -->
+  <polygon points="40,100 60,100 50,120" fill="gray" />
+  <line x1="40" y1="120" x2="60" y2="120" stroke="black" stroke-width="2" />
+  
+  <!-- Supporto a destra -->
+  <polygon points="440,100 460,100 450,120" fill="gray" />
+  <line x1="440" y1="120" x2="460" y2="120" stroke="black" stroke-width="2" />
+  
+  <!-- Linea del terreno -->
+  <line x1="0" y1="120" x2="500" y2="120" stroke="black" stroke-width="1" stroke-dasharray="5,5" />
+</svg>

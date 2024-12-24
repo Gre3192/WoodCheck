@@ -1,6 +1,4 @@
 import get_gammaM from "../../Utils/get_gammaM";
-import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import StepBox from "../StepBox";
 import { get_sig_myd, get_sig_mzd } from "../../Utils/getTensioni";
@@ -13,57 +11,42 @@ import getMcrit from "../../Utils/getMcrit";
 import { useState } from "react";
 import get_km from "../../Utils/get_km";
 import get_kmod from "../../Utils/get_kmod";
-import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
-import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
-import { sectionGeometryAtom } from "../../Atom/sectionGeometryAtom";
 import get_kh from "../../Utils/get_kh";
-import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
+import setUom from "../../Utils/setUom";
 
 
+export default function InstabilitaLateroTorsionaleCheck({ showAll, sectionProp, sectionGeometryMass }) {
 
-export default function InstabilitaLateroTorsionaleCheck({ showAll }) {
-
-    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
-    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
-    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
-    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
-
-
+    
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
-    const { Ned: rawNed, Med_y: rawMed_y, Med_z: rawMed_z } = useRecoilValue(forcesStateAtom)
-    const Ned = rawNed > 0 ? rawNed : 0
-    const Med_y = rawMed_y > 0 ? Math.abs(rawMed_y) : 0
-    const Med_z = rawMed_z > 0 ? Math.abs(rawMed_z) : 0
+    const Ned = sectionProp.actingLoad.Ned.value > 0 ? sectionProp.actingLoad.Ned.value * setUom(sectionProp?.actingLoad?.Ned?.uom) : 0
+    const Med_y = sectionProp?.actingLoad?.Med_y?.value && sectionProp?.actingLoad?.Med_y?.value != 0 ? Math.abs(sectionProp?.actingLoad?.Med_y?.value) * setUom(sectionProp?.actingLoad?.Med_y?.uom) : 0
+    const Med_z = sectionProp?.actingLoad?.Med_z?.value && sectionProp?.actingLoad?.Med_z?.value != 0 ? Math.abs(sectionProp?.actingLoad?.Med_z?.value) * setUom(sectionProp?.actingLoad?.Med_z?.uom) : 0
     const isDisabled = Med_y == 0 && Med_z == 0 ? true : false
 
 
-    const fmk = mecchanicProps?.fmk
-    const E0_05 = mecchanicProps?.E0_05
-    const G_05 = mecchanicProps?.G_05
-    const Atot = geometryMass?.value.Atot
-    const Wel_y = geometryMass?.value.Wel_y
-    const Wel_z = geometryMass?.value.Wel_z
-    const Ig_z = geometryMass?.value.Ig_z
-    const Ig_y = geometryMass?.value.Ig_y
-    const Ig_tor = geometryMass?.value.Ig_tor
-    const shape = sectionGeometry?.shape
-    const woodType = mecchanicProps?.woodType
-    const b = sectionGeometry?.b
-    const h = sectionGeometry?.h
-    const serviceClass = serviceDuration?.serviceClass
-    const durationClass = serviceDuration?.durabilityClass
-
+    const fmk = sectionProp?.mechanics?.fmk
+    const E0_05 = sectionProp?.mechanics?.E0_05
+    const G_05 = sectionProp?.mechanics?.G_05
+    const Atot = sectionGeometryMass?.value.Atot
+    const Wel_y = sectionGeometryMass?.value.Wel_y
+    const Wel_z = sectionGeometryMass?.value.Wel_z
+    const Ig_z = sectionGeometryMass?.value.Ig_z
+    const Ig_y = sectionGeometryMass?.value.Ig_y
+    const Ig_tor = sectionGeometryMass?.value.Ig_tor
+    const shape = sectionProp?.geometry?.shape
+    const woodType = sectionProp?.mechanics?.woodType
+    const b = sectionProp?.geometry?.b?.value
+    const h = sectionProp?.geometry?.h?.value
+    const serviceClass = sectionProp?.serviceClass
+    const durationClass = sectionProp?.durationClass
 
 
     const leff = 2.6
 
-
-
-
     const kmod = get_kmod(woodType, serviceClass, durationClass)
-
     const gm = get_gammaM(woodType)
 
     const {
@@ -232,46 +215,46 @@ export default function InstabilitaLateroTorsionaleCheck({ showAll }) {
             <div className="mb-2 font-semibold ">Calcolo Geometria</div>
             <div className="flex flex-col gap-7">
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Atot}
-                    formula={geometryMass?.formula.Atot}
-                    formulaVal={geometryMass?.formulaVal.Atot}
-                    value={geometryMass?.value.Atot}
-                    description={geometryMass?.description.Atot}
+                    title={sectionGeometryMass?.title.Atot}
+                    formula={sectionGeometryMass?.formula.Atot}
+                    formulaVal={sectionGeometryMass?.formulaVal.Atot}
+                    value={sectionGeometryMass?.value.Atot}
+                    description={sectionGeometryMass?.description.Atot}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Ig_y}
-                    formula={geometryMass?.formula.Ig_y}
-                    formulaVal={geometryMass?.formulaVal.Ig_y}
-                    value={geometryMass?.value.Ig_y}
-                    description={geometryMass?.description.Ig_y}
+                    title={sectionGeometryMass?.title.Ig_y}
+                    formula={sectionGeometryMass?.formula.Ig_y}
+                    formulaVal={sectionGeometryMass?.formulaVal.Ig_y}
+                    value={sectionGeometryMass?.value.Ig_y}
+                    description={sectionGeometryMass?.description.Ig_y}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Ig_z}
-                    formula={geometryMass?.formula.Ig_z}
-                    formulaVal={geometryMass?.formulaVal.Ig_z}
-                    value={geometryMass?.value.Ig_z}
-                    description={geometryMass?.description.Ig_z}
+                    title={sectionGeometryMass?.title.Ig_z}
+                    formula={sectionGeometryMass?.formula.Ig_z}
+                    formulaVal={sectionGeometryMass?.formulaVal.Ig_z}
+                    value={sectionGeometryMass?.value.Ig_z}
+                    description={sectionGeometryMass?.description.Ig_z}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Ig_tor}
-                    formula={geometryMass?.formula.Ig_tor}
-                    formulaVal={geometryMass?.formulaVal.Ig_tor}
-                    value={geometryMass?.value.Ig_tor}
-                    description={geometryMass?.description.Ig_tor}
+                    title={sectionGeometryMass?.title.Ig_tor}
+                    formula={sectionGeometryMass?.formula.Ig_tor}
+                    formulaVal={sectionGeometryMass?.formulaVal.Ig_tor}
+                    value={sectionGeometryMass?.value.Ig_tor}
+                    description={sectionGeometryMass?.description.Ig_tor}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Wel_y}
-                    formula={geometryMass?.formula.Wel_y}
-                    formulaVal={geometryMass?.formulaVal.Wel_y}
-                    value={geometryMass?.value.Wel_y}
-                    description={geometryMass?.description.Wel_y}
+                    title={sectionGeometryMass?.title.Wel_y}
+                    formula={sectionGeometryMass?.formula.Wel_y}
+                    formulaVal={sectionGeometryMass?.formulaVal.Wel_y}
+                    value={sectionGeometryMass?.value.Wel_y}
+                    description={sectionGeometryMass?.description.Wel_y}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Wel_z}
-                    formula={geometryMass?.formula.Wel_z}
-                    formulaVal={geometryMass?.formulaVal.Wel_z}
-                    value={geometryMass?.value.Wel_z}
-                    description={geometryMass?.description.Wel_z}
+                    title={sectionGeometryMass?.title.Wel_z}
+                    formula={sectionGeometryMass?.formula.Wel_z}
+                    formulaVal={sectionGeometryMass?.formulaVal.Wel_z}
+                    value={sectionGeometryMass?.value.Wel_z}
+                    description={sectionGeometryMass?.description.Wel_z}
                 />
             </div>
             <hr />
@@ -409,10 +392,10 @@ export default function InstabilitaLateroTorsionaleCheck({ showAll }) {
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check1, check2, check3, check4], isDisabled: isDisabled }
     return (
-      !showAll && isDisabled ? 
-      null 
-      :
-      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+        !showAll && isDisabled ?
+            null
+            :
+            <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
     )
 }
 

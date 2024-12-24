@@ -4,7 +4,7 @@ import { forcesStateAtom } from '../Atom/forcesStateAtom';
 import InputBox from './InputBox';
 import ActionSectionDraw from './ActionSectionDraw';
 import MinimalTable from './MinimalTable';
-import ResetButton from './Element/Button/ResetButton';
+import ResetButton from './ElementUI/Button/ResetButton';
 
 export default function InputForces() {
 

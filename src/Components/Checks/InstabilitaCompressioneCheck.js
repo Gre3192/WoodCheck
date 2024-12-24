@@ -1,7 +1,6 @@
 import get_gammaM from "../../Utils/get_gammaM";
 import { useRecoilValue } from 'recoil';
 import { forcesStateAtom } from "../../Atom/forcesStateAtom";
-import customDecimal from "../../Utils/customDecimal";
 import CheckCard from "../CheckCard";
 import StepBox from "../StepBox";
 import { get_sig_c0d } from "../../Utils/getTensioni";
@@ -15,44 +14,31 @@ import get_beta_c from "../../Utils/get_beta_c";
 import get_k from "../../Utils/get_k";
 import get_kcrit_c from "../../Utils/get_kcrit_c";
 import get_kmod from "../../Utils/get_kmod";
-import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
-import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
-import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
+import setUom from "../../Utils/setUom";
 
 
-
-export default function InstabilitaCompressioneCheck({ showAll }) {
-
-    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
-    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
-    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
+export default function InstabilitaCompressioneCheck({ showAll, sectionProp, sectionGeometryMass }) {
 
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
-    const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
-    const Ned = rawNed > 0 ? rawNed : 0
+    const Ned = sectionProp.actingLoad.Ned.value > 0 ? sectionProp.actingLoad.Ned.value * setUom(sectionProp?.actingLoad?.Ned?.uom) : 0
     const isDisabled = Ned <= 0 ? true : false
 
-
-    const Atot = geometryMass?.value.Atot
-    const fc0k = mecchanicProps?.fc0k
-    const E0_05 = mecchanicProps?.E0_05
-    const Ig_y = geometryMass?.value.Ig_y
-    const Ig_z = geometryMass?.value.Ig_z
-    const woodType = mecchanicProps?.woodType
-    const serviceClass = serviceDuration?.serviceClass
-    const durationClass = serviceDuration?.durabilityClass
-
-
-    const L = 45646
-    const beta_y = 45646
-    const beta_z = 45646
-
+    const Atot = sectionGeometryMass?.value.Atot
+    const fc0k = sectionProp?.mechanics?.fc0k
+    const E0_05 = sectionProp?.mechanics?.E0_05
+    const Ig_y = sectionGeometryMass?.value.Ig_y
+    const Ig_z = sectionGeometryMass?.value.Ig_z
+    const woodType = sectionProp?.mechanics?.woodType
+    const serviceClass = sectionProp?.serviceClass
+    const durationClass = sectionProp?.durationClass
+    const l = sectionProp?.geometry?.l?.value
+    const beta_y = sectionProp?.geometry?.beta_y
+    const beta_z = sectionProp?.geometry?.beta_y
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)
-
     const gm = get_gammaM(woodType)
 
     const {
@@ -89,7 +75,7 @@ export default function InstabilitaCompressioneCheck({ showAll }) {
         Ncr_z_formulaVal,
         Ncr_z_description
 
-    } = get_Ncr(L, beta_y, beta_z, Ig_y, Ig_z, E0_05)
+    } = get_Ncr(l, beta_y, beta_z, Ig_y, Ig_z, E0_05)
 
     const {
 
@@ -191,39 +177,39 @@ export default function InstabilitaCompressioneCheck({ showAll }) {
             <div className="mb-2 font-semibold ">Calcolo Geometria</div>
             <div className="flex flex-col gap-7">
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Atot}
-                    formula={geometryMass?.formula.Atot}
-                    formulaVal={geometryMass?.formulaVal.Atot}
-                    value={geometryMass?.value.Atot}
-                    description={geometryMass?.description.Atot}
+                    title={sectionGeometryMass?.title.Atot}
+                    formula={sectionGeometryMass?.formula.Atot}
+                    formulaVal={sectionGeometryMass?.formulaVal.Atot}
+                    value={sectionGeometryMass?.value.Atot}
+                    description={sectionGeometryMass?.description.Atot}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Ig_y}
-                    formula={geometryMass?.formula.Ig_y}
-                    formulaVal={geometryMass?.formulaVal.Ig_y}
-                    value={geometryMass?.value.Ig_y}
-                    description={geometryMass?.description.Ig_y}
+                    title={sectionGeometryMass?.title.Ig_y}
+                    formula={sectionGeometryMass?.formula.Ig_y}
+                    formulaVal={sectionGeometryMass?.formulaVal.Ig_y}
+                    value={sectionGeometryMass?.value.Ig_y}
+                    description={sectionGeometryMass?.description.Ig_y}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Ig_z}
-                    formula={geometryMass?.formula.Ig_z}
-                    formulaVal={geometryMass?.formulaVal.Ig_z}
-                    value={geometryMass?.value.Ig_z}
-                    description={geometryMass?.description.Ig_z}
+                    title={sectionGeometryMass?.title.Ig_z}
+                    formula={sectionGeometryMass?.formula.Ig_z}
+                    formulaVal={sectionGeometryMass?.formulaVal.Ig_z}
+                    value={sectionGeometryMass?.value.Ig_z}
+                    description={sectionGeometryMass?.description.Ig_z}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Wel_y}
-                    formula={geometryMass?.formula.Wel_y}
-                    formulaVal={geometryMass?.formulaVal.Wel_y}
-                    value={geometryMass?.value.Wel_y}
-                    description={geometryMass?.description.Wel_y}
+                    title={sectionGeometryMass?.title.Wel_y}
+                    formula={sectionGeometryMass?.formula.Wel_y}
+                    formulaVal={sectionGeometryMass?.formulaVal.Wel_y}
+                    value={sectionGeometryMass?.value.Wel_y}
+                    description={sectionGeometryMass?.description.Wel_y}
                 />
                 <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                    title={geometryMass?.title.Wel_z}
-                    formula={geometryMass?.formula.Wel_z}
-                    formulaVal={geometryMass?.formulaVal.Wel_z}
-                    value={geometryMass?.value.Wel_z}
-                    description={geometryMass?.description.Wel_z}
+                    title={sectionGeometryMass?.title.Wel_z}
+                    formula={sectionGeometryMass?.formula.Wel_z}
+                    formulaVal={sectionGeometryMass?.formulaVal.Wel_z}
+                    value={sectionGeometryMass?.value.Wel_z}
+                    description={sectionGeometryMass?.description.Wel_z}
                 />
             </div>
             <hr />
@@ -343,10 +329,10 @@ export default function InstabilitaCompressioneCheck({ showAll }) {
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check_y, check_z], isDisabled: isDisabled }
     return (
-      !showAll && isDisabled ? 
-      null 
-      :
-      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+        !showAll && isDisabled ?
+            null
+            :
+            <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
     )
 }
 

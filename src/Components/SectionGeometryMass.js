@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { sectionGeometryMassAtom } from '../Atom/sectionGeometryMassAtom';
 import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
 import getGeometryMass from "../Utils/getGeometryMass";
-import OpenCloseButton from "./Element/Button/OpenCloseButton";
+import OpenCloseButton from "./ElementUI/Button/OpenCloseButton";
 
 
 export default function SectionGeometryMass() {

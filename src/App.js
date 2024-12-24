@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import WoodChecksSLU from './Pages/WoodChecksSLU/WoodChecksSLU';
 import WoodChecksSLE from './Pages/WoodChecksSLE/WoodChecksSLE';
 import 'katex/dist/katex.min.css';
-import Layout from './Layout/Layout';
 import WoodProject from './Pages/WoodProject/WoodProject';
 import WoodJoin from './Pages/WoodJoin/WoodJoin';
 import WoodSpecialBeams from './Pages/WoodSpecialBeams/WoodSpecialBeams';
@@ -12,7 +11,7 @@ import LoadCombination from './Pages/LoadCombination/LoadCombination';
 import MadePDF from './Pages/MadePDF/MadePDF';
 import NotchBearing from './Pages/NotchBearing/NotchBearing';
 import TestPage from './Pages/TestPage/TestPage';
-
+import Layout from './Layout/Layout';
 function App() {
 
   useEffect(() => {

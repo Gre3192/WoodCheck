@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import SectionShapeToggleBar from './SectionShapeToggleBar';
 import MinimalTable from './MinimalTable';
 import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
-import ResetButton from './Element/Button/ResetButton';
+import ResetButton from './ElementUI/Button/ResetButton';
 
 export default function SectionGeometry() {
 

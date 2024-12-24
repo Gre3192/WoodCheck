@@ -1,44 +1,32 @@
 import get_gammaM from "../../Utils/get_gammaM";
-import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import StepBox from "../StepBox";
 import { get_sig_c0d } from "../../Utils/getTensioni";
 import { get_f_c0d } from "../../Utils/getResistenze";
 import { get_Compressione0Check } from "../../Utils/getChecks";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
-import { useRecoilValue } from 'recoil';
-import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
-import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
-import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
-import { PDFDownloadLink, Document, Page, Text, Image, View, StyleSheet } from '@react-pdf/renderer'; // Importa i componenti di react-pdf
-import katex from "katex";
+import setUom from "../../Utils/setUom";
 
 
-export default function Compressione0Check({ showAll }) {
+
+export default function Compressione0Check({ showAll, sectionProp, sectionGeometryMass }) {
 
   
+    const [isFormulaSelected, setIsFormulaSelected] = useState(false);
+    const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
+
+    const Ned = sectionProp.actingLoad.Ned.value > 0 ? sectionProp.actingLoad.Ned.value * setUom(sectionProp?.actingLoad?.Ned?.uom) : 0
+    const isDisabled = Ned <= 0 ? true : false
 
 
-  const geometryMass = useRecoilValue(sectionGeometryMassAtom);
-  const mecchanicProps = useRecoilValue(meccanicPropSectionAtom);
-  const serviceDuration = useRecoilValue(serviceDurationClassAtom);
+    const Atot = sectionGeometryMass?.value?.Atot;
+    const woodType = sectionProp?.mechanics?.woodType;
+    const serviceClass = sectionProp?.serviceClass;
+    const durationClass = sectionProp?.durationClass;
+    
+    const fc0k = sectionProp?.mechanics.fc0k;
 
-  const [isFormulaSelected, setIsFormulaSelected] = useState(false);
-  const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
-
-  const { Ned: rawNed } = useRecoilValue(forcesStateAtom);
-  const Ned = rawNed > 0 ? rawNed : 0;
-  const isDisabled = Ned <= 0;
-
-
-  const memoizedComponent = useMemo(() => {
-
-    const Atot = geometryMass?.value.Atot;
-    const fc0k = mecchanicProps?.fc0k;
-    const woodType = mecchanicProps?.woodType;
-    const serviceClass = serviceDuration?.serviceClass;
-    const durationClass = serviceDuration?.durabilityClass;
 
     const kmod = get_kmod(woodType, serviceClass, durationClass);
     const gm = get_gammaM(woodType);
@@ -74,11 +62,11 @@ export default function Compressione0Check({ showAll }) {
         <StepBox
           isFormula={isFormulaSelected}
           isFormulaVal={isFormulaValSelected}
-          title={geometryMass?.title.Atot}
-          formula={geometryMass?.formula.Atot}
-          formulaVal={geometryMass?.formulaVal.Atot}
-          value={geometryMass?.value.Atot}
-          description={geometryMass?.description.Atot}
+          title={sectionGeometryMass?.title.Atot}
+          formula={sectionGeometryMass?.formula.Atot}
+          formulaVal={sectionGeometryMass?.formulaVal.Atot}
+          value={sectionGeometryMass?.value.Atot}
+          description={sectionGeometryMass?.description.Atot}
         />
         <hr />
         <div className="mb-2 font-semibold">Calcolo Tensioni</div>
@@ -126,7 +114,4 @@ export default function Compressione0Check({ showAll }) {
       :
       <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
     )
-  }, [geometryMass, mecchanicProps, serviceDuration, Ned, isFormulaSelected, isFormulaValSelected]);
-
-  return memoizedComponent;
 }

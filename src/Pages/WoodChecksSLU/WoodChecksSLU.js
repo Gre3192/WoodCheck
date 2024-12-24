@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 import Trazione0Check from "../../Components/Checks/Trazione0Check"
@@ -26,75 +26,69 @@ import ServiceClassSelector from "../../Components/ServiceClassSelector"
 import DurationClassSelector from '../../Components/DurationClassSelector';
 import NavigationPage from '../../Components/NavigationPage';
 
-import VisibilityButton from '../../Components/Element/Button/VisibilityButton';
-
-
+import VisibilityButton from '../../Components/ElementUI/Button/VisibilityButton';
+import { useRecoilState } from 'recoil';
+import { sectionPropAtom } from '../../Atom/sectionPropAtom';
+import SectionSvg from '../../Components/SvgComponent/SectionSvg';
+import { sectionGeometryMassAtom } from '../../Atom/sectionGeometryMassAtom';
+import { useLocation } from 'react-router-dom';
 
 
 
 export default function WoodChecksSLU(params) {
 
-    const [showAll, setShowAll] = useState(false)
+    const [showAll, setShowAll] = useState(true)
+    const [sectionProp, setSectionProp] = useRecoilState(sectionPropAtom);
+    const [sectionGeometryMass, setSectionGeometryMass] = useRecoilState(sectionGeometryMassAtom);
 
     const handleOpen = () => {
         setShowAll(!showAll)
     }
 
-    const route = {
+    // const route = {
 
-        prevLink: '/project',
-        prevTitle: 'Progetto',
-        currentTitle: 'Verifiche SLU',
-        nextLink: '/checkssle',
-        nextTitle: 'Verifiche SLE'
-    }
+    //     prevLink: '/project',
+    //     prevTitle: 'Progetto',
+    //     currentTitle: 'Verifiche SLU',
+    //     nextLink: '/checkssle',
+    //     nextTitle: 'Verifiche SLE'
+    // }
 
     return (
         <>
 
-            <NavigationPage route={route} />
+            {/* <NavigationPage route={route} /> */}
 
-            <div className='flex justify-between px-6 py-3 shadow-lg sticky'>
+            {/* <VisibilityButton isOpen={showAll} onClick={handleOpen} /> */}
 
-                <div className='flex gap-8 '>
-                    <div className='flex flex-col'>
-                        <ServiceClassSelector viewType='dropdown' />
-                    </div>
-                    <div className='flex flex-col'>
-                        <DurationClassSelector viewType='dropdown' />
-                    </div>
-                    <WoodClass isMinimalTable={false} isTitle={false} />
-                </div>
-                <VisibilityButton isOpen={showAll} onClick={handleOpen}/>
-            </div>
 
-            <div className="h-[83vh] overflow-y-scroll">
-                <div className='flex justify-center mt-5'>
-                    <ActionSectionDraw />
-                </div>
+            <div className="">
+
+                <SectionSvg />
+
                 <div className="px-5">
                     <h1 className="text-lg font-bold" >
                         Verifiche di Resistenza
                     </h1>
-                    <Trazione0Check showAll={showAll} />
-                    <Trazione90Check showAll={showAll} />
-                    <Compressione0Check showAll={showAll} />
-                    <Compressione90Check showAll={showAll} />
-                    <CompressioneAlphaCheck showAll={showAll} />
-                    <FlessioneCheck showAll={showAll} />
-                    <TensoFlessioneCheck showAll={showAll} />
-                    <PressoFlessioneCheck showAll={showAll} />
-                    <TaglioCheck showAll={showAll} />
-                    <TorsioneCheck showAll={showAll} />
-                    <TaglioTorsioneCheck showAll={showAll} />
+                    <Trazione0Check showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <Trazione90Check showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <Compressione0Check showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <Compressione90Check showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <CompressioneAlphaCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <FlessioneCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <TensoFlessioneCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <PressoFlessioneCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <TaglioCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <TorsioneCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <TaglioTorsioneCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
                 </div>
                 <div className="px-5">
                     <h1 className="text-lg font-bold" >
                         Verifiche di Stabilità
                     </h1>
-                    <InstabilitaLateroTorsionaleCheck showAll={showAll} />
-                    <InstabilitaCompressioneCheck showAll={showAll} />
-                    <InstabilitaPressoFlessioneCheck showAll={showAll} />
+                    <InstabilitaLateroTorsionaleCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <InstabilitaCompressioneCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
+                    <InstabilitaPressoFlessioneCheck showAll={showAll} sectionProp={sectionProp} sectionGeometryMass={sectionGeometryMass} />
                 </div>
             </div>
         </>

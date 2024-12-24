@@ -4,7 +4,7 @@ import MinimalTable from './MinimalTable';
 import { FaRedo } from 'react-icons/fa';
 import { useRecoilState } from 'recoil';
 import { meccanicPropSectionAtom } from '../Atom/meccanicPropSectionAtom';
-import ResetButton from './Element/Button/ResetButton';
+import ResetButton from './ElementUI/Button/ResetButton';
 
 export default function WoodClass({ isMinimalTable = true, isTitle = true }) {
 

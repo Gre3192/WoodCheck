@@ -1,5 +1,4 @@
 {
-
   "GL20h": {"treeClass": "conifere", "woodType": "lamellare", "fmk": 20.00, "ft0k": 16.00, "ft90k": 0.50, "fc0k": 20.00, "fc90k": 2.50, "fvk": 3.50, "frk": 1.20, "E0_mean": 8400000, "E0_05": 7000000, "E90_mean": 300000, "E90_05": 250000, "G_mean": 650000, "G_05": 540000, "Gr_mean": 65000, "Gr_05": 54000, "rho_k": 340, "rho_mean": 370},  
   "GL22h": {"treeClass": "conifere", "woodType": "lamellare", "fmk": 22.00, "ft0k": 17.60, "ft90k": 0.50, "fc0k": 22.00, "fc90k": 2.50, "fvk": 3.50, "frk": 1.20, "E0_mean": 10500000, "E0_05": 8800000, "E90_mean": 300000, "E90_05": 250000, "G_mean": 650000, "G_05": 540000, "Gr_mean": 65000, "Gr_05": 54000, "rho_k": 370, "rho_mean": 410},  
   "GL24h": {"treeClass": "conifere", "woodType": "lamellare", "fmk": 24.00, "ft0k": 19.20, "ft90k": 0.50, "fc0k": 24.00, "fc90k": 2.50, "fvk": 3.50, "frk": 1.20, "E0_mean": 11500000, "E0_05": 9600000, "E90_mean": 300000, "E90_05": 250000, "G_mean": 650000, "G_05": 540000, "Gr_mean": 65000, "Gr_05": 54000, "rho_k": 385, "rho_mean": 420},  

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { serviceDurationClassAtom } from '../Atom/serviceDurationClassAtom';
 import { useRecoilState } from 'recoil';
 import capitalizeFirstLetter from '../Utils/capitalizeFirstLetter';
-import OpenCloseButton from './Element/Button/OpenCloseButton';
+import OpenCloseButton from './ElementUI/Button/OpenCloseButton';
 
 
 const DurationClassSelector = ({ viewType = 'table' }) => {
+  
   const [durationClass, setDurationClass] = useRecoilState(serviceDurationClassAtom);
   const [isOpen, setisOpen] = useState(false);
 

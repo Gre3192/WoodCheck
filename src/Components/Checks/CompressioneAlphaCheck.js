@@ -1,6 +1,4 @@
 import get_gammaM from "../../Utils/get_gammaM";
-import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import StepBox from "../StepBox";
 import { get_sig_cAlphad } from "../../Utils/getTensioni";
@@ -8,41 +6,28 @@ import { get_f_cAlphad, get_f_c0d, get_f_c90d } from "../../Utils/getResistenze"
 import { get_CompressioneAlphaCheck } from "../../Utils/getChecks";
 import { useState } from "react";
 import get_kmod from "../../Utils/get_kmod";
-import { sectionGeometryMassAtom } from "../../Atom/sectionGeometryMassAtom";
-import { meccanicPropSectionAtom } from "../../Atom/meccanicPropSectionAtom";
-import { serviceDurationClassAtom } from "../../Atom/serviceDurationClassAtom";
+import setUom from "../../Utils/setUom";
 
 
-
-export default function CompressioneAlphaCheck({ showAll }) {
-
-    const geometryMass = useRecoilValue(sectionGeometryMassAtom)
-    const mecchanicProps = useRecoilValue(meccanicPropSectionAtom)
-    const serviceDuration = useRecoilValue(serviceDurationClassAtom)
-
+export default function CompressioneAlphaCheck({ showAll, sectionProp, sectionGeometryMass }) {
 
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
-    const { Ned: rawNed } = useRecoilValue(forcesStateAtom)
-    const Ned = rawNed > 0 ? rawNed : 0
+    const Ned = sectionProp.actingLoad.Ned.value > 0 ? sectionProp.actingLoad.Ned.value * setUom(sectionProp?.actingLoad?.Ned?.uom) : 0
     const isDisabled = Ned <= 0 ? true : false
 
 
-    const Atot = geometryMass?.value.Atot
-    const fc0k = mecchanicProps?.fc0k
-    const fc90k = mecchanicProps?.fc90k
-    const woodType = mecchanicProps?.woodType
-    const serviceClass = serviceDuration?.serviceClass
-    const durationClass = serviceDuration?.durabilityClass
+    const Atot = sectionGeometryMass?.value?.Atot;
+    const woodType = sectionProp?.mechanics?.woodType;
+    const serviceClass = sectionProp?.serviceClass;
+    const durationClass = sectionProp?.durationClass;
 
+    const fc0k = sectionProp?.mechanics.fc0k;
+    const fc90k = sectionProp?.mechanics.fc90k;
     const alpha = 45
 
-
-
-
     const kmod = get_kmod(woodType, serviceClass, durationClass)
-
     const gm = get_gammaM(woodType)
 
     const {
@@ -94,19 +79,17 @@ export default function CompressioneAlphaCheck({ showAll }) {
     } = get_CompressioneAlphaCheck(sig_cAlphad, f_cAlphad)
 
 
-
-
     const title = 'Verifica a Compressione inclinata rispetto alla fibratura [NTC18 - \u00A74.4.8.1.5]'
 
     const centralContent =
         <div className="flex flex-col gap-4">
             <div className="mb-2 font-semibold ">Calcolo Geometria</div>
             <StepBox isFormula={isFormulaSelected} isFormulaVal={isFormulaValSelected}
-                title={geometryMass?.title.Atot}
-                formula={geometryMass?.formula.Atot}
-                formulaVal={geometryMass?.formulaVal.Atot}
-                value={geometryMass?.value.Atot}
-                description={geometryMass?.description.Atot}
+                title={sectionGeometryMass?.title.Atot}
+                formula={sectionGeometryMass?.formula.Atot}
+                formulaVal={sectionGeometryMass?.formulaVal.Atot}
+                value={sectionGeometryMass?.value.Atot}
+                description={sectionGeometryMass?.description.Atot}
             />
             <hr />
             <div className="mb-2 font-semibold ">Calcolo Tensioni</div>
@@ -156,10 +139,10 @@ export default function CompressioneAlphaCheck({ showAll }) {
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }
     return (
-      !showAll && isDisabled ? 
-      null 
-      :
-      <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
+        !showAll && isDisabled ?
+            null
+            :
+            <CheckCard props={checkCardProps} isFormulaProps={{ isFormulaSelected, setIsFormulaSelected }} isFormulaValProps={{ isFormulaValSelected, setIsFormulaValSelected }} />
     )
 }
 
