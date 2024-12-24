@@ -104,6 +104,7 @@ export default function Compressione0Check({ showAll, sectionProp, sectionGeomet
         formulaVal={check_formulaVal}
         value={check}
         description={''}
+        withInfo={false}
       />
     );
 

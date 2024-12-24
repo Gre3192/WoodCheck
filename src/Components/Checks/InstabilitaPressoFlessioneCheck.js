@@ -632,6 +632,7 @@ export default function InstabilitaPressoFlessioneCheck({ showAll, sectionProp, 
             formulaVal={[check1_formulaVal, check2_formulaVal, check3_formulaVal, check4_formulaVal, check5_formulaVal, check6_formulaVal, check7_formulaVal, check8_formulaVal]}
             value={[check1, check2, check3, check4, check5, check6, check7, check8]}
             description={[check1_description, check2_description, check3_description, check4_description, check5_description, check6_description, check7_description, check8_description]}
+            withInfo={false}
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: 125, isDisabled: isDisabled }

@@ -158,6 +158,7 @@ export default function TaglioTorsioneCheck({ showAll, sectionProp, sectionGeome
             formulaVal={check_formulaVal}
             value={check}
             description={''}
+            withInfo={false}
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: check, isDisabled: isDisabled }

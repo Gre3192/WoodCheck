@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 
-const InfoError = ({ open, handleClose, title = "title", message = "message"}) => {
+export default function InfoModal ({ open, handleClose, title = "title", message = "Info message"}) {
     return (
             <Dialog open={open} onClose={handleClose} className="relative z-10">
                 <DialogBackdrop
@@ -19,8 +19,6 @@ const InfoError = ({ open, handleClose, title = "title", message = "message"}) =
                                 {message}
                             </div>
 
-
-
                             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                 <button
                                     type="button"
@@ -29,14 +27,6 @@ const InfoError = ({ open, handleClose, title = "title", message = "message"}) =
                                 >
                                     Ok
                                 </button>
-                                <button
-                                    type="button"
-                                    data-autofocus
-                                    onClick={handleClose}
-                                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                                >
-                                    Cancel
-                                </button>
                             </div>
                         </DialogPanel>
                     </div>
@@ -44,5 +34,3 @@ const InfoError = ({ open, handleClose, title = "title", message = "message"}) =
             </Dialog>
     );
 };
-
-export default InfoError;

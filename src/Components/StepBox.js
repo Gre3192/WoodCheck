@@ -1,8 +1,10 @@
 import Latex from "react-latex-next";
-import React from "react";
+import React, { useState } from "react";
 import getCheckSymbol from "../Utils/getCheckSymbol";
 import getCheckCircle from "../Utils/getCheckCircle";
 import customDecimal from "../Utils/customDecimal";
+import InfoModal from "./ElementUI/InfoModal";
+import { FaExclamationCircle } from "react-icons/fa";
 
 
 export default function StepBox({
@@ -13,7 +15,8 @@ export default function StepBox({
     description = '',
     isFormula = false,
     isFormulaVal = false,
-    isCheck = false
+    isCheck = false,
+    withInfo = true
 }) {
 
     // Funzione per trasformare qualsiasi input in array
@@ -28,6 +31,16 @@ export default function StepBox({
     const formulaVals = toArray(formulaVal);
     const values = toArray(value);
     const descriptions = toArray(description);
+
+    const [isOpenDialog, setIsOpenDialog] = useState(false)
+
+    function openDialog() {
+        setIsOpenDialog(true)
+    }
+
+    function closeDialog() {
+        setIsOpenDialog(false)
+    }
 
 
     return (
@@ -47,11 +60,17 @@ export default function StepBox({
                                     ${isCheck ? getCheckSymbol(itemValue) : ''}
                                 $`}
                             </Latex>
-                            {
+
+                            {withInfo ?
+                                <FaExclamationCircle onClick={openDialog} className='text-gray-400 focus:outline-none data-[hover]:bg-black/30 data-[focus]:outline-1 data-[focus]:outline-white cursor-pointer' />
+                                : null
+                            }
+                            {/* {
                                 descriptions[index] ?
                                     <Latex>{`${descriptions[index]}`}</Latex>
                                     : null
-                            }
+                            } */}
+
                             {
                                 isCheck ?
                                     <div className="flex gap-2 items-center">
@@ -64,6 +83,9 @@ export default function StepBox({
                     )
                 })}
             </div>
+            {withInfo ?
+                <InfoModal open={isOpenDialog} handleClose={closeDialog} title={title} message={description} />
+                : null}
         </>
     );
 }

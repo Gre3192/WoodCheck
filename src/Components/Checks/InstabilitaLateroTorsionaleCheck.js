@@ -388,6 +388,7 @@ export default function InstabilitaLateroTorsionaleCheck({ showAll, sectionProp,
             formulaVal={[check1_formulaVal, check2_formulaVal, check3_formulaVal, check4_formulaVal]}
             value={[check1, check2, check3, check4]}
             description={[check1_description, check2_description, check3_description, check4_description]}
+            withInfo={false}
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check1, check2, check3, check4], isDisabled: isDisabled }

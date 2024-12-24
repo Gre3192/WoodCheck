@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { sectionPropAtom } from '../Atom/sectionPropAtom';
-import InfoError from '../Components/InfoError';
+import InfoModal from '../Components/ElementUI/InfoModal';
 import { useState } from 'react';
 
 
@@ -226,7 +226,7 @@ export default function Layout() {
         <main className="flex-1 overflow-y-auto">
           <div className="mx-auto px-4 py-6 sm:px-6 lg:px-8">
             <Outlet />
-            <InfoError open={isDialogOpen} handleClose={() => setIsDialogOpen(false)} message={dialogMessage} />
+            <InfoModal open={isDialogOpen} handleClose={() => setIsDialogOpen(false)} message={dialogMessage} />
           </div>
         </main>
       </div>

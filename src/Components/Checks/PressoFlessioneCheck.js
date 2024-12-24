@@ -239,6 +239,7 @@ export default function PressoFlessioneCheck({ showAll, sectionProp, sectionGeom
             formulaVal={[check_z_formulaVal, check_y_formulaVal]}
             value={[check_z, check_y]}
             description={[]}
+            withInfo={false}
         />
 
 

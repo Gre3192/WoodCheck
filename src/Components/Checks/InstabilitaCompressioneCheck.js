@@ -325,6 +325,7 @@ export default function InstabilitaCompressioneCheck({ showAll, sectionProp, sec
             formulaVal={[check_y_formulaVal, check_z_formulaVal]}
             value={[check_y, check_z]}
             description={[]}
+            withInfo={false}
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check_y, check_z], isDisabled: isDisabled }

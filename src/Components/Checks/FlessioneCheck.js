@@ -208,6 +208,7 @@ export default function FlessioneCheck({ showAll, sectionProp, sectionGeometryMa
             formulaVal={[check_z_formulaVal, check_y_formulaVal]}
             value={[check_z, check_y]}
             description={[]}
+            withInfo={false}
         />
 
     const checkCardProps = { title: title, centralContent: centralContent, finalContent: finalContent, check: [check_y, check_z], isDisabled: isDisabled }
