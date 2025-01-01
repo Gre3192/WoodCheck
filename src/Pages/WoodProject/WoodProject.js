@@ -241,7 +241,7 @@ export default function WoodProject() {
 
                 {/* Sidebar Pannelli */}
                 <div>
-                    <TabGroup className={''}>
+                    <TabGroup >
                         <TabList className={'-mb-[2px] flex'}>
                             <Tab
                                 key={"Sezione"}
@@ -410,7 +410,7 @@ export default function WoodProject() {
                     <div className="block text-sm/6 font-medium text-gray-900 mb-2">
                         Carichi agenti
                     </div>
-                    <div className="flex flex-col gap-5 border-2 p-5 rounded-md">
+                    <div className="flex flex-col gap-5 border-2 p-5 rounded-md bg-white shadow-2xl">
 
                         <InputBox
                             label={
