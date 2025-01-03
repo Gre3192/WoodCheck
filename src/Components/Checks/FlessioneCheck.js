@@ -198,7 +198,6 @@ export default function FlessioneCheck({ showAll, sectionProp, sectionGeometryMa
                     description={f_mzd_description}
                 />
             </div>
-            <hr />
         </div>
 
     const finalContent =

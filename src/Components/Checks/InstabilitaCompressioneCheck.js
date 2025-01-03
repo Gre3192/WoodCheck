@@ -36,7 +36,7 @@ export default function InstabilitaCompressioneCheck({ showAll, sectionProp, sec
     const durationClass = sectionProp?.durationClass
     const l = sectionProp?.geometry?.l?.value * setUom(sectionProp?.geometry?.l?.uom)
     const beta_y = sectionProp?.geometry?.beta_y
-    const beta_z = sectionProp?.geometry?.beta_y
+    const beta_z = sectionProp?.geometry?.beta_z
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)
     const gm = get_gammaM(woodType)
@@ -315,7 +315,6 @@ export default function InstabilitaCompressioneCheck({ showAll, sectionProp, sec
                     description={kcrit_c_z_description}
                 />
             </div>
-            <hr />
         </div>
 
     const finalContent =

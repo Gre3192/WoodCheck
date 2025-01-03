@@ -57,7 +57,7 @@ export default function Compressione0Check({ showAll, sectionProp, sectionGeomet
     const title = 'Verifica a Compressione parallela alla fibratura [NTC18 - \u00A74.4.8.1.3]';
 
     const centralContent =
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 ">
         <div className="mb-2 font-semibold ">Calcolo Geometria</div>
         <StepBox
           isFormula={isFormulaSelected}
@@ -90,7 +90,6 @@ export default function Compressione0Check({ showAll, sectionProp, sectionGeomet
           value={f_c0d}
           description={f_c0d_description}
         />
-        <hr />
       </div>
 
 

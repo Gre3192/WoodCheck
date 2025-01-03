@@ -223,7 +223,6 @@ export default function TensoFlessioneCheck({ showAll, sectionProp, sectionGeome
                     description={f_mzd_description}
                 />
             </div>
-            <hr />
         </div>
 
     const finalContent

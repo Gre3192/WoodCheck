@@ -378,7 +378,6 @@ export default function InstabilitaLateroTorsionaleCheck({ showAll, sectionProp,
                     description={kcrit_m_z_description}
                 />
             </div>
-            <hr />
         </div>
 
     const finalContent =

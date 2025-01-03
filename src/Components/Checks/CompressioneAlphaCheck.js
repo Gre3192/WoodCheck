@@ -125,7 +125,6 @@ export default function CompressioneAlphaCheck({ showAll, sectionProp, sectionGe
                     description={f_cAlphad_description}
                 />
             </div>
-            <hr />
         </div>
 
     const finalContent =

@@ -87,7 +87,6 @@ export default function Compressione90Check({ showAll, sectionProp, sectionGeome
                 value={f_c90d}
                 description={f_c90d_description}
             />
-            <hr />
         </div>
 
     const finalContent =

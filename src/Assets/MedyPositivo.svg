@@ -1,6 +1,7 @@
-<svg width="34" height="14" viewBox="0 0 34 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="23.7205" y1="8.27315" x2="13.7673" y2="8.31376" stroke="#4CB162" stroke-width="0.226286"/>
-<path d="M6.38855 8.16001L13.7674 12.12V4.20001L6.38855 8.16001Z" fill="#4CB162"/>
-<path d="M1.10107 8.16001L8.47996 12.12V4.20001L1.10107 8.16001Z" fill="#4CB162"/>
-<path d="M29.91 10.0631V5.00057H29.051V10.0631H29.91ZM32.0117 7.96137V7.10228H26.9492V7.96137H32.0117Z" fill="black"/>
+<svg width="35" height="35" viewBox="0 0 62 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<path d="M12.375 12.375H49.625V49.625H12.375V12.375Z" fill="#D2B48C" stroke="black" stroke-width="0.25"/>
+<path d="M34.75 31.5357H31.5357V34.75H30.4643V31.5357H27.25V30.4643H30.4643V27.25H31.5357V30.4643H34.75V31.5357Z" fill="black"/>
+<path d="M0 31L5.4 34.1177L5.4 27.8823L0 31ZM4.86 31.54L24.25 31.54V30.46L4.86 30.46V31.54Z" fill="#479E5A"/>
+<path d="M4.5 30.99L9.54 34.23V27.75L4.5 30.99Z" fill="#479E5A"/>
 </svg>

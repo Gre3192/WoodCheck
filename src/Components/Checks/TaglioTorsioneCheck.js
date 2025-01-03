@@ -148,7 +148,6 @@ export default function TaglioTorsioneCheck({ showAll, sectionProp, sectionGeome
                     description={fvd_description}
                 />
             </div>
-            <hr />
         </div>
 
     const finalContent

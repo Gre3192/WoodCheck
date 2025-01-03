@@ -229,7 +229,6 @@ export default function PressoFlessioneCheck({ showAll, sectionProp, sectionGeom
                     description={f_mzd_description}
                 />
             </div>
-            <hr />
         </div>
 
     const finalContent =

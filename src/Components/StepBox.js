@@ -45,7 +45,9 @@ export default function StepBox({
 
     return (
         <>
-            <div className={`w-full ${isCheck ? 'flex flex-col gap-8' : 'flex justify-between items-center'}`}>
+            <div className={`w-full ${isCheck ? 'flex flex-col gap-8' : 'flex justify-between items-center'} ${!withInfo ? '' : 'hover:bg-slate-100 rounded-lg py-2 px-4 cursor-pointer transition-all duration-300'}`}
+                onClick={!withInfo ? ()=>{} : openDialog}
+            >
                 {values.map((item, index) => {
 
                     const itemValue = typeof item === 'object' && item !== null ? item.value : item;
@@ -62,7 +64,7 @@ export default function StepBox({
                             </Latex>
 
                             {withInfo ?
-                                <FaExclamationCircle onClick={openDialog} className='text-gray-400 focus:outline-none data-[hover]:bg-black/30 data-[focus]:outline-1 data-[focus]:outline-white cursor-pointer' />
+                                <FaExclamationCircle className='text-gray-400 focus:outline-none data-[hover]:bg-black/30 data-[focus]:outline-1 data-[focus]:outline-white cursor-pointer' />
                                 : null
                             }
                             {/* {

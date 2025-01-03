@@ -23,7 +23,10 @@ export default function WoodSpecialBeams(params) {
                 <NavigationPage route={route} />
             </div> */}
             <div className='flex flex-col items-center justify-center'>
-                <SpecialBeamsSvg />
+                <SpecialBeamsSvg type="centinata" />
+                {/* <SpecialBeamsSvg type="rastremata" />
+                <SpecialBeamsSvg type="doppio rastremata" /> */}
+                <SpecialBeamsSvg type="curva" />
             </div>
         </>
 

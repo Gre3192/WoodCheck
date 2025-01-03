@@ -413,8 +413,8 @@ export default function WoodProject() {
                     <div className="flex flex-col gap-5 border-2 p-5 rounded-md bg-white shadow-2xl">
 
                         <InputBox
-                            label={
-                                <div className='flex justify-between'>
+                            label={ 
+                                <div className='flex justify-between items-center'>
                                     <Latex>{`$N_{Ed}$`}</Latex>
                                     <img src={NedPositivo}></img>
                                 </div>
@@ -429,7 +429,7 @@ export default function WoodProject() {
                         />
                         <InputBox
                             label={
-                                <div className='flex justify-between'>
+                                <div className='flex justify-between items-center'>
                                     <Latex>{`$V_{Ed,z}$`}</Latex>
                                     <img src={VedzPositivo}></img>
                                 </div>
@@ -444,7 +444,7 @@ export default function WoodProject() {
                         />
                         <InputBox
                             label={
-                                <div className='flex justify-between'>
+                                <div className='flex justify-between items-center'>
                                     <Latex>{`$V_{Ed,y}$`}</Latex>
                                     <img src={VedyPositivo}></img>
                                 </div>
@@ -459,7 +459,7 @@ export default function WoodProject() {
                         />
                         <InputBox
                             label={
-                                <div className='flex justify-between'>
+                                <div className='flex justify-between items-center'>
                                     <Latex>{`$M_{Ed,z}$`}</Latex>
                                     <img src={MedzPositivo}></img>
                                 </div>
@@ -474,7 +474,7 @@ export default function WoodProject() {
                         />
                         <InputBox
                             label={
-                                <div className='flex justify-between'>
+                                <div className='flex justify-between items-center'>
                                     <Latex>{`$M_{Ed,y}$`}</Latex>
                                     <img src={MedyPositivo}></img>
                                 </div>
@@ -489,7 +489,7 @@ export default function WoodProject() {
                         />
                         <InputBox
                             label={
-                                <div className='flex justify-between'>
+                                <div className='flex justify-between items-center'>
                                     <Latex>{`$M_{Ed,tor}$`}</Latex>
                                     <img src={''}></img>
                                 </div>
@@ -504,7 +504,6 @@ export default function WoodProject() {
                         />
                     </div>
                 </div>
-
             </div>
         </>
     )

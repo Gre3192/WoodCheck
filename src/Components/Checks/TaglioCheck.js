@@ -97,7 +97,6 @@ export default function TaglioCheck({ showAll, sectionProp, sectionGeometryMass 
                     description={fvd_description}
                 />
             </div>
-            <hr />
         </div>
 
 

@@ -118,7 +118,6 @@ export default function TorsioneCheck({ showAll, sectionProp, sectionGeometryMas
                     description={fvd_description}
                 />
             </div>
-            <hr />
         </div>
 
     const finalContent

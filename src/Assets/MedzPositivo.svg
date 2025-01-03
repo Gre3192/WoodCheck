@@ -1,6 +1,7 @@
-<svg width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line y1="-0.113143" x2="9.95325" y2="-0.113143" transform="matrix(0.00408072 -0.999992 -0.999992 -0.00408072 11.64 23.84)" stroke="#4CB162" stroke-width="0.226286"/>
-<path d="M11.64 6.50858L15.6 13.8875H7.67999L11.64 6.50858Z" fill="#4CB162"/>
-<path d="M11.64 1.2211L15.6 8.59998H7.67999L11.64 1.2211Z" fill="#4CB162"/>
-<path d="M3.64996 18.0631V13.0006H4.50905V18.0631H3.64996ZM1.54825 15.9614V15.1023H6.61075V15.9614H1.54825Z" fill="black"/>
+<svg width="35" height="35" viewBox="0 0 62 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<path d="M12.375 12.375H49.625V49.625H12.375V12.375Z" fill="#D2B48C" stroke="black" stroke-width="0.25"/>
+<path d="M34.75 31.5357H31.5357V34.75H30.4643V31.5357H27.25V30.4643H30.4643V27.25H31.5357V30.4643H34.75V31.5357Z" fill="black"/>
+<path d="M31 0L34.1177 5.4H27.8823L31 0ZM31.54 4.86L31.54 24.25H30.46L30.46 4.86H31.54Z" fill="#479E5A"/>
+<path d="M30.99 4.5L34.23 9.54H27.75L30.99 4.5Z" fill="#479E5A"/>
 </svg>
