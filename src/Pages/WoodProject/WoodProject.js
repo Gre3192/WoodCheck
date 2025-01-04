@@ -9,7 +9,6 @@ import woodPropertiesObj from "../../Json/woodPropretiesObj"
 import Latex from "react-latex-next"
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react"
 import BeamSvgSwitcher from "../../Components/SvgComponent/BeamSvgSwitcher"
-import SectionSvg from '../../Components/SvgComponent/SectionSvg';
 import getGeometryMass from '../../Utils/getGeometryMass';
 import BernoulliDiagram from '../../Components/SvgComponent/BernoulliDiagramSvg';
 import NedPositivo from '../../Assets/NedPositivo.svg';
@@ -17,6 +16,9 @@ import MedzPositivo from '../../Assets/MedzPositivo.svg';
 import MedyPositivo from '../../Assets/MedyPositivo.svg';
 import VedzPositivo from '../../Assets/VedzPositivo.svg';
 import VedyPositivo from '../../Assets/VedyPositivo.svg';
+import ActionSectionDraw from '../../Components/ActionSectionDraw';
+
+
 
 export default function WoodProject() {
 
@@ -400,10 +402,12 @@ export default function WoodProject() {
                     </TabGroup>
                 </div>
 
-                <div className='flex flex-col justify-between w-full'>
-                    <SectionSvg />
-                    {/* <BernoulliDiagram /> */}
-                </div>
+                {/* <div className='flex justify-center w-full'> */}
+                    {/* <SectionSvg />
+                    <BernoulliDiagram /> */}
+                    <ActionSectionDraw shape={sectionProp?.geometry?.shape} forces={sectionProp?.actingLoad}/>
+                    
+                {/* </div> */}
 
                 {/* Sidebar Carichi agenti*/}
                 <div>

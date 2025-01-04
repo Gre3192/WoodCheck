@@ -1,6 +1,4 @@
 import get_gammaM from "../../Utils/get_gammaM";
-import { useRecoilValue } from 'recoil';
-import { forcesStateAtom } from "../../Atom/forcesStateAtom";
 import CheckCard from "../CheckCard";
 import StepBox from "../StepBox";
 import { get_sig_c0d } from "../../Utils/getTensioni";

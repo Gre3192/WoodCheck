@@ -1,6 +1,5 @@
 import { useRecoilValue } from 'recoil';
-import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
-import { forcesStateAtom } from '../Atom/forcesStateAtom';
+
 import { joinProprertiesAtom } from '../Atom/joinProprertiesAtom';
 
 

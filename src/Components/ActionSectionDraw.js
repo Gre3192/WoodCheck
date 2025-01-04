@@ -1,162 +1,76 @@
-import { useRecoilValue } from 'recoil';
-import { sectionGeometryAtom } from '../Atom/sectionGeometryAtom';
-import { forcesStateAtom } from '../Atom/forcesStateAtom';
+import Latex from "react-latex-next"
 
 
 
+export default function ActionSectionDraw({ shape, forces }) {
 
-export default function ActionSectionDraw() {
+    let { Ned, Ved_y, Ved_z, Med_y, Med_z, Med_tor } = forces
 
-    const sectionGeometry = useRecoilValue(sectionGeometryAtom)
-    const { Ned, Ved_y, Ved_z, Med_y, Med_z, Med_tor } = useRecoilValue(forcesStateAtom)
+    Ned = Ned.value
+    Ved_y = Ved_y.value
+    Med_y = Med_y.value
+    Ved_z = Ved_z.value
+    Med_z = Med_z.value
+    Med_tor = Med_tor.value
 
     return (
+        <div className="mt-20 w-full">
+            <svg viewBox="0 0 400 500" className="h-[350px]" width={'100%'} xmlns="http://www.w3.org/2000/svg">
 
-        <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+                <g transform={`translate(0, 0)`}>
 
-            <g transform={`translate(300, 50)`}>
+                    {/* Rettangolo  */}
+                    <path d="M107.5 49.5H256.5V248.5H107.5V49.5Z" fill="#D2B48C" stroke="black" />
 
-                {sectionGeometry?.shape?.toLowerCase() === 'circolare' ?
-                    <circle cx="100" cy="150" r="100" fill="#EAD9C8" stroke="black" strokeWidth="2" /> :
-                    <rect x="0" y="0" width="200" height="300" fill="#EAD9C8" stroke="black" strokeWidth="2" />
-                }
+                    {/* Sinistra  */}
+                    <g>
+                        {Med_y > 0 ? <path d="M58 149L79.6 161.471L79.6 136.529L58 149ZM77.44 151.16H155V146.84H77.44V151.16ZM74 148.96L94.16 161.92V136L74 148.96Z" fill="#479E5A" /> : null} {/* DoppiaFreccia */}
+                        {Ved_y > 0 ? <path d="M58 149L79.6 161.471V136.529L58 149ZM77.44 151.16H155V146.84H77.44V151.16Z" fill="#C10D10" /> : null} {/* Freccia */}
+                        {Med_y > 0 || Ved_y > 0 ?
+                            <text x="50" y="156" font-family="Verdana" font-size="16" fill="#7B1010" text-anchor="end">{`${Med_y > 0 ? Math.abs(Med_y) : Math.abs(Ved_y)}`}</text>
+                            : null
+                        }
+                    </g>
 
-                {/* Mtor Orario */}
-                {
-                    Med_tor < 0 ?
-                        <g transform={`translate(100, 150) rotate(45)`}>
-                            <path d="M -50 0 A 50 50 0 0 1 50 0" fill="none" stroke="black" strokeWidth="2" />
-                            <g transform="translate(0, 10) rotate(90,50,0)">
-                                <polygon points="50,0 40,-5 40,5" fill="black" />
-                            </g>
-                        </g>
-                        : null
-                }
-                {/* Mtor Antiorario */}
-                {
-                    Med_tor > 0 ?
-                        <g transform={`translate(100, 150) rotate(45)`}>
-                            <path d="M -50 0 A 50 50 0 0 1 50 0" fill="none" stroke="black" strokeWidth="2" />
-                            <g transform="translate(-100, 10) rotate(90,50,0)">
-                                <polygon points="50,0 40,-5 40,5" fill="black" />
-                            </g>
-                        </g>
-                        : null
-                }
-                {/* Vy */}
-                {
-                    Ved_y > 0 ?
-                        <g transform={`translate(100, ${Med_y > 0 ? '160' : '150'}) rotate(0)`} >
-                            <line x1="0" y1="0" x2="130" y2="0" stroke="red" strokeWidth="2" />
-                            <polygon points="140,0 130,-5 130,5" fill="red" />
-                        </g>
-                        : null
-                }
-                {/* Vz */}
-                {
-                    Ved_z > 0 ?
-                        <g transform={`translate(${Med_z > 0 ? '90' : '100'}, 150) rotate(270)`} >
-                            <line x1="0" y1="0" x2="130" y2="0" stroke="red" strokeWidth="2" />
-                            <polygon points="140,0 130,-5 130,5" fill="red" />
-                            <text x="60" y="-12" fill="red" fontSize="14" fontWeight="bold">
-                                {Ved_z} kN
-                            </text>
-                        </g>
-                        : null
-                }
-                {/* -Vy */}
-                {
-                    Ved_y < 0 ?
-                        <g transform={`translate(100, ${Med_y < 0 ? '160' : '150'}) rotate(180)`} >
-                            <line x1="0" y1="0" x2="130" y2="0" stroke="red" strokeWidth="2" />
-                            <polygon points="140,0 130,-5 130,5" fill="red" />
-                        </g>
-                        : null
-                }
-                {/* -Vz */}
-                {
-                    Ved_z < 0 ?
-                        <g transform={`translate(${Med_z < 0 ? '90' : '100'}, 150) rotate(90)`} >
-                            <line x1="0" y1="0" x2="130" y2="0" stroke="red" strokeWidth="2" />
-                            <polygon points="140,0 130,-5 130,5" fill="red" />
-                            <text x="65" y="15" fill="red" fontSize="14" fontWeight="bold">
-                                {Ved_z} kN
-                            </text>
-                        </g>
-                        : null
-                }
-                {/* My */}
-                {
-                    Med_y > 0 ?
-                        <g transform={`translate(100, ${Ved_y > 0 ? '140' : '150'}) rotate(0)`} >
-                            <line x1="0" y1="0" x2="130" y2="0" stroke="green" strokeWidth="2" />
-                            <polygon points="140,0 130,-5 130,5" fill="green" />
-                            <polygon points="148,0 138,-5 138,5" fill="green" />
-                            <text x="120" y="-10" fill="green" fontSize="14" fontWeight="bold">
-                                {Med_y}{' kN\u00B7m'}
-                            </text>
-                        </g>
-                        : null
-                }
-                {/* Mz */}
-                {
-                    Med_z > 0 ? (
-                        <g transform={`translate(${Ved_z > 0 ? '110' : '100'}, 150) rotate(270)`}>
-                            <line x1="0" y1="0" x2="130" y2="0" stroke="green" strokeWidth="2" />
-                            <polygon points="140,0 130,-5 130,5" fill="green" />
-                            <polygon points="148,0 138,-5 138,5" fill="green" />
-                            <text x="60" y="20" fill="green" fontSize="14" fontWeight="bold">
-                                {Med_z}{' kN\u00B7m'}
-                            </text>
-                        </g>
-                    ) : null
-                }
-                {/* -My */}
-                {
-                    Med_y < 0 ?
-                        <g transform={`translate(100, ${Ved_y < 0 ? '140' : '150'}) rotate(180)`}>
-                            <line x1="0" y1="0" x2="130" y2="0" stroke="green" strokeWidth="2" />
-                            <polygon points="140,0 130,-5 130,5" fill="green" />
-                            <polygon points="148,0 138,-5 138,5" fill="green" />
+                    {/* Destra  */}
+                    <g>
+                        {Med_y < 0 ? <path d="M305 149L283.4 161.471L283.4 136.529L305 149ZM285.56 151.16H208V146.84H285.56V151.16ZM287.56 148.96L267.4 161.92V136L287.56 148.96Z" fill="#479E5A" /> : null} {/* DoppiaFreccia */}
+                        {Ved_y < 0 ? <path d="M305 149L283.4 161.471L283.4 136.529L305 149ZM285.56 151.16H208V146.84H285.56V151.16Z" fill="#C10D10" /> : null}{/* Freccia */}
+                        {Med_y < 0 || Ved_y < 0 ?
+                            <text x="310" y="154" font-family="Verdana" font-size="16" fill="#7B1010" text-anchor="start">{`${Med_y > 0 ? Math.abs(Med_y) : Math.abs(Ved_y)}`}</text>
+                            : null
+                        }
+                    </g>
 
-                            <text x="60" y="20"fill="green"fontSize="14"fontWeight="bold"transform="rotate(-180, 60, 20)">
-                                {Med_y}{' kN\u00B7m'}
-                            </text>
-                        </g>
-                        : null
-                }
-                {/* -Mz */}
-                {
-                    Med_z < 0 ?
-                        <g transform={`translate(${Ved_z < 0 ? '110' : '100'}, 150) rotate(90)`} >
-                            <line x1="0" y1="0" x2="130" y2="0" stroke="green" strokeWidth="2" />
-                            <polygon points="140,0 130,-5 130,5" fill="green" />
-                            <polygon points="148,0 138,-5 138,5" fill="green" />
-                        </g>
-                        : null
-                }
-            </g>
+                    {/* Giu  */}
+                    <g>
+                        {Med_z < 0 ? <path d="M182 297L169.529 275.4H194.471L182 297ZM179.84 277.56V200H184.16V277.56H179.84ZM181.96 279L169.99 258.84H194.92L181.96 279Z" fill="#479E5A" /> : null} {/* DoppiaFreccia */}
+                        {Ved_z < 0 ? <path d="M182 297L169.529 275.4H194.471L182 297ZM179.84 277.56V200H184.16V277.56H179.84Z" fill="#C10D10" /> : null} {/* Freccia */}
+                        {Med_z < 0 || Ved_z < 0 ?
+                            <text x="200" y="270" font-family="Verdana" font-size="16" fill="#7B1010">{`${Med_z < 0 ? Math.abs(Med_z) : Math.abs(Ved_z)}`}</text>
+                            : null
+                        }
+                    </g>
 
-            <g transform={`translate(-30, 225) scale(0.5)`}>
-                {/* Asse Y (orizzontale) */}
-                <line x1="150" y1="150" x2="250" y2="150" stroke="black" strokeWidth="2" />
-                <polygon points="250,150 240,145 240,155" fill="black" />
-                <text x="255" y="155" fontFamily="Arial" fontSize="25" fill="black">Y</text>
-                {/* Asse Z (verticale) */}
-                <line x1="150" y1="150" x2="150" y2="50" stroke="black" strokeWidth="2" />
-                <polygon points="150,50 145,60 155,60" fill="black" />
-                <text x="155" y="45" fontFamily="Arial" fontSize="25" fill="black">Z</text>
-                {/* Asse X (diagonale) */}
-                <g transform={`translate(0, 0) rotate(210,150,150)`}>
-                    <line x1="150" y1="150" x2="150" y2="50" stroke="black" strokeWidth="2" />
-                    <polygon points="150,50 145,60 155,60" fill="black" />
-                </g>
-                <text x="80" y="260" fontFamily="Arial" fontSize="25" fill="black">X</text>
-                {/* Punto di origine */}
-                <circle cx="150" cy="150" r="3" fill="black" />
-            </g>
+                    {/* Su  */}
+                    <g>
+                        {Med_z > 0 ? <path d="M182 0L194.471 21.6H169.529L182 0ZM184.16 19.44L184.16 97H179.84L179.84 19.44H184.16ZM181.96 18L194.92 38.16H167L181.96 18Z" fill="#479E5A" /> : null} {/* DoppiaFreccia */}
+                        {Ved_z > 0 ? <path d="M182 0L194.471 21.6H169.529L182 0ZM184.16 19.44V97H179.84V19.44H184.16Z" fill="#C10D10" /> : null} {/* Freccia */}
+                        {Med_z > 0 || Ved_z > 0 ?
+                            <text x="200" y="40" font-family="Verdana" font-size="16" fill="#7B1010">{`${Med_z > 0 ? Math.abs(Med_z) : Math.abs(Ved_z)}`}</text>
+                            : null
+                        }
+                    </g>
 
+                    {/* Centro */}
+                    <g>
+                        {Ned > 0 ? <circle cx="182" cy="148" r="12.84" stroke="#0772FC" fill="#D2B48C" stroke-width="4.32" /> : null} {/* Cerchio */}
+                        {Ned < 0 ? <path d="M194.335 139.122L185.244 148.213L194.335 157.305L191.305 160.335L182.213 151.244L173.122 160.335L170.091 157.305L179.183 148.213L170.091 139.122L173.122 136.091L182.213 145.183L191.305 136.091L194.335 139.122Z" fill="#0772FC" /> : null} {/* Croce */}
+                        {Ned ? <text x="182" y="127" font-family="Verdana" font-size="16" fill="#004DB2" text-anchor="middle">{`${Math.abs(Ned)}`}</text> : null}
+                    </g>
 
-        </svg >
+                </g >
+            </svg>
+        </div>
     )
 }

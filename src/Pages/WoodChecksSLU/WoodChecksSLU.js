@@ -20,18 +20,10 @@ import InstabilitaCompressioneCheck from "../../Components/Checks/InstabilitaCom
 import InstabilitaLateroTorsionaleCheck from "../../Components/Checks/InstabilitaLateroTorsionaleCheck"
 import InstabilitaPressoFlessioneCheck from "../../Components/Checks/InstabilitaPressoFlessioneCheck"
 
-import ActionSectionDraw from "../../Components/ActionSectionDraw"
-import WoodClass from '../../Components/WoodClass';
-import ServiceClassSelector from "../../Components/ServiceClassSelector"
-import DurationClassSelector from '../../Components/DurationClassSelector';
-import NavigationPage from '../../Components/NavigationPage';
-
-import VisibilityButton from '../../Components/ElementUI/Button/VisibilityButton';
 import { useRecoilState } from 'recoil';
 import { sectionPropAtom } from '../../Atom/sectionPropAtom';
 import SectionSvg from '../../Components/SvgComponent/SectionSvg';
 import { sectionGeometryMassAtom } from '../../Atom/sectionGeometryMassAtom';
-import { useLocation } from 'react-router-dom';
 
 
 
