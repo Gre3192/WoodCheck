@@ -25,20 +25,28 @@ export default function ActionSectionDraw({ shape, forces }) {
 
                     {/* Sinistra  */}
                     <g>
-                        {Med_y > 0 ? <path d="M58 149L79.6 161.471L79.6 136.529L58 149ZM77.44 151.16H155V146.84H77.44V151.16ZM74 148.96L94.16 161.92V136L74 148.96Z" fill="#479E5A" /> : null} {/* DoppiaFreccia */}
-                        {Ved_y > 0 ? <path d="M58 149L79.6 161.471V136.529L58 149ZM77.44 151.16H155V146.84H77.44V151.16Z" fill="#C10D10" /> : null} {/* Freccia */}
-                        {Med_y > 0 || Ved_y > 0 ?
-                            <text x="50" y="156" font-family="Verdana" font-size="16" fill="#7B1010" text-anchor="end">{`${Med_y > 0 ? Math.abs(Med_y) : Math.abs(Ved_y)}`}</text>
+                        {Med_y > 0 && Ved_y > 0 ?
+                            <g transform={`translate(60, 0)`}>
+                                <path d="M0 162L21.6 174.471L21.6 149.529L0 162ZM19.44 164.16H97V159.84H19.44V164.16ZM18 161.96L38.16 174.92V149L18 161.96Z" fill="#479E5A" />
+                                <text x="-10" y="168" font-family="Verdana" font-size="16" fill="#479E5A" text-anchor="end">{`${'23424'}`}</text>
+
+                                <path d="M0 136L21.6 148.471L21.6 123.529L0 136ZM19.44 138.16H97V133.84H19.44V138.16Z" fill="#C10D10" />
+                                <text x="-10" y="140" font-family="Verdana" font-size="16" fill="#C10D10" text-anchor="end">{`${'23423432'}`}</text>
+                            </g>
                             : null
                         }
-                        <g transform={`translate(60, 0)`}>
-                            <path d="M0 162L21.6 174.471L21.6 149.529L0 162ZM19.44 164.16H97V159.84H19.44V164.16ZM18 161.96L38.16 174.92V149L18 161.96Z" fill="#479E5A" />
-                            <text x="-10" y="168" font-family="Verdana" font-size="16" fill="#479E5A" text-anchor="end">{`${'23424'}`}</text>
-
-                            <path d="M0 136L21.6 148.471L21.6 123.529L0 136ZM19.44 138.16H97V133.84H19.44V138.16Z" fill="#C10D10" />
-                            <text x="-10" y="140" font-family="Verdana" font-size="16" fill="#C10D10" text-anchor="end">{`${'23423432'}`}</text>
-
-                        </g>
+                        {Med_y > 0 && Ved_y == 0 ?
+                            <g>
+                                <path d="M58 149L79.6 161.471L79.6 136.529L58 149ZM77.44 151.16H155V146.84H77.44V151.16ZM74 148.96L94.16 161.92V136L74 148.96Z" fill="#479E5A" />
+                                <text x="50" y="156" font-family="Verdana" font-size="16" fill="#479E5A" text-anchor="end">{`${Math.abs(Med_y)}`}</text>
+                            </g> : null
+                        }
+                        {Med_y == 0 && Ved_y > 0 ?
+                            <g>
+                                <path d="M58 149L79.6 161.471V136.529L58 149ZM77.44 151.16H155V146.84H77.44V151.16Z" fill="#C10D10" />
+                                <text x="50" y="156" font-family="Verdana" font-size="16" fill="#7B1010" text-anchor="end">{`${Math.abs(Ved_y)}`}</text>
+                            </g> : null
+                        }
                     </g>
 
 
