@@ -1,4 +1,3 @@
-import Latex from "react-latex-next"
 
 
 
@@ -22,6 +21,8 @@ export default function ActionSectionDraw({ shape, forces }) {
                     {/* Rettangolo  */}
                     <path d="M107.5 49.5H256.5V248.5H107.5V49.5Z" fill="#D2B48C" stroke="black" />
 
+
+
                     {/* Sinistra  */}
                     <g>
                         {Med_y > 0 ? <path d="M58 149L79.6 161.471L79.6 136.529L58 149ZM77.44 151.16H155V146.84H77.44V151.16ZM74 148.96L94.16 161.92V136L74 148.96Z" fill="#479E5A" /> : null} {/* DoppiaFreccia */}
@@ -30,7 +31,17 @@ export default function ActionSectionDraw({ shape, forces }) {
                             <text x="50" y="156" font-family="Verdana" font-size="16" fill="#7B1010" text-anchor="end">{`${Med_y > 0 ? Math.abs(Med_y) : Math.abs(Ved_y)}`}</text>
                             : null
                         }
+                        <g transform={`translate(60, 0)`}>
+                            <path d="M0 162L21.6 174.471L21.6 149.529L0 162ZM19.44 164.16H97V159.84H19.44V164.16ZM18 161.96L38.16 174.92V149L18 161.96Z" fill="#479E5A" />
+                            <text x="-10" y="168" font-family="Verdana" font-size="16" fill="#479E5A" text-anchor="end">{`${'23424'}`}</text>
+
+                            <path d="M0 136L21.6 148.471L21.6 123.529L0 136ZM19.44 138.16H97V133.84H19.44V138.16Z" fill="#C10D10" />
+                            <text x="-10" y="140" font-family="Verdana" font-size="16" fill="#C10D10" text-anchor="end">{`${'23423432'}`}</text>
+
+                        </g>
                     </g>
+
+
 
                     {/* Destra  */}
                     <g>
@@ -40,7 +51,16 @@ export default function ActionSectionDraw({ shape, forces }) {
                             <text x="310" y="154" font-family="Verdana" font-size="16" fill="#7B1010" text-anchor="start">{`${Med_y > 0 ? Math.abs(Med_y) : Math.abs(Ved_y)}`}</text>
                             : null
                         }
+                        <g transform={`translate(60, 0)`}>
+                            <path d="M246 136L224.4 148.471V123.529L246 136ZM226.56 138.16H149V133.84H226.56V138.16ZM228 135.96L207.84 148.92V123L228 135.96Z" fill="#479E5A" />
+                            <text x="255" y="140" font-family="Verdana" font-size="16" fill="#479E5A">{`${'453453245'}`}</text>
+
+                            <path d="M247 162L225.4 174.471V149.529L247 162ZM227.56 164.16H150V159.84H227.56V164.16Z" fill="#C10D10" />
+                            <text x="255" y="168" font-family="Verdana" font-size="16" fill="#C10D10">{`${'453453245'}`}</text>
+                        </g>
                     </g>
+
+
 
                     {/* Giu  */}
                     <g>
@@ -50,7 +70,17 @@ export default function ActionSectionDraw({ shape, forces }) {
                             <text x="200" y="270" font-family="Verdana" font-size="16" fill="#7B1010">{`${Med_z < 0 ? Math.abs(Med_z) : Math.abs(Ved_z)}`}</text>
                             : null
                         }
+                        <g transform={`translate(60, 0)`}>
+                            <path d="M136 0L148.471 21.6H123.529L136 0ZM138.16 19.44V97H133.84V19.44H138.16ZM135.96 18L148.92 38.16H123L135.96 18Z" fill="#479E5A" />
+                            <text x="85" y="270" font-family="Verdana" font-size="16" fill="#479E5A" text-anchor="end">{`${'453453245'}`}</text>
+
+                            <path d="M110 0L122.471 21.6H97.5292L110 0ZM112.16 19.44L112.16 97H107.84L107.84 19.44H112.16Z" fill="#C10D10" />
+                            <text x="150" y="270" font-family="Verdana" font-size="16" fill="#7B1010">{`${'345345437'}`}</text>
+
+                        </g>
                     </g>
+
+
 
                     {/* Su  */}
                     <g>
@@ -60,7 +90,16 @@ export default function ActionSectionDraw({ shape, forces }) {
                             <text x="200" y="40" font-family="Verdana" font-size="16" fill="#7B1010">{`${Med_z > 0 ? Math.abs(Med_z) : Math.abs(Ved_z)}`}</text>
                             : null
                         }
+                        <g transform={`translate(60, 0)`}>
+                            <path d="M110.92 297L98.4493 275.4H123.391L110.92 297ZM108.76 277.56V200H113.08V277.56H108.76ZM110.96 279L98 258.84H123.92L110.96 279Z" fill="#479E5A" />
+                            <text x="160" y="40" font-family="Verdana" font-size="16" fill="#479E5A">{`${'345345437'}`}</text>
+
+                            <path d="M137 297L124.529 275.4H149.471L137 297ZM134.84 277.56V200H139.16V277.56H134.84Z" fill="#C10D10" />
+                            <text x="95" y="40" font-family="Verdana" font-size="16" fill="#7B1010" text-anchor="end">{`${'453453245'}`}</text>
+
+                        </g>
                     </g>
+
 
                     {/* Centro */}
                     <g>
@@ -68,6 +107,7 @@ export default function ActionSectionDraw({ shape, forces }) {
                         {Ned < 0 ? <path d="M194.335 139.122L185.244 148.213L194.335 157.305L191.305 160.335L182.213 151.244L173.122 160.335L170.091 157.305L179.183 148.213L170.091 139.122L173.122 136.091L182.213 145.183L191.305 136.091L194.335 139.122Z" fill="#0772FC" /> : null} {/* Croce */}
                         {Ned ? <text x="182" y="127" font-family="Verdana" font-size="16" fill="#004DB2" text-anchor="middle">{`${Math.abs(Ned)}`}</text> : null}
                     </g>
+
 
                 </g >
             </svg>
