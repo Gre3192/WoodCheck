@@ -22,7 +22,6 @@ export default function ActionSectionDraw({ shape, forces }) {
                     {/* <path d="M107.5 49.5H256.5V248.5H107.5V49.5Z" fill="#D2B48C" stroke="black" /> */}
                     <rect x="107.5" y="49.5" width="149" height="199" fill="#D2B48C" stroke="black" />
 
-                    
                     {/* Sinistra  */}
                     <g>
                         {Med_y > 0 && Ved_y > 0 ?
@@ -125,12 +124,23 @@ export default function ActionSectionDraw({ shape, forces }) {
 
                     {/* Centro */}
                     <g>
-                        {Ned > 0 ? <circle cx="182" cy="148" r="12.84" stroke="#0772FC" fill="#D2B48C" stroke-width="4.32" /> : null} {/* Cerchio */}
-                        {Ned < 0 ? <path d="M194.335 139.122L185.244 148.213L194.335 157.305L191.305 160.335L182.213 151.244L173.122 160.335L170.091 157.305L179.183 148.213L170.091 139.122L173.122 136.091L182.213 145.183L191.305 136.091L194.335 139.122Z" fill="#0772FC" /> : null} {/* Croce */}
-                        {Ned ? <text x="182" y="127" font-family="Verdana" font-size="16" fill="#004DB2" text-anchor="middle">{`${Math.abs(Ned)}`}</text> : null}
+                        {Ned < 0 ?
+                            <g>
+                                <circle cx="182" cy="148" r="12.84" stroke="#0772FC" fill="#D2B48C" stroke-width="4.32" />
+                                <text x="182" y="127" font-family="Verdana" font-size="16" fill="#004DB2" text-anchor="middle">{`${Math.abs(Ned)}`}</text>
+                            </g>
+                            : null
+                        }
+                        {Ned > 0 ?
+                            <g>
+                                <path d="M194.335 139.122L185.244 148.213L194.335 157.305L191.305 160.335L182.213 151.244L173.122 160.335L170.091 157.305L179.183 148.213L170.091 139.122L173.122 136.091L182.213 145.183L191.305 136.091L194.335 139.122Z" fill="#0772FC" />
+                                <text x="182" y="127" font-family="Verdana" font-size="16" fill="#004DB2" text-anchor="middle">{`${Math.abs(Ned)}`}</text>
+                            </g>
+                            : null
+                        }
                     </g>
-                    
-                </g >
+
+                </g>
             </svg>
         </div>
     )
