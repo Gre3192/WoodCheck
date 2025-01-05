@@ -16,6 +16,7 @@ import MedzPositivo from '../../Assets/MedzPositivo.svg';
 import MedyPositivo from '../../Assets/MedyPositivo.svg';
 import VedzPositivo from '../../Assets/VedzPositivo.svg';
 import VedyPositivo from '../../Assets/VedyPositivo.svg';
+import MedtorPositivo from '../../Assets/MedtorPositivo.svg';
 import ActionSectionDraw from '../../Components/SvgComponent/ActionSectionDraw';
 
 
@@ -495,7 +496,7 @@ export default function WoodProject() {
                             label={
                                 <div className='flex justify-between items-center'>
                                     <Latex>{`$M_{Ed,tor}$`}</Latex>
-                                    <img src={''}></img>
+                                    <img src={MedtorPositivo}></img>
                                 </div>
                             }
                             type={"number"}
