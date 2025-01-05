@@ -1,4 +1,3 @@
-import NavigationPage from "../../Components/NavigationPage"
 import SpecialBeamsSvg from "../../Components/SvgComponent/SpecialBeamsSvg"
 
 

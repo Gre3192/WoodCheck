@@ -19,9 +19,10 @@ export default function ActionSectionDraw({ shape, forces }) {
                 <g transform={`translate(0, 0)`}>
 
                     {/* Rettangolo  */}
-                    <path d="M107.5 49.5H256.5V248.5H107.5V49.5Z" fill="#D2B48C" stroke="black" />
+                    {/* <path d="M107.5 49.5H256.5V248.5H107.5V49.5Z" fill="#D2B48C" stroke="black" /> */}
+                    <rect x="107.5" y="49.5" width="149" height="199" fill="#D2B48C" stroke="black" />
 
-
+                    
                     {/* Sinistra  */}
                     <g>
                         {Med_y > 0 && Ved_y > 0 ?

@@ -1,4 +1,3 @@
-import NavigationPage from "../../Components/NavigationPage"
 
 
 
@@ -19,7 +18,7 @@ export default function NotchBearing(params) {
 
         <div>
             <div className='shadow-lg sticky'>
-                <NavigationPage route={route} />
+                {/* <NavigationPage route={route} /> */}
             </div>
             Intaglio all'appoggio
         </div>

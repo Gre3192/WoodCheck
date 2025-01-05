@@ -16,7 +16,7 @@ import MedzPositivo from '../../Assets/MedzPositivo.svg';
 import MedyPositivo from '../../Assets/MedyPositivo.svg';
 import VedzPositivo from '../../Assets/VedzPositivo.svg';
 import VedyPositivo from '../../Assets/VedyPositivo.svg';
-import ActionSectionDraw from '../../Components/ActionSectionDraw';
+import ActionSectionDraw from '../../Components/SvgComponent/ActionSectionDraw';
 
 
 

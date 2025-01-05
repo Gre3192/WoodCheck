@@ -1,6 +1,5 @@
 import SharePlaneSelector from "../../Components/SharePlaneSelector";
 import JoinTypeSelector from "../../Components/ConnectorTypeSelector";
-import NavigationPage from "../../Components/NavigationPage"
 import ConnecionSharePlaneDraw from "../../Components/ConnecionSharePlaneDraw";
 import get_Johansen from "../../Utils/get_Johansen";
 import Latex from "react-latex-next";
@@ -32,7 +31,7 @@ export default function WoodJoin(params) {
 
         <div>
 
-            <NavigationPage route={route} />
+            {/* <NavigationPage route={route} /> */}
 
 
 
