@@ -210,15 +210,6 @@ export default function WoodProject() {
         },
     ];
 
-    const route = {
-
-        prevLink: '/loadCombination',
-        prevTitle: 'Combinazioni di carico',
-        currentTitle: 'Progetto',
-        nextLink: '/checksslu',
-        nextTitle: 'Verifiche SLU'
-    }
-
     useEffect(() => {
         setSectionGeometryMass(getGeometryMass(
             sectionProp.geometry.shape,
@@ -236,10 +227,6 @@ export default function WoodProject() {
     return (
 
         <>
-            {/* <div className='shadow-lg sticky'>
-                <NavigationPage route={route} />
-            </div> */}
-
             <div className="flex justify-between">
 
                 {/* Sidebar Pannelli */}
@@ -407,7 +394,6 @@ export default function WoodProject() {
                     {/* <SectionSvg />
                     <BernoulliDiagram /> */}
                     <ActionSectionDraw shape={sectionProp?.geometry?.shape} forces={sectionProp?.actingLoad}/>
-                    
                 {/* </div> */}
 
                 {/* Sidebar Carichi agenti*/}

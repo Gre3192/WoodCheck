@@ -50,6 +50,7 @@ export const sectionPropAtom = atom({
     },
     actingLoad: {
       Ned: {
+        alpha: 0,
         value: null,
         uom: "kN"
       },
