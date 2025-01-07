@@ -127,26 +127,45 @@ export default function ActionSectionDraw({ shape, forces }) {
                         {Ned < 0 ?
                             <g>
                                 <circle cx="182" cy="148" r="12.84" stroke="#0772FC" fill="#D2B48C" stroke-width="4.32" />
-                                <text x="182" y="127" font-family="Verdana" font-size="16" fill="#004DB2" text-anchor="middle">{`${Math.abs(Ned)}`}</text>
+                                <text x="182" y="190" font-family="Verdana" font-size="16" fill="#004DB2" text-anchor="middle">{`${Math.abs(Ned)}`}</text>
                             </g>
                             : null
                         }
                         {Ned > 0 ?
                             <g>
                                 <path d="M194.335 139.122L185.244 148.213L194.335 157.305L191.305 160.335L182.213 151.244L173.122 160.335L170.091 157.305L179.183 148.213L170.091 139.122L173.122 136.091L182.213 145.183L191.305 136.091L194.335 139.122Z" fill="#0772FC" />
-                                <text x="182" y="127" font-family="Verdana" font-size="16" fill="#004DB2" text-anchor="middle">{`${Math.abs(Ned)}`}</text>
+                                <text x="182" y="190" font-family="Verdana" font-size="16" fill="#004DB2" text-anchor="middle">{`${Math.abs(Ned)}`}</text>
                             </g>
                             : null
                         }
                     </g>
 
-                    <g transform={`translate(240, 100) rotate(90)`}>
-                        <svg width="96" height="109" viewBox="0 0 96 109" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M46.6434 106.247C52.7687 106.247 58.8341 105.04 64.4931 102.696C70.1521 100.352 75.2941 96.9165 79.6253 92.5853C83.9566 88.254 87.3923 83.1121 89.7363 77.4531C92.0804 71.794 93.2869 65.7287 93.2869 59.6034C93.2869 53.4781 92.0804 47.4128 89.7363 41.7537C87.3923 36.0947 83.9566 30.9527 79.6253 26.6215C75.2941 22.2903 70.1521 18.8545 64.4931 16.5105C58.8341 14.1664 52.7687 12.96 46.6434 12.96" stroke="black" stroke-width="4.32" />
-                            <path d="M30.6562 12.96L53.5462 4.35066e-05V25.92L30.6562 12.96Z" fill="black" />
-                        </svg>
-                    </g>
+                    {
+                        Med_tor > 0 ?
+                            <g>
+                                <g transform={`translate(200, 220) rotate(120) scale(-1, 1)`}>
+                                    <svg width="96" height="106" viewBox="0 0 96 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M46.6434 94.2468C55.2455 94.2468 63.6801 91.868 71.0146 87.3735C78.349 82.8789 84.2978 76.4436 88.203 68.7791C92.1083 61.1145 93.818 52.5194 93.1431 43.9438C92.4682 35.3682 89.4349 27.1463 84.3788 20.1871" stroke="black" stroke-width="4.32" />
+                                        <path d="M24 92.96L46.89 80V105.92L24 92.96Z" fill="black" />
+                                    </svg>
 
+                                </g>
+                                <text x="220" y="110" font-family="Verdana" font-size="16" fill="#000000" text-anchor="start">{`${Math.abs(Med_tor)}`}</text>
+                            </g> : null
+                    }
+                    {
+                        Med_tor < 0 ?
+                            <g>
+                                <g transform={`translate(165, 220) rotate(240) scale(1, 1)`}>
+                                    <svg width="96" height="106" viewBox="0 0 96 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M46.6434 94.2468C55.2455 94.2468 63.6801 91.868 71.0146 87.3735C78.349 82.8789 84.2978 76.4436 88.203 68.7791C92.1083 61.1145 93.818 52.5194 93.1431 43.9438C92.4682 35.3682 89.4349 27.1463 84.3788 20.1871" stroke="black" stroke-width="4.32" />
+                                        <path d="M24 92.96L46.89 80V105.92L24 92.96Z" fill="black" />
+                                    </svg>
+
+                                </g>
+                                <text x="220" y="110" font-family="Verdana" font-size="16" fill="#000000" text-anchor="start">{`${Math.abs(Med_tor)}`}</text>
+                            </g> : null
+                    }
                 </g>
             </svg>
         </div>
