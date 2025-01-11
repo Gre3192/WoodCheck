@@ -16,6 +16,9 @@ export default function Compressione0Check({ showAll, sectionProp, sectionGeomet
     const [isFormulaSelected, setIsFormulaSelected] = useState(false);
     const [isFormulaValSelected, setIsFormulaValSelected] = useState(false);
 
+    
+    
+
     const Ned = sectionProp.actingLoad.Ned.value > 0 ? sectionProp.actingLoad.Ned.value * setUom(sectionProp?.actingLoad?.Ned?.uom) : 0
     const isDisabled = Ned <= 0 ? true : false
 

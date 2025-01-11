@@ -224,6 +224,7 @@ export default function WoodProject() {
         sectionProp.geometry?.r
     ]);
 
+
     return (
 
         <>
@@ -460,7 +461,7 @@ export default function WoodProject() {
                             onInputChange={handleActingLoad}
                             onSelectChange={handleActingLoadUom}
                             displayValue={sectionProp.actingLoad.Med_z.value}
-                            selectList={['kNm', 'kNcm', 'kNmm', 'Nm', 'Ncm', 'Nmm']}
+                            selectList={['kN\u00B7m', 'kN\u00B7cm', 'kN\u00B7mm', 'N\u00B7m', 'N\u00B7cm', 'N\u00B7mm']}
                             displayValueSelector={sectionProp.actingLoad.Med_z.uom}
                         />
                         <InputBox
@@ -475,7 +476,7 @@ export default function WoodProject() {
                             onInputChange={handleActingLoad}
                             onSelectChange={handleActingLoadUom}
                             displayValue={sectionProp.actingLoad.Med_y.value}
-                            selectList={['kNm', 'kNcm', 'kNmm', 'Nm', 'Ncm', 'Nmm']}
+                            selectList={['kN\u00B7m', 'kN\u00B7cm', 'kN\u00B7mm', 'N\u00B7m', 'N\u00B7cm', 'N\u00B7mm']}
                             displayValueSelector={sectionProp.actingLoad.Med_y.uom}
                         />
                         <InputBox
@@ -490,7 +491,7 @@ export default function WoodProject() {
                             onInputChange={handleActingLoad}
                             onSelectChange={handleActingLoadUom}
                             displayValue={sectionProp.actingLoad.Med_tor.value}
-                            selectList={['kNm', 'kNcm', 'kNmm', 'Nm', 'Ncm', 'Nmm']}
+                            selectList={['kN\u00B7m', 'kN\u00B7cm', 'kN\u00B7mm', 'N\u00B7m', 'N\u00B7cm', 'N\u00B7mm']}
                             displayValueSelector={sectionProp.actingLoad.Med_tor.uom}
                         />
                     </div>

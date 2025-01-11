@@ -37,19 +37,9 @@ export default function WoodChecksSLU(params) {
         setShowAll(!showAll)
     }
 
-    // const route = {
-
-    //     prevLink: '/project',
-    //     prevTitle: 'Progetto',
-    //     currentTitle: 'Verifiche SLU',
-    //     nextLink: '/checkssle',
-    //     nextTitle: 'Verifiche SLE'
-    // }
 
     return (
         <>
-
-            {/* <NavigationPage route={route} /> */}
 
             {/* <VisibilityButton isOpen={showAll} onClick={handleOpen} /> */}
 

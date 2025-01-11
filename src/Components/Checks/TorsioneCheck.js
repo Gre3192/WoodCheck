@@ -21,12 +21,16 @@ export default function TorsioneCheck({ showAll, sectionProp, sectionGeometryMas
 
     const fvk = sectionProp.mechanics?.fvk
     const Ig_tor = sectionGeometryMass?.value.Ig_tor
-    const b = sectionProp?.geometry.b?.value?.value * setUom(sectionProp?.geometry.b?.value?.uom)
+    const b = sectionProp?.geometry.b?.value * setUom(sectionProp?.geometry.b?.value?.uom)
     const h = sectionProp?.geometry.h?.value * setUom(sectionProp?.geometry.h?.value?.uom)
     const shape = sectionProp?.geometry?.shape
     const woodType = sectionProp.mechanics?.woodType
     const serviceClass = sectionProp?.serviceClass
     const durationClass = sectionProp?.durationClass
+
+    console.log('b',b);
+    console.log('sectionProp',sectionProp);
+    
 
     const kmod = get_kmod(woodType, serviceClass, durationClass)
     const gm = get_gammaM(woodType)

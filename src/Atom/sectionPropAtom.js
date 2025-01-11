@@ -64,15 +64,15 @@ export const sectionPropAtom = atom({
       },
       Med_y: {
         value: null,
-        uom: "kN"
+        uom: "kN\u00B7m"
       },
       Med_z: {
         value: null,
-        uom: "kN"
+        uom: "kN\u00B7m"
       },
       Med_tor: {
         value: null,
-        uom: "kN"
+        uom: "kN\u00B7m"
       }
     },
   },
