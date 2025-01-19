@@ -12,6 +12,8 @@ import MadePDF from './Pages/MadePDF/MadePDF';
 import NotchBearing from './Pages/NotchBearing/NotchBearing';
 import TestPage from './Pages/TestPage/TestPage';
 import Layout from './Layout/Layout';
+import PageTransition from './Components/Wrappers/PageTransition';
+
 function App() {
 
   useEffect(() => {
@@ -29,7 +31,8 @@ function App() {
           <Route path="/project" element={<WoodProject />} />
           <Route path="/checksslu" element={<WoodChecksSLU />} />
           <Route path="/checkssle" element={<WoodChecksSLE />} />
-          <Route path="/specialBeams" element={<WoodSpecialBeams />} />
+          <Route path="/specialBeamsProject" element={<WoodSpecialBeams />} />
+          <Route path="/specialBeamsChecksslu" element={<WoodSpecialBeams />} />
           <Route path="/joins" element={<WoodJoin />} />
           <Route path="/madepdf" element={<MadePDF />} />
           <Route path="/notchbearing" element={<NotchBearing />} />

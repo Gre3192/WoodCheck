@@ -26,6 +26,35 @@ export const sectionPropAtom = atom({
       beta_y: null,
       beta_z: null
     },
+    sepcialBeamGeometry: {
+
+      taperedBeam: {
+        h0: null,
+        hap: null,
+        gamma: null,
+      },
+
+      doubleTaperedBeam: {
+        h0: null,
+        hap: null,
+        gamma: null,
+      },
+
+      curvedBeam: {
+        h0: null,
+        hap: null,
+        gamma: null,
+        rint: null
+      },
+
+      pitchedCamberedBeam: {
+        h0: null,
+        hap: null,
+        gamma: null,
+        rint: null
+      },
+
+    },
     mechanics: {
       sectionName: "",
       treeClass: "",
