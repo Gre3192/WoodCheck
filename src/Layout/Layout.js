@@ -13,18 +13,127 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
     const [isBreadCrumbsOpen, setIsBreadCrumbsOpen] = useState(false)
 
     const sidebarItems = [
-        // {
-        //     icon: '',
-        //     label: "Gestione",
-        //     toLink: "/CostiGestione",
-        //     items: []
-        // },
-        // {
-        //     icon: '',
-        //     label: "Fornitori",
-        //     toLink: "/CostiFornitori",
-        //     items: []
-        // },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Fornitori",
+            toLink: "/CostiFornitori",
+            items: []
+        },
+ 
     ];
 
     const navbarItems = {
@@ -192,34 +301,36 @@ function Navbar({ isSidebarRightOpen, setIsSidebarRightOpen, toggleSidebarHidden
 
 function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, sidebarItems }) {
     return (
-        <div className={`fixed z-30 bg-gray-800 text-white h-full justify-between flex flex-col transition-all duration-300 ${isOpen && !isSidebarHidden ? 'w-64' : hoverEnabled && !isSidebarHidden ? 'w-16 hover:w-64' : 'overflow-hidden w-0'}`}>
-
+        <div className={`fixed z-30 bg-gray-800 text-white h-full flex flex-col transition-all duration-300 
+            ${isOpen && !isSidebarHidden ? 'w-64' : hoverEnabled && !isSidebarHidden ? 'w-16 hover:w-64' : 'overflow-hidden w-0'}`}>
+            
             {/* Logo */}
-            <div className=' text-black border-b border-gray-500 h-16 p-4'>
-
+            <div className='text-black border-b border-gray-500 h-16 p-4 flex-shrink-0'>
+                {/* Qui puoi mettere un logo o un titolo */}
             </div>
 
-            {/* Lista */}
-            <ul className={`mt-4`}>
-                {sidebarItems.map((item, index) => (
-                    <li key={index} className="py-2">
-                        <Link to={item.toLink} className="block px-4 hover:bg-gray-700">
-                            ciao
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            {/* Lista centrale scrollabile */}
+            <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+                <ul>
+                    {sidebarItems.map((item, index) => (
+                        <li key={index} className="py-2">
+                            <Link to={item.toLink} className="block px-4 hover:bg-gray-700">
+                                {item.label}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
             {/* Bottoni in basso per switchare tra le modalità */}
-            <div className="flex justify-end border-t border-gray-500">
+            <div className="flex justify-end border-t border-gray-500 flex-shrink-0">
                 <button onClick={toggleHoverMode} className={`text-white flex ${!isOpen ? 'justify-center' : 'justify-end'} p-4 transition-transform duration-200 transform hover:scale-110`}>
                     <Icons icon={!isOpen ? 'clipped' : 'notClipped'} />
                 </button>
             </div>
-
         </div>
     );
-};
+}
 
 function SidebarRight({ setIsSidebarRightOpen, isSidebarRightOpen, isBreadCrumbsOpen, setIsBreadCrumbsOpen, isVisibleBreadCrumbs, isLightMode, setIsLightMode }) {
 
