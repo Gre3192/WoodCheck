@@ -14,20 +14,30 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
 
     const sidebarItems = [
         {
+            isLabelDivider: true,
+            label: 'theme'
+        },
+        {
             icon: <Icons icon={'moon'} />,
             label: "Gestione",
             toLink: "",
+            isNew: true,
+            isPro: false,
             items: [
                 {
                     icon: '',
                     label: "Fornitori",
                     toLink: "",
+                    isNew: false,
+                    isPro: false,
                     items: []
                 },
                 {
                     icon: '',
                     label: "Fornitori",
                     toLink: "",
+                    isNew: false,
+                    isPro: false,
                     items: []
                 },
             ]
@@ -36,6 +46,8 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             icon: <Icons icon={'sun'} />,
             label: "Fornitori",
             toLink: "",
+            isNew: false,
+            isPro: true,
             items: []
         },
     ];
@@ -218,15 +230,19 @@ function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, s
             <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 custom-scrollbar mt-2">
                 <ul>
                     {sidebarItems.map((item, index) => {
-       
+
                         return (
                             <li key={index} className="px-3">
-                                <Link to={item.toLink} className="flex justify-between px-2 py-3 duration-300 hover:bg-gray-700 rounded-lg">
+                                <Link to={item.toLink} className={`flex justify-between px-2 py-3 ${item.isLabelDivider ? 'cursor-default' : 'duration-300 hover:bg-gray-700 rounded-lg '}`}>
                                     <div className='flex gap-2'>
-                                        {item.icon ? item.icon : null}
-                                        {item.label}
+                                        <div className={`flex gap-2 ${item.isLabelDivider ? 'uppercase font-bold text-[#75797F] text-sm' : ''}`}>
+                                            {item.icon ? item.icon : null}
+                                            {item.label ? item.label : null}
+                                        </div>
+                                        {item.isNew ? <div className='bg-[#3093F2] rounded-lg flex items-center font-bold text-xs px-2'>NEW</div> : null}
+                                        {item.isPro ? <div className='bg-[#DF4646] rounded-lg flex items-center font-bold text-xs px-2'>PRO</div> : null}
                                     </div>
-                                    {item.items.length !== 0? <Icons icon={'arrow'} className='' /> : null}
+                                    {item?.items && item.items?.length !== 0 ? <Icons icon={'arrow'} className='duration-300' /> : null}
                                 </Link>
                             </li>
                         )
