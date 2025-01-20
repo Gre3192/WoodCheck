@@ -133,7 +133,7 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             toLink: "/CostiFornitori",
             items: []
         },
- 
+
     ];
 
     const navbarItems = {
@@ -300,17 +300,20 @@ function Navbar({ isSidebarRightOpen, setIsSidebarRightOpen, toggleSidebarHidden
 };
 
 function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, sidebarItems }) {
+
+ 
+
     return (
         <div className={`fixed z-30 bg-gray-800 text-white h-full flex flex-col transition-all duration-300 
             ${isOpen && !isSidebarHidden ? 'w-64' : hoverEnabled && !isSidebarHidden ? 'w-16 hover:w-64' : 'overflow-hidden w-0'}`}>
-            
+
             {/* Logo */}
             <div className='text-black border-b border-gray-500 h-16 p-4 flex-shrink-0'>
                 {/* Qui puoi mettere un logo o un titolo */}
             </div>
 
             {/* Lista centrale scrollabile */}
-            <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 custom-scrollbar">
                 <ul>
                     {sidebarItems.map((item, index) => (
                         <li key={index} className="py-2">
@@ -452,3 +455,4 @@ function ToggleButton({ enabled, setEnabled }) {
         </button>
     );
 }
+
