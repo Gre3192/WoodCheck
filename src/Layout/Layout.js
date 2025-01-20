@@ -93,8 +93,20 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
         },
         {
             icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
+            items: []
+        },
+        {
+            icon: '',
             label: "Fornitori",
             toLink: "/CostiFornitori",
+            items: []
+        },
+        {
+            icon: '',
+            label: "Gestione",
+            toLink: "/CostiGestione",
             items: []
         },
         {
@@ -115,25 +127,6 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             toLink: "/CostiGestione",
             items: []
         },
-        {
-            icon: '',
-            label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-
     ];
 
     const navbarItems = {
@@ -301,8 +294,6 @@ function Navbar({ isSidebarRightOpen, setIsSidebarRightOpen, toggleSidebarHidden
 
 function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, sidebarItems }) {
 
- 
-
     return (
         <div className={`fixed z-30 bg-gray-800 text-white h-full flex flex-col transition-all duration-300 
             ${isOpen && !isSidebarHidden ? 'w-64' : hoverEnabled && !isSidebarHidden ? 'w-16 hover:w-64' : 'overflow-hidden w-0'}`}>
@@ -346,7 +337,8 @@ function SidebarRight({ setIsSidebarRightOpen, isSidebarRightOpen, isBreadCrumbs
                     <Icons icon={'cross'} />
                 </button>
             </div>
-            <div className='flex flex-col gap-3 p-4'>
+            {/* <div className='flex flex-col gap-3 p-4'> */}
+            <div className="flex flex-col gap-3 p-4 overflow-y-auto overflow-x-hidden min-h-0 custom-scrollbar">
 
                 {/* Toggle BreadCrumbs */}
                 {isVisibleBreadCrumbs ?
@@ -362,7 +354,6 @@ function SidebarRight({ setIsSidebarRightOpen, isSidebarRightOpen, isBreadCrumbs
                         DarkMode <Icons icon={'moon'} />
                     </div>
                 </div>
-
             </div>
         </div>
     );
