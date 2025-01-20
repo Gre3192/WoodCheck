@@ -14,117 +14,28 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
 
     const sidebarItems = [
         {
-            icon: '',
+            icon: <Icons icon={'moon'} />,
             label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
+            toLink: "",
+            items: [
+                {
+                    icon: '',
+                    label: "Fornitori",
+                    toLink: "",
+                    items: []
+                },
+                {
+                    icon: '',
+                    label: "Fornitori",
+                    toLink: "",
+                    items: []
+                },
+            ]
         },
         {
-            icon: '',
+            icon: <Icons icon={'sun'} />,
             label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Fornitori",
-            toLink: "/CostiFornitori",
-            items: []
-        },
-        {
-            icon: '',
-            label: "Gestione",
-            toLink: "/CostiGestione",
+            toLink: "",
             items: []
         },
     ];
@@ -304,15 +215,22 @@ function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, s
             </div>
 
             {/* Lista centrale scrollabile */}
-            <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 custom-scrollbar mt-2">
                 <ul>
-                    {sidebarItems.map((item, index) => (
-                        <li key={index} className="py-2">
-                            <Link to={item.toLink} className="block px-4 hover:bg-gray-700">
-                                {item.label}
-                            </Link>
-                        </li>
-                    ))}
+                    {sidebarItems.map((item, index) => {
+       
+                        return (
+                            <li key={index} className="px-3">
+                                <Link to={item.toLink} className="flex justify-between px-2 py-3 duration-300 hover:bg-gray-700 rounded-lg">
+                                    <div className='flex gap-2'>
+                                        {item.icon ? item.icon : null}
+                                        {item.label}
+                                    </div>
+                                    {item.items.length !== 0? <Icons icon={'arrow'} className='' /> : null}
+                                </Link>
+                            </li>
+                        )
+                    })}
                 </ul>
             </div>
 
@@ -382,7 +300,7 @@ function BreadCrumbs({ isBreadCrumbsOpen, breadCrumbsItems, setBreadCrumbsHoverE
     );
 }
 
-function Icons({ icon }) {
+function Icons({ icon, className = '' }) {
 
     const iconsMap = {
         sidebarClosedIcon: (
@@ -428,8 +346,13 @@ function Icons({ icon }) {
                 <path d="M12,23 C5.92486775,23 1,18.0751322 1,12 C1,5.92486775 5.92486775,1 12,1 C18.0751322,1 23,5.92486775 23,12 C23,18.0751322 18.0751322,23 12,23 Z M12,21 C16.9705627,21 21,16.9705627 21,12 C21,7.02943725 16.9705627,3 12,3 C7.02943725,3 3,7.02943725 3,12 C3,16.9705627 7.02943725,21 12,21 Z M12,13.4142136 L8.70710678,16.7071068 L7.29289322,15.2928932 L10.5857864,12 L7.29289322,8.70710678 L8.70710678,7.29289322 L12,10.5857864 L15.2928932,7.29289322 L16.7071068,8.70710678 L13.4142136,12 L16.7071068,15.2928932 L15.2928932,16.7071068 L12,13.4142136 Z" fill='#FFFFFF' />
             </svg>
         ),
+        arrow: (
+            <svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.8527 7.64582C16.0484 7.84073 16.0489 8.15731 15.854 8.35292L10.389 13.8374C10.1741 14.0531 9.82477 14.0531 9.60982 13.8374L4.14484 8.35292C3.94993 8.15731 3.95049 7.84073 4.1461 7.64582C4.34171 7.4509 4.65829 7.45147 4.85321 7.64708L9.99942 12.8117L15.1456 7.64708C15.3406 7.45147 15.6571 7.4509 15.8527 7.64582Z" fill="#ffffff" />
+            </svg>
+        ),
     };
-    return <div className='flex justify-center items-center'>{iconsMap[icon]}</div>;
+    return <div className={`flex justify-center items-center ${className}`}>{iconsMap[icon]}</div>;
 }
 
 function ToggleButton({ enabled, setEnabled }) {
