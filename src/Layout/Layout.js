@@ -21,34 +21,27 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             icon: <Icons icon={'moon'} />,
             label: "Gestione",
             toLink: "",
-            isNew: true,
+            isNew: false,
             isPro: false,
-            items: [
-                {
-                    icon: '',
-                    label: "Fornitori",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    items: []
-                },
-                {
-                    icon: '',
-                    label: "Fornitori",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    items: []
-                },
-            ]
+            openMode: 'click',
+            items:[]
         },
         {
             icon: <Icons icon={'sun'} />,
             label: "Fornitori",
             toLink: "",
             isNew: false,
-            isPro: true,
-            items: []
+            isPro: false,
+            openMode: 'click',
+            items: [       {
+                icon: <Icons icon={'moon'} />,
+                label: "Gestione",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'click',
+                items:[]
+            },]
         },
     ];
 
@@ -126,7 +119,7 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
     };
 
     return (
-        <div className="h-screen flex overflow-hidden">
+        <div className="h-screen flex">
             {isVisibleSidebar &&
                 <SidebarLeft
                     sidebarItems={sidebarItems}
@@ -227,24 +220,12 @@ function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, s
             </div>
 
             {/* Lista centrale scrollabile */}
-            <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 custom-scrollbar mt-2">
-                <ul>
+            <div className="flex-1 overflow-y-auto overflow-x-hidden  custom-scrollbar mt-2">
+                <ul className=''>
                     {sidebarItems.map((item, index) => {
 
                         return (
-                            <li key={index} className="px-3">
-                                <Link to={item.toLink} className={`flex justify-between px-2 py-3 ${item.isLabelDivider ? 'cursor-default' : 'duration-300 hover:bg-gray-700 rounded-lg '}`}>
-                                    <div className='flex gap-2'>
-                                        <div className={`flex gap-2 ${item.isLabelDivider ? 'uppercase font-bold text-[#75797F] text-sm' : ''}`}>
-                                            {item.icon ? item.icon : null}
-                                            {item.label ? item.label : null}
-                                        </div>
-                                        {item.isNew ? <div className='bg-[#3093F2] rounded-lg flex items-center font-bold text-xs px-2'>NEW</div> : null}
-                                        {item.isPro ? <div className='bg-[#DF4646] rounded-lg flex items-center font-bold text-xs px-2'>PRO</div> : null}
-                                    </div>
-                                    {item?.items && item.items?.length !== 0 ? <Icons icon={'arrow'} className='duration-300' /> : null}
-                                </Link>
-                            </li>
+                            <SidebarItem key={index} item={item} />
                         )
                     })}
                 </ul>
@@ -386,3 +367,69 @@ function ToggleButton({ enabled, setEnabled }) {
     );
 }
 
+const SidebarItem = ({ item }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+
+    const hasChildren = item.items && item.items.length > 0;
+    const openMode = item.openMode || "click"; // Default: click
+
+    // Toggle per la modalità "click"
+    const toggleMenu = () => {
+        if (openMode === "click") {
+            setIsOpen((prev) => !prev);
+        }
+    };
+
+    return (
+        <li
+            className=""
+            onMouseEnter={() => openMode === "hover" && setIsHovered(true)}
+            onMouseLeave={() => openMode === "hover" && setIsHovered(false)}
+        >
+            {/* Voce principale */}
+            <div
+                className={`flex justify-between items-center px-2 py-3 cursor-pointer select-none 
+                    ${item.isLabelDivider ? 'cursor-default uppercase font-bold text-[#75797F] text-sm' : 'duration-300 hover:bg-gray-700 rounded-lg'}`}
+                onClick={toggleMenu}
+            >
+                <div className="flex gap-2 items-center">
+                    {item.icon && item.icon}
+                    {item.label}
+                    {item.isNew && <div className="bg-[#3093F2] rounded-lg text-xs px-2">NEW</div>}
+                    {item.isPro && <div className="bg-[#DF4646] rounded-lg text-xs px-2">PRO</div>}
+                </div>
+                {hasChildren && (
+                    <Icons icon="arrow" className={`duration-300 transform ${isOpen ? "rotate-180" : ""}`} />
+                )}
+            </div>
+
+            {/* Modalità "click": menu a tendina */}
+            {hasChildren && openMode === "click" && (
+                <ul className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${isOpen ? "max-h-[500px]" : "max-h-0"}`}>
+                    {item.items.map((subItem, subIndex) => {
+
+                        return (
+                            <SidebarItem key={subIndex} item={subItem} />
+                        )
+                    }
+                    )}
+                </ul>
+            )}
+
+            {/* Modalità "hover": finestra laterale esterna */}
+            {hasChildren && openMode === "hover" && isHovered && (
+                <div className="absolute left-full -translate-y-12  bg-gray-800 border border-gray-600 rounded-lg shadow-lg min-w-[200px]">
+                    {item.items.map((subItem, subIndex) => {
+
+                        console.log('subItem', subItem);
+
+                        return (
+                            <SidebarItem key={subIndex} item={subItem} />
+                        )
+                    })}
+                </div>
+            )}
+        </li>
+    );
+};
