@@ -23,74 +23,34 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             toLink: "",
             isNew: false,
             isPro: false,
-            openMode: 'click',
-            items: []
+            openMode: 'hover',
+            items:[]
         },
         {
-            icon: <Icons icon={'sun'} />,
-            label: "Fornitori",
+            icon: <Icons icon={'moon'} />,
+            label: "Gestione",
             toLink: "",
             isNew: false,
             isPro: false,
-            openMode: 'click',
-            items: [
-                {
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'click',
-                    items: []
-                },
-                {
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'click',
-                    items: [
-                        {
-                            icon: <Icons icon={'moon'} />,
-                            label: "Gestione",
-                            toLink: "",
-                            isNew: false,
-                            isPro: false,
-                            openMode: 'click',
-                            items: []
-                        },
-                        {
-                            icon: <Icons icon={'moon'} />,
-                            label: "Gestione",
-                            toLink: "",
-                            isNew: false,
-                            isPro: false,
-                            openMode: 'click',
-                            items: []
-                        },
-
-                    ]
-                },
-                {
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'click',
-                    items: []
-                },
-                {
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'click',
-                    items: []
-                },
-            ]
+            openMode: 'hover',
+            items:[        {
+                icon: <Icons icon={'moon'} />,
+                label: "Gestione",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'hover',
+                items:[]
+            },]
+        },
+        {
+            icon: <Icons icon={'moon'} />,
+            label: "Gestione",
+            toLink: "",
+            isNew: false,
+            isPro: false,
+            openMode: 'hover',
+            items:[]
         },
     ];
 
@@ -421,6 +381,7 @@ function SidebarItem({ item }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const contentRef = useRef(null);
+    const timeoutRef = useRef(null);
     const [maxHeight, setMaxHeight] = useState("0px");
     const hasChildren = item.items && item.items.length > 0;
     const openMode = item.openMode || "click"; // Default: click
@@ -429,6 +390,19 @@ function SidebarItem({ item }) {
     const toggleMenu = () => {
         if (openMode === "click") {
             setIsOpen((prev) => !prev);
+        }
+    };
+
+    const handleMouseEnter = () => {
+        if (openMode === "hover") {
+            clearTimeout(timeoutRef.current);
+            setIsHovered(true);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (openMode === "hover") {
+            timeoutRef.current = setTimeout(() => setIsHovered(false), 25);
         }
     };
 
@@ -451,9 +425,13 @@ function SidebarItem({ item }) {
     }, [isOpen]);
 
     return (
+<>
+
+<div className="absolute left-full top-0 w-4 h-full bg-transparent"></div>
+
         <li
-            onMouseEnter={() => openMode === "hover" && setIsHovered(true)}
-            onMouseLeave={() => openMode === "hover" && setIsHovered(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
             {/* Voce principale */}
             <div
@@ -500,5 +478,7 @@ function SidebarItem({ item }) {
                 </div>
             )}
         </li>
+
+        </>
     );
 };
