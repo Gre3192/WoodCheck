@@ -13,6 +13,7 @@ const sidebarItems = [
         icon: <Icons icon={'point'} />,
         label: "ClickLabel",
         toLink: "",
+        onClick: () => { },
         isNew: true,
         isPro: false,
         openMode: 'click',
@@ -21,6 +22,7 @@ const sidebarItems = [
                 icon: <Icons icon={'point'} />,
                 label: "ClickLabel",
                 toLink: "",
+                onClick: () => { },
                 isNew: false,
                 isPro: true,
                 openMode: 'click',
@@ -30,6 +32,7 @@ const sidebarItems = [
                 icon: <Icons icon={'point'} />,
                 label: "ClickLabel",
                 toLink: "",
+                onClick: () => { },
                 isNew: true,
                 isPro: false,
                 openMode: 'click',
@@ -38,6 +41,7 @@ const sidebarItems = [
                         icon: <Icons icon={'point'} />,
                         label: "ClickLabel",
                         toLink: "",
+                        onClick: () => { },
                         isNew: true,
                         isPro: false,
                         openMode: 'click',
@@ -47,6 +51,7 @@ const sidebarItems = [
                         icon: <Icons icon={'point'} />,
                         label: "ClickLabel",
                         toLink: "",
+                        onClick: () => { },
                         isNew: false,
                         isPro: true,
                         openMode: 'click',
@@ -58,6 +63,7 @@ const sidebarItems = [
                 icon: <Icons icon={'point'} />,
                 label: "ClickLabel",
                 toLink: "",
+                onClick: () => { },
                 isNew: false,
                 isPro: false,
                 openMode: 'click',
@@ -69,6 +75,7 @@ const sidebarItems = [
         icon: <Icons icon={'point'} />,
         label: "HoverLabel",
         toLink: "",
+        onClick: () => { },
         isNew: false,
         isPro: false,
         openMode: 'hover',
@@ -77,6 +84,7 @@ const sidebarItems = [
                 icon: <Icons icon={'point'} />,
                 label: "HoverLabel",
                 toLink: "",
+                onClick: () => { },
                 isNew: false,
                 isPro: false,
                 openMode: 'hover',
@@ -85,6 +93,7 @@ const sidebarItems = [
                         icon: <Icons icon={'point'} />,
                         label: "HoverLabel",
                         toLink: "",
+                        onClick: () => { },
                         isNew: false,
                         isPro: false,
                         openMode: 'hover',
@@ -93,6 +102,7 @@ const sidebarItems = [
                                 icon: <Icons icon={'point'} />,
                                 label: "HoverLabel",
                                 toLink: "",
+                                onClick: () => { },
                                 isNew: false,
                                 isPro: false,
                                 openMode: 'hover',
@@ -104,6 +114,7 @@ const sidebarItems = [
                         icon: <Icons icon={'point'} />,
                         label: "HoverLabel",
                         toLink: "",
+                        onClick: () => { },
                         isNew: false,
                         isPro: false,
                         openMode: 'hover',
@@ -115,6 +126,7 @@ const sidebarItems = [
                 icon: <Icons icon={'point'} />,
                 label: "HoverLabel",
                 toLink: "",
+                onClick: () => { },
                 isNew: false,
                 isPro: false,
                 openMode: 'hover',
@@ -124,6 +136,7 @@ const sidebarItems = [
                 icon: <Icons icon={'point'} />,
                 label: "HoverLabel",
                 toLink: "",
+                onClick: () => { },
                 isNew: false,
                 isPro: false,
                 openMode: 'hover',
@@ -189,7 +202,6 @@ const breadCrumbsItems = {
         }
     ]
 }
-
 
 
 Layout.defaultProps = {
@@ -351,7 +363,7 @@ function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, s
             {/* Bottoni in basso per switchare il pin della Sidebar */}
             <div className={`flex w-full justify-end border-t py-4 px-5 border-gray-500 flex-shrink-0`}>
                 <button onClick={toggleHoverMode} className={`text-white flex    duration-200  hover:scale-110`}>
-                    <Icons icon={!isOpen ? 'clipped' : 'notClipped'} className='w-full'/>
+                    <Icons icon={!isOpen ? 'clipped' : 'notClipped'} className='w-full' />
                 </button>
             </div>
         </div>
@@ -471,8 +483,8 @@ function Icons({ icon, className = '' }) {
             </svg>
         ),
         point: (
-            <svg fill="none" width="25" height="25" viewBox="0 0 20 20"  xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 12C8.89543 12 8 11.1046 8 10C8 8.89543 8.89543 8 10 8C11.1046 8 12 8.89543 12 10C12 11.1046 11.1046 12 10 12ZM10 13C11.6569 13 13 11.6569 13 10C13 8.34315 11.6569 7 10 7C8.34315 7 7 8.34315 7 10C7 11.6569 8.34315 13 10 13Z" fill="#ffffff"/>
+            <svg fill="none" width="25" height="25" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 12C8.89543 12 8 11.1046 8 10C8 8.89543 8.89543 8 10 8C11.1046 8 12 8.89543 12 10C12 11.1046 11.1046 12 10 12ZM10 13C11.6569 13 13 11.6569 13 10C13 8.34315 11.6569 7 10 7C8.34315 7 7 8.34315 7 10C7 11.6569 8.34315 13 10 13Z" fill="#ffffff" />
             </svg>
         ),
     };
@@ -548,15 +560,15 @@ function SidebarItem({ item, isSidebarOpen, isSidebarHovered }) {
             onMouseLeave={handleMouseLeave}
         >
             {/* Voce principale */}
-            <div
-                className={`flex ${(isSidebarOpen || isSidebarHovered)? 'justify-between' : 'justify-center '}  items-center px-2 py-3 cursor-pointer select-none 
+            <Link
+                to={item.toLink}
+                className={`flex ${(isSidebarOpen || isSidebarHovered) ? 'justify-between' : 'justify-center '}  items-center px-2 py-3 cursor-pointer select-none 
                     ${item.isLabelDivider ? 'cursor-default uppercase font-bold text-[#75797F] text-sm' : 'duration-300 hover:bg-gray-700 rounded-lg'}`}
                 onClick={toggleMenu}
             >
                 <div className="flex gap-2 items-center">
                     <div className='w-full flaex justify-center'>
-                        {item.icon && item.icon}
-
+                        {item.isLabelDivider ? null : item.icon ? item.icon : <Icons icon={'point'} />}
                     </div>
                     {
                         (isSidebarOpen || isSidebarHovered) &&
@@ -571,7 +583,7 @@ function SidebarItem({ item, isSidebarOpen, isSidebarHovered }) {
                 {hasChildren && (isSidebarOpen || isSidebarHovered) && (
                     <Icons icon={openMode === "hover" ? 'hoverSidebar' : 'arrow'} className={`duration-300 transform ${isOpen || isHovered ? "rotate-180" : ""}`} />
                 )}
-            </div>
+            </Link>
 
             {/* Modalità "click": menu a tendina */}
             {hasChildren && openMode === "click" && (isSidebarOpen || isSidebarHovered) && (
