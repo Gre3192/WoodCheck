@@ -32,8 +32,55 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             toLink: "",
             isNew: false,
             isPro: false,
-            openMode: 'hover',
+            openMode: 'click',
             items: [
+                {
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'click',
+                    items: []
+                },
+                {
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'click',
+                    items: [     
+                        {
+                        icon: <Icons icon={'moon'} />,
+                        label: "Gestione",
+                        toLink: "",
+                        isNew: false,
+                        isPro: false,
+                        openMode: 'click',
+                        items: []
+                    },
+                        {
+                        icon: <Icons icon={'moon'} />,
+                        label: "Gestione",
+                        toLink: "",
+                        isNew: false,
+                        isPro: false,
+                        openMode: 'click',
+                        items: []
+                    },
+                
+                ]
+                },
+                {
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'click',
+                    items: []
+                },
                 {
                     icon: <Icons icon={'moon'} />,
                     label: "Gestione",
@@ -411,11 +458,15 @@ function SidebarItem({ item }) {
             {hasChildren && openMode === "click" && (
                 <ul
                     ref={contentRef}
-                    className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
-                    style={{ maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px", }}
+                    className={`overflow-hidden transition-[max-height] duration-300 ease-in-out pl-2 
+        `}
+                    style={{ maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px" }}
                 >
                     {item.items.map((subItem, subIndex) => (
-                        <SidebarItem key={subIndex} item={subItem} />
+                        <div className='border-l-2 border-gray-500'>
+
+                            <SidebarItem key={subIndex} item={subItem} />
+                        </div>
                     ))}
                 </ul>
             )}
