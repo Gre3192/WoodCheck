@@ -333,7 +333,7 @@ function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, s
 
             {/* Logo */}
             <div className='text-black border-b border-gray-500 h-16 p-4 flex-shrink-0'>
-                {/* Qui puoi mettere un logo o un titolo */}
+               
             </div>
 
             {/* Lista centrale scrollabile */}
@@ -499,7 +499,7 @@ function SidebarItem({ item, isSidebarOpen,isSidebarHovered }) {
     const hasChildren = item.items && item.items.length > 0;
     const openMode = item.openMode || "click"; // Default: click
 
-    // Toggle per la modalità "click"
+
     const toggleMenu = () => {
         if (openMode === "click") {
             setIsOpen((prev) => !prev);
