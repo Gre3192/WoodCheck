@@ -10,7 +10,7 @@ const sidebarItems = [
         label: 'Default'
     },
     {
-        icon: <Icons icon={'moon'} />,
+        icon: <Icons icon={'point'} />,
         label: "ClickLabel",
         toLink: "",
         isNew: true,
@@ -18,7 +18,7 @@ const sidebarItems = [
         openMode: 'click',
         items: [
             {
-                icon: <Icons icon={'moon'} />,
+                icon: <Icons icon={'point'} />,
                 label: "ClickLabel",
                 toLink: "",
                 isNew: false,
@@ -27,7 +27,7 @@ const sidebarItems = [
                 items: []
             },
             {
-                icon: <Icons icon={'moon'} />,
+                icon: <Icons icon={'point'} />,
                 label: "ClickLabel",
                 toLink: "",
                 isNew: true,
@@ -35,7 +35,7 @@ const sidebarItems = [
                 openMode: 'click',
                 items: [
                     {
-                        icon: <Icons icon={'moon'} />,
+                        icon: <Icons icon={'point'} />,
                         label: "ClickLabel",
                         toLink: "",
                         isNew: true,
@@ -44,7 +44,7 @@ const sidebarItems = [
                         items: []
                     },
                     {
-                        icon: <Icons icon={'moon'} />,
+                        icon: <Icons icon={'point'} />,
                         label: "ClickLabel",
                         toLink: "",
                         isNew: false,
@@ -55,7 +55,7 @@ const sidebarItems = [
                 ]
             },
             {
-                icon: <Icons icon={'moon'} />,
+                icon: <Icons icon={'point'} />,
                 label: "ClickLabel",
                 toLink: "",
                 isNew: false,
@@ -66,7 +66,7 @@ const sidebarItems = [
         ]
     },
     {
-        icon: <Icons icon={'moon'} />,
+        icon: <Icons icon={'point'} />,
         label: "HoverLabel",
         toLink: "",
         isNew: false,
@@ -74,7 +74,7 @@ const sidebarItems = [
         openMode: 'hover',
         items: [
             {
-                icon: <Icons icon={'moon'} />,
+                icon: <Icons icon={'point'} />,
                 label: "HoverLabel",
                 toLink: "",
                 isNew: false,
@@ -82,7 +82,7 @@ const sidebarItems = [
                 openMode: 'hover',
                 items: [
                     {
-                        icon: <Icons icon={'moon'} />,
+                        icon: <Icons icon={'point'} />,
                         label: "HoverLabel",
                         toLink: "",
                         isNew: false,
@@ -90,7 +90,7 @@ const sidebarItems = [
                         openMode: 'hover',
                         items: [
                             {
-                                icon: <Icons icon={'moon'} />,
+                                icon: <Icons icon={'point'} />,
                                 label: "HoverLabel",
                                 toLink: "",
                                 isNew: false,
@@ -101,7 +101,7 @@ const sidebarItems = [
                         ]
                     },
                     {
-                        icon: <Icons icon={'moon'} />,
+                        icon: <Icons icon={'point'} />,
                         label: "HoverLabel",
                         toLink: "",
                         isNew: false,
@@ -112,7 +112,7 @@ const sidebarItems = [
                 ]
             },
             {
-                icon: <Icons icon={'moon'} />,
+                icon: <Icons icon={'point'} />,
                 label: "HoverLabel",
                 toLink: "",
                 isNew: false,
@@ -121,7 +121,7 @@ const sidebarItems = [
                 items: []
             },
             {
-                icon: <Icons icon={'moon'} />,
+                icon: <Icons icon={'point'} />,
                 label: "HoverLabel",
                 toLink: "",
                 isNew: false,
@@ -446,7 +446,7 @@ function Icons({ icon, className = '' }) {
             <svg class="feather feather-sun" fill="none" width="20" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5" /><line x1="12" x2="12" y1="1" y2="3" /><line x1="12" x2="12" y1="21" y2="23" /><line x1="4.22" x2="5.64" y1="4.22" y2="5.64" /><line x1="18.36" x2="19.78" y1="18.36" y2="19.78" /><line x1="1" x2="3" y1="12" y2="12" /><line x1="21" x2="23" y1="12" y2="12" /><line x1="4.22" x2="5.64" y1="19.78" y2="18.36" /><line x1="18.36" x2="19.78" y1="5.64" y2="4.22" /></svg>
         ),
         moon: (
-            <svg fill="none" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="none" width="25" height="25" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.4932 13.4972C13.5653 16.8362 9.2957 17.9803 5.95663 16.0525C5.20013 15.6157 4.54451 15.052 4.01047 14.3891C6.8412 13.302 8.56844 11.9686 9.60339 9.99298C10.651 7.99322 10.9395 5.83231 10.3628 3.08368C11.2605 3.20197 12.1328 3.49586 12.9378 3.96066C16.2769 5.88847 17.421 10.1581 15.4932 13.4972ZM5.45663 16.9185C9.27399 19.1225 14.1552 17.8145 16.3592 13.9972C18.5631 10.1798 17.2552 5.29859 13.4378 3.09464C12.3371 2.45912 11.1233 2.10222 9.88082 2.03556C9.4801 2.01406 9.17217 2.38526 9.26732 2.77511C9.95545 5.59444 9.70125 7.65125 8.71759 9.52893C7.78322 11.3125 6.17301 12.5595 3.16661 13.6355C2.79667 13.7679 2.65251 14.2148 2.87537 14.5384C3.54192 15.5064 4.41706 16.3183 5.45663 16.9185Z" fill="#FFFFFF" />
             </svg>
         ),
@@ -468,6 +468,11 @@ function Icons({ icon, className = '' }) {
         hoverSidebar: (
             <svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.5 4C5.22386 4 5 4.22386 5 4.5C5 4.77614 5.22386 5 5.5 5H13.5C13.7761 5 14 4.77614 14 4.5C14 4.22386 13.7761 4 13.5 4H5.5ZM2.5 9C2.22386 9 2 9.22386 2 9.5C2 9.77614 2.22386 10 2.5 10H13.5C13.7761 10 14 9.77614 14 9.5C14 9.22386 13.7761 9 13.5 9H2.5ZM7 14.5C7 14.2239 7.22386 14 7.5 14H13.5C13.7761 14 14 14.2239 14 14.5C14 14.7761 13.7761 15 13.5 15H7.5C7.22386 15 7 14.7761 7 14.5ZM16.4532 7.73647C16.2579 7.54121 15.9413 7.54121 15.7461 7.73647C15.5508 7.93174 15.5508 8.24832 15.7461 8.44358L16.8067 9.50424L15.7461 10.5649C15.5508 10.7602 15.5508 11.0767 15.7461 11.272C15.9413 11.4673 16.2579 11.4673 16.4532 11.272L17.8674 9.85779C18.0626 9.66253 18.0626 9.34595 17.8674 9.15069L16.4532 7.73647Z" fill="#ffffff" />
+            </svg>
+        ),
+        point: (
+            <svg fill="none" width="25" height="25" viewBox="0 0 20 20"  xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 12C8.89543 12 8 11.1046 8 10C8 8.89543 8.89543 8 10 8C11.1046 8 12 8.89543 12 10C12 11.1046 11.1046 12 10 12ZM10 13C11.6569 13 13 11.6569 13 10C13 8.34315 11.6569 7 10 7C8.34315 7 7 8.34315 7 10C7 11.6569 8.34315 13 10 13Z" fill="#ffffff"/>
             </svg>
         ),
     };
