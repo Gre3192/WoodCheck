@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Outlet } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
@@ -421,7 +421,7 @@ function SidebarItem({ item }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const contentRef = useRef(null);
-
+    const [maxHeight, setMaxHeight] = useState("0px");
     const hasChildren = item.items && item.items.length > 0;
     const openMode = item.openMode || "click"; // Default: click
 
@@ -431,6 +431,24 @@ function SidebarItem({ item }) {
             setIsOpen((prev) => !prev);
         }
     };
+
+    useEffect(() => {
+        if (isOpen && contentRef.current) {
+            setTimeout(() => {
+                let totalHeight = contentRef.current.scrollHeight;
+
+                // Sommiamo le altezze dei figli aperti
+                const children = contentRef.current.querySelectorAll("ul");
+                children.forEach(child => {
+                    totalHeight += child.scrollHeight;
+                });
+
+                setMaxHeight(`${totalHeight}px`);
+            }, 50); // Delay per garantire il rendering completo
+        } else {
+            setMaxHeight("0px");
+        }
+    }, [isOpen]);
 
     return (
         <li
@@ -459,7 +477,7 @@ function SidebarItem({ item }) {
                 <ul
                     ref={contentRef}
                     className={`overflow-hidden transition-[max-height] duration-300 ease-in-out pl-2  `}
-                    style={{ maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px" }}
+                    style={{ maxHeight }}
                 >
                     {item.items.map((subItem, subIndex) => (
                         <div className={`border-l-2 border-gray-500 ${subIndex===0 ? 'border-t-2 rounded-tl-lg': ''}`}>
