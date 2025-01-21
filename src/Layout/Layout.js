@@ -426,7 +426,6 @@ function SidebarItem({ item }) {
                     className={`absolute left-full -translate-y-12 bg-gray-800 border border-gray-600 rounded-lg shadow-lg min-w-[200px] 
                         transition-opacity duration-500 ease-in-out 
                         ${isHovered ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
-                
                 >
                     {item.items.map((subItem, subIndex) => (
                         <SidebarItem key={subIndex} item={subItem} />
