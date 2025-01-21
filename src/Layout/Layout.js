@@ -575,7 +575,7 @@ function SidebarItem({ item, isSidebarOpen, isSidebarHovered }) {
                     </div>
                     {
                         (isSidebarOpen || isSidebarHovered) &&
-                        <div className="flex gap-2 items-center">
+                        <div className="flex gap-2 items-center whitespace-nowrap">
                             {item.label}
                             {item.isNew && <div className="bg-[#3093F2] rounded-lg text-xs px-2">NEW</div>}
                             {item.isPro && <div className="bg-[#DF4646] rounded-lg text-xs px-2">PRO</div>}

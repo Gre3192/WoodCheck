@@ -1,140 +1,29 @@
 export const sidebarItems = [
-
     {
-        icon: '',
-        label: "ClickLabel",
-        toLink: "",
-        onClick: () => { },
-        isNew: true,
-        isPro: false,
-        openMode: 'click',
-        items: [
-            {
-                icon: '',
-                label: "ClickLabel",
-                toLink: "",
-                onClick: () => { },
-                isNew: false,
-                isPro: true,
-                openMode: 'click',
-                items: []
-            },
-            {
-                icon: '',
-                label: "ClickLabel",
-                toLink: "",
-                onClick: () => { },
-                isNew: true,
-                isPro: false,
-                openMode: 'click',
-                items: [
-                    {
-                        icon: '',
-                        label: "ClickLabel",
-                        toLink: "",
-                        onClick: () => { },
-                        isNew: true,
-                        isPro: false,
-                        openMode: 'click',
-                        items: []
-                    },
-                    {
-                        icon: '',
-                        label: "ClickLabel",
-                        toLink: "",
-                        onClick: () => { },
-                        isNew: false,
-                        isPro: true,
-                        openMode: 'click',
-                        items: []
-                    },
-                ]
-            },
-            {
-                icon: '',
-                label: "ClickLabel",
-                toLink: "",
-                onClick: () => { },
-                isNew: false,
-                isPro: false,
-                openMode: 'click',
-                items: []
-            },
-        ]
+        isLabelDivider: true,
+        label: 'Travi'
     },
     {
         icon: '',
-        label: "HoverLabel",
+        label: "Sezioni Normali",
         toLink: "",
         onClick: () => { },
         isNew: false,
         isPro: false,
-        openMode: 'hover',
-        items: [
-            {
-                icon: '',
-                label: "HoverLabel",
-                toLink: "",
-                onClick: () => { },
-                isNew: false,
-                isPro: false,
-                openMode: 'hover',
-                items: [
-                    {
-                        icon: '',
-                        label: "HoverLabel",
-                        toLink: "",
-                        onClick: () => { },
-                        isNew: false,
-                        isPro: false,
-                        openMode: 'hover',
-                        items: [
-                            {
-                                icon: '',
-                                label: "HoverLabel",
-                                toLink: "",
-                                onClick: () => { },
-                                isNew: false,
-                                isPro: false,
-                                openMode: 'hover',
-                                items: []
-                            },
-                        ]
-                    },
-                    {
-                        icon: '',
-                        label: "HoverLabel",
-                        toLink: "",
-                        onClick: () => { },
-                        isNew: false,
-                        isPro: false,
-                        openMode: 'hover',
-                        items: []
-                    },
-                ]
-            },
-            {
-                icon: '',
-                label: "HoverLabel",
-                toLink: "",
-                onClick: () => { },
-                isNew: false,
-                isPro: false,
-                openMode: 'hover',
-                items: []
-            },
-            {
-                icon: '',
-                label: "HoverLabel",
-                toLink: "",
-                onClick: () => { },
-                isNew: false,
-                isPro: false,
-                openMode: 'hover',
-                items: []
-            },
-        ]
+        openMode: 'click',
+        items: []
     },
+    {
+        icon: '',
+        label: "Spec r",
+        toLink: "",
+        onClick: () => { },
+        isNew: false,
+        isPro: false,
+        openMode: 'click',
+        items: []
+    },
+
 ];
 
 export const navbarItems = {
