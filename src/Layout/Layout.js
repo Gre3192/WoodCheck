@@ -4,14 +4,205 @@ import { Link } from 'react-router-dom';
 
 
 
+const sidebarItems = [
+    {
+        isLabelDivider: true,
+        label: 'Default'
+    },
+    {
+        icon: <Icons icon={'moon'} />,
+        label: "ClickLabel",
+        toLink: "",
+        isNew: false,
+        isPro: false,
+        openMode: 'click',
+        items: [
+            {
+                icon: <Icons icon={'moon'} />,
+                label: "ClickLabel",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'click',
+                items: []
+            },
+            {
+                icon: <Icons icon={'moon'} />,
+                label: "ClickLabel",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'click',
+                items: [
+                    {
+                        icon: <Icons icon={'moon'} />,
+                        label: "ClickLabel",
+                        toLink: "",
+                        isNew: false,
+                        isPro: false,
+                        openMode: 'click',
+                        items: []
+                    },
+                    {
+                        icon: <Icons icon={'moon'} />,
+                        label: "ClickLabel",
+                        toLink: "",
+                        isNew: false,
+                        isPro: false,
+                        openMode: 'click',
+                        items: []
+                    },
+                ]
+            },
+            {
+                icon: <Icons icon={'moon'} />,
+                label: "ClickLabel",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'click',
+                items: []
+            },
+        ]
+    },
+    {
+        icon: <Icons icon={'moon'} />,
+        label: "HoverLabel",
+        toLink: "",
+        isNew: false,
+        isPro: false,
+        openMode: 'hover',
+        items: [
+            {
+                icon: <Icons icon={'moon'} />,
+                label: "HoverLabel",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'hover',
+                items: [
+                    {
+                        icon: <Icons icon={'moon'} />,
+                        label: "HoverLabel",
+                        toLink: "",
+                        isNew: false,
+                        isPro: false,
+                        openMode: 'hover',
+                        items: [
+                            {
+                                icon: <Icons icon={'moon'} />,
+                                label: "HoverLabel",
+                                toLink: "",
+                                isNew: false,
+                                isPro: false,
+                                openMode: 'hover',
+                                items: []
+                            },
+                        ]
+                    },
+                    {
+                        icon: <Icons icon={'moon'} />,
+                        label: "HoverLabel",
+                        toLink: "",
+                        isNew: false,
+                        isPro: false,
+                        openMode: 'hover',
+                        items: []
+                    },
+                ]
+            },
+            {
+                icon: <Icons icon={'moon'} />,
+                label: "HoverLabel",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'hover',
+                items: []
+            },
+            {
+                icon: <Icons icon={'moon'} />,
+                label: "HoverLabel",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'hover',
+                items: []
+            },
+        ]
+    },
+];
+
+const navbarItems = {
+    heead: {
+        label: 'WoodCheck',
+        toLink: '/',
+        onclick: () => { }
+    },
+    items: [
+        {
+            label: 'Progetto',
+            toLink: '/project',
+            onclick: () => { }
+        },
+        {
+            label: 'Verifiche SLU',
+            toLink: '/checksslu',
+            onclick: () => { }
+        },
+        {
+            label: 'Verifiche SLE',
+            toLink: '/checkssle',
+            onclick: () => { }
+        },
+        {
+            label: 'Verifiche SLU',
+            toLink: '/specialBeamsProject',
+            onclick: () => { }
+        },
+        {
+            label: 'Verifiche SLU',
+            toLink: '/specialBeamsChecksslu',
+            onclick: () => { }
+        },
+    ]
+}
+
+const breadCrumbsItems = {
+    divider: '/',
+    labels: [
+        {
+            label: 'Home',
+            toLink: '/'
+        },
+        {
+            label: 'Dashboard',
+            toLink: '/'
+        },
+        {
+            label: 'Setting',
+            toLink: '/'
+        },
+        {
+            label: 'Verifiche',
+            toLink: '/'
+        }
+    ]
+}
 
 
 
+Layout.defaultProps = {
+    sidebarItems,
+    navbarItems,
+    breadCrumbsItems
+};
 
-
-
-
-export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true, isVisibleBreadCrumbs = true }) {
+export default function Layout({
+    isVisibleNavbar = true,
+    isVisibleSidebar = true,
+    isVisibleBreadCrumbs = true
+}) {
 
     const [isSidebarLeftOpen, setIsSidebarLeftOpen] = useState(true);
     const [isSidebarRightOpen, setIsSidebarRightOpen] = useState(false);
@@ -21,151 +212,7 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
     const [isLightMode, setIsLightMode] = useState(true)
     const [isBreadCrumbsOpen, setIsBreadCrumbsOpen] = useState(false)
 
-    const sidebarItems = [
-        {
-            isLabelDivider: true,
-            label: 'theme'
-        },
-        {
-            icon: <Icons icon={'moon'} />,
-            label: "Gestione",
-            toLink: "",
-            isNew: false,
-            isPro: false,
-            openMode: 'click',
-            items: [{
-                icon: <Icons icon={'moon'} />,
-                label: "Gestione",
-                toLink: "",
-                isNew: false,
-                isPro: false,
-                openMode: 'click',
-                items: [{
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'click',
-                    items: []
-                }, {
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'click',
-                    items: []
-                }, {
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'click',
-                    items: []
-                }, {
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'click',
-                    items: []
-                },]
-            }, {
-                icon: <Icons icon={'moon'} />,
-                label: "Gestione",
-                toLink: "",
-                isNew: false,
-                isPro: false,
-                openMode: 'click',
-                items: []
-            }, {
-                icon: <Icons icon={'moon'} />,
-                label: "Gestione",
-                toLink: "",
-                isNew: false,
-                isPro: false,
-                openMode: 'click',
-                items: []
-            }, {
-                icon: <Icons icon={'moon'} />,
-                label: "Gestione",
-                toLink: "",
-                isNew: false,
-                isPro: false,
-                openMode: 'click',
-                items: []
-            },]
-        },
-        {
-            icon: <Icons icon={'moon'} />,
-            label: "Gestione",
-            toLink: "",
-            isNew: false,
-            isPro: false,
-            openMode: 'hover',
-            items: []
-        },
-    ];
 
-    const navbarItems = {
-        heead: {
-            label: 'WoodCheck',
-            toLink: '/',
-            onclick: () => { }
-        },
-        items: [
-            {
-                label: 'Progetto',
-                toLink: '/project',
-                onclick: () => { }
-            },
-            {
-                label: 'Verifiche SLU',
-                toLink: '/checksslu',
-                onclick: () => { }
-            },
-            {
-                label: 'Verifiche SLE',
-                toLink: '/checkssle',
-                onclick: () => { }
-            },
-            {
-                label: 'Verifiche SLU',
-                toLink: '/specialBeamsProject',
-                onclick: () => { }
-            },
-            {
-                label: 'Verifiche SLU',
-                toLink: '/specialBeamsChecksslu',
-                onclick: () => { }
-            },
-        ]
-    }
-
-    const breadCrumbsItems = {
-        divider: '/',
-        labels: [
-            {
-                label: 'Home',
-                toLink: '/'
-            },
-            {
-                label: 'Dashboard',
-                toLink: '/'
-            },
-            {
-                label: 'Setting',
-                toLink: '/'
-            },
-            {
-                label: 'Verifiche',
-                toLink: '/'
-            }
-        ]
-    }
 
     const toggleSidebarHidden = () => {
         setIsSidebarLeftHidden(!isSidebarLeftHidden);
