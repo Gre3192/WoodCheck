@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Outlet } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
@@ -24,46 +24,7 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             isNew: false,
             isPro: false,
             openMode: 'click',
-            items: [
-                {
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'hover',
-                    items: [
-                        {
-                            icon: <Icons icon={'moon'} />,
-                            label: "Gestione",
-                            toLink: "",
-                            isNew: false,
-                            isPro: false,
-                            openMode: 'click',
-                            items: []
-                        },
-                        {
-                            icon: <Icons icon={'moon'} />,
-                            label: "Gestione",
-                            toLink: "",
-                            isNew: false,
-                            isPro: false,
-                            openMode: 'click',
-                            items: []
-                        },
-                    ]
-                },
-                {
-                    icon: <Icons icon={'moon'} />,
-                    label: "Gestione",
-                    toLink: "",
-                    isNew: false,
-                    isPro: false,
-                    openMode: 'click',
-                    items: []
-                },
-
-            ]
+            items: []
         },
         {
             icon: <Icons icon={'sun'} />,
@@ -408,11 +369,10 @@ function ToggleButton({ enabled, setEnabled }) {
     );
 }
 
-function SidebarItem({ item, count = 1 }) {
+function SidebarItem({ item }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
-
-    count = count + 1
+    const contentRef = useRef(null);
 
     const hasChildren = item.items && item.items.length > 0;
     const openMode = item.openMode || "click"; // Default: click
@@ -448,11 +408,14 @@ function SidebarItem({ item, count = 1 }) {
 
             {/* Modalità "click": menu a tendina */}
             {hasChildren && openMode === "click" && (
-                <ul className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${isOpen ? "max-h-full" : "max-h-0"}`}>
-                    {item.items.map((subItem, subIndex) => {
-                        return (<SidebarItem key={subIndex} item={subItem} />)
-                    }
-                    )}
+                <ul
+                    ref={contentRef}
+                    className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                    style={{ maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px", }}
+                >
+                    {item.items.map((subItem, subIndex) => (
+                        <SidebarItem key={subIndex} item={subItem} />
+                    ))}
                 </ul>
             )}
 
