@@ -329,11 +329,11 @@ function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, s
             ${isOpen && !isSidebarHidden ? 'w-64' : hoverEnabled && !isSidebarHidden ? 'w-16 hover:w-64' : 'overflow-hidden w-0'}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            >
+        >
 
             {/* Logo */}
             <div className='text-black border-b border-gray-500 h-16 p-4 flex-shrink-0'>
-               
+
             </div>
 
             {/* Lista centrale scrollabile */}
@@ -342,16 +342,16 @@ function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, s
                     {sidebarItems.map((item, index) => {
 
                         return (
-                            <SidebarItem key={index} item={item} isSidebarOpen={isOpen} isSidebarHovered={isHovered}/>
+                            <SidebarItem key={index} item={item} isSidebarOpen={isOpen} isSidebarHovered={isHovered} />
                         )
                     })}
                 </ul>
             </div>
 
-            {/* Bottoni in basso per switchare tra le modalità */}
-            <div className="flex justify-end border-t border-gray-500 flex-shrink-0">
-                <button onClick={toggleHoverMode} className={`text-white flex ${!isOpen ? 'justify-center' : 'justify-end'} p-4 transition-transform duration-200 transform hover:scale-110`}>
-                    <Icons icon={!isOpen ? 'clipped' : 'notClipped'} />
+            {/* Bottoni in basso per switchare il pin della Sidebar */}
+            <div className={`flex w-full justify-end border-t py-4 px-5 border-gray-500 flex-shrink-0`}>
+                <button onClick={toggleHoverMode} className={`text-white flex    duration-200  hover:scale-110`}>
+                    <Icons icon={!isOpen ? 'clipped' : 'notClipped'} className='w-full'/>
                 </button>
             </div>
         </div>
@@ -489,7 +489,7 @@ function ToggleButton({ enabled, setEnabled }) {
     );
 }
 
-function SidebarItem({ item, isSidebarOpen,isSidebarHovered }) {
+function SidebarItem({ item, isSidebarOpen, isSidebarHovered }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
@@ -544,14 +544,17 @@ function SidebarItem({ item, isSidebarOpen,isSidebarHovered }) {
         >
             {/* Voce principale */}
             <div
-                className={`flex justify-between items-center px-2 py-3 cursor-pointer select-none 
+                className={`flex ${(isSidebarOpen || isSidebarHovered)? 'justify-between' : 'justify-center '}  items-center px-2 py-3 cursor-pointer select-none 
                     ${item.isLabelDivider ? 'cursor-default uppercase font-bold text-[#75797F] text-sm' : 'duration-300 hover:bg-gray-700 rounded-lg'}`}
                 onClick={toggleMenu}
             >
                 <div className="flex gap-2 items-center">
-                    {item.icon && item.icon}
+                    <div className='w-full flaex justify-center'>
+                        {item.icon && item.icon}
+
+                    </div>
                     {
-                        (isSidebarOpen || isSidebarHovered) && 
+                        (isSidebarOpen || isSidebarHovered) &&
                         <div className="flex gap-2 items-center">
                             {item.label}
                             {item.isNew && <div className="bg-[#3093F2] rounded-lg text-xs px-2">NEW</div>}
@@ -574,7 +577,7 @@ function SidebarItem({ item, isSidebarOpen,isSidebarHovered }) {
                 >
                     {item.items.map((subItem, subIndex) => (
                         <div className={`border-l-2 border-gray-500 ${subIndex === 0 ? 'border-t-2 rounded-tl-lg' : ''}`}>
-                            <SidebarItem key={subIndex} item={subItem} isSidebarOpen={isSidebarOpen} isSidebarHovered={isSidebarHovered}/>
+                            <SidebarItem key={subIndex} item={subItem} isSidebarOpen={isSidebarOpen} isSidebarHovered={isSidebarHovered} />
                         </div>
                     ))}
                 </ul>
@@ -588,7 +591,7 @@ function SidebarItem({ item, isSidebarOpen,isSidebarHovered }) {
                         ${isHovered ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
                 >
                     {item.items.map((subItem, subIndex) => (
-                        <SidebarItem key={subIndex} item={subItem} isSidebarOpen={isSidebarOpen} isSidebarHovered={isSidebarHovered}/>
+                        <SidebarItem key={subIndex} item={subItem} isSidebarOpen={isSidebarOpen} isSidebarHovered={isSidebarHovered} />
                     ))}
                 </div>
             )}
