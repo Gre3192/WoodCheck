@@ -23,8 +23,72 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             toLink: "",
             isNew: false,
             isPro: false,
-            openMode: 'hover',
-            items:[]
+            openMode: 'click',
+            items: [{
+                icon: <Icons icon={'moon'} />,
+                label: "Gestione",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'click',
+                items: [{
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'click',
+                    items: []
+                }, {
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'click',
+                    items: []
+                }, {
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'click',
+                    items: []
+                }, {
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'click',
+                    items: []
+                },]
+            }, {
+                icon: <Icons icon={'moon'} />,
+                label: "Gestione",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'click',
+                items: []
+            }, {
+                icon: <Icons icon={'moon'} />,
+                label: "Gestione",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'click',
+                items: []
+            }, {
+                icon: <Icons icon={'moon'} />,
+                label: "Gestione",
+                toLink: "",
+                isNew: false,
+                isPro: false,
+                openMode: 'click',
+                items: []
+            },]
         },
         {
             icon: <Icons icon={'moon'} />,
@@ -33,15 +97,7 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             isNew: false,
             isPro: false,
             openMode: 'hover',
-            items:[        {
-                icon: <Icons icon={'moon'} />,
-                label: "Gestione",
-                toLink: "",
-                isNew: false,
-                isPro: false,
-                openMode: 'hover',
-                items:[]
-            },]
+            items: []
         },
     ];
 
@@ -417,8 +473,8 @@ function SidebarItem({ item }) {
 
     return (
         <li
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
             {/* Voce principale */}
             <div
@@ -445,7 +501,7 @@ function SidebarItem({ item }) {
                     style={{ maxHeight }}
                 >
                     {item.items.map((subItem, subIndex) => (
-                        <div className={`border-l-2 border-gray-500 ${subIndex===0 ? 'border-t-2 rounded-tl-lg': ''}`}>
+                        <div className={`border-l-2 border-gray-500 ${subIndex === 0 ? 'border-t-2 rounded-tl-lg' : ''}`}>
                             <SidebarItem key={subIndex} item={subItem} />
                         </div>
                     ))}

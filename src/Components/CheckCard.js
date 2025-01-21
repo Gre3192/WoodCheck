@@ -11,6 +11,8 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
   const [globalFormatFormula, setGlobalFormatFormula] = useRecoilState(globalFormatFormulaAtom);
   const { isGlobalFormula, isGlobalFormulaVal } = globalFormatFormula;
   const [isOpen, setIsOpen] = useState(false);
+  const [maxHeight, setMaxHeight] = useState("0px");
+  const [needsScroll, setNeedsScroll] = useState(false);
 
   useEffect(() => {
 
@@ -34,7 +36,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
       setIsFormulaValSelected(false)
     }
 
-  }, [globalFormatFormula])
+  }, [isOpen])
 
 
 
@@ -47,6 +49,7 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
 
 
   const toggleCard = () => {
+
     setIsOpen(!isOpen);
 
     // Controlla se la card è aperta e previene lo scroll forzato
@@ -74,8 +77,26 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
     }
   };
 
+  useEffect(() => {
+    if (isOpen && cardRef.current) {
+      const contentHeight = cardRef.current.scrollHeight;
+      const maxAllowedHeight = window.innerHeight * 0.65; // 65vh
+
+      if (contentHeight > maxAllowedHeight) {
+        setMaxHeight(`${maxAllowedHeight}px`);
+        setNeedsScroll(true);
+      } else {
+        setMaxHeight(`${contentHeight}px`);
+        setNeedsScroll(false);
+      }
+    } else {
+      setMaxHeight("0px");
+      setNeedsScroll(false);
+    }
+  }, [isOpen]);
+
   return (
-    <div className={`p-5 ${isDisabled ? 'text-gray-400' : null}`} ref={cardRef}>
+    <div className={`p-5 ${isDisabled ? 'text-gray-400' : null}`} >
       <div className="bg-white shadow-lg rounded-lg border border-gray-200 ">
         <div
           className={`flex justify-between items-center cursor-pointer p-3 transition-colors duration-300 ease-in-out ${isOpen ? 'bg-gray-200' : 'hover:bg-gray-200'}`}
@@ -110,12 +131,12 @@ export default function CheckCard({ props, isFormulaProps, isFormulaValProps }) 
         <hr />
 
         {/* Sezione centrale */}
-        <div className={`transition-all duration-500 ease-in-out overflow-auto ${isOpen ? 'max-h-[65vh] opacity-100' : 'max-h-0 opacity-0 '}`}>
-          {isOpen && (
-            <div>
-              <div className="p-6">{centralContent}</div>
-            </div>
-          )}
+        <div 
+          ref={cardRef}
+          style={{ maxHeight, opacity: isOpen ? "1" : "0", transition: "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out" }}
+          className={`overflow-hidden ${needsScroll ? "overflow-y-auto" : ""}`}
+        >
+          <div className="p-6">{centralContent}</div>
         </div>
 
         {/* Sezione finale */}
