@@ -2,6 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Outlet } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
+
+
+
+
+
+
+
+
+
 export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true, isVisibleBreadCrumbs = true }) {
 
     const [isSidebarLeftOpen, setIsSidebarLeftOpen] = useState(true);
