@@ -32,7 +32,7 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             toLink: "",
             isNew: false,
             isPro: false,
-            openMode: 'click',
+            openMode: 'hover',
             items: [
                 {
                     icon: <Icons icon={'moon'} />,
@@ -370,6 +370,7 @@ function ToggleButton({ enabled, setEnabled }) {
 }
 
 function SidebarItem({ item }) {
+
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const contentRef = useRef(null);
@@ -423,10 +424,9 @@ function SidebarItem({ item }) {
             {hasChildren && openMode === "hover" && (
                 <div
                     className={`absolute left-full -translate-y-12 bg-gray-800 border border-gray-600 rounded-lg shadow-lg min-w-[200px] 
-                        transition-opacity duration-300 ease-in-out 
+                        transition-opacity duration-500 ease-in-out 
                         ${isHovered ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
+                
                 >
                     {item.items.map((subItem, subIndex) => (
                         <SidebarItem key={subIndex} item={subItem} />
