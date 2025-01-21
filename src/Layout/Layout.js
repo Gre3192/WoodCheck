@@ -13,7 +13,7 @@ const sidebarItems = [
         icon: <Icons icon={'moon'} />,
         label: "ClickLabel",
         toLink: "",
-        isNew: false,
+        isNew: true,
         isPro: false,
         openMode: 'click',
         items: [
@@ -22,7 +22,7 @@ const sidebarItems = [
                 label: "ClickLabel",
                 toLink: "",
                 isNew: false,
-                isPro: false,
+                isPro: true,
                 openMode: 'click',
                 items: []
             },
@@ -30,7 +30,7 @@ const sidebarItems = [
                 icon: <Icons icon={'moon'} />,
                 label: "ClickLabel",
                 toLink: "",
-                isNew: false,
+                isNew: true,
                 isPro: false,
                 openMode: 'click',
                 items: [
@@ -38,7 +38,7 @@ const sidebarItems = [
                         icon: <Icons icon={'moon'} />,
                         label: "ClickLabel",
                         toLink: "",
-                        isNew: false,
+                        isNew: true,
                         isPro: false,
                         openMode: 'click',
                         items: []
@@ -48,7 +48,7 @@ const sidebarItems = [
                         label: "ClickLabel",
                         toLink: "",
                         isNew: false,
-                        isPro: false,
+                        isPro: true,
                         openMode: 'click',
                         items: []
                     },
@@ -552,7 +552,7 @@ function SidebarItem({ item, isSidebarOpen,isSidebarHovered }) {
                     {item.icon && item.icon}
                     {
                         (isSidebarOpen || isSidebarHovered) && 
-                        <div>
+                        <div className="flex gap-2 items-center">
                             {item.label}
                             {item.isNew && <div className="bg-[#3093F2] rounded-lg text-xs px-2">NEW</div>}
                             {item.isPro && <div className="bg-[#DF4646] rounded-lg text-xs px-2">PRO</div>}
