@@ -24,7 +24,46 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             isNew: false,
             isPro: false,
             openMode: 'click',
-            items:[]
+            items: [
+                {
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'hover',
+                    items: [
+                        {
+                            icon: <Icons icon={'moon'} />,
+                            label: "Gestione",
+                            toLink: "",
+                            isNew: false,
+                            isPro: false,
+                            openMode: 'click',
+                            items: []
+                        },
+                        {
+                            icon: <Icons icon={'moon'} />,
+                            label: "Gestione",
+                            toLink: "",
+                            isNew: false,
+                            isPro: false,
+                            openMode: 'click',
+                            items: []
+                        },
+                    ]
+                },
+                {
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'click',
+                    items: []
+                },
+
+            ]
         },
         {
             icon: <Icons icon={'sun'} />,
@@ -33,15 +72,17 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
             isNew: false,
             isPro: false,
             openMode: 'click',
-            items: [       {
-                icon: <Icons icon={'moon'} />,
-                label: "Gestione",
-                toLink: "",
-                isNew: false,
-                isPro: false,
-                openMode: 'click',
-                items:[]
-            },]
+            items: [
+                {
+                    icon: <Icons icon={'moon'} />,
+                    label: "Gestione",
+                    toLink: "",
+                    isNew: false,
+                    isPro: false,
+                    openMode: 'click',
+                    items: []
+                },
+            ]
         },
     ];
 
@@ -220,8 +261,8 @@ function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, s
             </div>
 
             {/* Lista centrale scrollabile */}
-            <div className="flex-1 overflow-y-auto overflow-x-hidden  custom-scrollbar mt-2">
-                <ul className=''>
+            <div className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar mt-2">
+                <ul>
                     {sidebarItems.map((item, index) => {
 
                         return (
@@ -367,9 +408,11 @@ function ToggleButton({ enabled, setEnabled }) {
     );
 }
 
-const SidebarItem = ({ item }) => {
+function SidebarItem({ item, count = 1 }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
+
+    count = count + 1
 
     const hasChildren = item.items && item.items.length > 0;
     const openMode = item.openMode || "click"; // Default: click
@@ -383,7 +426,6 @@ const SidebarItem = ({ item }) => {
 
     return (
         <li
-            className=""
             onMouseEnter={() => openMode === "hover" && setIsHovered(true)}
             onMouseLeave={() => openMode === "hover" && setIsHovered(false)}
         >
@@ -406,28 +448,26 @@ const SidebarItem = ({ item }) => {
 
             {/* Modalità "click": menu a tendina */}
             {hasChildren && openMode === "click" && (
-                <ul className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${isOpen ? "max-h-[500px]" : "max-h-0"}`}>
+                <ul className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${isOpen ? "max-h-full" : "max-h-0"}`}>
                     {item.items.map((subItem, subIndex) => {
-
-                        return (
-                            <SidebarItem key={subIndex} item={subItem} />
-                        )
+                        return (<SidebarItem key={subIndex} item={subItem} />)
                     }
                     )}
                 </ul>
             )}
 
             {/* Modalità "hover": finestra laterale esterna */}
-            {hasChildren && openMode === "hover" && isHovered && (
-                <div className="absolute left-full -translate-y-12  bg-gray-800 border border-gray-600 rounded-lg shadow-lg min-w-[200px]">
-                    {item.items.map((subItem, subIndex) => {
-
-                        console.log('subItem', subItem);
-
-                        return (
-                            <SidebarItem key={subIndex} item={subItem} />
-                        )
-                    })}
+            {hasChildren && openMode === "hover" && (
+                <div
+                    className={`absolute left-full -translate-y-12 bg-gray-800 border border-gray-600 rounded-lg shadow-lg min-w-[200px] 
+                        transition-opacity duration-300 ease-in-out 
+                        ${isHovered ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
+                    {item.items.map((subItem, subIndex) => (
+                        <SidebarItem key={subIndex} item={subItem} />
+                    ))}
                 </div>
             )}
         </li>
