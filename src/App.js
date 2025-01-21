@@ -13,6 +13,7 @@ import NotchBearing from './Pages/NotchBearing/NotchBearing';
 import TestPage from './Pages/TestPage/TestPage';
 import Layout from './Layout/Layout';
 import PageTransition from './Components/Wrappers/PageTransition';
+import { sidebarItems, navbarItems, breadCrumbsItems } from './Json/NavigationConfig';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
 
     <HashRouter>
       <Routes>
-        <Route element={<Layout />}>
+        <Route element={<Layout sidebarItems={sidebarItems} navbarItems={navbarItems} isVisibleBreadCrumbs={false}/>}>
           <Route path="/" element={<HomePage />} />
           <Route path="/loadCombination" element={<LoadCombination />} />
           <Route path="/project" element={<WoodProject />} />

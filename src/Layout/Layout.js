@@ -211,6 +211,9 @@ Layout.defaultProps = {
 };
 
 export default function Layout({
+    sidebarItems,
+    navbarItems,
+    breadCrumbsItems,
     isVisibleNavbar = true,
     isVisibleSidebar = true,
     isVisibleBreadCrumbs = true
