@@ -43,15 +43,6 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
                 items:[]
             },]
         },
-        {
-            icon: <Icons icon={'moon'} />,
-            label: "Gestione",
-            toLink: "",
-            isNew: false,
-            isPro: false,
-            openMode: 'hover',
-            items:[]
-        },
     ];
 
     const navbarItems = {
@@ -425,10 +416,6 @@ function SidebarItem({ item }) {
     }, [isOpen]);
 
     return (
-<>
-
-<div className="absolute left-full top-0 w-4 h-full bg-transparent"></div>
-
         <li
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -478,7 +465,5 @@ function SidebarItem({ item }) {
                 </div>
             )}
         </li>
-
-        </>
     );
 };
