@@ -50,27 +50,27 @@ export default function Layout({ isVisibleNavbar = true, isVisibleSidebar = true
                     isNew: false,
                     isPro: false,
                     openMode: 'click',
-                    items: [     
+                    items: [
                         {
-                        icon: <Icons icon={'moon'} />,
-                        label: "Gestione",
-                        toLink: "",
-                        isNew: false,
-                        isPro: false,
-                        openMode: 'click',
-                        items: []
-                    },
+                            icon: <Icons icon={'moon'} />,
+                            label: "Gestione",
+                            toLink: "",
+                            isNew: false,
+                            isPro: false,
+                            openMode: 'click',
+                            items: []
+                        },
                         {
-                        icon: <Icons icon={'moon'} />,
-                        label: "Gestione",
-                        toLink: "",
-                        isNew: false,
-                        isPro: false,
-                        openMode: 'click',
-                        items: []
-                    },
-                
-                ]
+                            icon: <Icons icon={'moon'} />,
+                            label: "Gestione",
+                            toLink: "",
+                            isNew: false,
+                            isPro: false,
+                            openMode: 'click',
+                            items: []
+                        },
+
+                    ]
                 },
                 {
                     icon: <Icons icon={'moon'} />,
@@ -458,13 +458,11 @@ function SidebarItem({ item }) {
             {hasChildren && openMode === "click" && (
                 <ul
                     ref={contentRef}
-                    className={`overflow-hidden transition-[max-height] duration-300 ease-in-out pl-2 
-        `}
+                    className={`overflow-hidden transition-[max-height] duration-300 ease-in-out pl-2  `}
                     style={{ maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px" }}
                 >
                     {item.items.map((subItem, subIndex) => (
-                        <div className='border-l-2 border-gray-500'>
-
+                        <div className={`border-l-2 border-gray-500 ${subIndex===0 ? 'border-t-2 rounded-tl-lg': ''}`}>
                             <SidebarItem key={subIndex} item={subItem} />
                         </div>
                     ))}
