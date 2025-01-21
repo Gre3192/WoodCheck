@@ -322,9 +322,14 @@ function Navbar({ isSidebarRightOpen, setIsSidebarRightOpen, toggleSidebarHidden
 
 function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, sidebarItems }) {
 
+    const [isHovered, setIsHovered] = useState(false);
+
     return (
         <div className={`fixed z-30 bg-gray-800 text-white h-full flex flex-col transition-all duration-300 
-            ${isOpen && !isSidebarHidden ? 'w-64' : hoverEnabled && !isSidebarHidden ? 'w-16 hover:w-64' : 'overflow-hidden w-0'}`}>
+            ${isOpen && !isSidebarHidden ? 'w-64' : hoverEnabled && !isSidebarHidden ? 'w-16 hover:w-64' : 'overflow-hidden w-0'}`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            >
 
             {/* Logo */}
             <div className='text-black border-b border-gray-500 h-16 p-4 flex-shrink-0'>
@@ -337,7 +342,7 @@ function SidebarLeft({ isOpen, hoverEnabled, toggleHoverMode, isSidebarHidden, s
                     {sidebarItems.map((item, index) => {
 
                         return (
-                            <SidebarItem key={index} item={item} />
+                            <SidebarItem key={index} item={item} isSidebarOpen={isOpen} isSidebarHovered={isHovered}/>
                         )
                     })}
                 </ul>
@@ -462,7 +467,7 @@ function Icons({ icon, className = '' }) {
         ),
         hoverSidebar: (
             <svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5.5 4C5.22386 4 5 4.22386 5 4.5C5 4.77614 5.22386 5 5.5 5H13.5C13.7761 5 14 4.77614 14 4.5C14 4.22386 13.7761 4 13.5 4H5.5ZM2.5 9C2.22386 9 2 9.22386 2 9.5C2 9.77614 2.22386 10 2.5 10H13.5C13.7761 10 14 9.77614 14 9.5C14 9.22386 13.7761 9 13.5 9H2.5ZM7 14.5C7 14.2239 7.22386 14 7.5 14H13.5C13.7761 14 14 14.2239 14 14.5C14 14.7761 13.7761 15 13.5 15H7.5C7.22386 15 7 14.7761 7 14.5ZM16.4532 7.73647C16.2579 7.54121 15.9413 7.54121 15.7461 7.73647C15.5508 7.93174 15.5508 8.24832 15.7461 8.44358L16.8067 9.50424L15.7461 10.5649C15.5508 10.7602 15.5508 11.0767 15.7461 11.272C15.9413 11.4673 16.2579 11.4673 16.4532 11.272L17.8674 9.85779C18.0626 9.66253 18.0626 9.34595 17.8674 9.15069L16.4532 7.73647Z" fill="#ffffff"/>
+                <path d="M5.5 4C5.22386 4 5 4.22386 5 4.5C5 4.77614 5.22386 5 5.5 5H13.5C13.7761 5 14 4.77614 14 4.5C14 4.22386 13.7761 4 13.5 4H5.5ZM2.5 9C2.22386 9 2 9.22386 2 9.5C2 9.77614 2.22386 10 2.5 10H13.5C13.7761 10 14 9.77614 14 9.5C14 9.22386 13.7761 9 13.5 9H2.5ZM7 14.5C7 14.2239 7.22386 14 7.5 14H13.5C13.7761 14 14 14.2239 14 14.5C14 14.7761 13.7761 15 13.5 15H7.5C7.22386 15 7 14.7761 7 14.5ZM16.4532 7.73647C16.2579 7.54121 15.9413 7.54121 15.7461 7.73647C15.5508 7.93174 15.5508 8.24832 15.7461 8.44358L16.8067 9.50424L15.7461 10.5649C15.5508 10.7602 15.5508 11.0767 15.7461 11.272C15.9413 11.4673 16.2579 11.4673 16.4532 11.272L17.8674 9.85779C18.0626 9.66253 18.0626 9.34595 17.8674 9.15069L16.4532 7.73647Z" fill="#ffffff" />
             </svg>
         ),
     };
@@ -484,7 +489,7 @@ function ToggleButton({ enabled, setEnabled }) {
     );
 }
 
-function SidebarItem({ item }) {
+function SidebarItem({ item, isSidebarOpen,isSidebarHovered }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
@@ -545,17 +550,23 @@ function SidebarItem({ item }) {
             >
                 <div className="flex gap-2 items-center">
                     {item.icon && item.icon}
-                    {item.label}
-                    {item.isNew && <div className="bg-[#3093F2] rounded-lg text-xs px-2">NEW</div>}
-                    {item.isPro && <div className="bg-[#DF4646] rounded-lg text-xs px-2">PRO</div>}
+                    {
+                        (isSidebarOpen || isSidebarHovered) && 
+                        <div>
+                            {item.label}
+                            {item.isNew && <div className="bg-[#3093F2] rounded-lg text-xs px-2">NEW</div>}
+                            {item.isPro && <div className="bg-[#DF4646] rounded-lg text-xs px-2">PRO</div>}
+                        </div>
+                    }
+
                 </div>
-                {hasChildren && (
+                {hasChildren && (isSidebarOpen || isSidebarHovered) && (
                     <Icons icon={openMode === "hover" ? 'hoverSidebar' : 'arrow'} className={`duration-300 transform ${isOpen || isHovered ? "rotate-180" : ""}`} />
                 )}
             </div>
 
             {/* Modalità "click": menu a tendina */}
-            {hasChildren && openMode === "click" && (
+            {hasChildren && openMode === "click" && (isSidebarOpen || isSidebarHovered) && (
                 <ul
                     ref={contentRef}
                     className={`overflow-hidden transition-[max-height] duration-300 ease-in-out pl-2  `}
@@ -563,21 +574,21 @@ function SidebarItem({ item }) {
                 >
                     {item.items.map((subItem, subIndex) => (
                         <div className={`border-l-2 border-gray-500 ${subIndex === 0 ? 'border-t-2 rounded-tl-lg' : ''}`}>
-                            <SidebarItem key={subIndex} item={subItem} />
+                            <SidebarItem key={subIndex} item={subItem} isSidebarOpen={isSidebarOpen} isSidebarHovered={isSidebarHovered}/>
                         </div>
                     ))}
                 </ul>
             )}
 
             {/* Modalità "hover": finestra laterale esterna */}
-            {hasChildren && openMode === "hover" && (
+            {hasChildren && openMode === "hover" && (isSidebarOpen || isSidebarHovered) && (
                 <div
                     className={`absolute left-full -translate-y-12 bg-gray-800 border border-gray-600 rounded-lg shadow-lg min-w-[200px] 
                         transition-opacity duration-500 ease-in-out 
                         ${isHovered ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
                 >
                     {item.items.map((subItem, subIndex) => (
-                        <SidebarItem key={subIndex} item={subItem} />
+                        <SidebarItem key={subIndex} item={subItem} isSidebarOpen={isSidebarOpen} isSidebarHovered={isSidebarHovered}/>
                     ))}
                 </div>
             )}
