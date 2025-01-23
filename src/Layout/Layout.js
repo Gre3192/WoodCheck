@@ -215,7 +215,7 @@ export default function Layout({
     navbarItems,
     breadCrumbsItems,
     isVisibleNavbar = true,
-    isVisibleSidebar = true,
+    isVisibleSidebar = false,
     isVisibleBreadCrumbs = true
 }) {
 
@@ -267,7 +267,7 @@ export default function Layout({
                 isLightMode={isLightMode}
                 setIsLightMode={setIsLightMode}
             />
-            <div className={`flex flex-col flex-1 transition-all duration-300 ${isSidebarLeftOpen && !isSidebarLeftHidden ? 'ml-64' : isSidebarLeftHidden ? '' : 'ml-16'}`}>
+            <div className={`flex flex-col flex-1 transition-all duration-300 ${!isVisibleSidebar? null : isSidebarLeftOpen && !isSidebarLeftHidden ? 'ml-64' : isSidebarLeftHidden ? '' : 'ml-16'}`}>
                 <div className="flex h-16 flex-col drop-shadow-lg z-10">
                     {isVisibleNavbar &&
                         <Navbar

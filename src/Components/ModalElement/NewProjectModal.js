@@ -18,6 +18,16 @@ export default function NewProjectModal() {
         />
       </div>
 
+      {/* Data */}
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium">Data</label>
+        <input
+          type="text"
+          className="w-full border p-2 rounded mt-1 focus:ring focus:ring-blue-300 outline-none"
+          placeholder="Inserisci il nome del progetto"
+        />
+      </div>
+
       {/* Descrizione Progetto */}
       <div className="mb-4">
         <label className="block text-gray-700 font-medium">Descrizione</label>
