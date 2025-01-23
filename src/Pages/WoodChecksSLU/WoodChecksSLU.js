@@ -27,7 +27,7 @@ import { sectionGeometryMassAtom } from '../../Atom/sectionGeometryMassAtom';
 
 
 
-export default function WoodChecksSLU(params) {
+export default function WoodChecksSLU({}) {
 
     const [showAll, setShowAll] = useState(true)
     const [sectionProp, setSectionProp] = useRecoilState(sectionPropAtom);

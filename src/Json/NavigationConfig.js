@@ -1,12 +1,36 @@
 export const sidebarItems = [
     {
         isLabelDivider: true,
-        label: 'Travi'
+        label: 'Combinazioni di carico'
+    },
+    {
+        icon: '',
+        label: "Combinazioni SLU",
+        toLink: "/loadCombination",
+        onClick: () => { },
+        isNew: false,
+        isPro: false,
+        openMode: 'click',
+        items: []
+    },
+    {
+        icon: '',
+        label: "Combinazioni SLE",
+        toLink: "/loadCombination",
+        onClick: () => { },
+        isNew: false,
+        isPro: false,
+        openMode: 'click',
+        items: []
+    },
+    {
+        isLabelDivider: true,
+        label: 'Progetto e Verifica'
     },
     {
         icon: '',
         label: "Sezioni Normali",
-        toLink: "",
+        toLink: "/SezioniNormali",
         onClick: () => { },
         isNew: false,
         isPro: false,
@@ -15,50 +39,38 @@ export const sidebarItems = [
     },
     {
         icon: '',
-        label: "Spec r",
+        label: "Travi Speciali",
+        toLink: "/specialBeamsProject",
+        onClick: () => { },
+        isNew: false,
+        isPro: false,
+        openMode: 'click',
+        items: []
+    },
+    {
+        icon: '',
+        label: "Intagli",
         toLink: "",
         onClick: () => { },
         isNew: false,
         isPro: false,
         openMode: 'click',
         items: []
+    },
+    {
+        isLabelDivider: true,
+        label: 'Collegamenti'
     },
 
 ];
 
 export const navbarItems = {
     heead: {
-        label: 'WoodCheck',
+        label: 'UniStruct',
         toLink: '/',
         onclick: () => { }
     },
-    items: [
-        {
-            label: 'Progetto',
-            toLink: '/project',
-            onclick: () => { }
-        },
-        {
-            label: 'Verifiche SLU',
-            toLink: '/checksslu',
-            onclick: () => { }
-        },
-        {
-            label: 'Verifiche SLE',
-            toLink: '/checkssle',
-            onclick: () => { }
-        },
-        {
-            label: 'Verifiche SLU',
-            toLink: '/specialBeamsProject',
-            onclick: () => { }
-        },
-        {
-            label: 'Verifiche SLU',
-            toLink: '/specialBeamsChecksslu',
-            onclick: () => { }
-        },
-    ]
+    items: []
 }
 
 export const breadCrumbsItems = {

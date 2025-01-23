@@ -323,6 +323,10 @@ function Navbar({ isSidebarRightOpen, setIsSidebarRightOpen, toggleSidebarHidden
 
             {/* Lato Destro */}
             <div className='items-center flex'>
+                <button className='transition-transform duration-200 transform hover:scale-110 '>
+                    <Icons icon={'save'} />
+                </button>
+                <hr className="w-px bg-gray-300 h-7 mx-3" />
                 <button onClick={() => setIsSidebarRightOpen(!isSidebarRightOpen)} className={`transition-transform duration-500 transform hover:scale-110 hover:-rotate-180`}>
                     <Icons icon={'cog'} />
                 </button>
@@ -489,6 +493,9 @@ function Icons({ icon, className = '' }) {
             <svg fill="none" width="25" height="25" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 12C8.89543 12 8 11.1046 8 10C8 8.89543 8.89543 8 10 8C11.1046 8 12 8.89543 12 10C12 11.1046 11.1046 12 10 12ZM10 13C11.6569 13 13 11.6569 13 10C13 8.34315 11.6569 7 10 7C8.34315 7 7 8.34315 7 10C7 11.6569 8.34315 13 10 13Z" fill="#ffffff" />
             </svg>
+        ),
+        save: (
+            <svg fill="none" height="30" viewBox="0 0 20 20" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M5 3C3.89543 3 3 3.89543 3 5V13C3 14.1046 3.89543 15 5 15H13C14.1046 15 15 14.1046 15 13V6.62132C15 6.09089 14.7893 5.58218 14.4142 5.20711L12.7929 3.58579C12.4178 3.21071 11.9091 3 11.3787 3H5ZM4 5C4 4.44772 4.44772 4 5 4H6V5.5C6 6.32843 6.67157 7 7.5 7H9.5C10.3284 7 11 6.32843 11 5.5V4H11.3787C11.6439 4 11.8982 4.10536 12.0858 4.29289L13.7071 5.91421C13.8946 6.10175 14 6.3561 14 6.62132V13C14 13.5523 13.5523 14 13 14V10.5C13 9.67157 12.3284 9 11.5 9H6.5C5.67157 9 5 9.67157 5 10.5V14C4.44772 14 4 13.5523 4 13V5ZM7 5.5V4H10V5.5C10 5.77614 9.77614 6 9.5 6H7.5C7.22386 6 7 5.77614 7 5.5ZM12 10.5V14H6V10.5C6 10.2239 6.22386 10 6.5 10H11.5C11.7761 10 12 10.2239 12 10.5ZM8.49978 17.0003C7.54613 17.0003 6.68156 16.6189 6.05029 16.0003H13.4998C14.8805 16.0003 15.9998 14.881 15.9998 13.5003V6.05078C16.6184 6.68205 16.9998 7.54662 16.9998 8.50027V13.5003C16.9998 15.4333 15.4328 17.0003 13.4998 17.0003H8.49978Z" fill="#212121"/></svg>
         ),
     };
     return <div className={`flex justify-center items-center ${className}`}>{iconsMap[icon]}</div>;

@@ -21,7 +21,7 @@ import ActionSectionDraw from '../../Components/SvgComponent/ActionSectionDraw';
 
 
 
-export default function WoodProject() {
+export default function WoodProject({}) {
 
     const [sectionProp, setSectionProp] = useRecoilState(sectionPropAtom);
     const setSectionGeometryMass = useSetRecoilState(sectionGeometryMassAtom);

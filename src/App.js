@@ -14,11 +14,14 @@ import TestPage from './Pages/TestPage/TestPage';
 import Layout from './Layout/Layout';
 import PageTransition from './Components/Wrappers/PageTransition';
 import { sidebarItems, navbarItems, breadCrumbsItems } from './Json/NavigationConfig';
+import SezioniNormali from './Pages/Wood/Sezioni Normali/SezioniNormali';
+import EntryPoint from './Pages/HomePage/EntryPoint';
 
-function App() {
+
+export default function App() {
 
   useEffect(() => {
-    document.title = "WoodCheck";
+    document.title = "UniStruct";
   }, []);
 
 
@@ -26,8 +29,8 @@ function App() {
 
     <HashRouter>
       <Routes>
-        <Route element={<Layout sidebarItems={sidebarItems} navbarItems={navbarItems} isVisibleBreadCrumbs={false}/>}>
-          <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<EntryPoint />} />
+        <Route element={<Layout sidebarItems={sidebarItems} navbarItems={navbarItems} isVisibleBreadCrumbs={false} />}>
           <Route path="/loadCombination" element={<LoadCombination />} />
           <Route path="/project" element={<WoodProject />} />
           <Route path="/checksslu" element={<WoodChecksSLU />} />
@@ -37,6 +40,7 @@ function App() {
           <Route path="/joins" element={<WoodJoin />} />
           <Route path="/madepdf" element={<MadePDF />} />
           <Route path="/notchbearing" element={<NotchBearing />} />
+          <Route path="/SezioniNormali" element={<SezioniNormali />} />
           {/* <Route path="/" element={<TestPage />} /> */}
         </Route>
       </Routes>
@@ -44,5 +48,3 @@ function App() {
 
   );
 }
-
-export default App;
