@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import WoodProject from '../../WoodProject/WoodProject';
-import WoodChecksSLU from '../../WoodChecksSLU/WoodChecksSLU';
-import WoodChecksSLE from '../../WoodChecksSLE/WoodChecksSLE';
+import WoodProject from '../WoodProject/WoodProject';
+import WoodChecksSLU from '../WoodChecksSLU/WoodChecksSLU';
+import WoodChecksSLE from '../WoodChecksSLE/WoodChecksSLE';
 import { FaTrash } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
-export default function SezioniNormali() {
+
+export default function ProjectPage() {
 
     const [sectionProp, setsectionProp] = useState(null)
     const [sectionGeometryMass, setSectionGeometryMass] = useState(null)
@@ -57,7 +59,8 @@ export default function SezioniNormali() {
                         travi.map((trave, index) => {
                             return (
                                 <>
-                                    <button
+                                    <Link
+                                    to={'/project'}
                                         onClick={handleButtonTrave}
                                         className='w-60 flex flex-col justify-start bg-white shadow-xl rounded-lg py-3 px-4 duration-300 hover:scale-105'>
                                         <div className='font-semibold text-lg flex justify-between w-full items-center'>
@@ -77,7 +80,7 @@ export default function SezioniNormali() {
                                                 Sezione 3
                                             </div>
                                         </div> */}
-                                    </button>
+                                    </Link>
                                 </>
                             )
                         })
@@ -86,9 +89,9 @@ export default function SezioniNormali() {
                 </div>
             }
 
-            {isProject && <WoodProject />}
+            {/* {isProject && <WoodProject />}
             {isCheckSLU && <WoodChecksSLU />}
-            {isCheckSLE && <WoodChecksSLE />}
+            {isCheckSLE && <WoodChecksSLE />} */}
         </>
     );
 }

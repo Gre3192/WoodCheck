@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 
@@ -215,18 +215,18 @@ export default function Layout({
     navbarItems,
     breadCrumbsItems,
     isVisibleNavbar = true,
-    isVisibleSidebar = false,
-    isVisibleBreadCrumbs = true
+    isVisibleSidebar = true,
+    isVisibleBreadCrumbs = true,
+    onLinkChange = () => { },
 }) {
 
-    const [isSidebarLeftOpen, setIsSidebarLeftOpen] = useState(true);
+    const [isSidebarLeftOpen, setIsSidebarLeftOpen] = useState(false);
     const [isSidebarRightOpen, setIsSidebarRightOpen] = useState(false);
     const [isSidebarLeftHidden, setIsSidebarLeftHidden] = useState(false);
-    const [sidebarLeftHoverEnabled, setSidebarLeftHoverEnabled] = useState(false);
+    const [sidebarLeftHoverEnabled, setSidebarLeftHoverEnabled] = useState(true);
     const [breadCrumbsHoverEnabled, setBreadCrumbsHoverEnabled] = useState(false);
     const [isLightMode, setIsLightMode] = useState(true)
     const [isBreadCrumbsOpen, setIsBreadCrumbsOpen] = useState(false)
-
 
 
     const toggleSidebarHidden = () => {
@@ -244,6 +244,13 @@ export default function Layout({
         setIsSidebarLeftOpen(!isSidebarLeftOpen);
         setSidebarLeftHoverEnabled(!sidebarLeftHoverEnabled);
     };
+
+
+    const location = useLocation();
+    useEffect(() => {
+        onLinkChange(location.pathname)
+    }, [location])
+    
 
     return (
         <div className="h-screen flex">
