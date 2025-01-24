@@ -65,7 +65,7 @@ export default function HomePage() {
             <div className="whitespace-nowrap font-semibold">Nuovo Progetto</div>
           </button>
 
-          <div className="mr-6 flex h-full flex-col flex-grow">
+          <div className="mr-6 flex h-full flex-col flex-grow ">
             <div className="flex justify-between my-6 items-center">
               <div className="text-3xl font-semibold">Progetti</div>
               {/* Input con icona */}
@@ -82,7 +82,7 @@ export default function HomePage() {
             </div>
 
             {/* Contenitore scrollabile con altezza dinamica */}
-            <div className="overflow-auto p-5 border border-gray-300 rounded-lg">
+            <div className="overflow-auto p-3 rounded-lg">
               {filteredProjects.length > 0 ? (
                 filteredProjects.map((item, index) => (
                   <button

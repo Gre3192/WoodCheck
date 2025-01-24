@@ -30,8 +30,6 @@ export default function App() {
     setCurrentLocation(e)
   }
 
-  console.log('currentLocation',currentLocation);
-  
 
 
   return (
