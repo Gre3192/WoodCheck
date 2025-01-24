@@ -4,7 +4,7 @@ export default function NewProjectModal() {
 
     
   return (
-    <form className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <form className=" bg-white p-6 rounded-lg shadow-md">
       {/* Titolo del Form */}
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">Nuovo Progetto</h2>
 
